@@ -31,16 +31,18 @@ namespace Advanced_Cooling_Control_Software
 
             Connect_button.Enabled = true;
             Disconnect_button.Enabled = false;
+            Disconnect_button.BackColor = Color.LightSteelBlue;
+            Disconnect_button.ForeColor = Color.White;
 
             PCP_Indicator1.BackColor = Color.Brown;
             PCP_Indicator2.BackColor= Color.Brown;
             PCP_Indicator3.BackColor= Color.Brown;
             PCP_Indicator4.BackColor= Color.Brown;
 
-            Hdcp_Off_button.Enabled = false;
-            Hdcp_On_button.Enabled = false;
-            Hdcp_Devicelists_Combobox.Enabled = false;
-            HdcpMsgbox_label.Enabled = false;
+            HDCPOff_button.Enabled = false;
+            HDCPOn_button.Enabled = false;
+            HDCPDevicelist_Combobox.Enabled = false;
+            HDCPMsgbox_label.Enabled = false;
 
             Conn_progressBar.Value = 0;
 
@@ -92,6 +94,27 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
+        private void ClearInputBuffer_button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                serialPort1.DiscardInBuffer();
+            }
+            catch
+            {
+                /* Do nothing */
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Hdcp_Devicelists_Combobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HDCPMsgbox_label.Text = "";
+        }
 
         private void MainPower_checkBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -164,7 +187,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 ConnMsgBox_label.Text = "Arduino detected @" + ArduinoPortDect;
                 ComPort_comboBox.Text = ArduinoPortDect;
-                BaudRate_comboBox.Text = "115200";
+                BaudRate_comboBox.Text = "9600";
             }
             else
             {
@@ -174,8 +197,9 @@ namespace Advanced_Cooling_Control_Software
 
         private void Connect_button_Click(object sender, EventArgs e)
         {
+            BeginInvoke(new EventHandler(ClearInputBuffer_button_Click));
             ConnMsgBox_label.Enabled = true;
-            HdcpMsgbox_label.Enabled = true;
+            HDCPMsgbox_label.Enabled = true;
             if (ComPort_comboBox.SelectedItem != null)
             {
                 if (BaudRate_comboBox.SelectedItem != null)
@@ -202,14 +226,17 @@ namespace Advanced_Cooling_Control_Software
                                 ComPort_comboBox.Enabled = false;
                                 BaudRate_comboBox.Enabled = false;
                                 Connect_button.Enabled = false;
+                                Connect_button.BackColor = Color.LightSteelBlue;
                                 Passcode_textBox.Enabled = false;
                                 Disconnect_button.Enabled = true;
+                                Disconnect_button.BackColor = Color.CornflowerBlue;
                                 CheckArduinoComPort_button.Enabled = false;
+                                CheckArduinoComPort_button.BackColor = Color.LightSteelBlue;
 
-                                Hdcp_Off_button.Enabled = true;
-                                Hdcp_On_button.Enabled = true;
-                                Hdcp_Devicelists_Combobox.Enabled = true;
-                                HdcpMsgbox_label.Enabled = true;
+                                HDCPOff_button.Enabled = true;
+                                HDCPOn_button.Enabled = true;
+                                HDCPDevicelist_Combobox.Enabled = true;
+                                HDCPMsgbox_label.Enabled = true;
 
                                 MainPower_checkBox.Enabled = true;
                                 CabinLight_checkBox.Enabled = true;
@@ -268,11 +295,21 @@ namespace Advanced_Cooling_Control_Software
                 // comment below line after debugging
                 Passcode_textBox.Text = "20222023v";
 
-                Hdcp_Off_button.Enabled = false;
-                Hdcp_On_button.Enabled = false;
-                Hdcp_Devicelists_Combobox.Enabled = false;
-                HdcpMsgbox_label.Enabled = false;
+                ConnMsgBox_label.Enabled = true;
+                ComPort_comboBox.Enabled = true;
+                BaudRate_comboBox.Enabled = true;
+                Connect_button.Enabled = true;
+                Connect_button.BackColor = Color.CornflowerBlue;
+                Passcode_textBox.Enabled = true;
+                Disconnect_button.Enabled = false;
+                Disconnect_button.BackColor = Color.LightSteelBlue;
+
+                HDCPOff_button.Enabled = false;
+                HDCPOn_button.Enabled = false;
+                HDCPDevicelist_Combobox.Enabled = false;
+                HDCPMsgbox_label.Enabled = false;
                 CheckArduinoComPort_button.Enabled = true;
+                CheckArduinoComPort_button.BackColor = Color.CornflowerBlue;
 
                 MainPower_checkBox.Enabled = false;
                 CabinLight_checkBox.Enabled = false;
@@ -297,19 +334,13 @@ namespace Advanced_Cooling_Control_Software
             {
                 ConnMsgBox_label.Text = "Unable to close conn. " + _COMPORT;
             }
-            ConnMsgBox_label.Enabled = true;
-            ComPort_comboBox.Enabled = true;
-            BaudRate_comboBox.Enabled = true;
-            Connect_button.Enabled = true;
-            Passcode_textBox.Enabled = true;
-            Disconnect_button.Enabled = false;
         }
 
         private void serialPort1_serialDataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             try
             {
-                _serialData = serialPort1.ReadExisting().Trim();
+                _serialData = serialPort1.ReadLine().Trim();
                 BeginInvoke(new EventHandler(SerialDataEncoder));
             }
             catch
@@ -460,7 +491,7 @@ namespace Advanced_Cooling_Control_Software
                 }
                 catch
                 {
-
+                    /* Do Nothing */
                 }
             }
 
@@ -530,59 +561,79 @@ namespace Advanced_Cooling_Control_Software
 
         private void Hdcp_On_button_Click(object sender, EventArgs e)
         {
-            if (Hdcp_Devicelists_Combobox.SelectedIndex == 0)
+            if (HDCPDevicelist_Combobox.SelectedIndex == 0)
             {
                 Dcs_indicator1.BackColor = Color.DarkGreen;
+                HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": ON";
                 serialPort1.WriteLine("A");
             }
-            else if (Hdcp_Devicelists_Combobox.SelectedIndex == 1)
+            else if (HDCPDevicelist_Combobox.SelectedIndex == 1)
             {
                 Dcs_indicator2.BackColor = Color.DarkGreen;
+                HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": ON";
             }
-            else if (Hdcp_Devicelists_Combobox.SelectedIndex == 2)
+            else if (HDCPDevicelist_Combobox.SelectedIndex == 2)
             {
                 Dcs_indicator3.BackColor = Color.DarkGreen;
+                HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": ON";
             }
-            else if (Hdcp_Devicelists_Combobox.SelectedIndex == 3)
+            else if (HDCPDevicelist_Combobox.SelectedIndex == 3)
             {
                 Dcs_indicator4.BackColor = Color.DarkGreen;
+                HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": ON";
             }
-            else if (Hdcp_Devicelists_Combobox.SelectedIndex == 4)
+            else if (HDCPDevicelist_Combobox.SelectedIndex == 4)
             {
                 Dcs_indicator5.BackColor = Color.DarkGreen;
+                HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": ON";
+            }
+            else if (HDCPDevicelist_Combobox.SelectedIndex == 5)
+            {
+                Dcs_indicator6.BackColor = Color.DarkGreen;
+                HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem+": ON";
             }
             else
             {
-                HdcpMsgbox_label.Text = "No devices selected!";
+                HDCPMsgbox_label.Text = "No devices selected!";
             }
         }
 
         public void Hdcp_Off_button_Click(object sender, EventArgs e)
         {
-            if (Hdcp_Devicelists_Combobox.SelectedIndex == 0)
+            if (HDCPDevicelist_Combobox.SelectedIndex == 0)
             {
                 Dcs_indicator1.BackColor = Color.Brown;
                 serialPort1.Write("a");
+                HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": OFF";
             }
-            else if (Hdcp_Devicelists_Combobox.SelectedIndex == 1)
+            else if (HDCPDevicelist_Combobox.SelectedIndex == 1)
             {
                 Dcs_indicator2.BackColor = Color.Brown;
+                HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": OFF";
             }
-            else if (Hdcp_Devicelists_Combobox.SelectedIndex == 2)
+            else if (HDCPDevicelist_Combobox.SelectedIndex == 2)
             {
                 Dcs_indicator3.BackColor = Color.Brown;
+                HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": OFF";
             }
-            else if (Hdcp_Devicelists_Combobox.SelectedIndex == 3)
+            else if (HDCPDevicelist_Combobox.SelectedIndex == 3)
             {
                 Dcs_indicator4.BackColor = Color.Brown;
+                HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": OFF";
             }
-            else if (Hdcp_Devicelists_Combobox.SelectedIndex == 4)
+            else if (HDCPDevicelist_Combobox.SelectedIndex == 4)
             {
                 Dcs_indicator5.BackColor = Color.Brown;
+                HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": OFF";
+            }
+            else if (HDCPDevicelist_Combobox.SelectedIndex == 5)
+            {
+                Dcs_indicator6.BackColor = Color.Brown;
+                HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": OFF";
             }
             else
             {
-                HdcpMsgbox_label.Text = "No devices selected!";
+                HDCPMsgbox_label.Text = "No devices selected!";
             }
         }
 
