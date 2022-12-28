@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advanced_Cooling_Control_Software", "Advanced_Cooling_Control_Software\Advanced_Cooling_Control_Software.csproj", "{4E03977A-A559-4EE9-AA4A-3EDE4C54C907}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E03977A-A559-4EE9-AA4A-3EDE4C54C907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E03977A-A559-4EE9-AA4A-3EDE4C54C907}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E03977A-A559-4EE9-AA4A-3EDE4C54C907}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E03977A-A559-4EE9-AA4A-3EDE4C54C907}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {261D4239-D58C-492F-AF3E-D182985D5BE1}
+	EndGlobalSection
+EndGlobal
