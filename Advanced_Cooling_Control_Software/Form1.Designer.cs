@@ -37,7 +37,7 @@
             this.Disconnect_button = new System.Windows.Forms.Button();
             this.Connect_button = new System.Windows.Forms.Button();
             this.Conn_progressBar = new System.Windows.Forms.ProgressBar();
-            this.ConnMsgBox_label = new System.Windows.Forms.Label();
+            this.ConnectionMsgBox_label = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.BaudRate_comboBox = new System.Windows.Forms.ComboBox();
             this.ComPort_comboBox = new System.Windows.Forms.ComboBox();
@@ -79,6 +79,11 @@
             this.clearConsoleOutput_button = new System.Windows.Forms.Button();
             this.SerialMonitor_textbox = new System.Windows.Forms.TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.CoolerFanRPM_circularProgressBar = new CircularProgressBar.CircularProgressBar();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.ExhaustFanRPM_circularProgressBar = new CircularProgressBar.CircularProgressBar();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
@@ -101,16 +106,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.PBT2_circularProgressBar = new CircularProgressBar.CircularProgressBar();
             this.PBT1_circularProgressBar = new CircularProgressBar.CircularProgressBar();
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.ClearConsoleTextBox_label = new System.Windows.Forms.Label();
             this.ConsoleClear_button = new System.Windows.Forms.Button();
-            this.MCU_MessageLog_textbox = new System.Windows.Forms.TextBox();
-            this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.CoolerFanRPM_circularProgressBar = new CircularProgressBar.CircularProgressBar();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.ExhaustFanRPM_circularProgressBar = new CircularProgressBar.CircularProgressBar();
+            this.ConsoleLog_textbox = new System.Windows.Forms.TextBox();
             this.DIS3 = new System.Windows.Forms.TextBox();
             this.DIS5 = new System.Windows.Forms.TextBox();
             this.DIS4 = new System.Windows.Forms.TextBox();
@@ -118,23 +117,26 @@
             this.DIS1 = new System.Windows.Forms.TextBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.DIS2 = new System.Windows.Forms.TextBox();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.ArduinoReset_button = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.SerialMonitor_groupBox.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.groupBox13.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox11.SuspendLayout();
-            this.groupBox13.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.DarkGray;
+            this.groupBox1.Controls.Add(this.ArduinoReset_button);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.CheckArduinoComPort_button);
@@ -142,7 +144,7 @@
             this.groupBox1.Controls.Add(this.Disconnect_button);
             this.groupBox1.Controls.Add(this.Connect_button);
             this.groupBox1.Controls.Add(this.Conn_progressBar);
-            this.groupBox1.Controls.Add(this.ConnMsgBox_label);
+            this.groupBox1.Controls.Add(this.ConnectionMsgBox_label);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.BaudRate_comboBox);
             this.groupBox1.Controls.Add(this.ComPort_comboBox);
@@ -179,9 +181,9 @@
             this.CheckArduinoComPort_button.ForeColor = System.Drawing.Color.White;
             this.CheckArduinoComPort_button.Location = new System.Drawing.Point(4, 183);
             this.CheckArduinoComPort_button.Name = "CheckArduinoComPort_button";
-            this.CheckArduinoComPort_button.Size = new System.Drawing.Size(214, 24);
+            this.CheckArduinoComPort_button.Size = new System.Drawing.Size(114, 24);
             this.CheckArduinoComPort_button.TabIndex = 31;
-            this.CheckArduinoComPort_button.Text = "Search Arduino Port";
+            this.CheckArduinoComPort_button.Text = "Search UNO Port";
             this.CheckArduinoComPort_button.UseVisualStyleBackColor = false;
             this.CheckArduinoComPort_button.Click += new System.EventHandler(this.CheckArduinoComPort_button_Click);
             // 
@@ -215,7 +217,7 @@
             this.Connect_button.ForeColor = System.Drawing.Color.White;
             this.Connect_button.Location = new System.Drawing.Point(4, 157);
             this.Connect_button.Name = "Connect_button";
-            this.Connect_button.Size = new System.Drawing.Size(100, 24);
+            this.Connect_button.Size = new System.Drawing.Size(114, 24);
             this.Connect_button.TabIndex = 8;
             this.Connect_button.Text = "Connect";
             this.Connect_button.UseVisualStyleBackColor = false;
@@ -225,23 +227,23 @@
             // 
             this.Conn_progressBar.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Conn_progressBar.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.Conn_progressBar.Location = new System.Drawing.Point(4, 141);
+            this.Conn_progressBar.Location = new System.Drawing.Point(4, 140);
             this.Conn_progressBar.MarqueeAnimationSpeed = 10;
             this.Conn_progressBar.Name = "Conn_progressBar";
             this.Conn_progressBar.Size = new System.Drawing.Size(214, 10);
             this.Conn_progressBar.TabIndex = 7;
             // 
-            // ConnMsgBox_label
+            // ConnectionMsgBox_label
             // 
-            this.ConnMsgBox_label.BackColor = System.Drawing.Color.Gainsboro;
-            this.ConnMsgBox_label.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ConnMsgBox_label.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
-            this.ConnMsgBox_label.ForeColor = System.Drawing.Color.DarkBlue;
-            this.ConnMsgBox_label.Location = new System.Drawing.Point(6, 113);
-            this.ConnMsgBox_label.Name = "ConnMsgBox_label";
-            this.ConnMsgBox_label.Size = new System.Drawing.Size(212, 23);
-            this.ConnMsgBox_label.TabIndex = 6;
-            this.ConnMsgBox_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ConnectionMsgBox_label.BackColor = System.Drawing.Color.Gainsboro;
+            this.ConnectionMsgBox_label.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ConnectionMsgBox_label.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
+            this.ConnectionMsgBox_label.ForeColor = System.Drawing.Color.DarkBlue;
+            this.ConnectionMsgBox_label.Location = new System.Drawing.Point(6, 113);
+            this.ConnectionMsgBox_label.Name = "ConnectionMsgBox_label";
+            this.ConnectionMsgBox_label.Size = new System.Drawing.Size(212, 23);
+            this.ConnectionMsgBox_label.TabIndex = 6;
+            this.ConnectionMsgBox_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
@@ -584,7 +586,7 @@
             // 
             this.Dcs_indicator5.BackColor = System.Drawing.Color.Brown;
             this.Dcs_indicator5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Dcs_indicator5.Location = new System.Drawing.Point(108, 74);
+            this.Dcs_indicator5.Location = new System.Drawing.Point(110, 74);
             this.Dcs_indicator5.Name = "Dcs_indicator5";
             this.Dcs_indicator5.Size = new System.Drawing.Size(15, 18);
             this.Dcs_indicator5.TabIndex = 28;
@@ -593,7 +595,7 @@
             // 
             this.Dcs_indicator3.BackColor = System.Drawing.Color.Brown;
             this.Dcs_indicator3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Dcs_indicator3.Location = new System.Drawing.Point(108, 48);
+            this.Dcs_indicator3.Location = new System.Drawing.Point(110, 48);
             this.Dcs_indicator3.Name = "Dcs_indicator3";
             this.Dcs_indicator3.Size = new System.Drawing.Size(15, 18);
             this.Dcs_indicator3.TabIndex = 27;
@@ -602,7 +604,7 @@
             // 
             this.Dcs_indicator1.BackColor = System.Drawing.Color.Brown;
             this.Dcs_indicator1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Dcs_indicator1.Location = new System.Drawing.Point(108, 22);
+            this.Dcs_indicator1.Location = new System.Drawing.Point(110, 22);
             this.Dcs_indicator1.Name = "Dcs_indicator1";
             this.Dcs_indicator1.Size = new System.Drawing.Size(15, 18);
             this.Dcs_indicator1.TabIndex = 26;
@@ -649,9 +651,9 @@
             this.SerialMonitor_groupBox.Controls.Add(this.ClearInputBuffer_button);
             this.SerialMonitor_groupBox.Controls.Add(this.clearConsoleOutput_button);
             this.SerialMonitor_groupBox.Controls.Add(this.SerialMonitor_textbox);
-            this.SerialMonitor_groupBox.Location = new System.Drawing.Point(12, 245);
+            this.SerialMonitor_groupBox.Location = new System.Drawing.Point(12, 237);
             this.SerialMonitor_groupBox.Name = "SerialMonitor_groupBox";
-            this.SerialMonitor_groupBox.Size = new System.Drawing.Size(382, 121);
+            this.SerialMonitor_groupBox.Size = new System.Drawing.Size(382, 159);
             this.SerialMonitor_groupBox.TabIndex = 2;
             this.SerialMonitor_groupBox.TabStop = false;
             this.SerialMonitor_groupBox.Text = "Serial Monitor ";
@@ -659,7 +661,7 @@
             // ClearBufferTextBox_label
             // 
             this.ClearBufferTextBox_label.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClearBufferTextBox_label.Location = new System.Drawing.Point(87, 97);
+            this.ClearBufferTextBox_label.Location = new System.Drawing.Point(87, 133);
             this.ClearBufferTextBox_label.Name = "ClearBufferTextBox_label";
             this.ClearBufferTextBox_label.Size = new System.Drawing.Size(287, 18);
             this.ClearBufferTextBox_label.TabIndex = 3;
@@ -667,7 +669,7 @@
             // 
             // ClearInputBuffer_button
             // 
-            this.ClearInputBuffer_button.Location = new System.Drawing.Point(6, 92);
+            this.ClearInputBuffer_button.Location = new System.Drawing.Point(6, 130);
             this.ClearInputBuffer_button.Name = "ClearInputBuffer_button";
             this.ClearInputBuffer_button.Size = new System.Drawing.Size(75, 23);
             this.ClearInputBuffer_button.TabIndex = 8;
@@ -687,12 +689,14 @@
             // 
             // SerialMonitor_textbox
             // 
+            this.SerialMonitor_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.SerialMonitor_textbox.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.SerialMonitor_textbox.Location = new System.Drawing.Point(6, 19);
             this.SerialMonitor_textbox.Multiline = true;
             this.SerialMonitor_textbox.Name = "SerialMonitor_textbox";
             this.SerialMonitor_textbox.ReadOnly = true;
-            this.SerialMonitor_textbox.Size = new System.Drawing.Size(368, 69);
+            this.SerialMonitor_textbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.SerialMonitor_textbox.Size = new System.Drawing.Size(368, 105);
             this.SerialMonitor_textbox.TabIndex = 0;
             // 
             // groupBox7
@@ -708,6 +712,99 @@
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Temperature | RPM Monitor";
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.CoolerFanRPM_circularProgressBar);
+            this.groupBox13.Controls.Add(this.label22);
+            this.groupBox13.Controls.Add(this.label24);
+            this.groupBox13.Controls.Add(this.ExhaustFanRPM_circularProgressBar);
+            this.groupBox13.Location = new System.Drawing.Point(560, 19);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(139, 346);
+            this.groupBox13.TabIndex = 38;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Fan RPM";
+            // 
+            // CoolerFanRPM_circularProgressBar
+            // 
+            this.CoolerFanRPM_circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.CoolerFanRPM_circularProgressBar.AnimationSpeed = 500;
+            this.CoolerFanRPM_circularProgressBar.BackColor = System.Drawing.Color.Transparent;
+            this.CoolerFanRPM_circularProgressBar.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CoolerFanRPM_circularProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CoolerFanRPM_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
+            this.CoolerFanRPM_circularProgressBar.InnerMargin = 2;
+            this.CoolerFanRPM_circularProgressBar.InnerWidth = -1;
+            this.CoolerFanRPM_circularProgressBar.Location = new System.Drawing.Point(6, 195);
+            this.CoolerFanRPM_circularProgressBar.MarqueeAnimationSpeed = 2000;
+            this.CoolerFanRPM_circularProgressBar.Name = "CoolerFanRPM_circularProgressBar";
+            this.CoolerFanRPM_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
+            this.CoolerFanRPM_circularProgressBar.OuterMargin = -25;
+            this.CoolerFanRPM_circularProgressBar.OuterWidth = 26;
+            this.CoolerFanRPM_circularProgressBar.ProgressColor = System.Drawing.Color.LightSeaGreen;
+            this.CoolerFanRPM_circularProgressBar.ProgressWidth = 25;
+            this.CoolerFanRPM_circularProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 26F);
+            this.CoolerFanRPM_circularProgressBar.Size = new System.Drawing.Size(125, 125);
+            this.CoolerFanRPM_circularProgressBar.StartAngle = 270;
+            this.CoolerFanRPM_circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.CoolerFanRPM_circularProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.CoolerFanRPM_circularProgressBar.SubscriptText = "";
+            this.CoolerFanRPM_circularProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.CoolerFanRPM_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.CoolerFanRPM_circularProgressBar.SuperscriptText = "";
+            this.CoolerFanRPM_circularProgressBar.TabIndex = 37;
+            this.CoolerFanRPM_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
+            this.CoolerFanRPM_circularProgressBar.Value = 1;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(46, 323);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(51, 13);
+            this.label22.TabIndex = 36;
+            this.label22.Text = "COOLER";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(43, 147);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(58, 13);
+            this.label24.TabIndex = 35;
+            this.label24.Text = "EXHAUST";
+            // 
+            // ExhaustFanRPM_circularProgressBar
+            // 
+            this.ExhaustFanRPM_circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.ExhaustFanRPM_circularProgressBar.AnimationSpeed = 500;
+            this.ExhaustFanRPM_circularProgressBar.BackColor = System.Drawing.Color.Transparent;
+            this.ExhaustFanRPM_circularProgressBar.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExhaustFanRPM_circularProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ExhaustFanRPM_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ExhaustFanRPM_circularProgressBar.InnerMargin = 2;
+            this.ExhaustFanRPM_circularProgressBar.InnerWidth = -1;
+            this.ExhaustFanRPM_circularProgressBar.Location = new System.Drawing.Point(6, 19);
+            this.ExhaustFanRPM_circularProgressBar.MarqueeAnimationSpeed = 2000;
+            this.ExhaustFanRPM_circularProgressBar.Name = "ExhaustFanRPM_circularProgressBar";
+            this.ExhaustFanRPM_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
+            this.ExhaustFanRPM_circularProgressBar.OuterMargin = -25;
+            this.ExhaustFanRPM_circularProgressBar.OuterWidth = 26;
+            this.ExhaustFanRPM_circularProgressBar.ProgressColor = System.Drawing.Color.LightSeaGreen;
+            this.ExhaustFanRPM_circularProgressBar.ProgressWidth = 25;
+            this.ExhaustFanRPM_circularProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 26F);
+            this.ExhaustFanRPM_circularProgressBar.Size = new System.Drawing.Size(125, 125);
+            this.ExhaustFanRPM_circularProgressBar.StartAngle = 270;
+            this.ExhaustFanRPM_circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.ExhaustFanRPM_circularProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.ExhaustFanRPM_circularProgressBar.SubscriptText = "";
+            this.ExhaustFanRPM_circularProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.ExhaustFanRPM_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.ExhaustFanRPM_circularProgressBar.SuperscriptText = "";
+            this.ExhaustFanRPM_circularProgressBar.TabIndex = 1;
+            this.ExhaustFanRPM_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
+            this.ExhaustFanRPM_circularProgressBar.Value = 1;
             // 
             // groupBox10
             // 
@@ -1101,16 +1198,12 @@
             this.PBT1_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
             this.PBT1_circularProgressBar.Value = 1;
             // 
-            // serialPort1
-            // 
-            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_serialDataReceived);
-            // 
             // groupBox11
             // 
             this.groupBox11.Controls.Add(this.ClearConsoleTextBox_label);
             this.groupBox11.Controls.Add(this.ConsoleClear_button);
-            this.groupBox11.Controls.Add(this.MCU_MessageLog_textbox);
-            this.groupBox11.Location = new System.Drawing.Point(12, 378);
+            this.groupBox11.Controls.Add(this.ConsoleLog_textbox);
+            this.groupBox11.Location = new System.Drawing.Point(12, 419);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(382, 388);
             this.groupBox11.TabIndex = 6;
@@ -1136,109 +1229,16 @@
             this.ConsoleClear_button.UseVisualStyleBackColor = true;
             this.ConsoleClear_button.Click += new System.EventHandler(this.ConsoleClear_button_Click);
             // 
-            // MCU_MessageLog_textbox
+            // ConsoleLog_textbox
             // 
-            this.MCU_MessageLog_textbox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MCU_MessageLog_textbox.Location = new System.Drawing.Point(6, 19);
-            this.MCU_MessageLog_textbox.Multiline = true;
-            this.MCU_MessageLog_textbox.Name = "MCU_MessageLog_textbox";
-            this.MCU_MessageLog_textbox.ReadOnly = true;
-            this.MCU_MessageLog_textbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.MCU_MessageLog_textbox.Size = new System.Drawing.Size(368, 331);
-            this.MCU_MessageLog_textbox.TabIndex = 0;
-            // 
-            // groupBox13
-            // 
-            this.groupBox13.Controls.Add(this.CoolerFanRPM_circularProgressBar);
-            this.groupBox13.Controls.Add(this.label22);
-            this.groupBox13.Controls.Add(this.label24);
-            this.groupBox13.Controls.Add(this.ExhaustFanRPM_circularProgressBar);
-            this.groupBox13.Location = new System.Drawing.Point(560, 19);
-            this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(139, 346);
-            this.groupBox13.TabIndex = 38;
-            this.groupBox13.TabStop = false;
-            this.groupBox13.Text = "Fan RPM";
-            // 
-            // CoolerFanRPM_circularProgressBar
-            // 
-            this.CoolerFanRPM_circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
-            this.CoolerFanRPM_circularProgressBar.AnimationSpeed = 500;
-            this.CoolerFanRPM_circularProgressBar.BackColor = System.Drawing.Color.Transparent;
-            this.CoolerFanRPM_circularProgressBar.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CoolerFanRPM_circularProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.CoolerFanRPM_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
-            this.CoolerFanRPM_circularProgressBar.InnerMargin = 2;
-            this.CoolerFanRPM_circularProgressBar.InnerWidth = -1;
-            this.CoolerFanRPM_circularProgressBar.Location = new System.Drawing.Point(6, 195);
-            this.CoolerFanRPM_circularProgressBar.MarqueeAnimationSpeed = 2000;
-            this.CoolerFanRPM_circularProgressBar.Name = "CoolerFanRPM_circularProgressBar";
-            this.CoolerFanRPM_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
-            this.CoolerFanRPM_circularProgressBar.OuterMargin = -25;
-            this.CoolerFanRPM_circularProgressBar.OuterWidth = 26;
-            this.CoolerFanRPM_circularProgressBar.ProgressColor = System.Drawing.Color.LightSeaGreen;
-            this.CoolerFanRPM_circularProgressBar.ProgressWidth = 25;
-            this.CoolerFanRPM_circularProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 26F);
-            this.CoolerFanRPM_circularProgressBar.Size = new System.Drawing.Size(125, 125);
-            this.CoolerFanRPM_circularProgressBar.StartAngle = 270;
-            this.CoolerFanRPM_circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.CoolerFanRPM_circularProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-            this.CoolerFanRPM_circularProgressBar.SubscriptText = "";
-            this.CoolerFanRPM_circularProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.CoolerFanRPM_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
-            this.CoolerFanRPM_circularProgressBar.SuperscriptText = "";
-            this.CoolerFanRPM_circularProgressBar.TabIndex = 37;
-            this.CoolerFanRPM_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
-            this.CoolerFanRPM_circularProgressBar.Value = 1;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(46, 323);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(51, 13);
-            this.label22.TabIndex = 36;
-            this.label22.Text = "COOLER";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(43, 147);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(58, 13);
-            this.label24.TabIndex = 35;
-            this.label24.Text = "EXHAUST";
-            // 
-            // ExhaustFanRPM_circularProgressBar
-            // 
-            this.ExhaustFanRPM_circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
-            this.ExhaustFanRPM_circularProgressBar.AnimationSpeed = 500;
-            this.ExhaustFanRPM_circularProgressBar.BackColor = System.Drawing.Color.Transparent;
-            this.ExhaustFanRPM_circularProgressBar.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExhaustFanRPM_circularProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ExhaustFanRPM_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ExhaustFanRPM_circularProgressBar.InnerMargin = 2;
-            this.ExhaustFanRPM_circularProgressBar.InnerWidth = -1;
-            this.ExhaustFanRPM_circularProgressBar.Location = new System.Drawing.Point(6, 19);
-            this.ExhaustFanRPM_circularProgressBar.MarqueeAnimationSpeed = 2000;
-            this.ExhaustFanRPM_circularProgressBar.Name = "ExhaustFanRPM_circularProgressBar";
-            this.ExhaustFanRPM_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
-            this.ExhaustFanRPM_circularProgressBar.OuterMargin = -25;
-            this.ExhaustFanRPM_circularProgressBar.OuterWidth = 26;
-            this.ExhaustFanRPM_circularProgressBar.ProgressColor = System.Drawing.Color.LightSeaGreen;
-            this.ExhaustFanRPM_circularProgressBar.ProgressWidth = 25;
-            this.ExhaustFanRPM_circularProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 26F);
-            this.ExhaustFanRPM_circularProgressBar.Size = new System.Drawing.Size(125, 125);
-            this.ExhaustFanRPM_circularProgressBar.StartAngle = 270;
-            this.ExhaustFanRPM_circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.ExhaustFanRPM_circularProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-            this.ExhaustFanRPM_circularProgressBar.SubscriptText = "";
-            this.ExhaustFanRPM_circularProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.ExhaustFanRPM_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
-            this.ExhaustFanRPM_circularProgressBar.SuperscriptText = "";
-            this.ExhaustFanRPM_circularProgressBar.TabIndex = 1;
-            this.ExhaustFanRPM_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
-            this.ExhaustFanRPM_circularProgressBar.Value = 1;
+            this.ConsoleLog_textbox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConsoleLog_textbox.Location = new System.Drawing.Point(6, 19);
+            this.ConsoleLog_textbox.Multiline = true;
+            this.ConsoleLog_textbox.Name = "ConsoleLog_textbox";
+            this.ConsoleLog_textbox.ReadOnly = true;
+            this.ConsoleLog_textbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.ConsoleLog_textbox.Size = new System.Drawing.Size(368, 331);
+            this.ConsoleLog_textbox.TabIndex = 0;
             // 
             // DIS3
             // 
@@ -1334,12 +1334,29 @@
             this.DIS2.Text = "MCU I/O Pins";
             this.DIS2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // serialPort1
+            // 
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_serialDataReceived);
+            // 
+            // ArduinoReset_button
+            // 
+            this.ArduinoReset_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ArduinoReset_button.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.ArduinoReset_button.ForeColor = System.Drawing.Color.White;
+            this.ArduinoReset_button.Location = new System.Drawing.Point(118, 183);
+            this.ArduinoReset_button.Name = "ArduinoReset_button";
+            this.ArduinoReset_button.Size = new System.Drawing.Size(100, 24);
+            this.ArduinoReset_button.TabIndex = 34;
+            this.ArduinoReset_button.Text = "Reset UNO";
+            this.ArduinoReset_button.UseVisualStyleBackColor = false;
+            this.ArduinoReset_button.Click += new System.EventHandler(this.ArduinoReset_button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(1130, 774);
+            this.ClientSize = new System.Drawing.Size(1130, 794);
             this.Controls.Add(this.groupBox12);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.groupBox7);
@@ -1362,6 +1379,8 @@
             this.SerialMonitor_groupBox.ResumeLayout(false);
             this.SerialMonitor_groupBox.PerformLayout();
             this.groupBox7.ResumeLayout(false);
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -1372,8 +1391,6 @@
             this.groupBox8.PerformLayout();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
-            this.groupBox13.ResumeLayout(false);
-            this.groupBox13.PerformLayout();
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
             this.ResumeLayout(false);
@@ -1386,7 +1403,7 @@
         private System.Windows.Forms.ComboBox BaudRate_comboBox;
         private System.Windows.Forms.ComboBox ComPort_comboBox;
         private System.Windows.Forms.ProgressBar Conn_progressBar;
-        private System.Windows.Forms.Label ConnMsgBox_label;
+        private System.Windows.Forms.Label ConnectionMsgBox_label;
         private System.Windows.Forms.Button Disconnect_button;
         private System.Windows.Forms.Button Connect_button;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -1417,7 +1434,6 @@
         private System.Windows.Forms.Label Dcs_indicator6;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.IO.Ports.SerialPort serialPort1;
         private CircularProgressBar.CircularProgressBar PBT1_circularProgressBar;
         private CircularProgressBar.CircularProgressBar PBT2_circularProgressBar;
         private System.Windows.Forms.Label label4;
@@ -1441,7 +1457,7 @@
         private System.Windows.Forms.TextBox Passcode_textBox;
         private System.Windows.Forms.Button clearConsoleOutput_button;
         private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.TextBox MCU_MessageLog_textbox;
+        private System.Windows.Forms.TextBox ConsoleLog_textbox;
         private System.Windows.Forms.Button CheckArduinoComPort_button;
         private System.Windows.Forms.Button ConsoleClear_button;
         private System.Windows.Forms.Label ClearConsoleTextBox_label;
@@ -1470,6 +1486,8 @@
         private System.Windows.Forms.TextBox DIS1;
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.TextBox DIS2;
+        private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.Button ArduinoReset_button;
     }
 }
 
