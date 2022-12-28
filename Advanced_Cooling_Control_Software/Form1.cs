@@ -144,7 +144,7 @@ namespace Advanced_Cooling_Control_Software
                     CT2_circularProgressBar.Value = 0;
                     CT2_circularProgressBar.Text = "0";
                 }
-                serialPort1.WriteLine("r");
+                serialPort1.WriteLine("r");  // arduino software reset code:  'r' 
             }
             catch
             {
