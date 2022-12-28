@@ -252,6 +252,7 @@ namespace Advanced_Cooling_Control_Software
                             {   
                                 // connects to serial port:
                                 serialPort1.Open();
+                                // first software reset:
                                 BeginInvoke(new EventHandler(ArduinoReset_button_Click));
 
                                 Conn_progressBar.Value = 100;
