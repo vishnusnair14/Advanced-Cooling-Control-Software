@@ -250,9 +250,9 @@ namespace Advanced_Cooling_Control_Software
                             _BAUDRATE = BaudRate_comboBox.SelectedItem.ToString();
                             try
                             {   
-                                BeginInvoke(new EventHandler(ArduinoReset_button_Click));
                                 // connects to serial port:
                                 serialPort1.Open();
+                                BeginInvoke(new EventHandler(ArduinoReset_button_Click));
 
                                 Conn_progressBar.Value = 100;
                                 ConnectionMsgBox_label.Text = "Connected: " + _COMPORT + " @" + _BAUDRATE;
