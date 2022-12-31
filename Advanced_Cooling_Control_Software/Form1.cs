@@ -51,6 +51,10 @@ namespace Advanced_Cooling_Control_Software
             SMT_E_circularProgressBar.Value = 0;
             ExhaustFanRPM_circularProgressBar.Value = 0;
             CoolerFanRPM_circularProgressBar.Value = 0;
+            ExhaustFanSpeed_trackBar.Value = 0;
+            CoolingFanSpeed_trackBar.Value = 0;
+            ExhaustFanSpeed_numericUpDown.Value = 0;
+            CoolingFanSpeed_numericUpDown.Value = 0;
 
             HDCPOff_button.Enabled = false;
             HDCPOn_button.Enabled = false;
@@ -63,6 +67,11 @@ namespace Advanced_Cooling_Control_Software
             CabinLight_checkBox.Enabled = false;
             Peltier1_checkBox.Enabled = false;
             Peltier2_checkBox.Enabled = false;
+
+            ExhaustFanSpeed_numericUpDown.Enabled = false;
+            ExhaustFanSpeed_trackBar.Enabled = false;
+            CoolingFanSpeed_numericUpDown.Enabled = false;
+            CoolingFanSpeed_trackBar.Enabled = false;
         }
 
         private void ArduinoReset_button_Click(object sender, EventArgs e)
@@ -232,6 +241,11 @@ namespace Advanced_Cooling_Control_Software
                                 CabinLight_checkBox.Enabled = true;
                                 Peltier1_checkBox.Enabled = true;
                                 Peltier2_checkBox.Enabled = true;
+
+                                ExhaustFanSpeed_numericUpDown.Enabled = true;
+                                ExhaustFanSpeed_trackBar.Enabled = true;
+                                CoolingFanSpeed_numericUpDown.Enabled= true;
+                                CoolingFanSpeed_trackBar.Enabled= true;
                             }
                             catch
                             {
@@ -264,6 +278,9 @@ namespace Advanced_Cooling_Control_Software
         {
             try
             {
+                // set all PWM value to zero:
+                SerialPort1.WriteLine("s0d");
+
                 // Disconnects from serial port:
                 SerialPort1.Close();
 
@@ -318,6 +335,16 @@ namespace Advanced_Cooling_Control_Software
                 DIS5.ForeColor = Color.White;
                 DIS6.BackColor = SystemColors.ControlDarkDark;
                 DIS6.ForeColor = Color.White;
+
+                ExhaustFanSpeed_numericUpDown.Enabled = false;
+                ExhaustFanSpeed_trackBar.Enabled = false;
+                CoolingFanSpeed_numericUpDown.Enabled = false;
+                CoolingFanSpeed_trackBar.Enabled = false;
+
+                ExhaustFanSpeed_trackBar.Value = 0;
+                CoolingFanSpeed_trackBar.Value = 0;
+                ExhaustFanSpeed_numericUpDown.Value = 0;
+                CoolingFanSpeed_numericUpDown.Value = 0;
 
             }
             catch
@@ -565,6 +592,12 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
+        private void ExhaustFanSpeed_trackBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            InfoToolTip.Active = true;
+            InfoToolTip.Show("Speed controller for Exhaust Fans: ARDUINO_PIN: ~9", ExhaustFanSpeed_trackBar);
+        }
+
         private void Peltier1_checkBox_CheckedChanged(object sender, EventArgs e)
         {
             if (Peltier1_checkBox.Checked == true)
@@ -748,7 +781,10 @@ namespace Advanced_Cooling_Control_Software
         private void FanSpeedEncoder(object sender, EventArgs e)
         {
             PWM = ((1.0f * ExhaustFanSpeed_trackBar.Value) / 100) * 255;
-            SerialPort1.WriteLine("s"+PWM.ToString()+"d");
+            if (SerialPort1.IsOpen)
+            {
+                SerialPort1.WriteLine("s" + PWM.ToString() + "d");
+            }
             ExhaustFanRPM_circularProgressBar.Text = "PWM: " + PWM;
             //ConsoleLog_textbox.Text= PWM.ToString();
         }

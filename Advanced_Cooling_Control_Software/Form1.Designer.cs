@@ -125,6 +125,7 @@
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.DIS2 = new System.Windows.Forms.TextBox();
             this.SerialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.InfoToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -1261,6 +1262,7 @@
             this.ExhaustFanSpeed_trackBar.TabIndex = 38;
             this.ExhaustFanSpeed_trackBar.TickFrequency = 10;
             this.ExhaustFanSpeed_trackBar.Scroll += new System.EventHandler(this.ExhaustFanSpeed_trackBar_Scroll);
+            this.ExhaustFanSpeed_trackBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ExhaustFanSpeed_trackBar_MouseDown);
             // 
             // CoolerFanRPM_circularProgressBar
             // 
@@ -1630,6 +1632,7 @@
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.NumericUpDown CoolingFanSpeed_numericUpDown;
         private System.Windows.Forms.TrackBar CoolingFanSpeed_trackBar;
+        private System.Windows.Forms.ToolTip InfoToolTip;
     }
 }
 
