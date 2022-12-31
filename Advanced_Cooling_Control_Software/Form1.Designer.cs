@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ArduinoReset_button = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.CheckArduinoComPort_button = new System.Windows.Forms.Button();
@@ -61,51 +62,57 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.Dcs_indicator6 = new System.Windows.Forms.Label();
+            this.DCS_indicator6 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.Dcs_indicator4 = new System.Windows.Forms.Label();
+            this.DCS_indicator4 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.Dcs_indicator2 = new System.Windows.Forms.Label();
+            this.DCS_indicator2 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.Dcs_indicator5 = new System.Windows.Forms.Label();
-            this.Dcs_indicator3 = new System.Windows.Forms.Label();
-            this.Dcs_indicator1 = new System.Windows.Forms.Label();
+            this.DCS_indicator5 = new System.Windows.Forms.Label();
+            this.DCS_indicator3 = new System.Windows.Forms.Label();
+            this.DCS_indicator1 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.SerialMonitor_groupBox = new System.Windows.Forms.GroupBox();
-            this.ClearBufferTextBox_label = new System.Windows.Forms.Label();
-            this.ClearInputBuffer_button = new System.Windows.Forms.Button();
-            this.clearConsoleOutput_button = new System.Windows.Forms.Button();
             this.SerialMonitor_textbox = new System.Windows.Forms.TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.CT2_circularProgressBar = new CircularProgressBar.CircularProgressBar();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.CT1_circularProgressBar = new CircularProgressBar.CircularProgressBar();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.PBT2_circularProgressBar = new CircularProgressBar.CircularProgressBar();
+            this.label4 = new System.Windows.Forms.Label();
+            this.PBT1_circularProgressBar = new CircularProgressBar.CircularProgressBar();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.SMT_E_circularProgressBar = new CircularProgressBar.CircularProgressBar();
+            this.circularProgressBar1 = new CircularProgressBar.CircularProgressBar();
+            this.SMT_Z_circularProgressBar = new CircularProgressBar.CircularProgressBar();
+            this.label30 = new System.Windows.Forms.Label();
+            this.SMT_Y_circularProgressBar = new CircularProgressBar.CircularProgressBar();
+            this.SMT_X_circularProgressBar = new CircularProgressBar.CircularProgressBar();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.CoolingFanSpeed_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CoolingFanSpeed_trackBar = new System.Windows.Forms.TrackBar();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.ExhaustFanSpeed_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label11 = new System.Windows.Forms.Label();
+            this.ExhaustFanSpeed_trackBar = new System.Windows.Forms.TrackBar();
             this.CoolerFanRPM_circularProgressBar = new CircularProgressBar.CircularProgressBar();
             this.label22 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.ExhaustFanRPM_circularProgressBar = new CircularProgressBar.CircularProgressBar();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.SMT_E_circularProgressBar = new CircularProgressBar.CircularProgressBar();
-            this.SMT_Z_circularProgressBar = new CircularProgressBar.CircularProgressBar();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.SMT_Y_circularProgressBar = new CircularProgressBar.CircularProgressBar();
-            this.SMT_X_circularProgressBar = new CircularProgressBar.CircularProgressBar();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.CT2_circularProgressBar = new CircularProgressBar.CircularProgressBar();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.CT1_circularProgressBar = new CircularProgressBar.CircularProgressBar();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.PBT2_circularProgressBar = new CircularProgressBar.CircularProgressBar();
-            this.PBT1_circularProgressBar = new CircularProgressBar.CircularProgressBar();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.ClearConsoleTextBox_label = new System.Windows.Forms.Label();
             this.ConsoleClear_button = new System.Windows.Forms.Button();
@@ -117,18 +124,20 @@
             this.DIS1 = new System.Windows.Forms.TextBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.DIS2 = new System.Windows.Forms.TextBox();
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.ArduinoReset_button = new System.Windows.Forms.Button();
+            this.SerialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.SerialMonitor_groupBox.SuspendLayout();
             this.groupBox7.SuspendLayout();
-            this.groupBox13.SuspendLayout();
-            this.groupBox10.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.groupBox13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CoolingFanSpeed_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CoolingFanSpeed_trackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExhaustFanSpeed_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExhaustFanSpeed_trackBar)).BeginInit();
             this.groupBox11.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.SuspendLayout();
@@ -155,6 +164,19 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Connection Panel";
+            // 
+            // ArduinoReset_button
+            // 
+            this.ArduinoReset_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ArduinoReset_button.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.ArduinoReset_button.ForeColor = System.Drawing.Color.White;
+            this.ArduinoReset_button.Location = new System.Drawing.Point(118, 183);
+            this.ArduinoReset_button.Name = "ArduinoReset_button";
+            this.ArduinoReset_button.Size = new System.Drawing.Size(100, 24);
+            this.ArduinoReset_button.TabIndex = 34;
+            this.ArduinoReset_button.Text = "Reset UNO";
+            this.ArduinoReset_button.UseVisualStyleBackColor = false;
+            this.ArduinoReset_button.Click += new System.EventHandler(this.ArduinoReset_button_Click);
             // 
             // label2
             // 
@@ -227,10 +249,10 @@
             // 
             this.Conn_progressBar.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Conn_progressBar.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.Conn_progressBar.Location = new System.Drawing.Point(4, 140);
+            this.Conn_progressBar.Location = new System.Drawing.Point(6, 139);
             this.Conn_progressBar.MarqueeAnimationSpeed = 10;
             this.Conn_progressBar.Name = "Conn_progressBar";
-            this.Conn_progressBar.Size = new System.Drawing.Size(214, 10);
+            this.Conn_progressBar.Size = new System.Drawing.Size(212, 10);
             this.Conn_progressBar.TabIndex = 7;
             // 
             // ConnectionMsgBox_label
@@ -267,7 +289,6 @@
             // 
             // ComPort_comboBox
             // 
-            this.ComPort_comboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.ComPort_comboBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.ComPort_comboBox.FormattingEnabled = true;
             this.ComPort_comboBox.Location = new System.Drawing.Point(65, 25);
@@ -298,7 +319,7 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Location = new System.Drawing.Point(412, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(316, 162);
+            this.groupBox2.Size = new System.Drawing.Size(316, 165);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Power Control Panel";
@@ -420,6 +441,7 @@
             // 
             this.HDCPDevicelist_Combobox.FormattingEnabled = true;
             this.HDCPDevicelist_Combobox.Items.AddRange(new object[] {
+            "All devices",
             "Cabin Exhaust 1",
             "Cabin Exhaust 2",
             "Coolant Pump",
@@ -499,33 +521,33 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.Dcs_indicator6);
+            this.groupBox6.Controls.Add(this.DCS_indicator6);
             this.groupBox6.Controls.Add(this.label23);
-            this.groupBox6.Controls.Add(this.Dcs_indicator4);
+            this.groupBox6.Controls.Add(this.DCS_indicator4);
             this.groupBox6.Controls.Add(this.label21);
-            this.groupBox6.Controls.Add(this.Dcs_indicator2);
+            this.groupBox6.Controls.Add(this.DCS_indicator2);
             this.groupBox6.Controls.Add(this.label19);
-            this.groupBox6.Controls.Add(this.Dcs_indicator5);
-            this.groupBox6.Controls.Add(this.Dcs_indicator3);
-            this.groupBox6.Controls.Add(this.Dcs_indicator1);
+            this.groupBox6.Controls.Add(this.DCS_indicator5);
+            this.groupBox6.Controls.Add(this.DCS_indicator3);
+            this.groupBox6.Controls.Add(this.DCS_indicator1);
             this.groupBox6.Controls.Add(this.label15);
             this.groupBox6.Controls.Add(this.label14);
             this.groupBox6.Controls.Add(this.label13);
             this.groupBox6.Location = new System.Drawing.Point(743, 12);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(269, 162);
+            this.groupBox6.Size = new System.Drawing.Size(269, 165);
             this.groupBox6.TabIndex = 4;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Device Current Status";
             // 
-            // Dcs_indicator6
+            // DCS_indicator6
             // 
-            this.Dcs_indicator6.BackColor = System.Drawing.Color.Brown;
-            this.Dcs_indicator6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Dcs_indicator6.Location = new System.Drawing.Point(244, 75);
-            this.Dcs_indicator6.Name = "Dcs_indicator6";
-            this.Dcs_indicator6.Size = new System.Drawing.Size(15, 18);
-            this.Dcs_indicator6.TabIndex = 34;
+            this.DCS_indicator6.BackColor = System.Drawing.Color.Maroon;
+            this.DCS_indicator6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.DCS_indicator6.Location = new System.Drawing.Point(244, 75);
+            this.DCS_indicator6.Name = "DCS_indicator6";
+            this.DCS_indicator6.Size = new System.Drawing.Size(15, 18);
+            this.DCS_indicator6.TabIndex = 34;
             // 
             // label23
             // 
@@ -539,14 +561,14 @@
             this.label23.TabIndex = 33;
             this.label23.Text = "Exhaust Fans";
             // 
-            // Dcs_indicator4
+            // DCS_indicator4
             // 
-            this.Dcs_indicator4.BackColor = System.Drawing.Color.Brown;
-            this.Dcs_indicator4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Dcs_indicator4.Location = new System.Drawing.Point(244, 48);
-            this.Dcs_indicator4.Name = "Dcs_indicator4";
-            this.Dcs_indicator4.Size = new System.Drawing.Size(15, 18);
-            this.Dcs_indicator4.TabIndex = 32;
+            this.DCS_indicator4.BackColor = System.Drawing.Color.Maroon;
+            this.DCS_indicator4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.DCS_indicator4.Location = new System.Drawing.Point(244, 48);
+            this.DCS_indicator4.Name = "DCS_indicator4";
+            this.DCS_indicator4.Size = new System.Drawing.Size(15, 18);
+            this.DCS_indicator4.TabIndex = 32;
             // 
             // label21
             // 
@@ -560,15 +582,15 @@
             this.label21.TabIndex = 31;
             this.label21.Text = "Radiator Pump";
             // 
-            // Dcs_indicator2
+            // DCS_indicator2
             // 
-            this.Dcs_indicator2.BackColor = System.Drawing.Color.Brown;
-            this.Dcs_indicator2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Dcs_indicator2.ForeColor = System.Drawing.Color.Goldenrod;
-            this.Dcs_indicator2.Location = new System.Drawing.Point(244, 22);
-            this.Dcs_indicator2.Name = "Dcs_indicator2";
-            this.Dcs_indicator2.Size = new System.Drawing.Size(15, 18);
-            this.Dcs_indicator2.TabIndex = 30;
+            this.DCS_indicator2.BackColor = System.Drawing.Color.Maroon;
+            this.DCS_indicator2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.DCS_indicator2.ForeColor = System.Drawing.Color.Goldenrod;
+            this.DCS_indicator2.Location = new System.Drawing.Point(244, 22);
+            this.DCS_indicator2.Name = "DCS_indicator2";
+            this.DCS_indicator2.Size = new System.Drawing.Size(15, 18);
+            this.DCS_indicator2.TabIndex = 30;
             // 
             // label19
             // 
@@ -582,32 +604,32 @@
             this.label19.TabIndex = 29;
             this.label19.Text = "Cabin Exhaust 2";
             // 
-            // Dcs_indicator5
+            // DCS_indicator5
             // 
-            this.Dcs_indicator5.BackColor = System.Drawing.Color.Brown;
-            this.Dcs_indicator5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Dcs_indicator5.Location = new System.Drawing.Point(110, 74);
-            this.Dcs_indicator5.Name = "Dcs_indicator5";
-            this.Dcs_indicator5.Size = new System.Drawing.Size(15, 18);
-            this.Dcs_indicator5.TabIndex = 28;
+            this.DCS_indicator5.BackColor = System.Drawing.Color.Maroon;
+            this.DCS_indicator5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.DCS_indicator5.Location = new System.Drawing.Point(110, 74);
+            this.DCS_indicator5.Name = "DCS_indicator5";
+            this.DCS_indicator5.Size = new System.Drawing.Size(15, 18);
+            this.DCS_indicator5.TabIndex = 28;
             // 
-            // Dcs_indicator3
+            // DCS_indicator3
             // 
-            this.Dcs_indicator3.BackColor = System.Drawing.Color.Brown;
-            this.Dcs_indicator3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Dcs_indicator3.Location = new System.Drawing.Point(110, 48);
-            this.Dcs_indicator3.Name = "Dcs_indicator3";
-            this.Dcs_indicator3.Size = new System.Drawing.Size(15, 18);
-            this.Dcs_indicator3.TabIndex = 27;
+            this.DCS_indicator3.BackColor = System.Drawing.Color.Maroon;
+            this.DCS_indicator3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.DCS_indicator3.Location = new System.Drawing.Point(110, 48);
+            this.DCS_indicator3.Name = "DCS_indicator3";
+            this.DCS_indicator3.Size = new System.Drawing.Size(15, 18);
+            this.DCS_indicator3.TabIndex = 27;
             // 
-            // Dcs_indicator1
+            // DCS_indicator1
             // 
-            this.Dcs_indicator1.BackColor = System.Drawing.Color.Brown;
-            this.Dcs_indicator1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Dcs_indicator1.Location = new System.Drawing.Point(110, 22);
-            this.Dcs_indicator1.Name = "Dcs_indicator1";
-            this.Dcs_indicator1.Size = new System.Drawing.Size(15, 18);
-            this.Dcs_indicator1.TabIndex = 26;
+            this.DCS_indicator1.BackColor = System.Drawing.Color.Maroon;
+            this.DCS_indicator1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.DCS_indicator1.Location = new System.Drawing.Point(110, 22);
+            this.DCS_indicator1.Name = "DCS_indicator1";
+            this.DCS_indicator1.Size = new System.Drawing.Size(15, 18);
+            this.DCS_indicator1.TabIndex = 26;
             // 
             // label15
             // 
@@ -647,45 +669,13 @@
             // 
             // SerialMonitor_groupBox
             // 
-            this.SerialMonitor_groupBox.Controls.Add(this.ClearBufferTextBox_label);
-            this.SerialMonitor_groupBox.Controls.Add(this.ClearInputBuffer_button);
-            this.SerialMonitor_groupBox.Controls.Add(this.clearConsoleOutput_button);
             this.SerialMonitor_groupBox.Controls.Add(this.SerialMonitor_textbox);
-            this.SerialMonitor_groupBox.Location = new System.Drawing.Point(12, 237);
+            this.SerialMonitor_groupBox.Location = new System.Drawing.Point(12, 245);
             this.SerialMonitor_groupBox.Name = "SerialMonitor_groupBox";
-            this.SerialMonitor_groupBox.Size = new System.Drawing.Size(382, 159);
+            this.SerialMonitor_groupBox.Size = new System.Drawing.Size(382, 139);
             this.SerialMonitor_groupBox.TabIndex = 2;
             this.SerialMonitor_groupBox.TabStop = false;
-            this.SerialMonitor_groupBox.Text = "Serial Monitor ";
-            // 
-            // ClearBufferTextBox_label
-            // 
-            this.ClearBufferTextBox_label.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClearBufferTextBox_label.Location = new System.Drawing.Point(87, 133);
-            this.ClearBufferTextBox_label.Name = "ClearBufferTextBox_label";
-            this.ClearBufferTextBox_label.Size = new System.Drawing.Size(287, 18);
-            this.ClearBufferTextBox_label.TabIndex = 3;
-            this.ClearBufferTextBox_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // ClearInputBuffer_button
-            // 
-            this.ClearInputBuffer_button.Location = new System.Drawing.Point(6, 130);
-            this.ClearInputBuffer_button.Name = "ClearInputBuffer_button";
-            this.ClearInputBuffer_button.Size = new System.Drawing.Size(75, 23);
-            this.ClearInputBuffer_button.TabIndex = 8;
-            this.ClearInputBuffer_button.Text = "Clear Buffer";
-            this.ClearInputBuffer_button.UseVisualStyleBackColor = true;
-            this.ClearInputBuffer_button.Click += new System.EventHandler(this.ClearInputBuffer_button_Click);
-            // 
-            // clearConsoleOutput_button
-            // 
-            this.clearConsoleOutput_button.Location = new System.Drawing.Point(171, 470);
-            this.clearConsoleOutput_button.Name = "clearConsoleOutput_button";
-            this.clearConsoleOutput_button.Size = new System.Drawing.Size(75, 23);
-            this.clearConsoleOutput_button.TabIndex = 9;
-            this.clearConsoleOutput_button.Text = "Clear Log";
-            this.clearConsoleOutput_button.UseVisualStyleBackColor = true;
-            this.clearConsoleOutput_button.Click += new System.EventHandler(this.clearConsoleOutput_button_Click);
+            this.SerialMonitor_groupBox.Text = "Serial Console";
             // 
             // SerialMonitor_textbox
             // 
@@ -696,47 +686,593 @@
             this.SerialMonitor_textbox.Name = "SerialMonitor_textbox";
             this.SerialMonitor_textbox.ReadOnly = true;
             this.SerialMonitor_textbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.SerialMonitor_textbox.Size = new System.Drawing.Size(368, 105);
+            this.SerialMonitor_textbox.Size = new System.Drawing.Size(368, 110);
             this.SerialMonitor_textbox.TabIndex = 0;
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.groupBox13);
-            this.groupBox7.Controls.Add(this.groupBox10);
-            this.groupBox7.Controls.Add(this.groupBox3);
             this.groupBox7.Controls.Add(this.groupBox9);
             this.groupBox7.Controls.Add(this.groupBox8);
+            this.groupBox7.Controls.Add(this.groupBox10);
             this.groupBox7.Location = new System.Drawing.Point(412, 195);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(708, 373);
+            this.groupBox7.Size = new System.Drawing.Size(600, 387);
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Temperature | RPM Monitor";
+            this.groupBox7.Text = "Temperature Monitor";
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.CT2_circularProgressBar);
+            this.groupBox9.Controls.Add(this.label26);
+            this.groupBox9.Controls.Add(this.label27);
+            this.groupBox9.Controls.Add(this.CT1_circularProgressBar);
+            this.groupBox9.Location = new System.Drawing.Point(305, 19);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(285, 175);
+            this.groupBox9.TabIndex = 37;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Coolant Temperature";
+            // 
+            // CT2_circularProgressBar
+            // 
+            this.CT2_circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.CT2_circularProgressBar.AnimationSpeed = 500;
+            this.CT2_circularProgressBar.BackColor = System.Drawing.Color.Transparent;
+            this.CT2_circularProgressBar.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Bold);
+            this.CT2_circularProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CT2_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
+            this.CT2_circularProgressBar.InnerMargin = 2;
+            this.CT2_circularProgressBar.InnerWidth = -1;
+            this.CT2_circularProgressBar.Location = new System.Drawing.Point(144, 19);
+            this.CT2_circularProgressBar.MarqueeAnimationSpeed = 2000;
+            this.CT2_circularProgressBar.Name = "CT2_circularProgressBar";
+            this.CT2_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
+            this.CT2_circularProgressBar.OuterMargin = -25;
+            this.CT2_circularProgressBar.OuterWidth = 26;
+            this.CT2_circularProgressBar.ProgressColor = System.Drawing.Color.DarkSlateBlue;
+            this.CT2_circularProgressBar.ProgressWidth = 25;
+            this.CT2_circularProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 26F);
+            this.CT2_circularProgressBar.Size = new System.Drawing.Size(135, 135);
+            this.CT2_circularProgressBar.StartAngle = 270;
+            this.CT2_circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.CT2_circularProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.CT2_circularProgressBar.SubscriptText = "";
+            this.CT2_circularProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.CT2_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.CT2_circularProgressBar.SuperscriptText = "";
+            this.CT2_circularProgressBar.TabIndex = 37;
+            this.CT2_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
+            this.CT2_circularProgressBar.Value = 27;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(189, 157);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(58, 13);
+            this.label26.TabIndex = 36;
+            this.label26.Text = "HOT SIDE";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(44, 157);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(64, 13);
+            this.label27.TabIndex = 35;
+            this.label27.Text = "COOL SIDE";
+            // 
+            // CT1_circularProgressBar
+            // 
+            this.CT1_circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.CT1_circularProgressBar.AnimationSpeed = 500;
+            this.CT1_circularProgressBar.BackColor = System.Drawing.Color.Transparent;
+            this.CT1_circularProgressBar.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Bold);
+            this.CT1_circularProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CT1_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
+            this.CT1_circularProgressBar.InnerMargin = 2;
+            this.CT1_circularProgressBar.InnerWidth = -1;
+            this.CT1_circularProgressBar.Location = new System.Drawing.Point(6, 19);
+            this.CT1_circularProgressBar.MarqueeAnimationSpeed = 2000;
+            this.CT1_circularProgressBar.Name = "CT1_circularProgressBar";
+            this.CT1_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
+            this.CT1_circularProgressBar.OuterMargin = -25;
+            this.CT1_circularProgressBar.OuterWidth = 26;
+            this.CT1_circularProgressBar.ProgressColor = System.Drawing.Color.DarkSlateBlue;
+            this.CT1_circularProgressBar.ProgressWidth = 25;
+            this.CT1_circularProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 26F);
+            this.CT1_circularProgressBar.Size = new System.Drawing.Size(135, 135);
+            this.CT1_circularProgressBar.StartAngle = 270;
+            this.CT1_circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.CT1_circularProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.CT1_circularProgressBar.SubscriptText = "";
+            this.CT1_circularProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.CT1_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.CT1_circularProgressBar.SuperscriptText = "";
+            this.CT1_circularProgressBar.TabIndex = 1;
+            this.CT1_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
+            this.CT1_circularProgressBar.Value = 90;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.label25);
+            this.groupBox8.Controls.Add(this.PBT2_circularProgressBar);
+            this.groupBox8.Controls.Add(this.label4);
+            this.groupBox8.Controls.Add(this.PBT1_circularProgressBar);
+            this.groupBox8.Location = new System.Drawing.Point(9, 19);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(285, 175);
+            this.groupBox8.TabIndex = 0;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Peltier Block Temperature";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(183, 157);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(58, 13);
+            this.label25.TabIndex = 36;
+            this.label25.Text = "HOT SIDE";
+            // 
+            // PBT2_circularProgressBar
+            // 
+            this.PBT2_circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.PBT2_circularProgressBar.AnimationSpeed = 500;
+            this.PBT2_circularProgressBar.BackColor = System.Drawing.Color.Transparent;
+            this.PBT2_circularProgressBar.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Bold);
+            this.PBT2_circularProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.PBT2_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
+            this.PBT2_circularProgressBar.InnerMargin = 2;
+            this.PBT2_circularProgressBar.InnerWidth = -1;
+            this.PBT2_circularProgressBar.Location = new System.Drawing.Point(144, 19);
+            this.PBT2_circularProgressBar.MarqueeAnimationSpeed = 2000;
+            this.PBT2_circularProgressBar.Name = "PBT2_circularProgressBar";
+            this.PBT2_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
+            this.PBT2_circularProgressBar.OuterMargin = -25;
+            this.PBT2_circularProgressBar.OuterWidth = 26;
+            this.PBT2_circularProgressBar.ProgressColor = System.Drawing.Color.SteelBlue;
+            this.PBT2_circularProgressBar.ProgressWidth = 25;
+            this.PBT2_circularProgressBar.SecondaryFont = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PBT2_circularProgressBar.Size = new System.Drawing.Size(135, 135);
+            this.PBT2_circularProgressBar.StartAngle = 270;
+            this.PBT2_circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.PBT2_circularProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(0);
+            this.PBT2_circularProgressBar.SubscriptText = "";
+            this.PBT2_circularProgressBar.SuperscriptColor = System.Drawing.Color.Black;
+            this.PBT2_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(0);
+            this.PBT2_circularProgressBar.SuperscriptText = "";
+            this.PBT2_circularProgressBar.TabIndex = 36;
+            this.PBT2_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
+            this.PBT2_circularProgressBar.Value = 58;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(43, 157);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 13);
+            this.label4.TabIndex = 35;
+            this.label4.Text = "COOL SIDE";
+            // 
+            // PBT1_circularProgressBar
+            // 
+            this.PBT1_circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.PBT1_circularProgressBar.AnimationSpeed = 500;
+            this.PBT1_circularProgressBar.BackColor = System.Drawing.Color.Transparent;
+            this.PBT1_circularProgressBar.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Bold);
+            this.PBT1_circularProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.PBT1_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
+            this.PBT1_circularProgressBar.InnerMargin = 2;
+            this.PBT1_circularProgressBar.InnerWidth = -1;
+            this.PBT1_circularProgressBar.Location = new System.Drawing.Point(6, 19);
+            this.PBT1_circularProgressBar.MarqueeAnimationSpeed = 2000;
+            this.PBT1_circularProgressBar.Name = "PBT1_circularProgressBar";
+            this.PBT1_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
+            this.PBT1_circularProgressBar.OuterMargin = -25;
+            this.PBT1_circularProgressBar.OuterWidth = 26;
+            this.PBT1_circularProgressBar.ProgressColor = System.Drawing.Color.SteelBlue;
+            this.PBT1_circularProgressBar.ProgressWidth = 25;
+            this.PBT1_circularProgressBar.SecondaryFont = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PBT1_circularProgressBar.Size = new System.Drawing.Size(135, 135);
+            this.PBT1_circularProgressBar.StartAngle = 270;
+            this.PBT1_circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.PBT1_circularProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(0);
+            this.PBT1_circularProgressBar.SubscriptText = "";
+            this.PBT1_circularProgressBar.SuperscriptColor = System.Drawing.Color.Black;
+            this.PBT1_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(0);
+            this.PBT1_circularProgressBar.SuperscriptText = "";
+            this.PBT1_circularProgressBar.TabIndex = 1;
+            this.PBT1_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
+            this.PBT1_circularProgressBar.Value = 58;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.label31);
+            this.groupBox10.Controls.Add(this.SMT_E_circularProgressBar);
+            this.groupBox10.Controls.Add(this.circularProgressBar1);
+            this.groupBox10.Controls.Add(this.SMT_Z_circularProgressBar);
+            this.groupBox10.Controls.Add(this.label30);
+            this.groupBox10.Controls.Add(this.SMT_Y_circularProgressBar);
+            this.groupBox10.Controls.Add(this.SMT_X_circularProgressBar);
+            this.groupBox10.Controls.Add(this.label29);
+            this.groupBox10.Controls.Add(this.label28);
+            this.groupBox10.Location = new System.Drawing.Point(9, 204);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(581, 175);
+            this.groupBox10.TabIndex = 38;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Stepper Motor Temperature";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(481, 157);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(67, 13);
+            this.label31.TabIndex = 40;
+            this.label31.Text = "EXTRUDER";
+            // 
+            // SMT_E_circularProgressBar
+            // 
+            this.SMT_E_circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.SMT_E_circularProgressBar.AnimationSpeed = 500;
+            this.SMT_E_circularProgressBar.BackColor = System.Drawing.Color.Transparent;
+            this.SMT_E_circularProgressBar.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Bold);
+            this.SMT_E_circularProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.SMT_E_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SMT_E_circularProgressBar.InnerMargin = 2;
+            this.SMT_E_circularProgressBar.InnerWidth = -1;
+            this.SMT_E_circularProgressBar.Location = new System.Drawing.Point(440, 19);
+            this.SMT_E_circularProgressBar.MarqueeAnimationSpeed = 2000;
+            this.SMT_E_circularProgressBar.Name = "SMT_E_circularProgressBar";
+            this.SMT_E_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
+            this.SMT_E_circularProgressBar.OuterMargin = -25;
+            this.SMT_E_circularProgressBar.OuterWidth = 26;
+            this.SMT_E_circularProgressBar.ProgressColor = System.Drawing.Color.Teal;
+            this.SMT_E_circularProgressBar.ProgressWidth = 25;
+            this.SMT_E_circularProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.SMT_E_circularProgressBar.Size = new System.Drawing.Size(135, 135);
+            this.SMT_E_circularProgressBar.StartAngle = 270;
+            this.SMT_E_circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.SMT_E_circularProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.SMT_E_circularProgressBar.SubscriptText = "";
+            this.SMT_E_circularProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.SMT_E_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.SMT_E_circularProgressBar.SuperscriptText = "";
+            this.SMT_E_circularProgressBar.TabIndex = 38;
+            this.SMT_E_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
+            this.SMT_E_circularProgressBar.Value = 30;
+            // 
+            // circularProgressBar1
+            // 
+            this.circularProgressBar1.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.circularProgressBar1.AnimationSpeed = 500;
+            this.circularProgressBar1.BackColor = System.Drawing.Color.Transparent;
+            this.circularProgressBar1.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Bold);
+            this.circularProgressBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.circularProgressBar1.InnerColor = System.Drawing.SystemColors.ControlLightLight;
+            this.circularProgressBar1.InnerMargin = 2;
+            this.circularProgressBar1.InnerWidth = -1;
+            this.circularProgressBar1.Location = new System.Drawing.Point(296, 19);
+            this.circularProgressBar1.MarqueeAnimationSpeed = 2000;
+            this.circularProgressBar1.Name = "circularProgressBar1";
+            this.circularProgressBar1.OuterColor = System.Drawing.Color.Gainsboro;
+            this.circularProgressBar1.OuterMargin = -25;
+            this.circularProgressBar1.OuterWidth = 26;
+            this.circularProgressBar1.ProgressColor = System.Drawing.Color.Teal;
+            this.circularProgressBar1.ProgressWidth = 25;
+            this.circularProgressBar1.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.circularProgressBar1.Size = new System.Drawing.Size(0, 0);
+            this.circularProgressBar1.StartAngle = 270;
+            this.circularProgressBar1.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.circularProgressBar1.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.circularProgressBar1.SubscriptText = "";
+            this.circularProgressBar1.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.circularProgressBar1.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.circularProgressBar1.SuperscriptText = "";
+            this.circularProgressBar1.TabIndex = 37;
+            this.circularProgressBar1.TextMargin = new System.Windows.Forms.Padding(0);
+            this.circularProgressBar1.Value = 45;
+            // 
+            // SMT_Z_circularProgressBar
+            // 
+            this.SMT_Z_circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.SMT_Z_circularProgressBar.AnimationSpeed = 500;
+            this.SMT_Z_circularProgressBar.BackColor = System.Drawing.Color.Transparent;
+            this.SMT_Z_circularProgressBar.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Bold);
+            this.SMT_Z_circularProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.SMT_Z_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SMT_Z_circularProgressBar.InnerMargin = 2;
+            this.SMT_Z_circularProgressBar.InnerWidth = -1;
+            this.SMT_Z_circularProgressBar.Location = new System.Drawing.Point(296, 19);
+            this.SMT_Z_circularProgressBar.MarqueeAnimationSpeed = 2000;
+            this.SMT_Z_circularProgressBar.Name = "SMT_Z_circularProgressBar";
+            this.SMT_Z_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
+            this.SMT_Z_circularProgressBar.OuterMargin = -25;
+            this.SMT_Z_circularProgressBar.OuterWidth = 26;
+            this.SMT_Z_circularProgressBar.ProgressColor = System.Drawing.Color.Teal;
+            this.SMT_Z_circularProgressBar.ProgressWidth = 25;
+            this.SMT_Z_circularProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.SMT_Z_circularProgressBar.Size = new System.Drawing.Size(135, 135);
+            this.SMT_Z_circularProgressBar.StartAngle = 270;
+            this.SMT_Z_circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.SMT_Z_circularProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.SMT_Z_circularProgressBar.SubscriptText = "";
+            this.SMT_Z_circularProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.SMT_Z_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.SMT_Z_circularProgressBar.SuperscriptText = "";
+            this.SMT_Z_circularProgressBar.TabIndex = 37;
+            this.SMT_Z_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
+            this.SMT_Z_circularProgressBar.Value = 45;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(345, 157);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(41, 13);
+            this.label30.TabIndex = 39;
+            this.label30.Text = "Z-AXIS";
+            // 
+            // SMT_Y_circularProgressBar
+            // 
+            this.SMT_Y_circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.SMT_Y_circularProgressBar.AnimationSpeed = 500;
+            this.SMT_Y_circularProgressBar.BackColor = System.Drawing.Color.Transparent;
+            this.SMT_Y_circularProgressBar.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Bold);
+            this.SMT_Y_circularProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.SMT_Y_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SMT_Y_circularProgressBar.InnerMargin = 2;
+            this.SMT_Y_circularProgressBar.InnerWidth = -1;
+            this.SMT_Y_circularProgressBar.Location = new System.Drawing.Point(150, 19);
+            this.SMT_Y_circularProgressBar.MarqueeAnimationSpeed = 2000;
+            this.SMT_Y_circularProgressBar.Name = "SMT_Y_circularProgressBar";
+            this.SMT_Y_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
+            this.SMT_Y_circularProgressBar.OuterMargin = -25;
+            this.SMT_Y_circularProgressBar.OuterWidth = 26;
+            this.SMT_Y_circularProgressBar.ProgressColor = System.Drawing.Color.Teal;
+            this.SMT_Y_circularProgressBar.ProgressWidth = 25;
+            this.SMT_Y_circularProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.SMT_Y_circularProgressBar.Size = new System.Drawing.Size(135, 135);
+            this.SMT_Y_circularProgressBar.StartAngle = 270;
+            this.SMT_Y_circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.SMT_Y_circularProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.SMT_Y_circularProgressBar.SubscriptText = "";
+            this.SMT_Y_circularProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.SMT_Y_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.SMT_Y_circularProgressBar.SuperscriptText = "";
+            this.SMT_Y_circularProgressBar.TabIndex = 2;
+            this.SMT_Y_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
+            this.SMT_Y_circularProgressBar.Value = 77;
+            // 
+            // SMT_X_circularProgressBar
+            // 
+            this.SMT_X_circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.SMT_X_circularProgressBar.AnimationSpeed = 500;
+            this.SMT_X_circularProgressBar.BackColor = System.Drawing.Color.Transparent;
+            this.SMT_X_circularProgressBar.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Bold);
+            this.SMT_X_circularProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.SMT_X_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SMT_X_circularProgressBar.InnerMargin = 2;
+            this.SMT_X_circularProgressBar.InnerWidth = -1;
+            this.SMT_X_circularProgressBar.Location = new System.Drawing.Point(6, 19);
+            this.SMT_X_circularProgressBar.MarqueeAnimationSpeed = 2000;
+            this.SMT_X_circularProgressBar.Name = "SMT_X_circularProgressBar";
+            this.SMT_X_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
+            this.SMT_X_circularProgressBar.OuterMargin = -25;
+            this.SMT_X_circularProgressBar.OuterWidth = 26;
+            this.SMT_X_circularProgressBar.ProgressColor = System.Drawing.Color.Teal;
+            this.SMT_X_circularProgressBar.ProgressWidth = 25;
+            this.SMT_X_circularProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 26F);
+            this.SMT_X_circularProgressBar.Size = new System.Drawing.Size(135, 135);
+            this.SMT_X_circularProgressBar.StartAngle = 270;
+            this.SMT_X_circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.SMT_X_circularProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.SMT_X_circularProgressBar.SubscriptText = "";
+            this.SMT_X_circularProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.SMT_X_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.SMT_X_circularProgressBar.SuperscriptText = "";
+            this.SMT_X_circularProgressBar.TabIndex = 1;
+            this.SMT_X_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
+            this.SMT_X_circularProgressBar.Value = 61;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(56, 157);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(41, 13);
+            this.label29.TabIndex = 35;
+            this.label29.Text = "X-AXIS";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(198, 157);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(41, 13);
+            this.label28.TabIndex = 36;
+            this.label28.Text = "Y-AXIS";
             // 
             // groupBox13
             // 
+            this.groupBox13.Controls.Add(this.label18);
+            this.groupBox13.Controls.Add(this.label20);
+            this.groupBox13.Controls.Add(this.label32);
+            this.groupBox13.Controls.Add(this.CoolingFanSpeed_numericUpDown);
+            this.groupBox13.Controls.Add(this.CoolingFanSpeed_trackBar);
+            this.groupBox13.Controls.Add(this.label17);
+            this.groupBox13.Controls.Add(this.label16);
+            this.groupBox13.Controls.Add(this.label12);
+            this.groupBox13.Controls.Add(this.ExhaustFanSpeed_numericUpDown);
+            this.groupBox13.Controls.Add(this.label11);
+            this.groupBox13.Controls.Add(this.ExhaustFanSpeed_trackBar);
             this.groupBox13.Controls.Add(this.CoolerFanRPM_circularProgressBar);
             this.groupBox13.Controls.Add(this.label22);
             this.groupBox13.Controls.Add(this.label24);
             this.groupBox13.Controls.Add(this.ExhaustFanRPM_circularProgressBar);
-            this.groupBox13.Location = new System.Drawing.Point(560, 19);
+            this.groupBox13.Location = new System.Drawing.Point(412, 597);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(139, 346);
+            this.groupBox13.Size = new System.Drawing.Size(600, 223);
             this.groupBox13.TabIndex = 38;
             this.groupBox13.TabStop = false;
-            this.groupBox13.Text = "Fan RPM";
+            this.groupBox13.Text = "Fan Control";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.Gainsboro;
+            this.label18.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.label18.ForeColor = System.Drawing.Color.Black;
+            this.label18.Location = new System.Drawing.Point(195, 183);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(28, 15);
+            this.label18.TabIndex = 48;
+            this.label18.Text = "100";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Gainsboro;
+            this.label20.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.label20.ForeColor = System.Drawing.Color.Black;
+            this.label20.Location = new System.Drawing.Point(6, 183);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(14, 15);
+            this.label20.TabIndex = 47;
+            this.label20.Text = "0";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.BackColor = System.Drawing.Color.Gainsboro;
+            this.label32.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
+            this.label32.ForeColor = System.Drawing.Color.Black;
+            this.label32.Location = new System.Drawing.Point(6, 128);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(132, 17);
+            this.label32.TabIndex = 44;
+            this.label32.Text = "Cooling Fan speed :";
+            // 
+            // CoolingFanSpeed_numericUpDown
+            // 
+            this.CoolingFanSpeed_numericUpDown.BackColor = System.Drawing.Color.Gainsboro;
+            this.CoolingFanSpeed_numericUpDown.Font = new System.Drawing.Font("Malgun Gothic", 10.5F, System.Drawing.FontStyle.Bold);
+            this.CoolingFanSpeed_numericUpDown.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.CoolingFanSpeed_numericUpDown.Location = new System.Drawing.Point(162, 124);
+            this.CoolingFanSpeed_numericUpDown.Name = "CoolingFanSpeed_numericUpDown";
+            this.CoolingFanSpeed_numericUpDown.Size = new System.Drawing.Size(61, 26);
+            this.CoolingFanSpeed_numericUpDown.TabIndex = 46;
+            this.CoolingFanSpeed_numericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CoolingFanSpeed_numericUpDown.ValueChanged += new System.EventHandler(this.CoolingFanSpeed_numericUpDown_ValueChanged);
+            // 
+            // CoolingFanSpeed_trackBar
+            // 
+            this.CoolingFanSpeed_trackBar.AutoSize = false;
+            this.CoolingFanSpeed_trackBar.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.CoolingFanSpeed_trackBar.LargeChange = 10;
+            this.CoolingFanSpeed_trackBar.Location = new System.Drawing.Point(6, 155);
+            this.CoolingFanSpeed_trackBar.Maximum = 100;
+            this.CoolingFanSpeed_trackBar.Name = "CoolingFanSpeed_trackBar";
+            this.CoolingFanSpeed_trackBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.CoolingFanSpeed_trackBar.Size = new System.Drawing.Size(217, 25);
+            this.CoolingFanSpeed_trackBar.SmallChange = 5;
+            this.CoolingFanSpeed_trackBar.TabIndex = 45;
+            this.CoolingFanSpeed_trackBar.TickFrequency = 10;
+            this.CoolingFanSpeed_trackBar.Scroll += new System.EventHandler(this.CoolingFanSpeed_trackBar_Scroll);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Gainsboro;
+            this.label17.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.label17.ForeColor = System.Drawing.Color.Black;
+            this.label17.Location = new System.Drawing.Point(198, 84);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(28, 15);
+            this.label17.TabIndex = 43;
+            this.label17.Text = "100";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Gainsboro;
+            this.label16.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.label16.ForeColor = System.Drawing.Color.Black;
+            this.label16.Location = new System.Drawing.Point(9, 84);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(14, 15);
+            this.label16.TabIndex = 42;
+            this.label16.Text = "0";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Gainsboro;
+            this.label12.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(9, 29);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(132, 17);
+            this.label12.TabIndex = 36;
+            this.label12.Text = "Exhaust Fan speed :";
+            // 
+            // ExhaustFanSpeed_numericUpDown
+            // 
+            this.ExhaustFanSpeed_numericUpDown.BackColor = System.Drawing.Color.Gainsboro;
+            this.ExhaustFanSpeed_numericUpDown.Font = new System.Drawing.Font("Malgun Gothic", 10.5F, System.Drawing.FontStyle.Bold);
+            this.ExhaustFanSpeed_numericUpDown.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ExhaustFanSpeed_numericUpDown.Location = new System.Drawing.Point(165, 25);
+            this.ExhaustFanSpeed_numericUpDown.Name = "ExhaustFanSpeed_numericUpDown";
+            this.ExhaustFanSpeed_numericUpDown.Size = new System.Drawing.Size(61, 26);
+            this.ExhaustFanSpeed_numericUpDown.TabIndex = 41;
+            this.ExhaustFanSpeed_numericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ExhaustFanSpeed_numericUpDown.ValueChanged += new System.EventHandler(this.ExhaustFanSpeed_numericUpDown_ValueChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(33, 286);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(0, 13);
+            this.label11.TabIndex = 39;
+            // 
+            // ExhaustFanSpeed_trackBar
+            // 
+            this.ExhaustFanSpeed_trackBar.AutoSize = false;
+            this.ExhaustFanSpeed_trackBar.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.ExhaustFanSpeed_trackBar.LargeChange = 10;
+            this.ExhaustFanSpeed_trackBar.Location = new System.Drawing.Point(9, 56);
+            this.ExhaustFanSpeed_trackBar.Maximum = 100;
+            this.ExhaustFanSpeed_trackBar.Name = "ExhaustFanSpeed_trackBar";
+            this.ExhaustFanSpeed_trackBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ExhaustFanSpeed_trackBar.Size = new System.Drawing.Size(217, 25);
+            this.ExhaustFanSpeed_trackBar.SmallChange = 5;
+            this.ExhaustFanSpeed_trackBar.TabIndex = 38;
+            this.ExhaustFanSpeed_trackBar.TickFrequency = 10;
+            this.ExhaustFanSpeed_trackBar.Scroll += new System.EventHandler(this.ExhaustFanSpeed_trackBar_Scroll);
             // 
             // CoolerFanRPM_circularProgressBar
             // 
             this.CoolerFanRPM_circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
             this.CoolerFanRPM_circularProgressBar.AnimationSpeed = 500;
             this.CoolerFanRPM_circularProgressBar.BackColor = System.Drawing.Color.Transparent;
-            this.CoolerFanRPM_circularProgressBar.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CoolerFanRPM_circularProgressBar.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Bold);
             this.CoolerFanRPM_circularProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.CoolerFanRPM_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
             this.CoolerFanRPM_circularProgressBar.InnerMargin = 2;
             this.CoolerFanRPM_circularProgressBar.InnerWidth = -1;
-            this.CoolerFanRPM_circularProgressBar.Location = new System.Drawing.Point(6, 195);
+            this.CoolerFanRPM_circularProgressBar.Location = new System.Drawing.Point(459, 16);
             this.CoolerFanRPM_circularProgressBar.MarqueeAnimationSpeed = 2000;
             this.CoolerFanRPM_circularProgressBar.Name = "CoolerFanRPM_circularProgressBar";
             this.CoolerFanRPM_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
@@ -755,12 +1291,12 @@
             this.CoolerFanRPM_circularProgressBar.SuperscriptText = "";
             this.CoolerFanRPM_circularProgressBar.TabIndex = 37;
             this.CoolerFanRPM_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
-            this.CoolerFanRPM_circularProgressBar.Value = 1;
+            this.CoolerFanRPM_circularProgressBar.Value = 58;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(46, 323);
+            this.label22.Location = new System.Drawing.Point(501, 144);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(51, 13);
             this.label22.TabIndex = 36;
@@ -769,7 +1305,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(43, 147);
+            this.label24.Location = new System.Drawing.Point(355, 147);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(58, 13);
             this.label24.TabIndex = 35;
@@ -780,13 +1316,13 @@
             this.ExhaustFanRPM_circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
             this.ExhaustFanRPM_circularProgressBar.AnimationSpeed = 500;
             this.ExhaustFanRPM_circularProgressBar.BackColor = System.Drawing.Color.Transparent;
-            this.ExhaustFanRPM_circularProgressBar.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExhaustFanRPM_circularProgressBar.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Bold);
             this.ExhaustFanRPM_circularProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ExhaustFanRPM_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
             this.ExhaustFanRPM_circularProgressBar.InnerMargin = 2;
             this.ExhaustFanRPM_circularProgressBar.InnerWidth = -1;
-            this.ExhaustFanRPM_circularProgressBar.Location = new System.Drawing.Point(6, 19);
-            this.ExhaustFanRPM_circularProgressBar.MarqueeAnimationSpeed = 2000;
+            this.ExhaustFanRPM_circularProgressBar.Location = new System.Drawing.Point(318, 19);
+            this.ExhaustFanRPM_circularProgressBar.MarqueeAnimationSpeed = 120;
             this.ExhaustFanRPM_circularProgressBar.Name = "ExhaustFanRPM_circularProgressBar";
             this.ExhaustFanRPM_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
             this.ExhaustFanRPM_circularProgressBar.OuterMargin = -25;
@@ -804,416 +1340,24 @@
             this.ExhaustFanRPM_circularProgressBar.SuperscriptText = "";
             this.ExhaustFanRPM_circularProgressBar.TabIndex = 1;
             this.ExhaustFanRPM_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
-            this.ExhaustFanRPM_circularProgressBar.Value = 1;
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.label31);
-            this.groupBox10.Controls.Add(this.label30);
-            this.groupBox10.Controls.Add(this.SMT_E_circularProgressBar);
-            this.groupBox10.Controls.Add(this.SMT_Z_circularProgressBar);
-            this.groupBox10.Controls.Add(this.label28);
-            this.groupBox10.Controls.Add(this.label29);
-            this.groupBox10.Controls.Add(this.SMT_Y_circularProgressBar);
-            this.groupBox10.Controls.Add(this.SMT_X_circularProgressBar);
-            this.groupBox10.Location = new System.Drawing.Point(9, 195);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(542, 170);
-            this.groupBox10.TabIndex = 38;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Stepper Motor Temperature";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(439, 147);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(67, 13);
-            this.label31.TabIndex = 40;
-            this.label31.Text = "EXTRUDER";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(310, 147);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(41, 13);
-            this.label30.TabIndex = 39;
-            this.label30.Text = "Z-AXIS";
-            // 
-            // SMT_E_circularProgressBar
-            // 
-            this.SMT_E_circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
-            this.SMT_E_circularProgressBar.AnimationSpeed = 500;
-            this.SMT_E_circularProgressBar.BackColor = System.Drawing.Color.Transparent;
-            this.SMT_E_circularProgressBar.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold);
-            this.SMT_E_circularProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.SMT_E_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
-            this.SMT_E_circularProgressBar.InnerMargin = 2;
-            this.SMT_E_circularProgressBar.InnerWidth = -1;
-            this.SMT_E_circularProgressBar.Location = new System.Drawing.Point(411, 19);
-            this.SMT_E_circularProgressBar.MarqueeAnimationSpeed = 2000;
-            this.SMT_E_circularProgressBar.Name = "SMT_E_circularProgressBar";
-            this.SMT_E_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
-            this.SMT_E_circularProgressBar.OuterMargin = -25;
-            this.SMT_E_circularProgressBar.OuterWidth = 26;
-            this.SMT_E_circularProgressBar.ProgressColor = System.Drawing.Color.Teal;
-            this.SMT_E_circularProgressBar.ProgressWidth = 25;
-            this.SMT_E_circularProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.SMT_E_circularProgressBar.Size = new System.Drawing.Size(125, 125);
-            this.SMT_E_circularProgressBar.StartAngle = 270;
-            this.SMT_E_circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.SMT_E_circularProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-            this.SMT_E_circularProgressBar.SubscriptText = "";
-            this.SMT_E_circularProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.SMT_E_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
-            this.SMT_E_circularProgressBar.SuperscriptText = "";
-            this.SMT_E_circularProgressBar.TabIndex = 38;
-            this.SMT_E_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
-            this.SMT_E_circularProgressBar.Value = 1;
-            // 
-            // SMT_Z_circularProgressBar
-            // 
-            this.SMT_Z_circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
-            this.SMT_Z_circularProgressBar.AnimationSpeed = 500;
-            this.SMT_Z_circularProgressBar.BackColor = System.Drawing.Color.Transparent;
-            this.SMT_Z_circularProgressBar.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold);
-            this.SMT_Z_circularProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.SMT_Z_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
-            this.SMT_Z_circularProgressBar.InnerMargin = 2;
-            this.SMT_Z_circularProgressBar.InnerWidth = -1;
-            this.SMT_Z_circularProgressBar.Location = new System.Drawing.Point(271, 19);
-            this.SMT_Z_circularProgressBar.MarqueeAnimationSpeed = 2000;
-            this.SMT_Z_circularProgressBar.Name = "SMT_Z_circularProgressBar";
-            this.SMT_Z_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
-            this.SMT_Z_circularProgressBar.OuterMargin = -25;
-            this.SMT_Z_circularProgressBar.OuterWidth = 26;
-            this.SMT_Z_circularProgressBar.ProgressColor = System.Drawing.Color.Teal;
-            this.SMT_Z_circularProgressBar.ProgressWidth = 25;
-            this.SMT_Z_circularProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.SMT_Z_circularProgressBar.Size = new System.Drawing.Size(125, 125);
-            this.SMT_Z_circularProgressBar.StartAngle = 270;
-            this.SMT_Z_circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.SMT_Z_circularProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-            this.SMT_Z_circularProgressBar.SubscriptText = "";
-            this.SMT_Z_circularProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.SMT_Z_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
-            this.SMT_Z_circularProgressBar.SuperscriptText = "";
-            this.SMT_Z_circularProgressBar.TabIndex = 37;
-            this.SMT_Z_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
-            this.SMT_Z_circularProgressBar.Value = 1;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(176, 147);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(41, 13);
-            this.label28.TabIndex = 36;
-            this.label28.Text = "Y-AXIS";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(46, 147);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(41, 13);
-            this.label29.TabIndex = 35;
-            this.label29.Text = "X-AXIS";
-            // 
-            // SMT_Y_circularProgressBar
-            // 
-            this.SMT_Y_circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
-            this.SMT_Y_circularProgressBar.AnimationSpeed = 500;
-            this.SMT_Y_circularProgressBar.BackColor = System.Drawing.Color.Transparent;
-            this.SMT_Y_circularProgressBar.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold);
-            this.SMT_Y_circularProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.SMT_Y_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
-            this.SMT_Y_circularProgressBar.InnerMargin = 2;
-            this.SMT_Y_circularProgressBar.InnerWidth = -1;
-            this.SMT_Y_circularProgressBar.Location = new System.Drawing.Point(140, 19);
-            this.SMT_Y_circularProgressBar.MarqueeAnimationSpeed = 2000;
-            this.SMT_Y_circularProgressBar.Name = "SMT_Y_circularProgressBar";
-            this.SMT_Y_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
-            this.SMT_Y_circularProgressBar.OuterMargin = -25;
-            this.SMT_Y_circularProgressBar.OuterWidth = 26;
-            this.SMT_Y_circularProgressBar.ProgressColor = System.Drawing.Color.Teal;
-            this.SMT_Y_circularProgressBar.ProgressWidth = 25;
-            this.SMT_Y_circularProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.SMT_Y_circularProgressBar.Size = new System.Drawing.Size(125, 125);
-            this.SMT_Y_circularProgressBar.StartAngle = 270;
-            this.SMT_Y_circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.SMT_Y_circularProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-            this.SMT_Y_circularProgressBar.SubscriptText = "";
-            this.SMT_Y_circularProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.SMT_Y_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
-            this.SMT_Y_circularProgressBar.SuperscriptText = "";
-            this.SMT_Y_circularProgressBar.TabIndex = 2;
-            this.SMT_Y_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
-            this.SMT_Y_circularProgressBar.Value = 1;
-            // 
-            // SMT_X_circularProgressBar
-            // 
-            this.SMT_X_circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
-            this.SMT_X_circularProgressBar.AnimationSpeed = 500;
-            this.SMT_X_circularProgressBar.BackColor = System.Drawing.Color.Transparent;
-            this.SMT_X_circularProgressBar.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold);
-            this.SMT_X_circularProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.SMT_X_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
-            this.SMT_X_circularProgressBar.InnerMargin = 2;
-            this.SMT_X_circularProgressBar.InnerWidth = -1;
-            this.SMT_X_circularProgressBar.Location = new System.Drawing.Point(6, 19);
-            this.SMT_X_circularProgressBar.MarqueeAnimationSpeed = 2000;
-            this.SMT_X_circularProgressBar.Name = "SMT_X_circularProgressBar";
-            this.SMT_X_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
-            this.SMT_X_circularProgressBar.OuterMargin = -25;
-            this.SMT_X_circularProgressBar.OuterWidth = 26;
-            this.SMT_X_circularProgressBar.ProgressColor = System.Drawing.Color.Teal;
-            this.SMT_X_circularProgressBar.ProgressWidth = 25;
-            this.SMT_X_circularProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 26F);
-            this.SMT_X_circularProgressBar.Size = new System.Drawing.Size(125, 125);
-            this.SMT_X_circularProgressBar.StartAngle = 270;
-            this.SMT_X_circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.SMT_X_circularProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-            this.SMT_X_circularProgressBar.SubscriptText = "";
-            this.SMT_X_circularProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.SMT_X_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
-            this.SMT_X_circularProgressBar.SuperscriptText = "";
-            this.SMT_X_circularProgressBar.TabIndex = 1;
-            this.SMT_X_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
-            this.SMT_X_circularProgressBar.Value = 1;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.CT2_circularProgressBar);
-            this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.CT1_circularProgressBar);
-            this.groupBox3.Location = new System.Drawing.Point(286, 19);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(265, 170);
-            this.groupBox3.TabIndex = 37;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Coolant Temperature";
-            // 
-            // CT2_circularProgressBar
-            // 
-            this.CT2_circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
-            this.CT2_circularProgressBar.AnimationSpeed = 500;
-            this.CT2_circularProgressBar.BackColor = System.Drawing.Color.Transparent;
-            this.CT2_circularProgressBar.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CT2_circularProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.CT2_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
-            this.CT2_circularProgressBar.InnerMargin = 2;
-            this.CT2_circularProgressBar.InnerWidth = -1;
-            this.CT2_circularProgressBar.Location = new System.Drawing.Point(134, 19);
-            this.CT2_circularProgressBar.MarqueeAnimationSpeed = 2000;
-            this.CT2_circularProgressBar.Name = "CT2_circularProgressBar";
-            this.CT2_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
-            this.CT2_circularProgressBar.OuterMargin = -25;
-            this.CT2_circularProgressBar.OuterWidth = 26;
-            this.CT2_circularProgressBar.ProgressColor = System.Drawing.Color.DarkSlateBlue;
-            this.CT2_circularProgressBar.ProgressWidth = 25;
-            this.CT2_circularProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 26F);
-            this.CT2_circularProgressBar.Size = new System.Drawing.Size(125, 125);
-            this.CT2_circularProgressBar.StartAngle = 270;
-            this.CT2_circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.CT2_circularProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-            this.CT2_circularProgressBar.SubscriptText = "";
-            this.CT2_circularProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.CT2_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
-            this.CT2_circularProgressBar.SuperscriptText = "";
-            this.CT2_circularProgressBar.TabIndex = 37;
-            this.CT2_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
-            this.CT2_circularProgressBar.Value = 1;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(169, 147);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(58, 13);
-            this.label11.TabIndex = 36;
-            this.label11.Text = "HOT SIDE";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(37, 147);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(64, 13);
-            this.label12.TabIndex = 35;
-            this.label12.Text = "COOL SIDE";
-            // 
-            // CT1_circularProgressBar
-            // 
-            this.CT1_circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
-            this.CT1_circularProgressBar.AnimationSpeed = 500;
-            this.CT1_circularProgressBar.BackColor = System.Drawing.Color.Transparent;
-            this.CT1_circularProgressBar.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CT1_circularProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.CT1_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
-            this.CT1_circularProgressBar.InnerMargin = 2;
-            this.CT1_circularProgressBar.InnerWidth = -1;
-            this.CT1_circularProgressBar.Location = new System.Drawing.Point(6, 19);
-            this.CT1_circularProgressBar.MarqueeAnimationSpeed = 2000;
-            this.CT1_circularProgressBar.Name = "CT1_circularProgressBar";
-            this.CT1_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
-            this.CT1_circularProgressBar.OuterMargin = -25;
-            this.CT1_circularProgressBar.OuterWidth = 26;
-            this.CT1_circularProgressBar.ProgressColor = System.Drawing.Color.DarkSlateBlue;
-            this.CT1_circularProgressBar.ProgressWidth = 25;
-            this.CT1_circularProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 26F);
-            this.CT1_circularProgressBar.Size = new System.Drawing.Size(125, 125);
-            this.CT1_circularProgressBar.StartAngle = 270;
-            this.CT1_circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.CT1_circularProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-            this.CT1_circularProgressBar.SubscriptText = "";
-            this.CT1_circularProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.CT1_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
-            this.CT1_circularProgressBar.SuperscriptText = "";
-            this.CT1_circularProgressBar.TabIndex = 1;
-            this.CT1_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
-            this.CT1_circularProgressBar.Value = 1;
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.label26);
-            this.groupBox9.Controls.Add(this.label27);
-            this.groupBox9.Location = new System.Drawing.Point(286, 19);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(265, 170);
-            this.groupBox9.TabIndex = 37;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Coolant Temperature";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(169, 147);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(58, 13);
-            this.label26.TabIndex = 36;
-            this.label26.Text = "HOT SIDE";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(37, 147);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(64, 13);
-            this.label27.TabIndex = 35;
-            this.label27.Text = "COOL SIDE";
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.label25);
-            this.groupBox8.Controls.Add(this.label4);
-            this.groupBox8.Controls.Add(this.PBT2_circularProgressBar);
-            this.groupBox8.Controls.Add(this.PBT1_circularProgressBar);
-            this.groupBox8.Location = new System.Drawing.Point(9, 19);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(265, 170);
-            this.groupBox8.TabIndex = 0;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Peltier Block Temperature";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(169, 147);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(58, 13);
-            this.label25.TabIndex = 36;
-            this.label25.Text = "HOT SIDE";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 147);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 13);
-            this.label4.TabIndex = 35;
-            this.label4.Text = "COOL SIDE";
-            // 
-            // PBT2_circularProgressBar
-            // 
-            this.PBT2_circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
-            this.PBT2_circularProgressBar.AnimationSpeed = 500;
-            this.PBT2_circularProgressBar.BackColor = System.Drawing.Color.Transparent;
-            this.PBT2_circularProgressBar.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PBT2_circularProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.PBT2_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
-            this.PBT2_circularProgressBar.InnerMargin = 2;
-            this.PBT2_circularProgressBar.InnerWidth = -1;
-            this.PBT2_circularProgressBar.Location = new System.Drawing.Point(134, 19);
-            this.PBT2_circularProgressBar.MarqueeAnimationSpeed = 2000;
-            this.PBT2_circularProgressBar.Name = "PBT2_circularProgressBar";
-            this.PBT2_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
-            this.PBT2_circularProgressBar.OuterMargin = -25;
-            this.PBT2_circularProgressBar.OuterWidth = 26;
-            this.PBT2_circularProgressBar.ProgressColor = System.Drawing.Color.SteelBlue;
-            this.PBT2_circularProgressBar.ProgressWidth = 25;
-            this.PBT2_circularProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PBT2_circularProgressBar.Size = new System.Drawing.Size(125, 125);
-            this.PBT2_circularProgressBar.StartAngle = 270;
-            this.PBT2_circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.PBT2_circularProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-            this.PBT2_circularProgressBar.SubscriptText = "";
-            this.PBT2_circularProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.PBT2_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
-            this.PBT2_circularProgressBar.SuperscriptText = "";
-            this.PBT2_circularProgressBar.TabIndex = 2;
-            this.PBT2_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
-            this.PBT2_circularProgressBar.Value = 1;
-            // 
-            // PBT1_circularProgressBar
-            // 
-            this.PBT1_circularProgressBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
-            this.PBT1_circularProgressBar.AnimationSpeed = 500;
-            this.PBT1_circularProgressBar.BackColor = System.Drawing.Color.Transparent;
-            this.PBT1_circularProgressBar.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PBT1_circularProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.PBT1_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
-            this.PBT1_circularProgressBar.InnerMargin = 2;
-            this.PBT1_circularProgressBar.InnerWidth = -1;
-            this.PBT1_circularProgressBar.Location = new System.Drawing.Point(6, 19);
-            this.PBT1_circularProgressBar.MarqueeAnimationSpeed = 2000;
-            this.PBT1_circularProgressBar.Name = "PBT1_circularProgressBar";
-            this.PBT1_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
-            this.PBT1_circularProgressBar.OuterMargin = -25;
-            this.PBT1_circularProgressBar.OuterWidth = 26;
-            this.PBT1_circularProgressBar.ProgressColor = System.Drawing.Color.SteelBlue;
-            this.PBT1_circularProgressBar.ProgressWidth = 25;
-            this.PBT1_circularProgressBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PBT1_circularProgressBar.Size = new System.Drawing.Size(125, 125);
-            this.PBT1_circularProgressBar.StartAngle = 270;
-            this.PBT1_circularProgressBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.PBT1_circularProgressBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-            this.PBT1_circularProgressBar.SubscriptText = "";
-            this.PBT1_circularProgressBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.PBT1_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
-            this.PBT1_circularProgressBar.SuperscriptText = "";
-            this.PBT1_circularProgressBar.TabIndex = 1;
-            this.PBT1_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
-            this.PBT1_circularProgressBar.Value = 1;
+            this.ExhaustFanRPM_circularProgressBar.Value = 50;
             // 
             // groupBox11
             // 
             this.groupBox11.Controls.Add(this.ClearConsoleTextBox_label);
             this.groupBox11.Controls.Add(this.ConsoleClear_button);
             this.groupBox11.Controls.Add(this.ConsoleLog_textbox);
-            this.groupBox11.Location = new System.Drawing.Point(12, 419);
+            this.groupBox11.Location = new System.Drawing.Point(12, 400);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(382, 388);
+            this.groupBox11.Size = new System.Drawing.Size(382, 420);
             this.groupBox11.TabIndex = 6;
             this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Console";
+            this.groupBox11.Text = "Log Monitor";
             // 
             // ClearConsoleTextBox_label
             // 
             this.ClearConsoleTextBox_label.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClearConsoleTextBox_label.Location = new System.Drawing.Point(87, 357);
+            this.ClearConsoleTextBox_label.Location = new System.Drawing.Point(89, 396);
             this.ClearConsoleTextBox_label.Name = "ClearConsoleTextBox_label";
             this.ClearConsoleTextBox_label.Size = new System.Drawing.Size(287, 18);
             this.ClearConsoleTextBox_label.TabIndex = 2;
@@ -1221,11 +1365,11 @@
             // 
             // ConsoleClear_button
             // 
-            this.ConsoleClear_button.Location = new System.Drawing.Point(6, 356);
+            this.ConsoleClear_button.Location = new System.Drawing.Point(6, 391);
             this.ConsoleClear_button.Name = "ConsoleClear_button";
             this.ConsoleClear_button.Size = new System.Drawing.Size(80, 23);
             this.ConsoleClear_button.TabIndex = 1;
-            this.ConsoleClear_button.Text = "Clear Console";
+            this.ConsoleClear_button.Text = "Clear Log";
             this.ConsoleClear_button.UseVisualStyleBackColor = true;
             this.ConsoleClear_button.Click += new System.EventHandler(this.ConsoleClear_button_Click);
             // 
@@ -1237,7 +1381,7 @@
             this.ConsoleLog_textbox.Name = "ConsoleLog_textbox";
             this.ConsoleLog_textbox.ReadOnly = true;
             this.ConsoleLog_textbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.ConsoleLog_textbox.Size = new System.Drawing.Size(368, 331);
+            this.ConsoleLog_textbox.Size = new System.Drawing.Size(368, 366);
             this.ConsoleLog_textbox.TabIndex = 0;
             // 
             // DIS3
@@ -1334,29 +1478,18 @@
             this.DIS2.Text = "MCU I/O Pins";
             this.DIS2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // serialPort1
+            // SerialPort1
             // 
-            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_serialDataReceived);
-            // 
-            // ArduinoReset_button
-            // 
-            this.ArduinoReset_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.ArduinoReset_button.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.ArduinoReset_button.ForeColor = System.Drawing.Color.White;
-            this.ArduinoReset_button.Location = new System.Drawing.Point(118, 183);
-            this.ArduinoReset_button.Name = "ArduinoReset_button";
-            this.ArduinoReset_button.Size = new System.Drawing.Size(100, 24);
-            this.ArduinoReset_button.TabIndex = 34;
-            this.ArduinoReset_button.Text = "Reset UNO";
-            this.ArduinoReset_button.UseVisualStyleBackColor = false;
-            this.ArduinoReset_button.Click += new System.EventHandler(this.ArduinoReset_button_Click);
+            this.SerialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SerialPort1_serialDataReceived);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(1130, 794);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(1023, 829);
+            this.Controls.Add(this.groupBox13);
             this.Controls.Add(this.groupBox12);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.groupBox7);
@@ -1364,12 +1497,13 @@
             this.Controls.Add(this.SerialMonitor_groupBox);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Advanced Cooling Control Software";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -1379,16 +1513,18 @@
             this.SerialMonitor_groupBox.ResumeLayout(false);
             this.SerialMonitor_groupBox.PerformLayout();
             this.groupBox7.ResumeLayout(false);
-            this.groupBox13.ResumeLayout(false);
-            this.groupBox13.PerformLayout();
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CoolingFanSpeed_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CoolingFanSpeed_trackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExhaustFanSpeed_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExhaustFanSpeed_trackBar)).EndInit();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             this.groupBox12.ResumeLayout(false);
@@ -1422,20 +1558,19 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label Dcs_indicator1;
+        private System.Windows.Forms.Label DCS_indicator1;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label Dcs_indicator3;
-        private System.Windows.Forms.Label Dcs_indicator5;
-        private System.Windows.Forms.Label Dcs_indicator2;
+        private System.Windows.Forms.Label DCS_indicator3;
+        private System.Windows.Forms.Label DCS_indicator5;
+        private System.Windows.Forms.Label DCS_indicator2;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label Dcs_indicator4;
+        private System.Windows.Forms.Label DCS_indicator4;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label Dcs_indicator6;
+        private System.Windows.Forms.Label DCS_indicator6;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.GroupBox groupBox8;
         private CircularProgressBar.CircularProgressBar PBT1_circularProgressBar;
-        private CircularProgressBar.CircularProgressBar PBT2_circularProgressBar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.GroupBox groupBox10;
@@ -1455,25 +1590,17 @@
         private System.Windows.Forms.Label PCP_Indicator2;
         private System.Windows.Forms.Label PCP_Indicator4;
         private System.Windows.Forms.TextBox Passcode_textBox;
-        private System.Windows.Forms.Button clearConsoleOutput_button;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.TextBox ConsoleLog_textbox;
         private System.Windows.Forms.Button CheckArduinoComPort_button;
         private System.Windows.Forms.Button ConsoleClear_button;
         private System.Windows.Forms.Label ClearConsoleTextBox_label;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private CircularProgressBar.CircularProgressBar CT1_circularProgressBar;
-        private CircularProgressBar.CircularProgressBar CT2_circularProgressBar;
         private System.Windows.Forms.CheckBox CabinLight_checkBox;
         private System.Windows.Forms.CheckBox Peltier1_checkBox;
         private System.Windows.Forms.CheckBox MainPower_checkBox;
         private System.Windows.Forms.CheckBox Peltier2_checkBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button ClearInputBuffer_button;
-        private System.Windows.Forms.Label ClearBufferTextBox_label;
         private System.Windows.Forms.GroupBox groupBox13;
         private CircularProgressBar.CircularProgressBar CoolerFanRPM_circularProgressBar;
         private System.Windows.Forms.Label label22;
@@ -1486,8 +1613,23 @@
         private System.Windows.Forms.TextBox DIS1;
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.TextBox DIS2;
-        private System.IO.Ports.SerialPort serialPort1;
+        private System.IO.Ports.SerialPort SerialPort1;
         private System.Windows.Forms.Button ArduinoReset_button;
+        private CircularProgressBar.CircularProgressBar PBT2_circularProgressBar;
+        private CircularProgressBar.CircularProgressBar CT2_circularProgressBar;
+        private CircularProgressBar.CircularProgressBar CT1_circularProgressBar;
+        private CircularProgressBar.CircularProgressBar circularProgressBar1;
+        private System.Windows.Forms.TrackBar ExhaustFanSpeed_trackBar;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.NumericUpDown ExhaustFanSpeed_numericUpDown;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.NumericUpDown CoolingFanSpeed_numericUpDown;
+        private System.Windows.Forms.TrackBar CoolingFanSpeed_trackBar;
     }
 }
 
