@@ -580,7 +580,7 @@ namespace Advanced_Cooling_Control_Software
 
         private void CabinLight_checkBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (CabinLight_checkBox.Checked == true)
+            if (CabinLight_checkBox.Checked == true) /**/
             {
                 PCP_Indicator2.BackColor = Color.DarkGreen;
                 CabinLight_checkBox.Text = "OFF";
