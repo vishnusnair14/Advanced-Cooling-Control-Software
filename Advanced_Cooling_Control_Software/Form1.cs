@@ -3,7 +3,6 @@ using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
 using System.Management;
-using System.Runtime.Remoting.Channels;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 //using System.Windows.Input;
@@ -29,6 +28,7 @@ namespace Advanced_Cooling_Control_Software
         public Form1()
         {
             InitializeComponent();
+            ComPort_comboBox.Items.Clear();
             ComPort_comboBox.Items.AddRange(SerialPort.GetPortNames());
 
             Connect_button.Enabled = true;
@@ -49,8 +49,6 @@ namespace Advanced_Cooling_Control_Software
             SMT_Y_circularProgressBar.Value = 0;
             SMT_Z_circularProgressBar.Value = 0;
             SMT_E_circularProgressBar.Value = 0;
-            ExhaustFanRPM_circularProgressBar.Value = 0;
-            CoolerFanRPM_circularProgressBar.Value = 0;
             ExhaustFanSpeed_trackBar.Value = 0;
             CoolingFanSpeed_trackBar.Value = 0;
             ExhaustFanSpeed_numericUpDown.Value = 0;
@@ -72,6 +70,7 @@ namespace Advanced_Cooling_Control_Software
             ExhaustFanSpeed_trackBar.Enabled = false;
             CoolingFanSpeed_numericUpDown.Enabled = false;
             CoolingFanSpeed_trackBar.Enabled = false;
+            slidingLabel.Text = "Advanced Cooling Control Software [vishnus_technologies(C) 2023] ";
         }
 
         private void ArduinoReset_button_Click(object sender, EventArgs e)
@@ -97,13 +96,13 @@ namespace Advanced_Cooling_Control_Software
                     DIS6.ForeColor = Color.White;
 
                     PBT1_circularProgressBar.Value = 0;
-                    PBT1_circularProgressBar.Text = "0";
+                    PBT1_circularProgressBar.Text = "";
                     PBT2_circularProgressBar.Value = 0;
-                    PBT2_circularProgressBar.Text = "0";
+                    PBT2_circularProgressBar.Text = "";
                     CT1_circularProgressBar.Value = 0;
-                    CT1_circularProgressBar.Text = "0";
+                    CT1_circularProgressBar.Text = "";
                     CT2_circularProgressBar.Value = 0;
-                    CT2_circularProgressBar.Text = "0";
+                    CT2_circularProgressBar.Text = "";
                 }
                 SerialPort1.WriteLine("r");  // arduino software reset code:  'r' 
             }
@@ -179,12 +178,15 @@ namespace Advanced_Cooling_Control_Software
 
         private void CheckArduinoComPort_button_Click(object sender, EventArgs e)
         {
+            ComPort_comboBox.Items.Clear();
+            ComPort_comboBox.Items.AddRange(SerialPort.GetPortNames());
             ArduinoPortDect = AutoDetectArduinoPort();
             if (String.IsNullOrEmpty(ArduinoPortDect) != true)
             {
                 ConnectionMsgBox_label.Text = "Arduino detected @" + ArduinoPortDect;
                 ComPort_comboBox.Text = ArduinoPortDect;
                 BaudRate_comboBox.Text = "9600";
+                //BeginInvoke(new EventHandler(Connect_button_Click));
             }
             else
             {
@@ -244,8 +246,8 @@ namespace Advanced_Cooling_Control_Software
 
                                 ExhaustFanSpeed_numericUpDown.Enabled = true;
                                 ExhaustFanSpeed_trackBar.Enabled = true;
-                                CoolingFanSpeed_numericUpDown.Enabled= true;
-                                CoolingFanSpeed_trackBar.Enabled= true;
+                                CoolingFanSpeed_numericUpDown.Enabled = true;
+                                CoolingFanSpeed_trackBar.Enabled = true;
                             }
                             catch
                             {
@@ -289,13 +291,13 @@ namespace Advanced_Cooling_Control_Software
                 SerialMonitor_groupBox.Text = "Serial Monitor";
 
                 PBT1_circularProgressBar.Value = 0;
-                PBT1_circularProgressBar.Text = "0";
+                PBT1_circularProgressBar.Text = "";
                 PBT2_circularProgressBar.Value = 0;
-                PBT2_circularProgressBar.Text = "0";
+                PBT2_circularProgressBar.Text = "";
                 CT1_circularProgressBar.Value = 0;
-                CT1_circularProgressBar.Text = "0";
+                CT1_circularProgressBar.Text = "";
                 CT2_circularProgressBar.Value = 0;
-                CT2_circularProgressBar.Text = "0";
+                CT2_circularProgressBar.Text = "";
                 SerialMonitor_textbox.Text = "";
                 ConsoleLog_textbox.Text = "";
 
@@ -577,7 +579,6 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
-
         private void CabinLight_checkBox_CheckedChanged(object sender, EventArgs e)
         {
             if (CabinLight_checkBox.Checked == true) /**/
@@ -598,6 +599,11 @@ namespace Advanced_Cooling_Control_Software
             InfoToolTip.Show("Speed controller for Exhaust Fans: ARDUINO_PIN: ~9", ExhaustFanSpeed_trackBar);
         }
 
+        private void ComPort_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void Peltier1_checkBox_CheckedChanged(object sender, EventArgs e)
         {
             if (Peltier1_checkBox.Checked == true)
@@ -612,6 +618,7 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
+
         private void Peltier2_checkBox_CheckedChanged(object sender, EventArgs e)
         {
             if (Peltier2_checkBox.Checked == true)
@@ -625,6 +632,7 @@ namespace Advanced_Cooling_Control_Software
                 Peltier2_checkBox.Text = "ON";
             }
         }
+
 
         private void ClearBuffer_button_Click(object sender, EventArgs e)
         {
@@ -755,8 +763,8 @@ namespace Advanced_Cooling_Control_Software
         private void ExhaustFanSpeed_trackBar_Scroll(object sender, EventArgs e)
         {
             ExhaustFanSpeed_numericUpDown.Value = ExhaustFanSpeed_trackBar.Value;
-            ExhaustFanRPM_circularProgressBar.Value = ExhaustFanSpeed_trackBar.Value;
-            BeginInvoke(new EventHandler(FanSpeedEncoder));
+            //progressBar1.Value = ExhaustFanSpeed_trackBar.Value;
+            BeginInvoke(new EventHandler(FanPwmEncoder));
         }
 
         private void CoolingFanSpeed_trackBar_Scroll(object sender, EventArgs e)
@@ -767,7 +775,7 @@ namespace Advanced_Cooling_Control_Software
         private void ExhaustFanSpeed_numericUpDown_ValueChanged(object sender, EventArgs e)
         {
             ExhaustFanSpeed_trackBar.Value = (int)ExhaustFanSpeed_numericUpDown.Value;
-            BeginInvoke(new EventHandler(FanSpeedEncoder));
+            BeginInvoke(new EventHandler(FanPwmEncoder));
         }
 
         private void CoolingFanSpeed_numericUpDown_ValueChanged(object sender, EventArgs e)
@@ -778,14 +786,15 @@ namespace Advanced_Cooling_Control_Software
         /* PWM VALUE ENCODER */
         // delegate to convert percentage to pwm value. Encode pwm value and writes to
         // arduino serial. Example data: [s102d] or [s255d] or [s125.44d] -> pwm: 102, 255, 125 
-        private void FanSpeedEncoder(object sender, EventArgs e)
+        private void FanPwmEncoder(object sender, EventArgs e)
         {
             PWM = ((1.0f * ExhaustFanSpeed_trackBar.Value) / 100) * 255;
             if (SerialPort1.IsOpen)
             {
-                SerialPort1.WriteLine("s" + PWM.ToString() + "d");
+                SerialPort1.WriteLine("s" + PWM.ToString());
+                ExhFanPWM_progressBar.Value = (int)PWM;
+
             }
-            ExhaustFanRPM_circularProgressBar.Text = "PWM: " + PWM;
             //ConsoleLog_textbox.Text= PWM.ToString();
         }
 
