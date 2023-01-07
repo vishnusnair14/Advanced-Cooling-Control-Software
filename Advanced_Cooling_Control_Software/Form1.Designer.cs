@@ -1256,7 +1256,7 @@
             this.DIS1.ReadOnly = true;
             this.DIS1.Size = new System.Drawing.Size(160, 23);
             this.DIS1.TabIndex = 14;
-            this.DIS1.Text = "Serial COM";
+            this.DIS1.Text = "Serial Communication";
             this.DIS1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox12
