@@ -1343,6 +1343,7 @@
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(160, 23);
             this.textBox1.TabIndex = 15;
+            this.textBox1.Text = "f";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // DIS2
