@@ -70,7 +70,7 @@ namespace Advanced_Cooling_Control_Software
             ExhaustFanSpeed_trackBar.Enabled = false;
             CoolingFanSpeed_numericUpDown.Enabled = false;
             CoolingFanSpeed_trackBar.Enabled = false;
-            slidingLabel.Text = "Advanced Cooling Control Software [vishnus_technologies(C) 2023] ";
+            //slidingLabel.Text = "Advanced Cooling Control Software [vishnus_technologies(C) 2023] ";
         }
 
         private void ArduinoReset_button_Click(object sender, EventArgs e)
@@ -186,7 +186,10 @@ namespace Advanced_Cooling_Control_Software
                 ConnectionMsgBox_label.Text = "Arduino detected @" + ArduinoPortDect;
                 ComPort_comboBox.Text = ArduinoPortDect;
                 BaudRate_comboBox.Text = "9600";
-                //BeginInvoke(new EventHandler(Connect_button_Click));
+                if (AutoConnect_checkBox.Checked)
+                {
+                    BeginInvoke(new EventHandler(Connect_button_Click));
+                }
             }
             else
             {
@@ -248,6 +251,8 @@ namespace Advanced_Cooling_Control_Software
                                 ExhaustFanSpeed_trackBar.Enabled = true;
                                 CoolingFanSpeed_numericUpDown.Enabled = true;
                                 CoolingFanSpeed_trackBar.Enabled = true;
+
+                                AutoConnect_checkBox.Enabled = false;
                             }
                             catch
                             {
@@ -283,7 +288,7 @@ namespace Advanced_Cooling_Control_Software
                 // set all PWM value to zero:
                 SerialPort1.WriteLine("s0d");
 
-                // Disconnects from serial port:
+                // Disconnect serial COM:
                 SerialPort1.Close();
 
                 Conn_progressBar.Value = 0;
@@ -301,7 +306,7 @@ namespace Advanced_Cooling_Control_Software
                 SerialMonitor_textbox.Text = "";
                 ConsoleLog_textbox.Text = "";
 
-                // comment below line after debugging
+                // comment below line after debugging:
                 Passcode_textBox.Text = "20222023v";
 
                 ConnectionMsgBox_label.Enabled = true;
@@ -348,6 +353,9 @@ namespace Advanced_Cooling_Control_Software
                 ExhaustFanSpeed_numericUpDown.Value = 0;
                 CoolingFanSpeed_numericUpDown.Value = 0;
 
+                AutoConnect_checkBox.Checked =false;
+                AutoConnect_checkBox.Enabled = true;
+
             }
             catch
             {
@@ -368,7 +376,7 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
-        // SERIAL DATA DECODER FUNCTION:
+        /* SERIAL DATA DECODER SECTION */
         private void SerialDataDecoder(object sender, EventArgs e)
         {
             // writes serial data to console log:
@@ -581,7 +589,7 @@ namespace Advanced_Cooling_Control_Software
 
         private void CabinLight_checkBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (CabinLight_checkBox.Checked == true) /**/
+            if (CabinLight_checkBox.Checked == true)
             {
                 PCP_Indicator2.BackColor = Color.DarkGreen;
                 CabinLight_checkBox.Text = "OFF";
@@ -601,7 +609,7 @@ namespace Advanced_Cooling_Control_Software
 
         private void ComPort_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            ConnectionMsgBox_label.Text = "";
         }
 
         private void Peltier1_checkBox_CheckedChanged(object sender, EventArgs e)
@@ -618,7 +626,6 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
-
         private void Peltier2_checkBox_CheckedChanged(object sender, EventArgs e)
         {
             if (Peltier2_checkBox.Checked == true)
@@ -632,7 +639,6 @@ namespace Advanced_Cooling_Control_Software
                 Peltier2_checkBox.Text = "ON";
             }
         }
-
 
         private void ClearBuffer_button_Click(object sender, EventArgs e)
         {
@@ -763,7 +769,7 @@ namespace Advanced_Cooling_Control_Software
         private void ExhaustFanSpeed_trackBar_Scroll(object sender, EventArgs e)
         {
             ExhaustFanSpeed_numericUpDown.Value = ExhaustFanSpeed_trackBar.Value;
-            //progressBar1.Value = ExhaustFanSpeed_trackBar.Value;
+            // progressBar1.Value = ExhaustFanSpeed_trackBar.Value;
             BeginInvoke(new EventHandler(FanPwmEncoder));
         }
 
@@ -783,7 +789,7 @@ namespace Advanced_Cooling_Control_Software
             CoolingFanSpeed_trackBar.Value = (int)CoolingFanSpeed_numericUpDown.Value;
         }
 
-        /* PWM VALUE ENCODER */
+        /* PWM VALUE ENCODER SECTION */
         // delegate to convert percentage to pwm value. Encode pwm value and writes to
         // arduino serial. Example data: [s102d] or [s255d] or [s125.44d] -> pwm: 102, 255, 125 
         private void FanPwmEncoder(object sender, EventArgs e)
@@ -796,11 +802,6 @@ namespace Advanced_Cooling_Control_Software
 
             }
             //ConsoleLog_textbox.Text= PWM.ToString();
-        }
-
-        private void clearConsoleOutput_button_Click(object sender, EventArgs e)
-        {
-            SerialMonitor_textbox.Text = "";
         }
 
         private async void ConsoleClear_button_Click(object sender, EventArgs e)

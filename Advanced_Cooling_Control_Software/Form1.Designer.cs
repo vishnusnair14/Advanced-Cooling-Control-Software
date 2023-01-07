@@ -126,9 +126,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.slidingLabel = new AltoControls.AltoSlidingLabel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.Passcode_textBox = new System.Windows.Forms.TextBox();
+            this.AutoConnect_checkBox = new System.Windows.Forms.CheckBox();
             this.SerialMonitor_groupBox.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -155,9 +155,9 @@
             this.ArduinoReset_button.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.ArduinoReset_button.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.ArduinoReset_button.ForeColor = System.Drawing.Color.White;
-            this.ArduinoReset_button.Location = new System.Drawing.Point(131, 33);
+            this.ArduinoReset_button.Location = new System.Drawing.Point(116, 31);
             this.ArduinoReset_button.Name = "ArduinoReset_button";
-            this.ArduinoReset_button.Size = new System.Drawing.Size(96, 26);
+            this.ArduinoReset_button.Size = new System.Drawing.Size(110, 26);
             this.ArduinoReset_button.TabIndex = 34;
             this.ArduinoReset_button.Text = "Reset UNO";
             this.ArduinoReset_button.UseVisualStyleBackColor = false;
@@ -170,9 +170,9 @@
             this.CheckArduinoComPort_button.ForeColor = System.Drawing.Color.White;
             this.CheckArduinoComPort_button.Location = new System.Drawing.Point(3, 31);
             this.CheckArduinoComPort_button.Name = "CheckArduinoComPort_button";
-            this.CheckArduinoComPort_button.Size = new System.Drawing.Size(125, 28);
+            this.CheckArduinoComPort_button.Size = new System.Drawing.Size(110, 28);
             this.CheckArduinoComPort_button.TabIndex = 31;
-            this.CheckArduinoComPort_button.Text = "Auto Connect UNO";
+            this.CheckArduinoComPort_button.Text = "Search UNO";
             this.CheckArduinoComPort_button.UseVisualStyleBackColor = false;
             this.CheckArduinoComPort_button.Click += new System.EventHandler(this.CheckArduinoComPort_button_Click);
             // 
@@ -181,9 +181,9 @@
             this.Disconnect_button.BackColor = System.Drawing.Color.LightSteelBlue;
             this.Disconnect_button.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.Disconnect_button.ForeColor = System.Drawing.Color.White;
-            this.Disconnect_button.Location = new System.Drawing.Point(131, 5);
+            this.Disconnect_button.Location = new System.Drawing.Point(116, 4);
             this.Disconnect_button.Name = "Disconnect_button";
-            this.Disconnect_button.Size = new System.Drawing.Size(96, 26);
+            this.Disconnect_button.Size = new System.Drawing.Size(110, 26);
             this.Disconnect_button.TabIndex = 8;
             this.Disconnect_button.Text = "Disconnect";
             this.Disconnect_button.UseVisualStyleBackColor = false;
@@ -196,7 +196,7 @@
             this.Connect_button.ForeColor = System.Drawing.Color.White;
             this.Connect_button.Location = new System.Drawing.Point(3, 5);
             this.Connect_button.Name = "Connect_button";
-            this.Connect_button.Size = new System.Drawing.Size(125, 26);
+            this.Connect_button.Size = new System.Drawing.Size(110, 26);
             this.Connect_button.TabIndex = 8;
             this.Connect_button.Text = "Connect";
             this.Connect_button.UseVisualStyleBackColor = false;
@@ -206,7 +206,7 @@
             // 
             this.Conn_progressBar.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Conn_progressBar.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.Conn_progressBar.Location = new System.Drawing.Point(6, 146);
+            this.Conn_progressBar.Location = new System.Drawing.Point(6, 143);
             this.Conn_progressBar.MarqueeAnimationSpeed = 10;
             this.Conn_progressBar.Name = "Conn_progressBar";
             this.Conn_progressBar.Size = new System.Drawing.Size(234, 6);
@@ -218,9 +218,9 @@
             this.ConnectionMsgBox_label.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.ConnectionMsgBox_label.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
             this.ConnectionMsgBox_label.ForeColor = System.Drawing.Color.DarkBlue;
-            this.ConnectionMsgBox_label.Location = new System.Drawing.Point(6, 116);
+            this.ConnectionMsgBox_label.Location = new System.Drawing.Point(6, 118);
             this.ConnectionMsgBox_label.Name = "ConnectionMsgBox_label";
-            this.ConnectionMsgBox_label.Size = new System.Drawing.Size(234, 27);
+            this.ConnectionMsgBox_label.Size = new System.Drawing.Size(234, 24);
             this.ConnectionMsgBox_label.TabIndex = 6;
             this.ConnectionMsgBox_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -312,11 +312,12 @@
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Gainsboro;
+            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label8.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(196, 48);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 15);
+            this.label8.Size = new System.Drawing.Size(60, 17);
             this.label8.TabIndex = 13;
             this.label8.Text = "Peltier 2:";
             // 
@@ -324,11 +325,12 @@
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Gainsboro;
+            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label7.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(35, 49);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 15);
+            this.label7.Size = new System.Drawing.Size(60, 17);
             this.label7.TabIndex = 12;
             this.label7.Text = "Peltier 1:";
             // 
@@ -336,11 +338,12 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Gainsboro;
+            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label6.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(172, 17);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(82, 15);
+            this.label6.Size = new System.Drawing.Size(84, 17);
             this.label6.TabIndex = 11;
             this.label6.Text = "Cabin Lights:";
             // 
@@ -348,11 +351,12 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Gainsboro;
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label5.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(14, 18);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 15);
+            this.label5.Size = new System.Drawing.Size(81, 17);
             this.label5.TabIndex = 10;
             this.label5.Text = "Main Power:";
             // 
@@ -1161,10 +1165,11 @@
             // 
             // ClearConsoleTextBox_label
             // 
-            this.ClearConsoleTextBox_label.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClearConsoleTextBox_label.Location = new System.Drawing.Point(104, 457);
+            this.ClearConsoleTextBox_label.BackColor = System.Drawing.Color.DarkGray;
+            this.ClearConsoleTextBox_label.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClearConsoleTextBox_label.Location = new System.Drawing.Point(106, 456);
             this.ClearConsoleTextBox_label.Name = "ClearConsoleTextBox_label";
-            this.ClearConsoleTextBox_label.Size = new System.Drawing.Size(294, 21);
+            this.ClearConsoleTextBox_label.Size = new System.Drawing.Size(292, 21);
             this.ClearConsoleTextBox_label.TabIndex = 2;
             this.ClearConsoleTextBox_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -1369,6 +1374,7 @@
             this.ExhaustFanSpeed_trackBar.SmallChange = 5;
             this.ExhaustFanSpeed_trackBar.TabIndex = 50;
             this.ExhaustFanSpeed_trackBar.TickFrequency = 5;
+            this.ExhaustFanSpeed_trackBar.Scroll += new System.EventHandler(this.ExhaustFanSpeed_trackBar_Scroll);
             // 
             // label12
             // 
@@ -1412,11 +1418,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.label1.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.label1.Location = new System.Drawing.Point(8, 61);
+            this.label1.Location = new System.Drawing.Point(12, 61);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 15);
+            this.label1.Size = new System.Drawing.Size(71, 15);
             this.label1.TabIndex = 53;
             this.label1.Text = "Baud Rate:";
             // 
@@ -1424,11 +1430,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.label2.Location = new System.Drawing.Point(12, 32);
+            this.label2.Location = new System.Drawing.Point(16, 32);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 15);
+            this.label2.Size = new System.Drawing.Size(67, 15);
             this.label2.TabIndex = 54;
             this.label2.Text = "COM Port:";
             // 
@@ -1436,18 +1442,17 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.label3.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.label3.Location = new System.Drawing.Point(10, 90);
+            this.label3.Location = new System.Drawing.Point(17, 89);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 15);
+            this.label3.Size = new System.Drawing.Size(66, 15);
             this.label3.TabIndex = 55;
             this.label3.Text = "Password:";
             // 
             // groupBox1
             // 
             this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.groupBox1.Controls.Add(this.slidingLabel);
             this.groupBox1.Controls.Add(this.panel5);
             this.groupBox1.Controls.Add(this.Passcode_textBox);
             this.groupBox1.Controls.Add(this.label2);
@@ -1458,7 +1463,7 @@
             this.groupBox1.Controls.Add(this.ConnectionMsgBox_label);
             this.groupBox1.Controls.Add(this.Conn_progressBar);
             this.groupBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.groupBox1.ForeColor = System.Drawing.Color.Snow;
             this.groupBox1.Location = new System.Drawing.Point(14, 14);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(247, 260);
@@ -1466,24 +1471,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Connection Panel";
             // 
-            // slidingLabel
-            // 
-            this.slidingLabel.Location = new System.Drawing.Point(6, 238);
-            this.slidingLabel.Name = "slidingLabel";
-            this.slidingLabel.Size = new System.Drawing.Size(234, 15);
-            this.slidingLabel.Slide = false;
-            this.slidingLabel.TabIndex = 57;
-            // 
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel5.Controls.Add(this.AutoConnect_checkBox);
             this.panel5.Controls.Add(this.Connect_button);
             this.panel5.Controls.Add(this.ArduinoReset_button);
             this.panel5.Controls.Add(this.Disconnect_button);
             this.panel5.Controls.Add(this.CheckArduinoComPort_button);
             this.panel5.Location = new System.Drawing.Point(6, 164);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(234, 68);
+            this.panel5.Size = new System.Drawing.Size(234, 88);
             this.panel5.TabIndex = 56;
             // 
             // Passcode_textBox
@@ -1495,6 +1493,18 @@
             this.Passcode_textBox.Size = new System.Drawing.Size(147, 21);
             this.Passcode_textBox.TabIndex = 55;
             this.Passcode_textBox.Text = "20222023v";
+            // 
+            // AutoConnect_checkBox
+            // 
+            this.AutoConnect_checkBox.AutoSize = true;
+            this.AutoConnect_checkBox.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AutoConnect_checkBox.ForeColor = System.Drawing.Color.Navy;
+            this.AutoConnect_checkBox.Location = new System.Drawing.Point(5, 63);
+            this.AutoConnect_checkBox.Name = "AutoConnect_checkBox";
+            this.AutoConnect_checkBox.Size = new System.Drawing.Size(217, 19);
+            this.AutoConnect_checkBox.TabIndex = 57;
+            this.AutoConnect_checkBox.Text = "Auto connect to UNO after search";
+            this.AutoConnect_checkBox.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1555,6 +1565,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1660,7 +1671,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Panel panel5;
-        private AltoControls.AltoSlidingLabel slidingLabel;
+        private System.Windows.Forms.CheckBox AutoConnect_checkBox;
     }
 }
 
