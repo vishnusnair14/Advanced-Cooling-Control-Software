@@ -48,7 +48,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.HDCPMsgbox_label = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.DCS_indicator6 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.DCS_indicator4 = new System.Windows.Forms.Label();
@@ -94,12 +93,6 @@
             this.HDCPDevicelist_Combobox = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.CoolFanPWM_progressBar = new System.Windows.Forms.ProgressBar();
-            this.ExhFanPWM_progressBar = new System.Windows.Forms.ProgressBar();
-            this.label32 = new System.Windows.Forms.Label();
-            this.CoolingFanSpeed_numericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.CoolingFanSpeed_trackBar = new System.Windows.Forms.TrackBar();
-            this.ExhaustFanSpeed_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.ClearConsoleTextBox_label = new System.Windows.Forms.Label();
             this.ConsoleClear_button = new System.Windows.Forms.Button();
@@ -114,21 +107,29 @@
             this.label18 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.DIS2B = new System.Windows.Forms.TextBox();
+            this.DIS1B = new System.Windows.Forms.TextBox();
+            this.DIS2A = new System.Windows.Forms.TextBox();
+            this.DIS1A = new System.Windows.Forms.TextBox();
+            this.DIS7 = new System.Windows.Forms.TextBox();
             this.DIS2 = new System.Windows.Forms.TextBox();
             this.SerialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.InfoToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.ExhaustFanSpeed_trackBar = new System.Windows.Forms.TrackBar();
-            this.label12 = new System.Windows.Forms.Label();
             this.BaudRate_comboBox = new System.Windows.Forms.ComboBox();
             this.ComPort_comboBox = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.Passcode_textBox = new System.Windows.Forms.TextBox();
             this.AutoConnect_checkBox = new System.Windows.Forms.CheckBox();
+            this.Passcode_textBox = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.SerialMonitor_groupBox.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -137,16 +138,16 @@
             this.groupBox13.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CoolingFanSpeed_numericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CoolingFanSpeed_trackBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExhaustFanSpeed_numericUpDown)).BeginInit();
             this.groupBox11.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ExhaustFanSpeed_trackBar)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // ArduinoReset_button
@@ -170,7 +171,7 @@
             this.CheckArduinoComPort_button.ForeColor = System.Drawing.Color.White;
             this.CheckArduinoComPort_button.Location = new System.Drawing.Point(3, 31);
             this.CheckArduinoComPort_button.Name = "CheckArduinoComPort_button";
-            this.CheckArduinoComPort_button.Size = new System.Drawing.Size(110, 28);
+            this.CheckArduinoComPort_button.Size = new System.Drawing.Size(110, 26);
             this.CheckArduinoComPort_button.TabIndex = 31;
             this.CheckArduinoComPort_button.Text = "Search UNO";
             this.CheckArduinoComPort_button.UseVisualStyleBackColor = false;
@@ -194,7 +195,7 @@
             this.Connect_button.BackColor = System.Drawing.Color.CornflowerBlue;
             this.Connect_button.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.Connect_button.ForeColor = System.Drawing.Color.White;
-            this.Connect_button.Location = new System.Drawing.Point(3, 5);
+            this.Connect_button.Location = new System.Drawing.Point(3, 4);
             this.Connect_button.Name = "Connect_button";
             this.Connect_button.Size = new System.Drawing.Size(110, 26);
             this.Connect_button.TabIndex = 8;
@@ -311,7 +312,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Gainsboro;
+            this.label8.BackColor = System.Drawing.Color.GhostWhite;
             this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label8.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.Color.Black;
@@ -324,7 +325,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Gainsboro;
+            this.label7.BackColor = System.Drawing.Color.GhostWhite;
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label7.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.Color.Black;
@@ -337,11 +338,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Gainsboro;
+            this.label6.BackColor = System.Drawing.Color.GhostWhite;
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label6.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(172, 17);
+            this.label6.Location = new System.Drawing.Point(170, 14);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(84, 17);
             this.label6.TabIndex = 11;
@@ -350,11 +351,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Gainsboro;
+            this.label5.BackColor = System.Drawing.Color.GhostWhite;
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label5.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(14, 18);
+            this.label5.Location = new System.Drawing.Point(14, 15);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 17);
             this.label5.TabIndex = 10;
@@ -371,17 +372,6 @@
             this.HDCPMsgbox_label.Size = new System.Drawing.Size(199, 27);
             this.HDCPMsgbox_label.TabIndex = 10;
             this.HDCPMsgbox_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("MS Reference Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(3, 45);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(61, 15);
-            this.label10.TabIndex = 22;
-            this.label10.Text = "Actions:";
             // 
             // DCS_indicator6
             // 
@@ -513,6 +503,8 @@
             // SerialMonitor_groupBox
             // 
             this.SerialMonitor_groupBox.Controls.Add(this.SerialMonitor_textbox);
+            this.SerialMonitor_groupBox.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
+            this.SerialMonitor_groupBox.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.SerialMonitor_groupBox.Location = new System.Drawing.Point(14, 291);
             this.SerialMonitor_groupBox.Name = "SerialMonitor_groupBox";
             this.SerialMonitor_groupBox.Size = new System.Drawing.Size(407, 210);
@@ -522,7 +514,7 @@
             // 
             // SerialMonitor_textbox
             // 
-            this.SerialMonitor_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SerialMonitor_textbox.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.SerialMonitor_textbox.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.SerialMonitor_textbox.Location = new System.Drawing.Point(7, 22);
             this.SerialMonitor_textbox.Multiline = true;
@@ -537,9 +529,11 @@
             this.groupBox7.Controls.Add(this.groupBox9);
             this.groupBox7.Controls.Add(this.groupBox8);
             this.groupBox7.Controls.Add(this.groupBox10);
-            this.groupBox7.Location = new System.Drawing.Point(437, 291);
+            this.groupBox7.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
+            this.groupBox7.ForeColor = System.Drawing.Color.Crimson;
+            this.groupBox7.Location = new System.Drawing.Point(441, 291);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(700, 447);
+            this.groupBox7.Size = new System.Drawing.Size(981, 447);
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Temperature Monitor";
@@ -550,6 +544,7 @@
             this.groupBox9.Controls.Add(this.label26);
             this.groupBox9.Controls.Add(this.label27);
             this.groupBox9.Controls.Add(this.CT1_circularProgressBar);
+            this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.9F);
             this.groupBox9.Location = new System.Drawing.Point(356, 22);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(333, 202);
@@ -591,20 +586,22 @@
             // label26
             // 
             this.label26.AutoSize = true;
+            this.label26.ForeColor = System.Drawing.Color.Black;
             this.label26.Location = new System.Drawing.Point(221, 181);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(63, 15);
+            this.label26.Size = new System.Drawing.Size(48, 15);
             this.label26.TabIndex = 36;
-            this.label26.Text = "HOT SIDE";
+            this.label26.Text = "TANK 2";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
+            this.label27.ForeColor = System.Drawing.Color.Black;
             this.label27.Location = new System.Drawing.Point(51, 181);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(71, 15);
+            this.label27.Size = new System.Drawing.Size(48, 15);
             this.label27.TabIndex = 35;
-            this.label27.Text = "COOL SIDE";
+            this.label27.Text = "TANK 1";
             // 
             // CT1_circularProgressBar
             // 
@@ -643,6 +640,7 @@
             this.groupBox8.Controls.Add(this.PBT2_circularProgressBar);
             this.groupBox8.Controls.Add(this.label4);
             this.groupBox8.Controls.Add(this.PBT1_circularProgressBar);
+            this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.9F);
             this.groupBox8.Location = new System.Drawing.Point(11, 22);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(333, 202);
@@ -653,6 +651,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
+            this.label25.ForeColor = System.Drawing.Color.Black;
             this.label25.Location = new System.Drawing.Point(213, 181);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(63, 15);
@@ -693,6 +692,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(50, 181);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 15);
@@ -741,6 +741,7 @@
             this.groupBox10.Controls.Add(this.SMT_X_circularProgressBar);
             this.groupBox10.Controls.Add(this.label29);
             this.groupBox10.Controls.Add(this.label28);
+            this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.9F);
             this.groupBox10.Location = new System.Drawing.Point(11, 235);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(678, 202);
@@ -751,6 +752,7 @@
             // label31
             // 
             this.label31.AutoSize = true;
+            this.label31.ForeColor = System.Drawing.Color.Black;
             this.label31.Location = new System.Drawing.Point(561, 181);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(74, 15);
@@ -853,6 +855,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
+            this.label30.ForeColor = System.Drawing.Color.Black;
             this.label30.Location = new System.Drawing.Point(403, 181);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(44, 15);
@@ -924,6 +927,7 @@
             // label29
             // 
             this.label29.AutoSize = true;
+            this.label29.ForeColor = System.Drawing.Color.Black;
             this.label29.Location = new System.Drawing.Point(65, 181);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(45, 15);
@@ -933,6 +937,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
+            this.label28.ForeColor = System.Drawing.Color.Black;
             this.label28.Location = new System.Drawing.Point(231, 181);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(44, 15);
@@ -960,7 +965,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label16.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label16.Location = new System.Drawing.Point(6, 136);
+            this.label16.Location = new System.Drawing.Point(6, 138);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(100, 17);
             this.label16.TabIndex = 64;
@@ -971,7 +976,7 @@
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label22.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label22.Location = new System.Drawing.Point(6, 27);
+            this.label22.Location = new System.Drawing.Point(6, 17);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(96, 17);
             this.label22.TabIndex = 63;
@@ -986,7 +991,7 @@
             this.panel4.Controls.Add(this.label10);
             this.panel4.Controls.Add(this.HDCPDevicelist_Combobox);
             this.panel4.Controls.Add(this.HDCPMsgbox_label);
-            this.panel4.Location = new System.Drawing.Point(9, 156);
+            this.panel4.Location = new System.Drawing.Point(9, 158);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(332, 90);
             this.panel4.TabIndex = 59;
@@ -1007,7 +1012,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.BackColor = System.Drawing.Color.GhostWhite;
             this.label9.Font = new System.Drawing.Font("MS Reference Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(3, 10);
@@ -1070,92 +1075,18 @@
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.CabinLight_checkBox);
             this.panel3.Controls.Add(this.label8);
-            this.panel3.Location = new System.Drawing.Point(9, 48);
+            this.panel3.Location = new System.Drawing.Point(9, 37);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(332, 76);
             this.panel3.TabIndex = 57;
-            // 
-            // CoolFanPWM_progressBar
-            // 
-            this.CoolFanPWM_progressBar.Location = new System.Drawing.Point(877, 843);
-            this.CoolFanPWM_progressBar.Margin = new System.Windows.Forms.Padding(0);
-            this.CoolFanPWM_progressBar.Name = "CoolFanPWM_progressBar";
-            this.CoolFanPWM_progressBar.Size = new System.Drawing.Size(257, 6);
-            this.CoolFanPWM_progressBar.TabIndex = 49;
-            // 
-            // ExhFanPWM_progressBar
-            // 
-            this.ExhFanPWM_progressBar.Location = new System.Drawing.Point(505, 895);
-            this.ExhFanPWM_progressBar.Margin = new System.Windows.Forms.Padding(0);
-            this.ExhFanPWM_progressBar.MarqueeAnimationSpeed = 70;
-            this.ExhFanPWM_progressBar.Maximum = 255;
-            this.ExhFanPWM_progressBar.Name = "ExhFanPWM_progressBar";
-            this.ExhFanPWM_progressBar.Size = new System.Drawing.Size(253, 6);
-            this.ExhFanPWM_progressBar.TabIndex = 39;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.BackColor = System.Drawing.Color.Gainsboro;
-            this.label32.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
-            this.label32.ForeColor = System.Drawing.Color.Black;
-            this.label32.Location = new System.Drawing.Point(879, 778);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(132, 17);
-            this.label32.TabIndex = 44;
-            this.label32.Text = "Cooling Fan speed :";
-            // 
-            // CoolingFanSpeed_numericUpDown
-            // 
-            this.CoolingFanSpeed_numericUpDown.BackColor = System.Drawing.Color.Gainsboro;
-            this.CoolingFanSpeed_numericUpDown.Font = new System.Drawing.Font("Malgun Gothic", 10.5F, System.Drawing.FontStyle.Bold);
-            this.CoolingFanSpeed_numericUpDown.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.CoolingFanSpeed_numericUpDown.Location = new System.Drawing.Point(1062, 774);
-            this.CoolingFanSpeed_numericUpDown.Name = "CoolingFanSpeed_numericUpDown";
-            this.CoolingFanSpeed_numericUpDown.Size = new System.Drawing.Size(71, 26);
-            this.CoolingFanSpeed_numericUpDown.TabIndex = 46;
-            this.CoolingFanSpeed_numericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.CoolingFanSpeed_numericUpDown.ValueChanged += new System.EventHandler(this.CoolingFanSpeed_numericUpDown_ValueChanged);
-            // 
-            // CoolingFanSpeed_trackBar
-            // 
-            this.CoolingFanSpeed_trackBar.AutoSize = false;
-            this.CoolingFanSpeed_trackBar.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.CoolingFanSpeed_trackBar.Location = new System.Drawing.Point(877, 811);
-            this.CoolingFanSpeed_trackBar.Maximum = 100;
-            this.CoolingFanSpeed_trackBar.Name = "CoolingFanSpeed_trackBar";
-            this.CoolingFanSpeed_trackBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.CoolingFanSpeed_trackBar.Size = new System.Drawing.Size(257, 29);
-            this.CoolingFanSpeed_trackBar.SmallChange = 5;
-            this.CoolingFanSpeed_trackBar.TabIndex = 45;
-            this.CoolingFanSpeed_trackBar.TickFrequency = 5;
-            this.CoolingFanSpeed_trackBar.Scroll += new System.EventHandler(this.CoolingFanSpeed_trackBar_Scroll);
-            // 
-            // ExhaustFanSpeed_numericUpDown
-            // 
-            this.ExhaustFanSpeed_numericUpDown.BackColor = System.Drawing.Color.Gainsboro;
-            this.ExhaustFanSpeed_numericUpDown.Font = new System.Drawing.Font("Malgun Gothic", 10.5F, System.Drawing.FontStyle.Bold);
-            this.ExhaustFanSpeed_numericUpDown.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.ExhaustFanSpeed_numericUpDown.Location = new System.Drawing.Point(768, 774);
-            this.ExhaustFanSpeed_numericUpDown.Name = "ExhaustFanSpeed_numericUpDown";
-            this.ExhaustFanSpeed_numericUpDown.Size = new System.Drawing.Size(71, 26);
-            this.ExhaustFanSpeed_numericUpDown.TabIndex = 41;
-            this.ExhaustFanSpeed_numericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ExhaustFanSpeed_numericUpDown.ValueChanged += new System.EventHandler(this.ExhaustFanSpeed_numericUpDown_ValueChanged);
             // 
             // groupBox11
             // 
             this.groupBox11.Controls.Add(this.ClearConsoleTextBox_label);
             this.groupBox11.Controls.Add(this.ConsoleClear_button);
             this.groupBox11.Controls.Add(this.ConsoleLog_textbox);
+            this.groupBox11.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
+            this.groupBox11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.groupBox11.Location = new System.Drawing.Point(14, 517);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(407, 485);
@@ -1166,7 +1097,8 @@
             // ClearConsoleTextBox_label
             // 
             this.ClearConsoleTextBox_label.BackColor = System.Drawing.Color.DarkGray;
-            this.ClearConsoleTextBox_label.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClearConsoleTextBox_label.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.25F);
+            this.ClearConsoleTextBox_label.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.ClearConsoleTextBox_label.Location = new System.Drawing.Point(106, 456);
             this.ClearConsoleTextBox_label.Name = "ClearConsoleTextBox_label";
             this.ClearConsoleTextBox_label.Size = new System.Drawing.Size(292, 21);
@@ -1185,6 +1117,7 @@
             // 
             // ConsoleLog_textbox
             // 
+            this.ConsoleLog_textbox.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ConsoleLog_textbox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConsoleLog_textbox.Location = new System.Drawing.Point(7, 22);
             this.ConsoleLog_textbox.Multiline = true;
@@ -1202,7 +1135,7 @@
             this.DIS3.Location = new System.Drawing.Point(3, 90);
             this.DIS3.Name = "DIS3";
             this.DIS3.ReadOnly = true;
-            this.DIS3.Size = new System.Drawing.Size(160, 23);
+            this.DIS3.Size = new System.Drawing.Size(106, 23);
             this.DIS3.TabIndex = 9;
             this.DIS3.Text = "PCF8574 I/O Pins";
             this.DIS3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1228,7 +1161,7 @@
             this.DIS4.Location = new System.Drawing.Point(3, 61);
             this.DIS4.Name = "DIS4";
             this.DIS4.ReadOnly = true;
-            this.DIS4.Size = new System.Drawing.Size(160, 23);
+            this.DIS4.Size = new System.Drawing.Size(106, 23);
             this.DIS4.TabIndex = 12;
             this.DIS4.Text = "PCF8574 Module";
             this.DIS4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1321,7 +1254,11 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.DarkGray;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.DIS2B);
+            this.panel1.Controls.Add(this.DIS1B);
+            this.panel1.Controls.Add(this.DIS2A);
+            this.panel1.Controls.Add(this.DIS1A);
+            this.panel1.Controls.Add(this.DIS7);
             this.panel1.Controls.Add(this.DIS1);
             this.panel1.Controls.Add(this.DIS3);
             this.panel1.Controls.Add(this.DIS6);
@@ -1333,17 +1270,69 @@
             this.panel1.Size = new System.Drawing.Size(170, 210);
             this.panel1.TabIndex = 57;
             // 
-            // textBox1
+            // DIS2B
             // 
-            this.textBox1.BackColor = System.Drawing.Color.DimGray;
-            this.textBox1.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(3, 177);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(160, 23);
-            this.textBox1.TabIndex = 15;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DIS2B.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.DIS2B.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DIS2B.ForeColor = System.Drawing.Color.White;
+            this.DIS2B.Location = new System.Drawing.Point(141, 90);
+            this.DIS2B.Name = "DIS2B";
+            this.DIS2B.ReadOnly = true;
+            this.DIS2B.Size = new System.Drawing.Size(22, 23);
+            this.DIS2B.TabIndex = 19;
+            this.DIS2B.Text = "II";
+            this.DIS2B.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // DIS1B
+            // 
+            this.DIS1B.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.DIS1B.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DIS1B.ForeColor = System.Drawing.Color.White;
+            this.DIS1B.Location = new System.Drawing.Point(115, 90);
+            this.DIS1B.Name = "DIS1B";
+            this.DIS1B.ReadOnly = true;
+            this.DIS1B.Size = new System.Drawing.Size(20, 23);
+            this.DIS1B.TabIndex = 18;
+            this.DIS1B.Text = "I";
+            this.DIS1B.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // DIS2A
+            // 
+            this.DIS2A.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.DIS2A.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DIS2A.ForeColor = System.Drawing.Color.White;
+            this.DIS2A.Location = new System.Drawing.Point(141, 61);
+            this.DIS2A.Name = "DIS2A";
+            this.DIS2A.ReadOnly = true;
+            this.DIS2A.Size = new System.Drawing.Size(22, 23);
+            this.DIS2A.TabIndex = 17;
+            this.DIS2A.Text = "II";
+            this.DIS2A.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // DIS1A
+            // 
+            this.DIS1A.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.DIS1A.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DIS1A.ForeColor = System.Drawing.Color.White;
+            this.DIS1A.Location = new System.Drawing.Point(115, 61);
+            this.DIS1A.Name = "DIS1A";
+            this.DIS1A.ReadOnly = true;
+            this.DIS1A.Size = new System.Drawing.Size(20, 23);
+            this.DIS1A.TabIndex = 16;
+            this.DIS1A.Text = "I";
+            this.DIS1A.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // DIS7
+            // 
+            this.DIS7.BackColor = System.Drawing.Color.DimGray;
+            this.DIS7.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DIS7.ForeColor = System.Drawing.Color.White;
+            this.DIS7.Location = new System.Drawing.Point(3, 177);
+            this.DIS7.Name = "DIS7";
+            this.DIS7.ReadOnly = true;
+            this.DIS7.Size = new System.Drawing.Size(160, 23);
+            this.DIS7.TabIndex = 15;
+            this.DIS7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // DIS2
             // 
@@ -1361,32 +1350,6 @@
             // SerialPort1
             // 
             this.SerialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SerialPort1_serialDataReceived);
-            // 
-            // ExhaustFanSpeed_trackBar
-            // 
-            this.ExhaustFanSpeed_trackBar.AutoSize = false;
-            this.ExhaustFanSpeed_trackBar.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.ExhaustFanSpeed_trackBar.Location = new System.Drawing.Point(490, 838);
-            this.ExhaustFanSpeed_trackBar.Maximum = 100;
-            this.ExhaustFanSpeed_trackBar.Name = "ExhaustFanSpeed_trackBar";
-            this.ExhaustFanSpeed_trackBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.ExhaustFanSpeed_trackBar.Size = new System.Drawing.Size(257, 29);
-            this.ExhaustFanSpeed_trackBar.SmallChange = 5;
-            this.ExhaustFanSpeed_trackBar.TabIndex = 50;
-            this.ExhaustFanSpeed_trackBar.TickFrequency = 5;
-            this.ExhaustFanSpeed_trackBar.Scroll += new System.EventHandler(this.ExhaustFanSpeed_trackBar_Scroll);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Gainsboro;
-            this.label12.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(522, 813);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(132, 17);
-            this.label12.TabIndex = 51;
-            this.label12.Text = "Exhaust Fan speed :";
             // 
             // BaudRate_comboBox
             // 
@@ -1414,56 +1377,20 @@
             this.ComPort_comboBox.TabIndex = 2;
             this.ComPort_comboBox.SelectedIndexChanged += new System.EventHandler(this.ComPort_comboBox_SelectedIndexChanged);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.label1.Location = new System.Drawing.Point(12, 61);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 15);
-            this.label1.TabIndex = 53;
-            this.label1.Text = "Baud Rate:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.label2.Location = new System.Drawing.Point(16, 32);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 15);
-            this.label2.TabIndex = 54;
-            this.label2.Text = "COM Port:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.label3.Location = new System.Drawing.Point(17, 89);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 15);
-            this.label3.TabIndex = 55;
-            this.label3.Text = "Password:";
-            // 
             // groupBox1
             // 
             this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.panel5);
             this.groupBox1.Controls.Add(this.Passcode_textBox);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.ComPort_comboBox);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.BaudRate_comboBox);
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.ConnectionMsgBox_label);
             this.groupBox1.Controls.Add(this.Conn_progressBar);
             this.groupBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
-            this.groupBox1.ForeColor = System.Drawing.Color.Snow;
+            this.groupBox1.ForeColor = System.Drawing.Color.DarkGreen;
             this.groupBox1.Location = new System.Drawing.Point(14, 14);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(247, 260);
@@ -1479,20 +1406,10 @@
             this.panel5.Controls.Add(this.ArduinoReset_button);
             this.panel5.Controls.Add(this.Disconnect_button);
             this.panel5.Controls.Add(this.CheckArduinoComPort_button);
-            this.panel5.Location = new System.Drawing.Point(6, 164);
+            this.panel5.Location = new System.Drawing.Point(6, 160);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(234, 88);
             this.panel5.TabIndex = 56;
-            // 
-            // Passcode_textBox
-            // 
-            this.Passcode_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Passcode_textBox.Location = new System.Drawing.Point(94, 87);
-            this.Passcode_textBox.Name = "Passcode_textBox";
-            this.Passcode_textBox.PasswordChar = '*';
-            this.Passcode_textBox.Size = new System.Drawing.Size(147, 21);
-            this.Passcode_textBox.TabIndex = 55;
-            this.Passcode_textBox.Text = "20222023v";
             // 
             // AutoConnect_checkBox
             // 
@@ -1506,27 +1423,143 @@
             this.AutoConnect_checkBox.Text = "Auto connect to UNO after search";
             this.AutoConnect_checkBox.UseVisualStyleBackColor = true;
             // 
+            // Passcode_textBox
+            // 
+            this.Passcode_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Passcode_textBox.Location = new System.Drawing.Point(94, 87);
+            this.Passcode_textBox.Name = "Passcode_textBox";
+            this.Passcode_textBox.PasswordChar = '*';
+            this.Passcode_textBox.Size = new System.Drawing.Size(147, 21);
+            this.Passcode_textBox.TabIndex = 55;
+            this.Passcode_textBox.Text = "20222023v";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Gainsboro;
+            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label17.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.label17.ForeColor = System.Drawing.Color.Black;
+            this.label17.Location = new System.Drawing.Point(19, 32);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(69, 17);
+            this.label17.TabIndex = 36;
+            this.label17.Text = "COM Port:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Gainsboro;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(15, 62);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 17);
+            this.label2.TabIndex = 57;
+            this.label2.Text = "Baud Rate:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Gainsboro;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(20, 91);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 17);
+            this.label1.TabIndex = 58;
+            this.label1.Text = "Password:";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.panel7);
+            this.groupBox2.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.groupBox2.Location = new System.Drawing.Point(1002, 14);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(420, 260);
+            this.groupBox2.TabIndex = 57;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Speed Control";
+            // 
+            // panel7
+            // 
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel7.Controls.Add(this.trackBar1);
+            this.panel7.Controls.Add(this.numericUpDown1);
+            this.panel7.Controls.Add(this.label12);
+            this.panel7.Location = new System.Drawing.Point(6, 38);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(292, 53);
+            this.panel7.TabIndex = 66;
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.AutoSize = false;
+            this.trackBar1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.trackBar1.Location = new System.Drawing.Point(3, 20);
+            this.trackBar1.Maximum = 100;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.trackBar1.Size = new System.Drawing.Size(218, 26);
+            this.trackBar1.SmallChange = 5;
+            this.trackBar1.TabIndex = 50;
+            this.trackBar1.TickFrequency = 5;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.BackColor = System.Drawing.Color.Gainsboro;
+            this.numericUpDown1.Font = new System.Drawing.Font("Malgun Gothic", 10.5F, System.Drawing.FontStyle.Bold);
+            this.numericUpDown1.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Location = new System.Drawing.Point(227, 20);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(59, 26);
+            this.numericUpDown1.TabIndex = 41;
+            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label12.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label12.Location = new System.Drawing.Point(77, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(130, 17);
+            this.label12.TabIndex = 65;
+            this.label12.Text = "Exhaust Fan (OUT)";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.GhostWhite;
+            this.label10.Font = new System.Drawing.Font("MS Reference Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(3, 45);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(61, 15);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "Actions:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1156, 1060);
+            this.ClientSize = new System.Drawing.Size(1490, 1060);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.ExhaustFanSpeed_trackBar);
             this.Controls.Add(this.groupBox13);
-            this.Controls.Add(this.CoolFanPWM_progressBar);
             this.Controls.Add(this.groupBox12);
             this.Controls.Add(this.groupBox7);
-            this.Controls.Add(this.ExhFanPWM_progressBar);
             this.Controls.Add(this.groupBox11);
-            this.Controls.Add(this.label32);
-            this.Controls.Add(this.CoolingFanSpeed_numericUpDown);
-            this.Controls.Add(this.CoolingFanSpeed_trackBar);
             this.Controls.Add(this.SerialMonitor_groupBox);
-            this.Controls.Add(this.ExhaustFanSpeed_numericUpDown);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.9F);
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -1550,9 +1583,6 @@
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CoolingFanSpeed_numericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CoolingFanSpeed_trackBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExhaustFanSpeed_numericUpDown)).EndInit();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             this.groupBox12.ResumeLayout(false);
@@ -1561,13 +1591,16 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ExhaustFanSpeed_trackBar)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -1582,7 +1615,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox SerialMonitor_groupBox;
         private System.Windows.Forms.TextBox SerialMonitor_textbox;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label HDCPMsgbox_label;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
@@ -1641,25 +1673,14 @@
         private CircularProgressBar.CircularProgressBar CT1_circularProgressBar;
         private CircularProgressBar.CircularProgressBar circularProgressBar1;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.NumericUpDown ExhaustFanSpeed_numericUpDown;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.NumericUpDown CoolingFanSpeed_numericUpDown;
-        private System.Windows.Forms.TrackBar CoolingFanSpeed_trackBar;
         private System.Windows.Forms.ToolTip InfoToolTip;
-        private System.Windows.Forms.ProgressBar ExhFanPWM_progressBar;
-        private System.Windows.Forms.ProgressBar CoolFanPWM_progressBar;
-        private System.Windows.Forms.TrackBar ExhaustFanSpeed_trackBar;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox HDCPDevicelist_Combobox;
         private System.Windows.Forms.ComboBox BaudRate_comboBox;
         private System.Windows.Forms.ComboBox ComPort_comboBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox Passcode_textBox;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox DIS7;
         private System.Windows.Forms.Button HDCPOff_button;
         private System.Windows.Forms.Button HDCPOn_button;
         private System.Windows.Forms.Panel panel2;
@@ -1672,6 +1693,19 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.CheckBox AutoConnect_checkBox;
+        private System.Windows.Forms.TextBox DIS2A;
+        private System.Windows.Forms.TextBox DIS1A;
+        private System.Windows.Forms.TextBox DIS2B;
+        private System.Windows.Forms.TextBox DIS1B;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label10;
     }
 }
 
