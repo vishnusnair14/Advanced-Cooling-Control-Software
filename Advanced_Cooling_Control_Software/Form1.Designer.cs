@@ -107,8 +107,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.DIS2B = new System.Windows.Forms.TextBox();
-            this.DIS1B = new System.Windows.Forms.TextBox();
             this.DIS2A = new System.Windows.Forms.TextBox();
             this.DIS1A = new System.Windows.Forms.TextBox();
             this.DIS7 = new System.Windows.Forms.TextBox();
@@ -130,6 +128,8 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.SerialMonitor_groupBox.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -1254,8 +1254,8 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.DarkGray;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.DIS2B);
-            this.panel1.Controls.Add(this.DIS1B);
+            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.DIS2A);
             this.panel1.Controls.Add(this.DIS1A);
             this.panel1.Controls.Add(this.DIS7);
@@ -1270,43 +1270,17 @@
             this.panel1.Size = new System.Drawing.Size(170, 210);
             this.panel1.TabIndex = 57;
             // 
-            // DIS2B
-            // 
-            this.DIS2B.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.DIS2B.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DIS2B.ForeColor = System.Drawing.Color.White;
-            this.DIS2B.Location = new System.Drawing.Point(141, 90);
-            this.DIS2B.Name = "DIS2B";
-            this.DIS2B.ReadOnly = true;
-            this.DIS2B.Size = new System.Drawing.Size(22, 23);
-            this.DIS2B.TabIndex = 19;
-            this.DIS2B.Text = "II";
-            this.DIS2B.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // DIS1B
-            // 
-            this.DIS1B.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.DIS1B.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DIS1B.ForeColor = System.Drawing.Color.White;
-            this.DIS1B.Location = new System.Drawing.Point(115, 90);
-            this.DIS1B.Name = "DIS1B";
-            this.DIS1B.ReadOnly = true;
-            this.DIS1B.Size = new System.Drawing.Size(20, 23);
-            this.DIS1B.TabIndex = 18;
-            this.DIS1B.Text = "I";
-            this.DIS1B.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // DIS2A
             // 
             this.DIS2A.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.DIS2A.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DIS2A.ForeColor = System.Drawing.Color.White;
-            this.DIS2A.Location = new System.Drawing.Point(141, 61);
+            this.DIS2A.Location = new System.Drawing.Point(142, 61);
             this.DIS2A.Name = "DIS2A";
             this.DIS2A.ReadOnly = true;
-            this.DIS2A.Size = new System.Drawing.Size(22, 23);
+            this.DIS2A.Size = new System.Drawing.Size(21, 23);
             this.DIS2A.TabIndex = 17;
-            this.DIS2A.Text = "II";
+            this.DIS2A.Text = "2";
             this.DIS2A.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // DIS1A
@@ -1317,9 +1291,9 @@
             this.DIS1A.Location = new System.Drawing.Point(115, 61);
             this.DIS1A.Name = "DIS1A";
             this.DIS1A.ReadOnly = true;
-            this.DIS1A.Size = new System.Drawing.Size(20, 23);
+            this.DIS1A.Size = new System.Drawing.Size(21, 23);
             this.DIS1A.TabIndex = 16;
-            this.DIS1A.Text = "I";
+            this.DIS1A.Text = "1";
             this.DIS1A.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // DIS7
@@ -1546,6 +1520,32 @@
             this.label10.TabIndex = 22;
             this.label10.Text = "Actions:";
             // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBox1.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.White;
+            this.textBox1.Location = new System.Drawing.Point(115, 90);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(21, 23);
+            this.textBox1.TabIndex = 18;
+            this.textBox1.Text = "1";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBox2.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ForeColor = System.Drawing.Color.White;
+            this.textBox2.Location = new System.Drawing.Point(142, 90);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(21, 23);
+            this.textBox2.TabIndex = 19;
+            this.textBox2.Text = "2";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1695,8 +1695,6 @@
         private System.Windows.Forms.CheckBox AutoConnect_checkBox;
         private System.Windows.Forms.TextBox DIS2A;
         private System.Windows.Forms.TextBox DIS1A;
-        private System.Windows.Forms.TextBox DIS2B;
-        private System.Windows.Forms.TextBox DIS1B;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label17;
@@ -1706,6 +1704,8 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
