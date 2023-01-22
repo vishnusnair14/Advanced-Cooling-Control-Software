@@ -124,8 +124,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.ExhaustFanSpeed_trackBar = new System.Windows.Forms.TrackBar();
+            this.ExhaustFanSpeed_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -146,8 +146,8 @@
             this.panel5.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExhaustFanSpeed_trackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExhaustFanSpeed_numericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // ArduinoReset_button
@@ -1099,20 +1099,23 @@
             this.ClearConsoleTextBox_label.BackColor = System.Drawing.Color.DarkGray;
             this.ClearConsoleTextBox_label.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.25F);
             this.ClearConsoleTextBox_label.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.ClearConsoleTextBox_label.Location = new System.Drawing.Point(106, 456);
+            this.ClearConsoleTextBox_label.Location = new System.Drawing.Point(94, 456);
             this.ClearConsoleTextBox_label.Name = "ClearConsoleTextBox_label";
-            this.ClearConsoleTextBox_label.Size = new System.Drawing.Size(292, 21);
+            this.ClearConsoleTextBox_label.Size = new System.Drawing.Size(304, 21);
             this.ClearConsoleTextBox_label.TabIndex = 2;
-            this.ClearConsoleTextBox_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ClearConsoleTextBox_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ConsoleClear_button
             // 
+            this.ConsoleClear_button.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ConsoleClear_button.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConsoleClear_button.ForeColor = System.Drawing.Color.DarkBlue;
             this.ConsoleClear_button.Location = new System.Drawing.Point(7, 451);
             this.ConsoleClear_button.Name = "ConsoleClear_button";
-            this.ConsoleClear_button.Size = new System.Drawing.Size(93, 27);
+            this.ConsoleClear_button.Size = new System.Drawing.Size(81, 27);
             this.ConsoleClear_button.TabIndex = 1;
             this.ConsoleClear_button.Text = "Clear Log";
-            this.ConsoleClear_button.UseVisualStyleBackColor = true;
+            this.ConsoleClear_button.UseVisualStyleBackColor = false;
             this.ConsoleClear_button.Click += new System.EventHandler(this.ConsoleClear_button_Click);
             // 
             // ConsoleLog_textbox
@@ -1461,41 +1464,41 @@
             // panel7
             // 
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel7.Controls.Add(this.trackBar1);
-            this.panel7.Controls.Add(this.numericUpDown1);
+            this.panel7.Controls.Add(this.ExhaustFanSpeed_trackBar);
+            this.panel7.Controls.Add(this.ExhaustFanSpeed_numericUpDown);
             this.panel7.Controls.Add(this.label12);
             this.panel7.Location = new System.Drawing.Point(6, 38);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(292, 53);
             this.panel7.TabIndex = 66;
             // 
-            // trackBar1
+            // ExhaustFanSpeed_trackBar
             // 
-            this.trackBar1.AutoSize = false;
-            this.trackBar1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.trackBar1.Location = new System.Drawing.Point(3, 20);
-            this.trackBar1.Maximum = 100;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.trackBar1.Size = new System.Drawing.Size(218, 26);
-            this.trackBar1.SmallChange = 5;
-            this.trackBar1.TabIndex = 50;
-            this.trackBar1.TickFrequency = 5;
+            this.ExhaustFanSpeed_trackBar.AutoSize = false;
+            this.ExhaustFanSpeed_trackBar.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ExhaustFanSpeed_trackBar.Location = new System.Drawing.Point(3, 20);
+            this.ExhaustFanSpeed_trackBar.Maximum = 100;
+            this.ExhaustFanSpeed_trackBar.Name = "ExhaustFanSpeed_trackBar";
+            this.ExhaustFanSpeed_trackBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ExhaustFanSpeed_trackBar.Size = new System.Drawing.Size(218, 26);
+            this.ExhaustFanSpeed_trackBar.SmallChange = 5;
+            this.ExhaustFanSpeed_trackBar.TabIndex = 50;
+            this.ExhaustFanSpeed_trackBar.TickFrequency = 5;
             // 
-            // numericUpDown1
+            // ExhaustFanSpeed_numericUpDown
             // 
-            this.numericUpDown1.BackColor = System.Drawing.Color.Gainsboro;
-            this.numericUpDown1.Font = new System.Drawing.Font("Malgun Gothic", 10.5F, System.Drawing.FontStyle.Bold);
-            this.numericUpDown1.Increment = new decimal(new int[] {
+            this.ExhaustFanSpeed_numericUpDown.BackColor = System.Drawing.Color.Gainsboro;
+            this.ExhaustFanSpeed_numericUpDown.Font = new System.Drawing.Font("Malgun Gothic", 10.5F, System.Drawing.FontStyle.Bold);
+            this.ExhaustFanSpeed_numericUpDown.Increment = new decimal(new int[] {
             5,
             0,
             0,
             0});
-            this.numericUpDown1.Location = new System.Drawing.Point(227, 20);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(59, 26);
-            this.numericUpDown1.TabIndex = 41;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ExhaustFanSpeed_numericUpDown.Location = new System.Drawing.Point(227, 20);
+            this.ExhaustFanSpeed_numericUpDown.Name = "ExhaustFanSpeed_numericUpDown";
+            this.ExhaustFanSpeed_numericUpDown.Size = new System.Drawing.Size(59, 26);
+            this.ExhaustFanSpeed_numericUpDown.TabIndex = 41;
+            this.ExhaustFanSpeed_numericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label12
             // 
@@ -1598,8 +1601,8 @@
             this.groupBox2.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExhaustFanSpeed_trackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExhaustFanSpeed_numericUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1700,8 +1703,8 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.TrackBar ExhaustFanSpeed_trackBar;
+        private System.Windows.Forms.NumericUpDown ExhaustFanSpeed_numericUpDown;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox2;

@@ -417,7 +417,7 @@ namespace Advanced_Cooling_Control_Software
                 }
             }
 
-            // Relay control data decode section:
+            /* RELAY CONTROL DATA DECODE SECTION */
             // example data: [R18:X#] or [R14:A#] or [R0:B#] 
             else if (_serialData.StartsWith("R"))
             {
@@ -491,7 +491,7 @@ namespace Advanced_Cooling_Control_Software
                 }
             }
 
-            // Dallas temperature data decode section (from X,Y,Z,E mot-sensors):
+            /* DALLAS TEMPERATURE DATA DECODE SECTION (from X,Y,Z,E mot-sensors) */
             // example data: [D22X35Y11Z32E] or [D14.55X23.56Y12.33Z14.12E]
             else if (_serialData.StartsWith("D"))
             {
@@ -522,7 +522,7 @@ namespace Advanced_Cooling_Control_Software
                 }
             }
 
-            // constant MCU-codes decode section (saves lots of Arduino-FLASH):
+            /* CONSTANTS M-Code [message codes] DECODE SECTION (saves lots of Arduino-FLASH) */
             // each MCU-Unique code indicates different messages from arduino, also does helps in changing UI appearence
             // example data: [M102] [K001] or [S304] etc...
             else if (_serialData.Equals("M101"))
@@ -585,6 +585,44 @@ namespace Advanced_Cooling_Control_Software
                 DIS5.BackColor = Color.Maroon;
                 DIS5.ForeColor = Color.Yellow;
             }
+        }
+
+        private void ExhaustFanSpeed_trackBar_Scroll(object sender, EventArgs e)
+        {
+            ExhaustFanSpeed_numericUpDown.Value = ExhaustFanSpeed_trackBar.Value;
+            // progressBar1.Value = ExhaustFanSpeed_trackBar.Value;
+            BeginInvoke(new EventHandler(FanPwmEncoder));
+        }
+
+        private void CoolingFanSpeed_trackBar_Scroll(object sender, EventArgs e)
+        {
+            CoolingFanSpeed_numericUpDown.Value = CoolingFanSpeed_trackBar.Value;
+        }
+
+        private void ExhaustFanSpeed_numericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            ExhaustFanSpeed_trackBar.Value = (int)ExhaustFanSpeed_numericUpDown.Value;
+            BeginInvoke(new EventHandler(FanPwmEncoder));
+        }
+
+        private void CoolingFanSpeed_numericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            CoolingFanSpeed_trackBar.Value = (int)CoolingFanSpeed_numericUpDown.Value;
+        }
+
+        /* PWM VALUE ENCODER SECTION */
+        // delegate to convert percentage to pwm value. Encode pwm value and writes to
+        // arduino serial. Example data: [s102d] or [s255d] or [s125.44d] -> pwm: 102, 255, 125 
+        private void FanPwmEncoder(object sender, EventArgs e)
+        {
+            PWM = ((1.0f * ExhaustFanSpeed_trackBar.Value) / 100) * 255;
+            if (SerialPort1.IsOpen)
+            {
+                SerialPort1.WriteLine("s" + PWM.ToString());
+                ExhFanPWM_progressBar.Value = (int)PWM;
+
+            }
+            //ConsoleLog_textbox.Text= PWM.ToString();
         }
 
         private void CabinLight_checkBox_CheckedChanged(object sender, EventArgs e)
@@ -764,44 +802,6 @@ namespace Advanced_Cooling_Control_Software
             DCS_indicator5.BackColor = Color.Maroon;
             DCS_indicator6.BackColor = Color.Maroon;
             HDCPMsgbox_label.Text = "Switched OFF all devices!";
-        }
-
-        private void ExhaustFanSpeed_trackBar_Scroll(object sender, EventArgs e)
-        {
-            ExhaustFanSpeed_numericUpDown.Value = ExhaustFanSpeed_trackBar.Value;
-            // progressBar1.Value = ExhaustFanSpeed_trackBar.Value;
-            BeginInvoke(new EventHandler(FanPwmEncoder));
-        }
-
-        private void CoolingFanSpeed_trackBar_Scroll(object sender, EventArgs e)
-        {
-            CoolingFanSpeed_numericUpDown.Value = CoolingFanSpeed_trackBar.Value;
-        }
-
-        private void ExhaustFanSpeed_numericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            ExhaustFanSpeed_trackBar.Value = (int)ExhaustFanSpeed_numericUpDown.Value;
-            BeginInvoke(new EventHandler(FanPwmEncoder));
-        }
-
-        private void CoolingFanSpeed_numericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            CoolingFanSpeed_trackBar.Value = (int)CoolingFanSpeed_numericUpDown.Value;
-        }
-
-        /* PWM VALUE ENCODER SECTION */
-        // delegate to convert percentage to pwm value. Encode pwm value and writes to
-        // arduino serial. Example data: [s102d] or [s255d] or [s125.44d] -> pwm: 102, 255, 125 
-        private void FanPwmEncoder(object sender, EventArgs e)
-        {
-            PWM = ((1.0f * ExhaustFanSpeed_trackBar.Value) / 100) * 255;
-            if (SerialPort1.IsOpen)
-            {
-                SerialPort1.WriteLine("s" + PWM.ToString());
-                ExhFanPWM_progressBar.Value = (int)PWM;
-
-            }
-            //ConsoleLog_textbox.Text= PWM.ToString();
         }
 
         private async void ConsoleClear_button_Click(object sender, EventArgs e)
