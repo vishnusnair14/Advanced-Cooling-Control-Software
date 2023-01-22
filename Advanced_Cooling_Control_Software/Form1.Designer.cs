@@ -90,6 +90,7 @@
             this.HDCPOff_button = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.HDCPOn_button = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
             this.HDCPDevicelist_Combobox = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -107,6 +108,8 @@
             this.label18 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.DIS2A = new System.Windows.Forms.TextBox();
             this.DIS1A = new System.Windows.Forms.TextBox();
             this.DIS7 = new System.Windows.Forms.TextBox();
@@ -116,20 +119,17 @@
             this.BaudRate_comboBox = new System.Windows.Forms.ComboBox();
             this.ComPort_comboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.AutoConnect_checkBox = new System.Windows.Forms.CheckBox();
             this.Passcode_textBox = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.ExhaustFanSpeed_trackBar = new System.Windows.Forms.TrackBar();
             this.ExhaustFanSpeed_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.SerialMonitor_groupBox.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -504,7 +504,7 @@
             // 
             this.SerialMonitor_groupBox.Controls.Add(this.SerialMonitor_textbox);
             this.SerialMonitor_groupBox.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
-            this.SerialMonitor_groupBox.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.SerialMonitor_groupBox.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.SerialMonitor_groupBox.Location = new System.Drawing.Point(14, 291);
             this.SerialMonitor_groupBox.Name = "SerialMonitor_groupBox";
             this.SerialMonitor_groupBox.Size = new System.Drawing.Size(407, 210);
@@ -952,7 +952,7 @@
             this.groupBox13.Controls.Add(this.label11);
             this.groupBox13.Controls.Add(this.panel3);
             this.groupBox13.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
-            this.groupBox13.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.groupBox13.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.groupBox13.Location = new System.Drawing.Point(632, 14);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Size = new System.Drawing.Size(355, 260);
@@ -1033,6 +1033,18 @@
             this.HDCPOn_button.Text = "ON";
             this.HDCPOn_button.UseVisualStyleBackColor = false;
             this.HDCPOn_button.Click += new System.EventHandler(this.Hdcp_On_button_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.GhostWhite;
+            this.label10.Font = new System.Drawing.Font("MS Reference Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(3, 45);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(61, 15);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "Actions:";
             // 
             // HDCPDevicelist_Combobox
             // 
@@ -1203,7 +1215,7 @@
             this.groupBox12.Controls.Add(this.panel2);
             this.groupBox12.Controls.Add(this.panel1);
             this.groupBox12.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
-            this.groupBox12.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.groupBox12.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.groupBox12.Location = new System.Drawing.Point(278, 14);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(338, 260);
@@ -1272,6 +1284,32 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(170, 210);
             this.panel1.TabIndex = 57;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBox2.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ForeColor = System.Drawing.Color.White;
+            this.textBox2.Location = new System.Drawing.Point(142, 90);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(21, 23);
+            this.textBox2.TabIndex = 19;
+            this.textBox2.Text = "2";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.textBox1.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.White;
+            this.textBox1.Location = new System.Drawing.Point(115, 90);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(21, 23);
+            this.textBox1.TabIndex = 18;
+            this.textBox1.Text = "1";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // DIS2A
             // 
@@ -1375,6 +1413,45 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Connection Panel";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Gainsboro;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(20, 91);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 17);
+            this.label1.TabIndex = 58;
+            this.label1.Text = "Password:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Gainsboro;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(15, 62);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 17);
+            this.label2.TabIndex = 57;
+            this.label2.Text = "Baud Rate:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Gainsboro;
+            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label17.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.label17.ForeColor = System.Drawing.Color.Black;
+            this.label17.Location = new System.Drawing.Point(19, 32);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(69, 17);
+            this.label17.TabIndex = 36;
+            this.label17.Text = "COM Port:";
+            // 
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -1410,50 +1487,11 @@
             this.Passcode_textBox.TabIndex = 55;
             this.Passcode_textBox.Text = "20222023v";
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.Gainsboro;
-            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label17.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label17.ForeColor = System.Drawing.Color.Black;
-            this.label17.Location = new System.Drawing.Point(19, 32);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(69, 17);
-            this.label17.TabIndex = 36;
-            this.label17.Text = "COM Port:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Gainsboro;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(15, 62);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 17);
-            this.label2.TabIndex = 57;
-            this.label2.Text = "Baud Rate:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Gainsboro;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(20, 91);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 17);
-            this.label1.TabIndex = 58;
-            this.label1.Text = "Password:";
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.panel7);
             this.groupBox2.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
-            this.groupBox2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.groupBox2.Location = new System.Drawing.Point(1002, 14);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(420, 260);
@@ -1510,44 +1548,6 @@
             this.label12.Size = new System.Drawing.Size(130, 17);
             this.label12.TabIndex = 65;
             this.label12.Text = "Exhaust Fan (OUT)";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.GhostWhite;
-            this.label10.Font = new System.Drawing.Font("MS Reference Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(3, 45);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(61, 15);
-            this.label10.TabIndex = 22;
-            this.label10.Text = "Actions:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.textBox1.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(115, 90);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(21, 23);
-            this.textBox1.TabIndex = 18;
-            this.textBox1.Text = "1";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.textBox2.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(142, 90);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(21, 23);
-            this.textBox2.TabIndex = 19;
-            this.textBox2.Text = "2";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Form1
             // 
