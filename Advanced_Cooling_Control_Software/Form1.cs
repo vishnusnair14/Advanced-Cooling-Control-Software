@@ -298,7 +298,6 @@ namespace Advanced_Cooling_Control_Software
                 SerialPort1.Close();
 
                 connection_groupBox.ForeColor = Color.Maroon;
-
                 Conn_progressBar.Value = 0;
                 ConnectionMsgBox_label.ForeColor = Color.Maroon;
                 ConnectionMsgBox_label.Text = "Disconnected: " + _COMPORT;
@@ -391,7 +390,7 @@ namespace Advanced_Cooling_Control_Software
             // writes serial data to console log:
             SerialMonitor_textbox.AppendText(_serialData + Environment.NewLine);
 
-            // Temperature data decode section (peltier block, coolant temp):
+            /*  TEMPERATURE DATA DECODE SECTION  (peltier block, coolant temp) */
             // example data: [T12A25B16C44D] or [T45.33A46.17B44.51C34.54D]
             if (_serialData.StartsWith("T"))
             {
