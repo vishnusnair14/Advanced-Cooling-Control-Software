@@ -290,6 +290,9 @@ namespace Advanced_Cooling_Control_Software
             {
                 // set all PWM value to zero:
                 SerialPort1.WriteLine("s0d");
+                
+                // switch off all coolant/exhaust relays:
+
 
                 // Disconnect serial COM:
                 SerialPort1.Close();
@@ -313,7 +316,7 @@ namespace Advanced_Cooling_Control_Software
                 ConsoleLog_textbox.Text = "";
 
                 // comment below line after debugging:
-                Passcode_textBox.Text = "20222023v";
+                Passcode_textBox.Text = "20222023v"; /* SET SOFTWARE PASSWORD HERE */
 
                 ConnectionMsgBox_label.Enabled = true;
                 ComPort_comboBox.Enabled = true;

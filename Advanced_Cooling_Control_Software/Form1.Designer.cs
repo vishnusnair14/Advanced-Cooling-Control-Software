@@ -1562,7 +1562,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1490, 1060);
+            this.ClientSize = new System.Drawing.Size(1377, 1006);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.connection_groupBox);
             this.Controls.Add(this.groupBox13);
