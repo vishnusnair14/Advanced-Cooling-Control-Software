@@ -50,9 +50,9 @@ namespace Advanced_Cooling_Control_Software
             SMT_Z_circularProgressBar.Value = 0;
             SMT_E_circularProgressBar.Value = 0;
             ExhaustFanSpeed_trackBar.Value = 0;
-            CoolingFanSpeed_trackBar.Value = 0;
             ExhaustFanSpeed_numericUpDown.Value = 0;
-            CoolingFanSpeed_numericUpDown.Value = 0;
+            //CoolingFanSpeed_trackBar.Value = 0;
+            // CoolingFanSpeed_numericUpDown.Value = 0;
 
             HDCPOff_button.Enabled = false;
             HDCPOn_button.Enabled = false;
@@ -68,8 +68,8 @@ namespace Advanced_Cooling_Control_Software
 
             ExhaustFanSpeed_numericUpDown.Enabled = false;
             ExhaustFanSpeed_trackBar.Enabled = false;
-            CoolingFanSpeed_numericUpDown.Enabled = false;
-            CoolingFanSpeed_trackBar.Enabled = false;
+            //CoolingFanSpeed_numericUpDown.Enabled = false;
+            //CoolingFanSpeed_trackBar.Enabled = false;
             //slidingLabel.Text = "Advanced Cooling Control Software [vishnus_technologies(C) 2023] ";
         }
 
@@ -219,8 +219,10 @@ namespace Advanced_Cooling_Control_Software
                                 // connects to serial port:
                                 SerialPort1.Open();
                                 // first software reset:
+                                connection_groupBox.ForeColor = Color.DarkGreen;
                                 BeginInvoke(new EventHandler(ArduinoReset_button_Click));
 
+                                ConnectionMsgBox_label.ForeColor = Color.DarkBlue;
                                 Conn_progressBar.Value = 100;
                                 ConnectionMsgBox_label.Text = "Connected: " + _COMPORT + " @" + _BAUDRATE;
                                 ConsoleLog_textbox.Text = "> [MSG: Connected to port @" + _COMPORT + "]" + Environment.NewLine;
@@ -249,14 +251,15 @@ namespace Advanced_Cooling_Control_Software
 
                                 ExhaustFanSpeed_numericUpDown.Enabled = true;
                                 ExhaustFanSpeed_trackBar.Enabled = true;
-                                CoolingFanSpeed_numericUpDown.Enabled = true;
-                                CoolingFanSpeed_trackBar.Enabled = true;
+                                //CoolingFanSpeed_numericUpDown.Enabled = true;
+                                //CoolingFanSpeed_trackBar.Enabled = true;
 
                                 AutoConnect_checkBox.Enabled = false;
                             }
                             catch
                             {
                                 MessageBox.Show("Unable to establish connection with Port: " + _COMPORT, "COM Error");
+                                connection_groupBox.ForeColor = Color.Maroon;
                             }
                         }
                         else
@@ -291,7 +294,10 @@ namespace Advanced_Cooling_Control_Software
                 // Disconnect serial COM:
                 SerialPort1.Close();
 
+                connection_groupBox.ForeColor = Color.Maroon;
+
                 Conn_progressBar.Value = 0;
+                ConnectionMsgBox_label.ForeColor = Color.Maroon;
                 ConnectionMsgBox_label.Text = "Disconnected: " + _COMPORT;
                 SerialMonitor_groupBox.Text = "Serial Monitor";
 
@@ -345,13 +351,13 @@ namespace Advanced_Cooling_Control_Software
 
                 ExhaustFanSpeed_numericUpDown.Enabled = false;
                 ExhaustFanSpeed_trackBar.Enabled = false;
-                CoolingFanSpeed_numericUpDown.Enabled = false;
-                CoolingFanSpeed_trackBar.Enabled = false;
+                //CoolingFanSpeed_numericUpDown.Enabled = false;
+                //CoolingFanSpeed_trackBar.Enabled = false;
 
                 ExhaustFanSpeed_trackBar.Value = 0;
-                CoolingFanSpeed_trackBar.Value = 0;
                 ExhaustFanSpeed_numericUpDown.Value = 0;
-                CoolingFanSpeed_numericUpDown.Value = 0;
+                //CoolingFanSpeed_trackBar.Value = 0;
+                //CoolingFanSpeed_numericUpDown.Value = 0;
 
                 AutoConnect_checkBox.Checked =false;
                 AutoConnect_checkBox.Enabled = true;
@@ -594,10 +600,6 @@ namespace Advanced_Cooling_Control_Software
             BeginInvoke(new EventHandler(FanPwmEncoder));
         }
 
-        private void CoolingFanSpeed_trackBar_Scroll(object sender, EventArgs e)
-        {
-            CoolingFanSpeed_numericUpDown.Value = CoolingFanSpeed_trackBar.Value;
-        }
 
         private void ExhaustFanSpeed_numericUpDown_ValueChanged(object sender, EventArgs e)
         {
@@ -605,10 +607,6 @@ namespace Advanced_Cooling_Control_Software
             BeginInvoke(new EventHandler(FanPwmEncoder));
         }
 
-        private void CoolingFanSpeed_numericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            CoolingFanSpeed_trackBar.Value = (int)CoolingFanSpeed_numericUpDown.Value;
-        }
 
         /* PWM VALUE ENCODER SECTION */
         // delegate to convert percentage to pwm value. Encode pwm value and writes to
@@ -619,7 +617,6 @@ namespace Advanced_Cooling_Control_Software
             if (SerialPort1.IsOpen)
             {
                 SerialPort1.WriteLine("s" + PWM.ToString());
-                ExhFanPWM_progressBar.Value = (int)PWM;
 
             }
             //ConsoleLog_textbox.Text= PWM.ToString();
