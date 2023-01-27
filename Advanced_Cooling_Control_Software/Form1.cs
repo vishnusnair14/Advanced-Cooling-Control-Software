@@ -438,58 +438,99 @@ namespace Advanced_Cooling_Control_Software
                     DeviceRelayState = _serialData.Substring(IndexOfSemicolon + 1, (IndexOfHash - IndexOfSemicolon) - 1);
 
                     /*
-                    Ae : "switched ON"
-                    Be : "already switched ON"
-                    Xf : "switched OFF"
-                    Yf : "already switched OFF"  */
+                     ~FLAGS:
+                     An : "switched ON"
+                     Bn : "already switched ON"
+                     Xf : "switched OFF"
+                     Yf : "already switched OFF"  */
 
-                    if (DeviceRelayState == "Ae")
+                    if (DeviceRelayState == "An")
                     {
+                        // if matches with DRCM #1 ID's
                         if (DeviceRelayID == "0") ConsoleLog_textbox.AppendText("> Undefined device switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "11") ConsoleLog_textbox.AppendText("> MAIN POWER switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "12") ConsoleLog_textbox.AppendText("> PELTIER 1 switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "13") ConsoleLog_textbox.AppendText("> PELTIER 2 switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "14") ConsoleLog_textbox.AppendText("> FLOOD COOLANT FAN switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "15") ConsoleLog_textbox.AppendText("> CS PUMP switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "16") ConsoleLog_textbox.AppendText("> HS PUMP switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "17") ConsoleLog_textbox.AppendText("> CABIN EXHAUST1 switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "18") ConsoleLog_textbox.AppendText("> CABIN EXHAUST2 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "11") ConsoleLog_textbox.AppendText("> PELTIER 1 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "12") ConsoleLog_textbox.AppendText("> PELTIER 2 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "13") ConsoleLog_textbox.AppendText("> PELTIER 3 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "14") ConsoleLog_textbox.AppendText("> PELTIER 4 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "15") ConsoleLog_textbox.AppendText("> AC BLOWER FAN FAN switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "16") ConsoleLog_textbox.AppendText("> RADIATOR FAN switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "17") ConsoleLog_textbox.AppendText("> HS WATER PUMP switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "18") ConsoleLog_textbox.AppendText("> CS WATER PUMP switched ON" + Environment.NewLine);
+                        // if matches with DRCM #2 ID's
+                        else if (DeviceRelayID == "21") ConsoleLog_textbox.AppendText("> CABIN EXHAUST IN #1 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "22") ConsoleLog_textbox.AppendText("> CABIN EXHAUST OUT #1 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "23") ConsoleLog_textbox.AppendText("> CABIN EXHAUST IN #2 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "24") ConsoleLog_textbox.AppendText("> CABIN EXHAUST OUT #2 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "25") ConsoleLog_textbox.AppendText("> CABIN LIGHT switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "26") ConsoleLog_textbox.AppendText("> NOCP#A switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "27") ConsoleLog_textbox.AppendText("> NOCP#B switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "28") ConsoleLog_textbox.AppendText("> NOCP#C switched ON" + Environment.NewLine);
                     }
-                    else if (DeviceRelayState == "Be")
+                    else if (DeviceRelayState == "Bn")
                     {
-                        if (DeviceRelayID == "0") ConsoleLog_textbox.AppendText("> Undefined device already switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "11") ConsoleLog_textbox.AppendText("> MAIN POWER already switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "12") ConsoleLog_textbox.AppendText("> PELTIER 1 already switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "13") ConsoleLog_textbox.AppendText("> PELTIER 2 already switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "14") ConsoleLog_textbox.AppendText("> FLOOD COOLANT FAN already switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "15") ConsoleLog_textbox.AppendText("> CS PUMP already switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "16") ConsoleLog_textbox.AppendText("> HS PUMP already switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "17") ConsoleLog_textbox.AppendText("> CABIN EXHAUST1 already switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "18") ConsoleLog_textbox.AppendText("> CABIN EXHAUST2 already switched ON" + Environment.NewLine);
+                        // if matches with DRCM #1 ID's
+                        if (DeviceRelayID == "0") ConsoleLog_textbox.AppendText("> Undefined device switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "11") ConsoleLog_textbox.AppendText("> PELTIER 1 already switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "12") ConsoleLog_textbox.AppendText("> PELTIER 2 already switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "13") ConsoleLog_textbox.AppendText("> PELTIER 3 already switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "14") ConsoleLog_textbox.AppendText("> PELTIER 4 already switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "15") ConsoleLog_textbox.AppendText("> AC BLOWER FAN FAN already switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "16") ConsoleLog_textbox.AppendText("> RADIATOR FAN already switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "17") ConsoleLog_textbox.AppendText("> HS WATER PUMP already switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "18") ConsoleLog_textbox.AppendText("> CS WATER PUMP already switched ON" + Environment.NewLine);
+                        // if matches with DRCM #2 ID's
+                        else if (DeviceRelayID == "21") ConsoleLog_textbox.AppendText("> CABIN EXHAUST IN #1 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "22") ConsoleLog_textbox.AppendText("> CABIN EXHAUST OUT #1 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "23") ConsoleLog_textbox.AppendText("> CABIN EXHAUST IN #2 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "24") ConsoleLog_textbox.AppendText("> CABIN EXHAUST OUT #2 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "25") ConsoleLog_textbox.AppendText("> CABIN LIGHT switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "26") ConsoleLog_textbox.AppendText("> NOCP#A switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "27") ConsoleLog_textbox.AppendText("> NOCP#B switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "28") ConsoleLog_textbox.AppendText("> NOCP#C switched ON" + Environment.NewLine);
                     }
                     else if (DeviceRelayState == "Xf")
                     {
+                        // if matches with DRCM #1 ID's
                         if (DeviceRelayID == "0") ConsoleLog_textbox.AppendText("> Undefined device switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "11") ConsoleLog_textbox.AppendText("> MAIN POWER switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "12") ConsoleLog_textbox.AppendText("> PELTIER 1 switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "13") ConsoleLog_textbox.AppendText("> PELTIER 2 switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "14") ConsoleLog_textbox.AppendText("> FLOOD COOLANT FAN switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "15") ConsoleLog_textbox.AppendText("> CS PUMP switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "16") ConsoleLog_textbox.AppendText("> HS PUMP switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "17") ConsoleLog_textbox.AppendText("> CABIN EXHAUST1 switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "18") ConsoleLog_textbox.AppendText("> CABIN EXHAUST2 switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "11") ConsoleLog_textbox.AppendText("> PELTIER 1 switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "12") ConsoleLog_textbox.AppendText("> PELTIER 2 switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "13") ConsoleLog_textbox.AppendText("> PELTIER 3 switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "14") ConsoleLog_textbox.AppendText("> PELTIER 4 switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "15") ConsoleLog_textbox.AppendText("> AC BLOWER FAN FAN switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "16") ConsoleLog_textbox.AppendText("> RADIATOR FAN switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "17") ConsoleLog_textbox.AppendText("> HS WATER PUMP switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "18") ConsoleLog_textbox.AppendText("> CS WATER PUMP switched OFF" + Environment.NewLine);
+                        // if matches with DRCM #2 ID's
+                        else if (DeviceRelayID == "21") ConsoleLog_textbox.AppendText("> CABIN EXHAUST IN #1 switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "22") ConsoleLog_textbox.AppendText("> CABIN EXHAUST OUT #1 switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "23") ConsoleLog_textbox.AppendText("> CABIN EXHAUST IN #2 switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "24") ConsoleLog_textbox.AppendText("> CABIN EXHAUST OUT #2 switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "25") ConsoleLog_textbox.AppendText("> CABIN LIGHT switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "26") ConsoleLog_textbox.AppendText("> NOCP#A switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "27") ConsoleLog_textbox.AppendText("> NOCP#B switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "28") ConsoleLog_textbox.AppendText("> NOCP#C switched OFF" + Environment.NewLine);
                     }
                     else if (DeviceRelayState == "Yf")
                     {
-                        if (DeviceRelayID == "0") ConsoleLog_textbox.AppendText("> Undefined device already switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "11") ConsoleLog_textbox.AppendText("> MAIN POWER already switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "12") ConsoleLog_textbox.AppendText("> PELTIER 1 already switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "13") ConsoleLog_textbox.AppendText("> PELTIER 2 already switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "14") ConsoleLog_textbox.AppendText("> FLOOD COOLANT FAN already switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "15") ConsoleLog_textbox.AppendText("> CS PUMP already switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "16") ConsoleLog_textbox.AppendText("> HS PUMP already switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "17") ConsoleLog_textbox.AppendText("> CABIN EXHAUST1 already switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "18") ConsoleLog_textbox.AppendText("> CABIN EXHAUST2 already switched OFF" + Environment.NewLine);
+                        // if matches with DRCM #1 ID's
+                        if (DeviceRelayID == "0") ConsoleLog_textbox.AppendText("> Undefined device switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "11") ConsoleLog_textbox.AppendText("> PELTIER 1 already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "12") ConsoleLog_textbox.AppendText("> PELTIER 2 already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "13") ConsoleLog_textbox.AppendText("> PELTIER 3 already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "14") ConsoleLog_textbox.AppendText("> PELTIER 4 already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "15") ConsoleLog_textbox.AppendText("> AC BLOWER FAN FAN already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "16") ConsoleLog_textbox.AppendText("> RADIATOR FAN already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "17") ConsoleLog_textbox.AppendText("> HS WATER PUMP already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "18") ConsoleLog_textbox.AppendText("> CS WATER PUMP already switched OFF" + Environment.NewLine);
+                        // if matches with DRCM #2 ID's
+                        else if (DeviceRelayID == "21") ConsoleLog_textbox.AppendText("> CABIN EXHAUST IN #1 already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "22") ConsoleLog_textbox.AppendText("> CABIN EXHAUST OUT #1 already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "23") ConsoleLog_textbox.AppendText("> CABIN EXHAUST IN #2 already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "24") ConsoleLog_textbox.AppendText("> CABIN EXHAUST OUT #2 already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "25") ConsoleLog_textbox.AppendText("> CABIN LIGHT already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "26") ConsoleLog_textbox.AppendText("> NOCP#A already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "27") ConsoleLog_textbox.AppendText("> NOCP#B already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "28") ConsoleLog_textbox.AppendText("> NOCP#C already switched OFF" + Environment.NewLine);
                     }
 
                 }
@@ -565,21 +606,37 @@ namespace Advanced_Cooling_Control_Software
             }
             else if (_serialData.Equals("P202"))
             {
-                ConsoleLog_textbox.AppendText("> [Successfully initialised PCF8574 module]" + Environment.NewLine);
-                DIS4.BackColor = Color.DarkBlue;
-                DIS4.ForeColor = Color.White;
+                ConsoleLog_textbox.AppendText("> [Successfully initialised DRCM#1 module]" + Environment.NewLine);
+                DIS4A.BackColor = Color.DarkBlue;
+                DIS4A.ForeColor = Color.White;
             }
             else if (_serialData.Equals("P203"))
             {
-                ConsoleLog_textbox.AppendText("> [PCF8574 I/O pins initiated]" + Environment.NewLine);
-                DIS3.BackColor = Color.DarkBlue;
-                DIS3.ForeColor = Color.White;
+                ConsoleLog_textbox.AppendText("> [DRCM#1 I/O pins initiated]" + Environment.NewLine);
+                DIS3A.BackColor = Color.DarkBlue;
+                DIS3A.ForeColor = Color.White;
             }
             else if (_serialData.Equals("P204"))
             {
-                ConsoleLog_textbox.AppendText("> [PCF8574 device error!]" + Environment.NewLine);
-                DIS4.BackColor = Color.Maroon;
-                DIS4.ForeColor = Color.Yellow;
+                ConsoleLog_textbox.AppendText("> [DRCM#1 device error!]" + Environment.NewLine);
+                DIS4A.BackColor = Color.Maroon;
+                DIS4A.ForeColor = Color.Yellow;
+            }
+            else if (_serialData.Equals("P205"))
+            {
+                ConsoleLog_textbox.AppendText("> [Successfully initialised DRCM#2 module]" + Environment.NewLine);
+            }
+            else if (_serialData.Equals("P206"))
+            {
+                ConsoleLog_textbox.AppendText("> [DRCM#2 I/O pins initiated]" + Environment.NewLine);
+                DIS3B.BackColor = Color.DarkBlue;
+                DIS3B.ForeColor = Color.White;
+            }
+            else if (_serialData.Equals("P207"))
+            {
+                ConsoleLog_textbox.AppendText("> [DRCM#2 device error!]" + Environment.NewLine);
+                DIS4B.BackColor = Color.Maroon;
+                DIS4B.ForeColor = Color.Yellow;
             }
             else if (_serialData.Equals("S101"))
             {
