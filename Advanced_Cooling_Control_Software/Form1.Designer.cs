@@ -48,18 +48,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.HDCPMsgbox_label = new System.Windows.Forms.Label();
-            this.DCS_indicator6 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.DCS_indicator4 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.DCS_indicator2 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.DCS_indicator5 = new System.Windows.Forms.Label();
-            this.DCS_indicator3 = new System.Windows.Forms.Label();
-            this.DCS_indicator1 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.DS3 = new System.Windows.Forms.Label();
+            this.DS6 = new System.Windows.Forms.Label();
+            this.DS2 = new System.Windows.Forms.Label();
+            this.DS7 = new System.Windows.Forms.Label();
+            this.DS5 = new System.Windows.Forms.Label();
+            this.DS1 = new System.Windows.Forms.Label();
             this.SerialMonitor_groupBox = new System.Windows.Forms.GroupBox();
             this.SerialMonitor_textbox = new System.Windows.Forms.TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -84,8 +78,12 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.DS4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -105,7 +103,6 @@
             this.Send_button = new System.Windows.Forms.Button();
             this.Command_textBox = new System.Windows.Forms.TextBox();
             this.ClearConsoleTextBox_label = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.ConsoleClear_button = new System.Windows.Forms.Button();
             this.ConsoleLog_textbox = new System.Windows.Forms.TextBox();
             this.DIS4 = new System.Windows.Forms.TextBox();
@@ -114,9 +111,6 @@
             this.DIS6 = new System.Windows.Forms.TextBox();
             this.DIS1 = new System.Windows.Forms.TextBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.DIS3B = new System.Windows.Forms.TextBox();
             this.DIS3A = new System.Windows.Forms.TextBox();
@@ -162,11 +156,12 @@
             this.groupBox8.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox13.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox12.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.connection_groupBox.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -267,7 +262,7 @@
             // 
             this.Peltier2_checkBox.Appearance = System.Windows.Forms.Appearance.Button;
             this.Peltier2_checkBox.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
-            this.Peltier2_checkBox.Location = new System.Drawing.Point(260, 37);
+            this.Peltier2_checkBox.Location = new System.Drawing.Point(244, 37);
             this.Peltier2_checkBox.Name = "Peltier2_checkBox";
             this.Peltier2_checkBox.Size = new System.Drawing.Size(43, 27);
             this.Peltier2_checkBox.TabIndex = 35;
@@ -280,7 +275,7 @@
             // 
             this.Peltier1_checkBox.Appearance = System.Windows.Forms.Appearance.Button;
             this.Peltier1_checkBox.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
-            this.Peltier1_checkBox.Location = new System.Drawing.Point(98, 38);
+            this.Peltier1_checkBox.Location = new System.Drawing.Point(91, 38);
             this.Peltier1_checkBox.Name = "Peltier1_checkBox";
             this.Peltier1_checkBox.Size = new System.Drawing.Size(43, 27);
             this.Peltier1_checkBox.TabIndex = 34;
@@ -293,7 +288,7 @@
             // 
             this.MainPower_checkBox.Appearance = System.Windows.Forms.Appearance.Button;
             this.MainPower_checkBox.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
-            this.MainPower_checkBox.Location = new System.Drawing.Point(99, 7);
+            this.MainPower_checkBox.Location = new System.Drawing.Point(92, 7);
             this.MainPower_checkBox.Name = "MainPower_checkBox";
             this.MainPower_checkBox.Size = new System.Drawing.Size(43, 27);
             this.MainPower_checkBox.TabIndex = 33;
@@ -306,7 +301,7 @@
             // 
             this.CabinLight_checkBox.Appearance = System.Windows.Forms.Appearance.Button;
             this.CabinLight_checkBox.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
-            this.CabinLight_checkBox.Location = new System.Drawing.Point(260, 6);
+            this.CabinLight_checkBox.Location = new System.Drawing.Point(244, 6);
             this.CabinLight_checkBox.Name = "CabinLight_checkBox";
             this.CabinLight_checkBox.Size = new System.Drawing.Size(43, 27);
             this.CabinLight_checkBox.TabIndex = 32;
@@ -318,7 +313,7 @@
             // PCP_Indicator4
             // 
             this.PCP_Indicator4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PCP_Indicator4.Location = new System.Drawing.Point(309, 37);
+            this.PCP_Indicator4.Location = new System.Drawing.Point(293, 37);
             this.PCP_Indicator4.Name = "PCP_Indicator4";
             this.PCP_Indicator4.Size = new System.Drawing.Size(11, 26);
             this.PCP_Indicator4.TabIndex = 30;
@@ -326,7 +321,7 @@
             // PCP_Indicator3
             // 
             this.PCP_Indicator3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PCP_Indicator3.Location = new System.Drawing.Point(147, 39);
+            this.PCP_Indicator3.Location = new System.Drawing.Point(140, 39);
             this.PCP_Indicator3.Name = "PCP_Indicator3";
             this.PCP_Indicator3.Size = new System.Drawing.Size(11, 26);
             this.PCP_Indicator3.TabIndex = 29;
@@ -334,7 +329,7 @@
             // PCP_Indicator2
             // 
             this.PCP_Indicator2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PCP_Indicator2.Location = new System.Drawing.Point(309, 6);
+            this.PCP_Indicator2.Location = new System.Drawing.Point(293, 6);
             this.PCP_Indicator2.Name = "PCP_Indicator2";
             this.PCP_Indicator2.Size = new System.Drawing.Size(11, 26);
             this.PCP_Indicator2.TabIndex = 28;
@@ -342,7 +337,7 @@
             // PCP_Indicator1
             // 
             this.PCP_Indicator1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PCP_Indicator1.Location = new System.Drawing.Point(147, 7);
+            this.PCP_Indicator1.Location = new System.Drawing.Point(140, 7);
             this.PCP_Indicator1.Name = "PCP_Indicator1";
             this.PCP_Indicator1.Size = new System.Drawing.Size(11, 26);
             this.PCP_Indicator1.TabIndex = 27;
@@ -354,7 +349,7 @@
             this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label8.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(196, 46);
+            this.label8.Location = new System.Drawing.Point(180, 46);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(60, 17);
             this.label8.TabIndex = 13;
@@ -367,7 +362,7 @@
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label7.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(35, 47);
+            this.label7.Location = new System.Drawing.Point(28, 47);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(60, 17);
             this.label7.TabIndex = 12;
@@ -380,7 +375,7 @@
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label6.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(178, 15);
+            this.label6.Location = new System.Drawing.Point(162, 15);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 17);
             this.label6.TabIndex = 11;
@@ -393,7 +388,7 @@
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label5.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(14, 15);
+            this.label5.Location = new System.Drawing.Point(7, 15);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 17);
             this.label5.TabIndex = 10;
@@ -407,148 +402,93 @@
             this.HDCPMsgbox_label.ForeColor = System.Drawing.Color.DarkBlue;
             this.HDCPMsgbox_label.Location = new System.Drawing.Point(121, 39);
             this.HDCPMsgbox_label.Name = "HDCPMsgbox_label";
-            this.HDCPMsgbox_label.Size = new System.Drawing.Size(191, 27);
+            this.HDCPMsgbox_label.Size = new System.Drawing.Size(183, 27);
             this.HDCPMsgbox_label.TabIndex = 10;
             this.HDCPMsgbox_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // DCS_indicator6
+            // DS3
             // 
-            this.DCS_indicator6.BackColor = System.Drawing.Color.Maroon;
-            this.DCS_indicator6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.DCS_indicator6.Location = new System.Drawing.Point(156, 126);
-            this.DCS_indicator6.Name = "DCS_indicator6";
-            this.DCS_indicator6.Size = new System.Drawing.Size(17, 21);
-            this.DCS_indicator6.TabIndex = 34;
+            this.DS3.BackColor = System.Drawing.Color.Brown;
+            this.DS3.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.DS3.ForeColor = System.Drawing.Color.Snow;
+            this.DS3.Location = new System.Drawing.Point(3, 40);
+            this.DS3.Name = "DS3";
+            this.DS3.Size = new System.Drawing.Size(103, 15);
+            this.DS3.TabIndex = 0;
+            this.DS3.Text = "Exhaust 2 IN";
+            this.DS3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label23
+            // DS6
             // 
-            this.label23.BackColor = System.Drawing.Color.Gainsboro;
-            this.label23.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label23.ForeColor = System.Drawing.Color.Black;
-            this.label23.Location = new System.Drawing.Point(4, 130);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(141, 15);
-            this.label23.TabIndex = 33;
-            this.label23.Text = "Exhaust Fans";
-            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DS6.BackColor = System.Drawing.Color.Brown;
+            this.DS6.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.DS6.ForeColor = System.Drawing.Color.Snow;
+            this.DS6.Location = new System.Drawing.Point(3, 100);
+            this.DS6.Name = "DS6";
+            this.DS6.Size = new System.Drawing.Size(103, 15);
+            this.DS6.TabIndex = 31;
+            this.DS6.Text = "Radiator Pump";
+            this.DS6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // DCS_indicator4
+            // DS2
             // 
-            this.DCS_indicator4.BackColor = System.Drawing.Color.Maroon;
-            this.DCS_indicator4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.DCS_indicator4.Location = new System.Drawing.Point(156, 77);
-            this.DCS_indicator4.Name = "DCS_indicator4";
-            this.DCS_indicator4.Size = new System.Drawing.Size(17, 21);
-            this.DCS_indicator4.TabIndex = 32;
+            this.DS2.BackColor = System.Drawing.Color.Brown;
+            this.DS2.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.DS2.ForeColor = System.Drawing.Color.Snow;
+            this.DS2.Location = new System.Drawing.Point(3, 20);
+            this.DS2.Name = "DS2";
+            this.DS2.Size = new System.Drawing.Size(103, 15);
+            this.DS2.TabIndex = 0;
+            this.DS2.Text = "Exhaust 1 OUT";
+            this.DS2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label21
+            // DS7
             // 
-            this.label21.BackColor = System.Drawing.Color.Gainsboro;
-            this.label21.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label21.ForeColor = System.Drawing.Color.Black;
-            this.label21.Location = new System.Drawing.Point(4, 81);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(141, 15);
-            this.label21.TabIndex = 31;
-            this.label21.Text = "Radiator Pump";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DS7.BackColor = System.Drawing.Color.Brown;
+            this.DS7.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.DS7.ForeColor = System.Drawing.Color.Snow;
+            this.DS7.Location = new System.Drawing.Point(3, 120);
+            this.DS7.Name = "DS7";
+            this.DS7.Size = new System.Drawing.Size(103, 15);
+            this.DS7.TabIndex = 2;
+            this.DS7.Text = "Radiator Fans";
+            this.DS7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // DCS_indicator2
+            // DS5
             // 
-            this.DCS_indicator2.BackColor = System.Drawing.Color.Maroon;
-            this.DCS_indicator2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.DCS_indicator2.ForeColor = System.Drawing.Color.Goldenrod;
-            this.DCS_indicator2.Location = new System.Drawing.Point(156, 28);
-            this.DCS_indicator2.Name = "DCS_indicator2";
-            this.DCS_indicator2.Size = new System.Drawing.Size(17, 21);
-            this.DCS_indicator2.TabIndex = 30;
+            this.DS5.BackColor = System.Drawing.Color.Brown;
+            this.DS5.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.DS5.ForeColor = System.Drawing.Color.Snow;
+            this.DS5.Location = new System.Drawing.Point(3, 80);
+            this.DS5.Name = "DS5";
+            this.DS5.Size = new System.Drawing.Size(103, 15);
+            this.DS5.TabIndex = 1;
+            this.DS5.Text = "Coolant Pump";
+            this.DS5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label19
+            // DS1
             // 
-            this.label19.BackColor = System.Drawing.Color.Gainsboro;
-            this.label19.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label19.ForeColor = System.Drawing.Color.Black;
-            this.label19.Location = new System.Drawing.Point(4, 32);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(141, 15);
-            this.label19.TabIndex = 29;
-            this.label19.Text = "Cabin Exhaust1 OUT";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // DCS_indicator5
-            // 
-            this.DCS_indicator5.BackColor = System.Drawing.Color.Maroon;
-            this.DCS_indicator5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.DCS_indicator5.Location = new System.Drawing.Point(156, 102);
-            this.DCS_indicator5.Name = "DCS_indicator5";
-            this.DCS_indicator5.Size = new System.Drawing.Size(17, 21);
-            this.DCS_indicator5.TabIndex = 28;
-            // 
-            // DCS_indicator3
-            // 
-            this.DCS_indicator3.BackColor = System.Drawing.Color.Maroon;
-            this.DCS_indicator3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.DCS_indicator3.Location = new System.Drawing.Point(156, 52);
-            this.DCS_indicator3.Name = "DCS_indicator3";
-            this.DCS_indicator3.Size = new System.Drawing.Size(17, 21);
-            this.DCS_indicator3.TabIndex = 27;
-            // 
-            // DCS_indicator1
-            // 
-            this.DCS_indicator1.BackColor = System.Drawing.Color.Maroon;
-            this.DCS_indicator1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.DCS_indicator1.Location = new System.Drawing.Point(156, 4);
-            this.DCS_indicator1.Name = "DCS_indicator1";
-            this.DCS_indicator1.Size = new System.Drawing.Size(17, 21);
-            this.DCS_indicator1.TabIndex = 26;
-            // 
-            // label15
-            // 
-            this.label15.BackColor = System.Drawing.Color.Gainsboro;
-            this.label15.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(4, 106);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(141, 15);
-            this.label15.TabIndex = 2;
-            this.label15.Text = "Radiator Fans";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label14
-            // 
-            this.label14.BackColor = System.Drawing.Color.Gainsboro;
-            this.label14.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(4, 56);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(141, 15);
-            this.label14.TabIndex = 1;
-            this.label14.Text = "Coolant Pump";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label13
-            // 
-            this.label13.BackColor = System.Drawing.Color.Gainsboro;
-            this.label13.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(4, 8);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(141, 15);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "Cabin Exhaust1 IN";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DS1.BackColor = System.Drawing.Color.Brown;
+            this.DS1.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.DS1.ForeColor = System.Drawing.Color.Snow;
+            this.DS1.Location = new System.Drawing.Point(3, 0);
+            this.DS1.Name = "DS1";
+            this.DS1.Size = new System.Drawing.Size(103, 15);
+            this.DS1.TabIndex = 0;
+            this.DS1.Text = "Exhaust 1 IN";
+            this.DS1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // SerialMonitor_groupBox
             // 
             this.SerialMonitor_groupBox.Controls.Add(this.SerialMonitor_textbox);
-            this.SerialMonitor_groupBox.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
-            this.SerialMonitor_groupBox.ForeColor = System.Drawing.Color.DarkBlue;
+            this.SerialMonitor_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
+            this.SerialMonitor_groupBox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.SerialMonitor_groupBox.Location = new System.Drawing.Point(14, 291);
             this.SerialMonitor_groupBox.Name = "SerialMonitor_groupBox";
-            this.SerialMonitor_groupBox.Size = new System.Drawing.Size(407, 158);
+            this.SerialMonitor_groupBox.Size = new System.Drawing.Size(382, 158);
             this.SerialMonitor_groupBox.TabIndex = 2;
             this.SerialMonitor_groupBox.TabStop = false;
-            this.SerialMonitor_groupBox.Text = "Serial Console";
+            this.SerialMonitor_groupBox.Text = "Data Monitor";
             // 
             // SerialMonitor_textbox
             // 
@@ -559,7 +499,7 @@
             this.SerialMonitor_textbox.Name = "SerialMonitor_textbox";
             this.SerialMonitor_textbox.ReadOnly = true;
             this.SerialMonitor_textbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.SerialMonitor_textbox.Size = new System.Drawing.Size(391, 119);
+            this.SerialMonitor_textbox.Size = new System.Drawing.Size(369, 119);
             this.SerialMonitor_textbox.TabIndex = 0;
             // 
             // groupBox7
@@ -567,14 +507,14 @@
             this.groupBox7.Controls.Add(this.groupBox9);
             this.groupBox7.Controls.Add(this.groupBox8);
             this.groupBox7.Controls.Add(this.groupBox10);
-            this.groupBox7.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
+            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
             this.groupBox7.ForeColor = System.Drawing.Color.DarkRed;
             this.groupBox7.Location = new System.Drawing.Point(441, 291);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(914, 447);
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Temperature Monitor";
+            this.groupBox7.Text = "Temperature Console";
             // 
             // groupBox9
             // 
@@ -988,19 +928,32 @@
             // 
             // groupBox13
             // 
+            this.groupBox13.Controls.Add(this.label20);
             this.groupBox13.Controls.Add(this.label16);
             this.groupBox13.Controls.Add(this.label22);
+            this.groupBox13.Controls.Add(this.panel2);
             this.groupBox13.Controls.Add(this.panel4);
             this.groupBox13.Controls.Add(this.label11);
             this.groupBox13.Controls.Add(this.panel3);
-            this.groupBox13.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
+            this.groupBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
             this.groupBox13.ForeColor = System.Drawing.Color.DarkBlue;
-            this.groupBox13.Location = new System.Drawing.Point(677, 14);
+            this.groupBox13.Location = new System.Drawing.Point(492, 14);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(355, 260);
+            this.groupBox13.Size = new System.Drawing.Size(462, 260);
             this.groupBox13.TabIndex = 38;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Hardware Device Control";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label20.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label20.Location = new System.Drawing.Point(338, 23);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(95, 17);
+            this.label20.TabIndex = 62;
+            this.label20.Text = "Device Status";
             // 
             // label16
             // 
@@ -1009,9 +962,9 @@
             this.label16.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label16.Location = new System.Drawing.Point(17, 146);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(100, 17);
+            this.label16.Size = new System.Drawing.Size(143, 17);
             this.label16.TabIndex = 64;
-            this.label16.Text = "Device Control";
+            this.label16.Text = "Device Power Control";
             // 
             // label22
             // 
@@ -1020,9 +973,57 @@
             this.label22.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label22.Location = new System.Drawing.Point(17, 22);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(96, 17);
+            this.label22.Size = new System.Drawing.Size(130, 17);
             this.label22.TabIndex = 63;
-            this.label22.Text = "Power Control";
+            this.label22.Text = "Main Power Control";
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.tableLayoutPanel1);
+            this.panel2.Location = new System.Drawing.Point(329, 38);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(125, 213);
+            this.panel2.TabIndex = 58;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.DS1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.DS2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.DS3, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.DS4, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.DS5, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.DS6, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.DS7, 0, 6);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 6);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 10;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(109, 199);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // DS4
+            // 
+            this.DS4.BackColor = System.Drawing.Color.Brown;
+            this.DS4.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.DS4.ForeColor = System.Drawing.Color.Snow;
+            this.DS4.Location = new System.Drawing.Point(3, 60);
+            this.DS4.Name = "DS4";
+            this.DS4.Size = new System.Drawing.Size(103, 15);
+            this.DS4.TabIndex = 0;
+            this.DS4.Text = "Exhaust 2 OUT";
+            this.DS4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel4
             // 
@@ -1035,7 +1036,7 @@
             this.panel4.Controls.Add(this.HDCPMsgbox_label);
             this.panel4.Location = new System.Drawing.Point(9, 161);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(332, 90);
+            this.panel4.Size = new System.Drawing.Size(314, 90);
             this.panel4.TabIndex = 59;
             // 
             // label9
@@ -1096,15 +1097,16 @@
             this.HDCPDevicelist_Combobox.FormattingEnabled = true;
             this.HDCPDevicelist_Combobox.Items.AddRange(new object[] {
             "All devices",
-            "Cabin Exhaust 1",
-            "Cabin Exhaust 2",
+            "Exhaust 1 IN",
+            "Exhaust 1 OUT",
+            "Exhaust 2 IN",
+            "Exhaust 2 OUT",
             "Coolant Pump",
             "Radiator Pump",
-            "Radiator Fans",
-            "Exhaust Fans"});
+            "Radiator Fans"});
             this.HDCPDevicelist_Combobox.Location = new System.Drawing.Point(160, 9);
             this.HDCPDevicelist_Combobox.Name = "HDCPDevicelist_Combobox";
-            this.HDCPDevicelist_Combobox.Size = new System.Drawing.Size(152, 23);
+            this.HDCPDevicelist_Combobox.Size = new System.Drawing.Size(144, 23);
             this.HDCPDevicelist_Combobox.TabIndex = 10;
             this.HDCPDevicelist_Combobox.SelectedIndexChanged += new System.EventHandler(this.Hdcp_Devicelists_Combobox_SelectedIndexChanged);
             // 
@@ -1113,7 +1115,7 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(39, 330);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(0, 16);
+            this.label11.Size = new System.Drawing.Size(0, 15);
             this.label11.TabIndex = 39;
             // 
             // panel3
@@ -1139,14 +1141,14 @@
             this.panel3.Controls.Add(this.label8);
             this.panel3.Location = new System.Drawing.Point(9, 37);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(332, 105);
+            this.panel3.Size = new System.Drawing.Size(314, 105);
             this.panel3.TabIndex = 57;
             // 
             // Peltier4_checkBox
             // 
             this.Peltier4_checkBox.Appearance = System.Windows.Forms.Appearance.Button;
             this.Peltier4_checkBox.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
-            this.Peltier4_checkBox.Location = new System.Drawing.Point(260, 69);
+            this.Peltier4_checkBox.Location = new System.Drawing.Point(244, 69);
             this.Peltier4_checkBox.Name = "Peltier4_checkBox";
             this.Peltier4_checkBox.Size = new System.Drawing.Size(43, 27);
             this.Peltier4_checkBox.TabIndex = 41;
@@ -1158,7 +1160,7 @@
             // PCP_Indicator5
             // 
             this.PCP_Indicator5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PCP_Indicator5.Location = new System.Drawing.Point(147, 71);
+            this.PCP_Indicator5.Location = new System.Drawing.Point(140, 71);
             this.PCP_Indicator5.Name = "PCP_Indicator5";
             this.PCP_Indicator5.Size = new System.Drawing.Size(11, 26);
             this.PCP_Indicator5.TabIndex = 38;
@@ -1166,7 +1168,7 @@
             // PCP_Indicator6
             // 
             this.PCP_Indicator6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PCP_Indicator6.Location = new System.Drawing.Point(309, 69);
+            this.PCP_Indicator6.Location = new System.Drawing.Point(293, 69);
             this.PCP_Indicator6.Name = "PCP_Indicator6";
             this.PCP_Indicator6.Size = new System.Drawing.Size(11, 26);
             this.PCP_Indicator6.TabIndex = 39;
@@ -1175,7 +1177,7 @@
             // 
             this.Peltier3_checkBox.Appearance = System.Windows.Forms.Appearance.Button;
             this.Peltier3_checkBox.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
-            this.Peltier3_checkBox.Location = new System.Drawing.Point(98, 70);
+            this.Peltier3_checkBox.Location = new System.Drawing.Point(91, 70);
             this.Peltier3_checkBox.Name = "Peltier3_checkBox";
             this.Peltier3_checkBox.Size = new System.Drawing.Size(43, 27);
             this.Peltier3_checkBox.TabIndex = 40;
@@ -1191,7 +1193,7 @@
             this.label32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label32.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.label32.ForeColor = System.Drawing.Color.Black;
-            this.label32.Location = new System.Drawing.Point(35, 79);
+            this.label32.Location = new System.Drawing.Point(28, 79);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(60, 17);
             this.label32.TabIndex = 36;
@@ -1204,7 +1206,7 @@
             this.label33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label33.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.label33.ForeColor = System.Drawing.Color.Black;
-            this.label33.Location = new System.Drawing.Point(196, 78);
+            this.label33.Location = new System.Drawing.Point(180, 78);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(60, 17);
             this.label33.TabIndex = 37;
@@ -1216,17 +1218,16 @@
             this.groupBox11.Controls.Add(this.Send_button);
             this.groupBox11.Controls.Add(this.Command_textBox);
             this.groupBox11.Controls.Add(this.ClearConsoleTextBox_label);
-            this.groupBox11.Controls.Add(this.button1);
             this.groupBox11.Controls.Add(this.ConsoleClear_button);
             this.groupBox11.Controls.Add(this.ConsoleLog_textbox);
-            this.groupBox11.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
-            this.groupBox11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
+            this.groupBox11.ForeColor = System.Drawing.Color.DarkBlue;
             this.groupBox11.Location = new System.Drawing.Point(14, 467);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(407, 512);
+            this.groupBox11.Size = new System.Drawing.Size(382, 512);
             this.groupBox11.TabIndex = 6;
             this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Log Monitor";
+            this.groupBox11.Text = "Serial Console";
             // 
             // label38
             // 
@@ -1244,7 +1245,8 @@
             // Send_button
             // 
             this.Send_button.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Send_button.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Send_button.Enabled = false;
+            this.Send_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Send_button.ForeColor = System.Drawing.Color.DarkBlue;
             this.Send_button.Location = new System.Drawing.Point(6, 477);
             this.Send_button.Name = "Send_button";
@@ -1256,41 +1258,29 @@
             // 
             // Command_textBox
             // 
-            this.Command_textBox.Location = new System.Drawing.Point(97, 450);
+            this.Command_textBox.Enabled = false;
+            this.Command_textBox.Location = new System.Drawing.Point(98, 450);
             this.Command_textBox.Name = "Command_textBox";
-            this.Command_textBox.Size = new System.Drawing.Size(300, 21);
+            this.Command_textBox.Size = new System.Drawing.Size(279, 20);
             this.Command_textBox.TabIndex = 3;
             // 
             // ClearConsoleTextBox_label
             // 
             this.ClearConsoleTextBox_label.BackColor = System.Drawing.Color.DarkGray;
-            this.ClearConsoleTextBox_label.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.25F);
-            this.ClearConsoleTextBox_label.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.ClearConsoleTextBox_label.Location = new System.Drawing.Point(94, 456);
+            this.ClearConsoleTextBox_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClearConsoleTextBox_label.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.ClearConsoleTextBox_label.Location = new System.Drawing.Point(90, 480);
             this.ClearConsoleTextBox_label.Name = "ClearConsoleTextBox_label";
-            this.ClearConsoleTextBox_label.Size = new System.Drawing.Size(304, 21);
+            this.ClearConsoleTextBox_label.Size = new System.Drawing.Size(200, 21);
             this.ClearConsoleTextBox_label.TabIndex = 2;
             this.ClearConsoleTextBox_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.DarkBlue;
-            this.button1.Location = new System.Drawing.Point(317, 477);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 26);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Clear Log";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.ConsoleClear_button_Click);
             // 
             // ConsoleClear_button
             // 
             this.ConsoleClear_button.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ConsoleClear_button.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConsoleClear_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConsoleClear_button.ForeColor = System.Drawing.Color.DarkBlue;
-            this.ConsoleClear_button.Location = new System.Drawing.Point(316, 476);
+            this.ConsoleClear_button.Location = new System.Drawing.Point(296, 477);
             this.ConsoleClear_button.Name = "ConsoleClear_button";
             this.ConsoleClear_button.Size = new System.Drawing.Size(80, 26);
             this.ConsoleClear_button.TabIndex = 1;
@@ -1301,20 +1291,21 @@
             // ConsoleLog_textbox
             // 
             this.ConsoleLog_textbox.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ConsoleLog_textbox.Enabled = false;
             this.ConsoleLog_textbox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConsoleLog_textbox.Location = new System.Drawing.Point(6, 22);
             this.ConsoleLog_textbox.Multiline = true;
             this.ConsoleLog_textbox.Name = "ConsoleLog_textbox";
             this.ConsoleLog_textbox.ReadOnly = true;
             this.ConsoleLog_textbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.ConsoleLog_textbox.Size = new System.Drawing.Size(391, 422);
+            this.ConsoleLog_textbox.Size = new System.Drawing.Size(370, 422);
             this.ConsoleLog_textbox.TabIndex = 0;
             // 
             // DIS4
             // 
-            this.DIS4.BackColor = System.Drawing.Color.Gainsboro;
+            this.DIS4.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.DIS4.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.DIS4.ForeColor = System.Drawing.Color.Navy;
+            this.DIS4.ForeColor = System.Drawing.Color.White;
             this.DIS4.Location = new System.Drawing.Point(3, 90);
             this.DIS4.Name = "DIS4";
             this.DIS4.ReadOnly = true;
@@ -1338,9 +1329,9 @@
             // 
             // DIS3
             // 
-            this.DIS3.BackColor = System.Drawing.Color.Gainsboro;
+            this.DIS3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.DIS3.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DIS3.ForeColor = System.Drawing.Color.Navy;
+            this.DIS3.ForeColor = System.Drawing.Color.White;
             this.DIS3.Location = new System.Drawing.Point(3, 61);
             this.DIS3.Name = "DIS3";
             this.DIS3.ReadOnly = true;
@@ -1378,60 +1369,15 @@
             // groupBox12
             // 
             this.groupBox12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.groupBox12.Controls.Add(this.label20);
-            this.groupBox12.Controls.Add(this.label18);
-            this.groupBox12.Controls.Add(this.panel2);
             this.groupBox12.Controls.Add(this.panel1);
-            this.groupBox12.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
+            this.groupBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
             this.groupBox12.ForeColor = System.Drawing.Color.DarkBlue;
             this.groupBox12.Location = new System.Drawing.Point(278, 14);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(382, 260);
+            this.groupBox12.Size = new System.Drawing.Size(196, 260);
             this.groupBox12.TabIndex = 7;
             this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Status Panel";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label20.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label20.Location = new System.Drawing.Point(200, 23);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(95, 17);
-            this.label20.TabIndex = 62;
-            this.label20.Text = "Device Status";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label18.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label18.Location = new System.Drawing.Point(18, 23);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(128, 17);
-            this.label18.TabIndex = 61;
-            this.label18.Text = "Initilalization Status";
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.DCS_indicator6);
-            this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.label23);
-            this.panel2.Controls.Add(this.label14);
-            this.panel2.Controls.Add(this.label15);
-            this.panel2.Controls.Add(this.DCS_indicator4);
-            this.panel2.Controls.Add(this.label21);
-            this.panel2.Controls.Add(this.DCS_indicator1);
-            this.panel2.Controls.Add(this.DCS_indicator2);
-            this.panel2.Controls.Add(this.label19);
-            this.panel2.Controls.Add(this.DCS_indicator3);
-            this.panel2.Controls.Add(this.DCS_indicator5);
-            this.panel2.Location = new System.Drawing.Point(191, 38);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(182, 213);
-            this.panel2.TabIndex = 58;
+            this.groupBox12.Text = "Initialization Status";
             // 
             // panel1
             // 
@@ -1448,7 +1394,7 @@
             this.panel1.Controls.Add(this.DIS2);
             this.panel1.Controls.Add(this.DIS3);
             this.panel1.Controls.Add(this.DIS5);
-            this.panel1.Location = new System.Drawing.Point(9, 38);
+            this.panel1.Location = new System.Drawing.Point(9, 22);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(176, 213);
             this.panel1.TabIndex = 57;
@@ -1537,14 +1483,14 @@
             // BaudRate_comboBox
             // 
             this.BaudRate_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.BaudRate_comboBox.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.5F);
+            this.BaudRate_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
             this.BaudRate_comboBox.FormattingEnabled = true;
             this.BaudRate_comboBox.Items.AddRange(new object[] {
             "9600",
             "115200"});
             this.BaudRate_comboBox.Location = new System.Drawing.Point(94, 58);
             this.BaudRate_comboBox.Name = "BaudRate_comboBox";
-            this.BaudRate_comboBox.Size = new System.Drawing.Size(147, 23);
+            this.BaudRate_comboBox.Size = new System.Drawing.Size(147, 21);
             this.BaudRate_comboBox.TabIndex = 3;
             // 
             // ComPort_comboBox
@@ -1552,11 +1498,11 @@
             this.ComPort_comboBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.ComPort_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComPort_comboBox.DropDownWidth = 150;
-            this.ComPort_comboBox.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.5F);
+            this.ComPort_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
             this.ComPort_comboBox.FormattingEnabled = true;
             this.ComPort_comboBox.Location = new System.Drawing.Point(93, 29);
             this.ComPort_comboBox.Name = "ComPort_comboBox";
-            this.ComPort_comboBox.Size = new System.Drawing.Size(147, 23);
+            this.ComPort_comboBox.Size = new System.Drawing.Size(147, 21);
             this.ComPort_comboBox.TabIndex = 2;
             this.ComPort_comboBox.SelectedIndexChanged += new System.EventHandler(this.ComPort_comboBox_SelectedIndexChanged);
             // 
@@ -1572,7 +1518,7 @@
             this.connection_groupBox.Controls.Add(this.BaudRate_comboBox);
             this.connection_groupBox.Controls.Add(this.ConnectionMsgBox_label);
             this.connection_groupBox.Controls.Add(this.Conn_progressBar);
-            this.connection_groupBox.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
+            this.connection_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
             this.connection_groupBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.connection_groupBox.Location = new System.Drawing.Point(14, 14);
             this.connection_groupBox.Name = "connection_groupBox";
@@ -1636,11 +1582,11 @@
             // AutoConnect_checkBox
             // 
             this.AutoConnect_checkBox.AutoSize = true;
-            this.AutoConnect_checkBox.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F);
+            this.AutoConnect_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.AutoConnect_checkBox.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.AutoConnect_checkBox.Location = new System.Drawing.Point(5, 63);
             this.AutoConnect_checkBox.Name = "AutoConnect_checkBox";
-            this.AutoConnect_checkBox.Size = new System.Drawing.Size(217, 19);
+            this.AutoConnect_checkBox.Size = new System.Drawing.Size(188, 17);
             this.AutoConnect_checkBox.TabIndex = 57;
             this.AutoConnect_checkBox.Text = "Auto connect to UNO after search";
             this.AutoConnect_checkBox.UseVisualStyleBackColor = true;
@@ -1651,7 +1597,7 @@
             this.Passcode_textBox.Location = new System.Drawing.Point(94, 87);
             this.Passcode_textBox.Name = "Passcode_textBox";
             this.Passcode_textBox.PasswordChar = '*';
-            this.Passcode_textBox.Size = new System.Drawing.Size(147, 21);
+            this.Passcode_textBox.Size = new System.Drawing.Size(147, 20);
             this.Passcode_textBox.TabIndex = 55;
             this.Passcode_textBox.Text = "20222023v";
             // 
@@ -1662,9 +1608,9 @@
             this.groupBox2.Controls.Add(this.panel8);
             this.groupBox2.Controls.Add(this.panel6);
             this.groupBox2.Controls.Add(this.panel7);
-            this.groupBox2.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
             this.groupBox2.ForeColor = System.Drawing.Color.DarkBlue;
-            this.groupBox2.Location = new System.Drawing.Point(1048, 14);
+            this.groupBox2.Location = new System.Drawing.Point(971, 14);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(390, 260);
             this.groupBox2.TabIndex = 57;
@@ -1937,11 +1883,9 @@
             this.AcceptButton = this.Send_button;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
-            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1448, 1006);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.connection_groupBox);
             this.Controls.Add(this.groupBox13);
@@ -1953,8 +1897,11 @@
             this.ForeColor = System.Drawing.Color.DarkBlue;
             this.KeyPreview = true;
             this.Name = "Form1";
+            this.ShowInTaskbar = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Advanced Cooling Control Software";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -1969,14 +1916,14 @@
             this.groupBox10.PerformLayout();
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             this.groupBox12.ResumeLayout(false);
-            this.groupBox12.PerformLayout();
-            this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.connection_groupBox.ResumeLayout(false);
@@ -2020,18 +1967,12 @@
         private System.Windows.Forms.GroupBox SerialMonitor_groupBox;
         private System.Windows.Forms.TextBox SerialMonitor_textbox;
         private System.Windows.Forms.Label HDCPMsgbox_label;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label DCS_indicator1;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label DCS_indicator3;
-        private System.Windows.Forms.Label DCS_indicator5;
-        private System.Windows.Forms.Label DCS_indicator2;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label DCS_indicator4;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label DCS_indicator6;
+        private System.Windows.Forms.Label DS5;
+        private System.Windows.Forms.Label DS1;
+        private System.Windows.Forms.Label DS7;
+        private System.Windows.Forms.Label DS2;
+        private System.Windows.Forms.Label DS6;
+        private System.Windows.Forms.Label DS3;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.GroupBox groupBox8;
         private CircularProgressBar.CircularProgressBar PBT1_circularProgressBar;
@@ -2090,7 +2031,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label22;
@@ -2135,7 +2075,8 @@
         private System.Windows.Forms.NumericUpDown C1_ExhaustIN_numericUpDown;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label DS4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
 
