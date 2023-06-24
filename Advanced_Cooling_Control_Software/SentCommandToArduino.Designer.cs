@@ -141,7 +141,7 @@
             // Decode_groupBox
             // 
             this.Decode_groupBox.Controls.Add(this.decodeMsg_textBox);
-            this.Decode_groupBox.Location = new System.Drawing.Point(12, 167);
+            this.Decode_groupBox.Location = new System.Drawing.Point(12, 166);
             this.Decode_groupBox.Name = "Decode_groupBox";
             this.Decode_groupBox.Size = new System.Drawing.Size(358, 104);
             this.Decode_groupBox.TabIndex = 5;

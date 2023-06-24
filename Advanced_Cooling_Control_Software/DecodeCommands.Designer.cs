@@ -117,6 +117,9 @@
             // CommandType_comboBox
             // 
             this.CommandType_comboBox.FormattingEnabled = true;
+            this.CommandType_comboBox.Items.AddRange(new object[] {
+            "Software Serial Commands",
+            "Arduino Encode Commands"});
             this.CommandType_comboBox.Location = new System.Drawing.Point(96, 20);
             this.CommandType_comboBox.Name = "CommandType_comboBox";
             this.CommandType_comboBox.Size = new System.Drawing.Size(225, 21);
@@ -134,6 +137,7 @@
             // 
             // DecodeMsg_textBox
             // 
+            this.DecodeMsg_textBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DecodeMsg_textBox.Location = new System.Drawing.Point(6, 19);
             this.DecodeMsg_textBox.Multiline = true;
             this.DecodeMsg_textBox.Name = "DecodeMsg_textBox";
@@ -156,7 +160,7 @@
             // 
             this.CloseCommand_MaplinkLabel.AutoSize = true;
             this.CloseCommand_MaplinkLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.AlwaysUnderline;
-            this.CloseCommand_MaplinkLabel.Location = new System.Drawing.Point(247, 262);
+            this.CloseCommand_MaplinkLabel.Location = new System.Drawing.Point(247, 261);
             this.CloseCommand_MaplinkLabel.Name = "CloseCommand_MaplinkLabel";
             this.CloseCommand_MaplinkLabel.Size = new System.Drawing.Size(105, 13);
             this.CloseCommand_MaplinkLabel.TabIndex = 1;
