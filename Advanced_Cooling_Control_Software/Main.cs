@@ -1,16 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
 using System.Management;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Color = System.Drawing.Color;
 //using System.Windows.Input;
 
 namespace Advanced_Cooling_Control_Software
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
+
         string _serialData;
         sbyte IndexOfA, IndexOfB, IndexOfC, IndexOfD;
         sbyte IndexOfSemicolon, IndexOfHash;
@@ -18,7 +21,7 @@ namespace Advanced_Cooling_Control_Software
 
         float PWM;
         // set your application access password here:
-        string AppAccessPasscode = "20222023v";
+        readonly string AppAccessPasscode = "20222023v";
         string TEMP1, TEMP2, TEMP3, TEMP4;
         string DeviceRelayID, DeviceRelayState;
         string DTEMP_X, DTEMP_Y, DTEMP_Z, DTEMP_E;  //for dallas temperatures (X,Y,Z,E)
@@ -27,9 +30,12 @@ namespace Advanced_Cooling_Control_Software
         int I2C_INIT_FLAG = 0;
         int I2C_CONN_FLAG = 0;
 
-        public Form1()
+        public Main()
         {
             InitializeComponent();
+            var MCODES_DICT1 = new Dictionary<string, string>();
+            //LOAD_MCODE ld = new LOAD_MCODE();
+            //ld.InitDictfromFile();
             ComPort_comboBox.Items.Clear();
             ComPort_comboBox.Items.AddRange(SerialPort.GetPortNames());
 
@@ -74,6 +80,7 @@ namespace Advanced_Cooling_Control_Software
 
             ExhaustFanSpeed_numericUpDown.Enabled = false;
             ACBFanSpeed_trackBar.Enabled = false;
+
             //CoolingFanSpeed_numericUpDown.Enabled = false;
             //CoolingFanSpeed_trackBar.Enabled = false;
             //slidingLabel.Text = "Advanced Cooling Control Software [vishnus_technologies(C) 2023] ";
@@ -224,9 +231,14 @@ namespace Advanced_Cooling_Control_Software
                             {
                                 // connects to serial port:
                                 SerialPort1.Open();
+                                Console.WriteLine("Connected: " + _COMPORT + " @" + _BAUDRATE);
+                                Console.WriteLine("> [MSG: Connected to port @" + _COMPORT + "]");
                                 // first software reset:
                                 connection_groupBox.ForeColor = Color.DarkGreen;
                                 BeginInvoke(new EventHandler(ArduinoReset_button_Click));
+
+                                // load m-code data:
+                                //LOAD_MCODE load_mcode = new LOAD_MCODE("/code.txt");
 
                                 ConnectionMsgBox_label.ForeColor = Color.DarkBlue;
                                 Conn_progressBar.Value = 100;
@@ -295,7 +307,6 @@ namespace Advanced_Cooling_Control_Software
                 ConnectionMsgBox_label.Text = "Please select COM Port";
             }
         }
-
 
         private void Disconnect_button_Click(object sender, EventArgs e)
         {
@@ -401,7 +412,7 @@ namespace Advanced_Cooling_Control_Software
         }
 
         /* SERIAL DATA DECODER SECTION */
-        private void SerialDataDecoder(String _serialData)
+        private void SerialDataDecoder(string _serialData)
         {
             // writes serial data to console log:
             SerialMonitor_textbox.AppendText(_serialData + Environment.NewLine);
@@ -719,19 +730,19 @@ namespace Advanced_Cooling_Control_Software
         }
 
 
-        /* PWM VALUE ENCODER SECTION */
+        /* PWM VALUE ENCODE SECTION */
         // delegate to convert percentage to pwm value. Encode pwm value and writes to
         // arduino serial. Example data: [s102d] or [s255d] or [s125.44d] -> pwm: 102, 255, 125 
         private void FanPwmEncoder(object sender, EventArgs e)
         {
             PWM = (1.0f * ACBFanSpeed_trackBar.Value) / 100 * 255;
-            float lastPWM = (1.0f * ACBFanSpeed_trackBar.Value) / 100 * 255;
             if (SerialPort1.IsOpen)
             {
                 SerialPort1.WriteLine("S" + PWM.ToString());
                 SerialMonitor_textbox.AppendText("S" + PWM.ToString() + Environment.NewLine);
             }
         }
+
 
         private void I2C_CONN_UI(object sender, EventArgs e)
         {
@@ -757,6 +768,7 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
+
         private void I2C_INIT_UI(object sender, EventArgs e)
         {
             if (I2C_INIT_FLAG == 0)
@@ -781,10 +793,11 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
 
+        public void Form1_Load(object sender, EventArgs e)
+        {
         }
+
 
         private void CabinLight_checkBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -802,17 +815,21 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
+        private string DecodeCommandFromFile(string _cmd)
+        {
+            Decode getCode = new Decode();
+
+            return getCode.SearchCmdInDict(_cmd);
+        }
+
         private async void Send_button_Click(object sender, EventArgs e)
         {
             if (Command_textBox.Text.Length != 0)
             {
-                SerialDataDecoder(Command_textBox.Text);
                 if (SerialPort1.IsOpen)
                 {
                     SerialPort1.WriteLine(Command_textBox.Text);
-                    Command_textBox.Text = "";
-                    SerialDataDecoder(Command_textBox.Text);
-                    
+                    //ConsoleLog_textbox.Text = DecodeCommandFromFile(Command_textBox.Text);
                 }
                 else
                 {
@@ -827,6 +844,56 @@ namespace Advanced_Cooling_Control_Software
                 await Task.Delay(4000);
                 ClearConsoleTextBox_label.Text = "";
             }
+        }
+
+
+        private void SoftwareInfo_MenuItem_Click(object sender, EventArgs e)
+        {
+            //Form2 container = new Form2();
+            CommandContainer cw = new CommandContainer(this.SerialPort1);
+            //cw.MdiParent = this;
+            cw.ShowDialog();
+        }
+
+        private void About_MenuItem_Click(object sender, EventArgs e)
+        {
+            About ob = new About();  // Form2: About.cs
+            ob.Show();
+        }
+
+        private void Exit_MenuItem_Click(object sender, EventArgs e)
+        {
+            if (SerialPort1.IsOpen)
+            {
+                string msg = "Serial port is connected. Do you want to close anyway?";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show(msg, "Confirmation", buttons);
+                if (result == DialogResult.Yes)
+                {
+                    SerialPort1.Close();
+                    Console.WriteLine("Serial port closed success");
+                    Close();
+                }
+                else
+                {
+                    Console.WriteLine("\ndialog button clicked: " + DialogResult);
+                }
+            }
+            else
+            {
+                Close();
+            }
+        }
+
+        private void Command_MenuItem_Click(object sender, EventArgs e)
+        {
+            CommandContainer commandContainer = new CommandContainer(this.SerialPort1);
+            commandContainer.ShowDialog();
+        }
+
+        private void SerialMonitor_textbox_Click(object sender, EventArgs e)
+        {
+            SerialMonitor_textbox.Text = "";
         }
 
         private void ExhaustFanSpeed_trackBar_MouseDown(object sender, MouseEventArgs e)
@@ -871,6 +938,7 @@ namespace Advanced_Cooling_Control_Software
                 SerialPort1.WriteLine("DF102");
             }
         }
+
         private void Peltier3_checkBox_CheckedChanged(object sender, EventArgs e)
         {
             if (Peltier3_checkBox.Checked == true)
@@ -1028,10 +1096,7 @@ namespace Advanced_Cooling_Control_Software
                 HDCPMsgbox_label.Text = "No devices selected!";
             }
         }
-        public void Execute(string code)
-        {
 
-        }
         private void HdcpGlobalOn_button_Click(object sender, EventArgs e)
         {
             DS1.BackColor = Color.SeaGreen;

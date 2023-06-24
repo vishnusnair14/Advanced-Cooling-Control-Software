@@ -1,0 +1,5 @@
+P202:[Successfully initialised I2C_RELAY module 1]:
+P203:[I2C_RELAY 1 I/O pins initiated]:
+P204:[I2C_RELAY 1 device error!]:
+P206:[SUCCESS]:
+EOF:[EOF]:
