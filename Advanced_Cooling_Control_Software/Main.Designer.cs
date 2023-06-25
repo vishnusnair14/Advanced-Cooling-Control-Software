@@ -152,14 +152,14 @@
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fILEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadFirmwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eXITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aDVANCEDOPTIONSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Commands_MenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.systemInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SoftwareInfo_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.About_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.systemInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadFirmwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SerialMonitor_groupBox.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -1913,11 +1913,17 @@
             this.fILEToolStripMenuItem.Size = new System.Drawing.Size(43, 21);
             this.fILEToolStripMenuItem.Text = "FILE";
             // 
+            // loadFirmwareToolStripMenuItem
+            // 
+            this.loadFirmwareToolStripMenuItem.Name = "loadFirmwareToolStripMenuItem";
+            this.loadFirmwareToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadFirmwareToolStripMenuItem.Text = "Load Firmware";
+            // 
             // eXITToolStripMenuItem
             // 
             this.eXITToolStripMenuItem.Name = "eXITToolStripMenuItem";
             this.eXITToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.eXITToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
+            this.eXITToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.eXITToolStripMenuItem.Text = "EXIT";
             this.eXITToolStripMenuItem.Click += new System.EventHandler(this.Exit_MenuItem_Click);
             // 
@@ -1947,6 +1953,13 @@
             this.aBOUTToolStripMenuItem.Size = new System.Drawing.Size(49, 21);
             this.aBOUTToolStripMenuItem.Text = "HELP";
             // 
+            // systemInformationToolStripMenuItem
+            // 
+            this.systemInformationToolStripMenuItem.Name = "systemInformationToolStripMenuItem";
+            this.systemInformationToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.systemInformationToolStripMenuItem.Text = "System Information";
+            this.systemInformationToolStripMenuItem.Click += new System.EventHandler(this.systemInformationToolStripMenuItem_Click);
+            // 
             // SoftwareInfo_MenuItem
             // 
             this.SoftwareInfo_MenuItem.AutoToolTip = true;
@@ -1961,18 +1974,6 @@
             this.About_MenuItem.Size = new System.Drawing.Size(203, 22);
             this.About_MenuItem.Text = "About";
             this.About_MenuItem.Click += new System.EventHandler(this.About_MenuItem_Click);
-            // 
-            // systemInformationToolStripMenuItem
-            // 
-            this.systemInformationToolStripMenuItem.Name = "systemInformationToolStripMenuItem";
-            this.systemInformationToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
-            this.systemInformationToolStripMenuItem.Text = "System Information";
-            // 
-            // loadFirmwareToolStripMenuItem
-            // 
-            this.loadFirmwareToolStripMenuItem.Name = "loadFirmwareToolStripMenuItem";
-            this.loadFirmwareToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.loadFirmwareToolStripMenuItem.Text = "Load Firmware";
             // 
             // Main
             // 

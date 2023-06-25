@@ -850,7 +850,7 @@ namespace Advanced_Cooling_Control_Software
         private void SoftwareInfo_MenuItem_Click(object sender, EventArgs e)
         {
             //Form2 container = new Form2();
-            CommandContainer cw = new CommandContainer(this.SerialPort1);
+            CommandOptions cw = new CommandOptions(this.SerialPort1);
             //cw.MdiParent = this;
             cw.ShowDialog();
         }
@@ -887,13 +887,19 @@ namespace Advanced_Cooling_Control_Software
 
         private void Command_MenuItem_Click(object sender, EventArgs e)
         {
-            CommandContainer commandContainer = new CommandContainer(this.SerialPort1);
+            CommandOptions commandContainer = new CommandOptions(this.SerialPort1);
             commandContainer.ShowDialog();
         }
 
         private void SerialMonitor_textbox_Click(object sender, EventArgs e)
         {
             SerialMonitor_textbox.Text = "";
+        }
+
+        private void systemInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SystemInformation systeminfohelper = new SystemInformation();
+            systeminfohelper.Show();
         }
 
         private void ExhaustFanSpeed_trackBar_MouseDown(object sender, MouseEventArgs e)

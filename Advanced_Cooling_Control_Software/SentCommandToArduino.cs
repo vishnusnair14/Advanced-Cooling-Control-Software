@@ -14,14 +14,18 @@ namespace Advanced_Cooling_Control_Software
             InitializeComponent();
             if (serialport1.IsOpen)
             {
-                Connection_label.Text = "Connected: " + serialport1.PortName + " @ " + serialport1.BaudRate;
+                Sent_textBox.Text = "Connected: " + serialport1.PortName + " @ " + serialport1.BaudRate;
                 Status_label.Text = "ONLINE";
+                Sent_textBox.BackColor = SystemColors.MenuHighlight;
+                Sent_textBox.ForeColor = SystemColors.Window;
                 Status_label.BackColor = Color.Green;
                 Status_label.ForeColor = Color.White;
             }
             else
             {
-                Connection_label.Text = "[NOT CONNECTED]";
+                Sent_textBox.Text = "[NOT CONNECTED]";
+                Sent_textBox.BackColor = Color.Crimson;
+                Sent_textBox.ForeColor = SystemColors.Window;
                 Status_label.Text = "OFFLINE";
                 Status_label.BackColor = Color.Red;
                 Status_label.ForeColor = Color.Yellow;
@@ -34,14 +38,33 @@ namespace Advanced_Cooling_Control_Software
             decodeMsg_textBox.Text = "";
             if (serialport1.IsOpen)
             {
-                try
+                if (Command_textBox.Text.Length != 0)
                 {
-                    serialport1.WriteLine(Command_textBox.Text);
+                    Sent_textBox.BackColor = SystemColors.MenuHighlight;
+                    Sent_textBox.ForeColor = SystemColors.Window;
+                    //Sent_textBox.Text = "[ CONNECTED ]";
+                    try
+                    {
+                        Sent_textBox.Text = "Command sent successfull";
+                        serialport1.WriteLine(Command_textBox.Text);
+                    }
+                    catch
+                    {
+                        // do nothing
+                    }
                 }
-                catch
+                else
                 {
-                    // do nothing
+                    Sent_textBox.Text = "No command specified!";
+                    Sent_textBox.BackColor = Color.Crimson;
+                    Sent_textBox.ForeColor = SystemColors.Window;
                 }
+            }
+            else
+            {
+                Sent_textBox.Text = "[NOT CONNECTED!]";
+                Sent_textBox.BackColor = Color.Crimson;
+                Sent_textBox.ForeColor = SystemColors.Window;
             }
         }
 
@@ -49,6 +72,17 @@ namespace Advanced_Cooling_Control_Software
         {
             Decode_groupBox.Text = "Information";
             decodeMsg_textBox.Text = "$(get_info)";
+        }
+
+        private void Command_textBox_TextChanged(object sender, EventArgs e)
+        {
+            Sent_textBox.Text = "";
+            Sent_textBox.BackColor = SystemColors.Control;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

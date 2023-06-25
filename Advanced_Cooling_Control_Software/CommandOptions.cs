@@ -4,10 +4,10 @@ using System.Windows.Forms;
 
 namespace Advanced_Cooling_Control_Software
 {
-    public partial class CommandContainer : Form
+    public partial class CommandOptions : Form
     {
         readonly SerialPort serialport1;
-        public CommandContainer(SerialPort serialPort)
+        public CommandOptions(SerialPort serialPort)
         {
             InitializeComponent();
             serialport1 = serialPort;

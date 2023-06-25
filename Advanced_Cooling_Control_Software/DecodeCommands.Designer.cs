@@ -40,6 +40,7 @@
             this.DecodeMsg_textBox = new System.Windows.Forms.TextBox();
             this.OpenCommand_MaplinkLabel = new System.Windows.Forms.LinkLabel();
             this.CloseCommand_MaplinkLabel = new System.Windows.Forms.LinkLabel();
+            this.Status_textBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.Decode_groupBox.SuspendLayout();
             this.SuspendLayout();
@@ -55,6 +56,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Status_textBox);
             this.groupBox1.Controls.Add(this.CommandFilePath_textBox);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.DecodeCommand_button);
@@ -64,7 +66,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(24, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(328, 102);
+            this.groupBox1.Size = new System.Drawing.Size(328, 127);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Decode Commands";
@@ -128,9 +130,9 @@
             // Decode_groupBox
             // 
             this.Decode_groupBox.Controls.Add(this.DecodeMsg_textBox);
-            this.Decode_groupBox.Location = new System.Drawing.Point(24, 125);
+            this.Decode_groupBox.Location = new System.Drawing.Point(24, 145);
             this.Decode_groupBox.Name = "Decode_groupBox";
-            this.Decode_groupBox.Size = new System.Drawing.Size(328, 134);
+            this.Decode_groupBox.Size = new System.Drawing.Size(328, 114);
             this.Decode_groupBox.TabIndex = 64;
             this.Decode_groupBox.TabStop = false;
             this.Decode_groupBox.Text = "Decoded Message";
@@ -141,7 +143,7 @@
             this.DecodeMsg_textBox.Location = new System.Drawing.Point(6, 19);
             this.DecodeMsg_textBox.Multiline = true;
             this.DecodeMsg_textBox.Name = "DecodeMsg_textBox";
-            this.DecodeMsg_textBox.Size = new System.Drawing.Size(315, 109);
+            this.DecodeMsg_textBox.Size = new System.Drawing.Size(315, 81);
             this.DecodeMsg_textBox.TabIndex = 0;
             // 
             // OpenCommand_MaplinkLabel
@@ -167,6 +169,19 @@
             this.CloseCommand_MaplinkLabel.TabStop = true;
             this.CloseCommand_MaplinkLabel.Text = "Close command map";
             this.CloseCommand_MaplinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.CloseCommand_MaplinkLabel_LinkClicked);
+            // 
+            // Status_textBox
+            // 
+            this.Status_textBox.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Status_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Status_textBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.Status_textBox.Location = new System.Drawing.Point(96, 100);
+            this.Status_textBox.Name = "Status_textBox";
+            this.Status_textBox.ReadOnly = true;
+            this.Status_textBox.Size = new System.Drawing.Size(225, 20);
+            this.Status_textBox.TabIndex = 66;
+            this.Status_textBox.Text = "CONNECTED";
+            this.Status_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // DecodeCommands
             // 
@@ -207,5 +222,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.LinkLabel OpenCommand_MaplinkLabel;
         private System.Windows.Forms.LinkLabel CloseCommand_MaplinkLabel;
+        private System.Windows.Forms.TextBox Status_textBox;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Advanced_Cooling_Control_Software
 {
-    partial class CommandContainer
+    partial class CommandOptions
     {
         /// <summary>
         /// Required designer variable.

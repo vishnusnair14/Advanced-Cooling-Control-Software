@@ -31,14 +31,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Status_label = new System.Windows.Forms.Label();
             this.Sent_groupBox = new System.Windows.Forms.GroupBox();
-            this.Connection_label = new System.Windows.Forms.Label();
             this.Sent_textBox = new System.Windows.Forms.TextBox();
             this.GetInfo_button = new System.Windows.Forms.Button();
             this.SentCommand_button = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.Command_textBox = new System.Windows.Forms.TextBox();
             this.Decode_groupBox = new System.Windows.Forms.GroupBox();
             this.decodeMsg_textBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.Sent_groupBox.SuspendLayout();
             this.Decode_groupBox.SuspendLayout();
             this.SuspendLayout();
@@ -67,11 +66,10 @@
             // 
             // Sent_groupBox
             // 
-            this.Sent_groupBox.Controls.Add(this.Connection_label);
+            this.Sent_groupBox.Controls.Add(this.label2);
             this.Sent_groupBox.Controls.Add(this.Sent_textBox);
             this.Sent_groupBox.Controls.Add(this.GetInfo_button);
             this.Sent_groupBox.Controls.Add(this.SentCommand_button);
-            this.Sent_groupBox.Controls.Add(this.label2);
             this.Sent_groupBox.Controls.Add(this.Status_label);
             this.Sent_groupBox.Controls.Add(this.Command_textBox);
             this.Sent_groupBox.Controls.Add(this.label1);
@@ -82,21 +80,18 @@
             this.Sent_groupBox.TabStop = false;
             this.Sent_groupBox.Text = "Sent Command";
             // 
-            // Connection_label
-            // 
-            this.Connection_label.Location = new System.Drawing.Point(5, 130);
-            this.Connection_label.Name = "Connection_label";
-            this.Connection_label.Size = new System.Drawing.Size(235, 13);
-            this.Connection_label.TabIndex = 6;
-            this.Connection_label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // Sent_textBox
             // 
-            this.Sent_textBox.Location = new System.Drawing.Point(5, 103);
-            this.Sent_textBox.Multiline = true;
+            this.Sent_textBox.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Sent_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Sent_textBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.Sent_textBox.Location = new System.Drawing.Point(5, 105);
             this.Sent_textBox.Name = "Sent_textBox";
-            this.Sent_textBox.Size = new System.Drawing.Size(235, 24);
+            this.Sent_textBox.ReadOnly = true;
+            this.Sent_textBox.Size = new System.Drawing.Size(235, 20);
             this.Sent_textBox.TabIndex = 63;
+            this.Sent_textBox.Text = "CONNECTED";
+            this.Sent_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // GetInfo_button
             // 
@@ -118,18 +113,6 @@
             this.SentCommand_button.UseVisualStyleBackColor = true;
             this.SentCommand_button.Click += new System.EventHandler(this.SentCommand_button_Click);
             // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(9, 47);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 17);
-            this.label2.TabIndex = 60;
-            this.label2.Text = "Command:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Command_textBox
             // 
             this.Command_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -137,6 +120,7 @@
             this.Command_textBox.Name = "Command_textBox";
             this.Command_textBox.Size = new System.Drawing.Size(147, 20);
             this.Command_textBox.TabIndex = 59;
+            this.Command_textBox.TextChanged += new System.EventHandler(this.Command_textBox_TextChanged);
             // 
             // Decode_groupBox
             // 
@@ -155,6 +139,16 @@
             this.decodeMsg_textBox.Name = "decodeMsg_textBox";
             this.decodeMsg_textBox.Size = new System.Drawing.Size(346, 76);
             this.decodeMsg_textBox.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(20, 47);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 13);
+            this.label2.TabIndex = 64;
+            this.label2.Text = "Commands:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // SentCommandToArduino
             // 
@@ -185,13 +179,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label Status_label;
         private System.Windows.Forms.GroupBox Sent_groupBox;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox Command_textBox;
         private System.Windows.Forms.Button SentCommand_button;
         private System.Windows.Forms.Button GetInfo_button;
         private System.Windows.Forms.TextBox Sent_textBox;
         private System.Windows.Forms.GroupBox Decode_groupBox;
         private System.Windows.Forms.TextBox decodeMsg_textBox;
-        private System.Windows.Forms.Label Connection_label;
+        private System.Windows.Forms.Label label2;
     }
 }
