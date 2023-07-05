@@ -62,6 +62,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.DS4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.HDCPMsgbox_label = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.HDCPOff_button = new System.Windows.Forms.Button();
             this.HDCPOn_button = new System.Windows.Forms.Button();
@@ -92,6 +93,7 @@
             this.BaudRate_comboBox = new System.Windows.Forms.ComboBox();
             this.ComPort_comboBox = new System.Windows.Forms.ComboBox();
             this.connection_groupBox = new System.Windows.Forms.GroupBox();
+            this.ConnectionMsgBox_label = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -105,9 +107,9 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.FanSpeedControl_comboBox = new System.Windows.Forms.ComboBox();
+            this.FanSpeedControlDeviceList_comboBox = new System.Windows.Forms.ComboBox();
             this.FanSpeedControl_numericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.ACBFanSpeed_trackBar = new System.Windows.Forms.TrackBar();
+            this.FanSpeedControl_trackBar = new System.Windows.Forms.TrackBar();
             this.ConsoleLog_textbox = new System.Windows.Forms.TextBox();
             this.ConsoleClear_button = new System.Windows.Forms.Button();
             this.ClearConsoleTextBox_label = new System.Windows.Forms.Label();
@@ -136,7 +138,7 @@
             this.label27 = new System.Windows.Forms.Label();
             this.CT1_circularProgressBar = new CircularProgressBar.CircularProgressBar();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.fILEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadFirmwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eXITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -145,8 +147,6 @@
             this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.systemInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.About_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.HDCPMsgbox_label = new System.Windows.Forms.TextBox();
-            this.ConnectionMsgBox_label = new System.Windows.Forms.TextBox();
             this.SerialMonitor_groupBox.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -160,13 +160,13 @@
             this.groupBox2.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FanSpeedControl_numericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ACBFanSpeed_trackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FanSpeedControl_trackBar)).BeginInit();
             this.groupBox11.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox7.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.MainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // ArduinoReset_button
@@ -454,7 +454,7 @@
             // 
             // SerialMonitor_textbox
             // 
-            this.SerialMonitor_textbox.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.SerialMonitor_textbox.BackColor = System.Drawing.SystemColors.Control;
             this.SerialMonitor_textbox.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.SerialMonitor_textbox.Location = new System.Drawing.Point(7, 19);
             this.SerialMonitor_textbox.Multiline = true;
@@ -463,6 +463,7 @@
             this.SerialMonitor_textbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.SerialMonitor_textbox.Size = new System.Drawing.Size(369, 119);
             this.SerialMonitor_textbox.TabIndex = 0;
+            this.SerialMonitor_textbox.TextChanged += new System.EventHandler(this.SerialMonitor_textbox_TextChanged);
             this.SerialMonitor_textbox.DoubleClick += new System.EventHandler(this.SerialMonitor_textbox_DoubleClick);
             // 
             // groupBox13
@@ -497,6 +498,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label16.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label16.Location = new System.Drawing.Point(17, 143);
@@ -566,6 +568,7 @@
             // 
             // panel4
             // 
+            this.panel4.BackColor = System.Drawing.Color.LightGray;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel4.Controls.Add(this.HDCPMsgbox_label);
             this.panel4.Controls.Add(this.label3);
@@ -577,16 +580,29 @@
             this.panel4.Size = new System.Drawing.Size(314, 90);
             this.panel4.TabIndex = 59;
             // 
+            // HDCPMsgbox_label
+            // 
+            this.HDCPMsgbox_label.BackColor = System.Drawing.Color.Gainsboro;
+            this.HDCPMsgbox_label.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.HDCPMsgbox_label.ForeColor = System.Drawing.SystemColors.Window;
+            this.HDCPMsgbox_label.Location = new System.Drawing.Point(97, 39);
+            this.HDCPMsgbox_label.Name = "HDCPMsgbox_label";
+            this.HDCPMsgbox_label.ReadOnly = true;
+            this.HDCPMsgbox_label.Size = new System.Drawing.Size(207, 22);
+            this.HDCPMsgbox_label.TabIndex = 64;
+            this.HDCPMsgbox_label.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // label3
             // 
+            this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.MediumBlue;
-            this.label3.Location = new System.Drawing.Point(4, 8);
+            this.label3.Location = new System.Drawing.Point(6, 11);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(149, 17);
+            this.label3.Size = new System.Drawing.Size(86, 15);
             this.label3.TabIndex = 58;
-            this.label3.Text = "Please select a device:";
+            this.label3.Text = "Select device:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // HDCPOff_button
@@ -617,7 +633,7 @@
             // 
             // HDCPDevicelist_Combobox
             // 
-            this.HDCPDevicelist_Combobox.Font = new System.Drawing.Font("Malgun Gothic", 9F);
+            this.HDCPDevicelist_Combobox.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HDCPDevicelist_Combobox.FormattingEnabled = true;
             this.HDCPDevicelist_Combobox.Items.AddRange(new object[] {
             "All devices",
@@ -628,11 +644,11 @@
             "Coolant Pump",
             "Radiator Pump",
             "Radiator Fans"});
-            this.HDCPDevicelist_Combobox.Location = new System.Drawing.Point(160, 6);
+            this.HDCPDevicelist_Combobox.Location = new System.Drawing.Point(104, 5);
             this.HDCPDevicelist_Combobox.Name = "HDCPDevicelist_Combobox";
-            this.HDCPDevicelist_Combobox.Size = new System.Drawing.Size(144, 23);
+            this.HDCPDevicelist_Combobox.Size = new System.Drawing.Size(200, 24);
             this.HDCPDevicelist_Combobox.TabIndex = 10;
-            this.HDCPDevicelist_Combobox.Text = "-- select a device --";
+            this.HDCPDevicelist_Combobox.Text = "-- Select a device --";
             this.HDCPDevicelist_Combobox.SelectedIndexChanged += new System.EventHandler(this.Hdcp_Devicelists_Combobox_SelectedIndexChanged);
             // 
             // label11
@@ -963,6 +979,19 @@
             this.connection_groupBox.TabStop = false;
             this.connection_groupBox.Text = "Connection Panel";
             // 
+            // ConnectionMsgBox_label
+            // 
+            this.ConnectionMsgBox_label.BackColor = System.Drawing.Color.Gainsboro;
+            this.ConnectionMsgBox_label.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConnectionMsgBox_label.ForeColor = System.Drawing.Color.Transparent;
+            this.ConnectionMsgBox_label.Location = new System.Drawing.Point(7, 118);
+            this.ConnectionMsgBox_label.Name = "ConnectionMsgBox_label";
+            this.ConnectionMsgBox_label.ReadOnly = true;
+            this.ConnectionMsgBox_label.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.ConnectionMsgBox_label.Size = new System.Drawing.Size(233, 22);
+            this.ConnectionMsgBox_label.TabIndex = 65;
+            this.ConnectionMsgBox_label.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Gainsboro;
@@ -1044,26 +1073,26 @@
             this.groupBox2.ForeColor = System.Drawing.Color.DarkBlue;
             this.groupBox2.Location = new System.Drawing.Point(971, 35);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(281, 260);
+            this.groupBox2.Size = new System.Drawing.Size(313, 260);
             this.groupBox2.TabIndex = 57;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Fan Speed Controls";
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.Color.Silver;
+            this.panel7.BackColor = System.Drawing.Color.LightGray;
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel7.Controls.Add(this.label14);
             this.panel7.Controls.Add(this.FanSpeedControl_Label);
             this.panel7.Controls.Add(this.label13);
             this.panel7.Controls.Add(this.label12);
             this.panel7.Controls.Add(this.label10);
-            this.panel7.Controls.Add(this.FanSpeedControl_comboBox);
+            this.panel7.Controls.Add(this.FanSpeedControlDeviceList_comboBox);
             this.panel7.Controls.Add(this.FanSpeedControl_numericUpDown);
-            this.panel7.Controls.Add(this.ACBFanSpeed_trackBar);
+            this.panel7.Controls.Add(this.FanSpeedControl_trackBar);
             this.panel7.Location = new System.Drawing.Point(6, 21);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(263, 114);
+            this.panel7.Size = new System.Drawing.Size(299, 114);
             this.panel7.TabIndex = 66;
             // 
             // label14
@@ -1072,7 +1101,7 @@
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Malgun Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.MediumBlue;
-            this.label14.Location = new System.Drawing.Point(80, 91);
+            this.label14.Location = new System.Drawing.Point(96, 91);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(61, 12);
             this.label14.TabIndex = 69;
@@ -1081,14 +1110,14 @@
             // 
             // FanSpeedControl_Label
             // 
-            this.FanSpeedControl_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.FanSpeedControl_Label.ForeColor = System.Drawing.Color.DarkGreen;
-            this.FanSpeedControl_Label.Location = new System.Drawing.Point(6, 5);
+            this.FanSpeedControl_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FanSpeedControl_Label.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.FanSpeedControl_Label.Location = new System.Drawing.Point(7, 3);
             this.FanSpeedControl_Label.Name = "FanSpeedControl_Label";
             this.FanSpeedControl_Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.FanSpeedControl_Label.Size = new System.Drawing.Size(245, 19);
+            this.FanSpeedControl_Label.Size = new System.Drawing.Size(285, 19);
             this.FanSpeedControl_Label.TabIndex = 65;
-            this.FanSpeedControl_Label.Text = "Coolant fan speed settings";
+            this.FanSpeedControl_Label.Text = "Coolant Fan Speed Settings";
             this.FanSpeedControl_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label13
@@ -1096,8 +1125,8 @@
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Malgun Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.MediumBlue;
-            this.label13.Location = new System.Drawing.Point(174, 92);
+            this.label13.ForeColor = System.Drawing.Color.Maroon;
+            this.label13.Location = new System.Drawing.Point(214, 92);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(26, 12);
             this.label13.TabIndex = 68;
@@ -1109,7 +1138,7 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Malgun Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.MediumBlue;
+            this.label12.ForeColor = System.Drawing.Color.Green;
             this.label12.Location = new System.Drawing.Point(5, 93);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(24, 12);
@@ -1120,30 +1149,30 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.label10.ForeColor = System.Drawing.Color.MediumBlue;
-            this.label10.Location = new System.Drawing.Point(6, 39);
+            this.label10.Location = new System.Drawing.Point(5, 38);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(82, 15);
+            this.label10.Size = new System.Drawing.Size(86, 15);
             this.label10.TabIndex = 67;
             this.label10.Text = "Select device:";
             // 
-            // FanSpeedControl_comboBox
+            // FanSpeedControlDeviceList_comboBox
             // 
-            this.FanSpeedControl_comboBox.Font = new System.Drawing.Font("Malgun Gothic", 9F);
-            this.FanSpeedControl_comboBox.FormattingEnabled = true;
-            this.FanSpeedControl_comboBox.Items.AddRange(new object[] {
-            "--select device--",
+            this.FanSpeedControlDeviceList_comboBox.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FanSpeedControlDeviceList_comboBox.FormattingEnabled = true;
+            this.FanSpeedControlDeviceList_comboBox.Items.AddRange(new object[] {
             "Exhaust 1 IN",
             "Exhaust 1 OUT",
             "Exhaust 2 IN",
             "Exhaust 2 OUT"});
-            this.FanSpeedControl_comboBox.Location = new System.Drawing.Point(94, 33);
-            this.FanSpeedControl_comboBox.Name = "FanSpeedControl_comboBox";
-            this.FanSpeedControl_comboBox.Size = new System.Drawing.Size(160, 23);
-            this.FanSpeedControl_comboBox.TabIndex = 66;
-            this.FanSpeedControl_comboBox.Text = "-- select a device --";
-            this.FanSpeedControl_comboBox.SelectedIndexChanged += new System.EventHandler(this.FanSpeedControl_comboBox_SelectedIndexChanged);
+            this.FanSpeedControlDeviceList_comboBox.Location = new System.Drawing.Point(94, 33);
+            this.FanSpeedControlDeviceList_comboBox.Name = "FanSpeedControlDeviceList_comboBox";
+            this.FanSpeedControlDeviceList_comboBox.Size = new System.Drawing.Size(198, 24);
+            this.FanSpeedControlDeviceList_comboBox.TabIndex = 66;
+            this.FanSpeedControlDeviceList_comboBox.Text = "-- select a device --";
+            this.FanSpeedControlDeviceList_comboBox.SelectedIndexChanged += new System.EventHandler(this.FanSpeedControl_comboBox_SelectedIndexChanged);
             // 
             // FanSpeedControl_numericUpDown
             // 
@@ -1154,30 +1183,30 @@
             0,
             0,
             0});
-            this.FanSpeedControl_numericUpDown.Location = new System.Drawing.Point(207, 62);
+            this.FanSpeedControl_numericUpDown.Location = new System.Drawing.Point(246, 62);
             this.FanSpeedControl_numericUpDown.Name = "FanSpeedControl_numericUpDown";
             this.FanSpeedControl_numericUpDown.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.FanSpeedControl_numericUpDown.Size = new System.Drawing.Size(46, 26);
             this.FanSpeedControl_numericUpDown.TabIndex = 41;
             this.FanSpeedControl_numericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // ACBFanSpeed_trackBar
+            // FanSpeedControl_trackBar
             // 
-            this.ACBFanSpeed_trackBar.AutoSize = false;
-            this.ACBFanSpeed_trackBar.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ACBFanSpeed_trackBar.Location = new System.Drawing.Point(8, 62);
-            this.ACBFanSpeed_trackBar.Maximum = 100;
-            this.ACBFanSpeed_trackBar.Name = "ACBFanSpeed_trackBar";
-            this.ACBFanSpeed_trackBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.ACBFanSpeed_trackBar.Size = new System.Drawing.Size(197, 26);
-            this.ACBFanSpeed_trackBar.SmallChange = 5;
-            this.ACBFanSpeed_trackBar.TabIndex = 50;
-            this.ACBFanSpeed_trackBar.TickFrequency = 5;
-            this.ACBFanSpeed_trackBar.Scroll += new System.EventHandler(this.ExhaustFanSpeed_trackBar_Scroll);
+            this.FanSpeedControl_trackBar.AutoSize = false;
+            this.FanSpeedControl_trackBar.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.FanSpeedControl_trackBar.Location = new System.Drawing.Point(8, 62);
+            this.FanSpeedControl_trackBar.Maximum = 100;
+            this.FanSpeedControl_trackBar.Name = "FanSpeedControl_trackBar";
+            this.FanSpeedControl_trackBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.FanSpeedControl_trackBar.Size = new System.Drawing.Size(232, 26);
+            this.FanSpeedControl_trackBar.SmallChange = 5;
+            this.FanSpeedControl_trackBar.TabIndex = 50;
+            this.FanSpeedControl_trackBar.TickFrequency = 5;
+            this.FanSpeedControl_trackBar.Scroll += new System.EventHandler(this.ExhaustFanSpeed_trackBar_Scroll);
             // 
             // ConsoleLog_textbox
             // 
-            this.ConsoleLog_textbox.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ConsoleLog_textbox.BackColor = System.Drawing.SystemColors.Control;
             this.ConsoleLog_textbox.Enabled = false;
             this.ConsoleLog_textbox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConsoleLog_textbox.Location = new System.Drawing.Point(6, 24);
@@ -1266,6 +1295,7 @@
             // 
             // groupBox10
             // 
+            this.groupBox10.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.groupBox10.Controls.Add(this.label31);
             this.groupBox10.Controls.Add(this.SMT_E_circularProgressBar);
             this.groupBox10.Controls.Add(this.circularProgressBar1);
@@ -1322,7 +1352,7 @@
             this.SMT_E_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
             this.SMT_E_circularProgressBar.SuperscriptText = "";
             this.SMT_E_circularProgressBar.TabIndex = 38;
-            this.SMT_E_circularProgressBar.Text = "0.00";
+            this.SMT_E_circularProgressBar.Text = "0.00 °C";
             this.SMT_E_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
             this.SMT_E_circularProgressBar.Value = 30;
             // 
@@ -1385,7 +1415,7 @@
             this.SMT_Z_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
             this.SMT_Z_circularProgressBar.SuperscriptText = "";
             this.SMT_Z_circularProgressBar.TabIndex = 37;
-            this.SMT_Z_circularProgressBar.Text = "0.00";
+            this.SMT_Z_circularProgressBar.Text = "0.00 °C";
             this.SMT_Z_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
             this.SMT_Z_circularProgressBar.Value = 45;
             // 
@@ -1427,7 +1457,7 @@
             this.SMT_Y_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
             this.SMT_Y_circularProgressBar.SuperscriptText = "";
             this.SMT_Y_circularProgressBar.TabIndex = 2;
-            this.SMT_Y_circularProgressBar.Text = "0.00";
+            this.SMT_Y_circularProgressBar.Text = "0.00 °C";
             this.SMT_Y_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
             this.SMT_Y_circularProgressBar.Value = 77;
             // 
@@ -1459,7 +1489,7 @@
             this.SMT_X_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
             this.SMT_X_circularProgressBar.SuperscriptText = "";
             this.SMT_X_circularProgressBar.TabIndex = 1;
-            this.SMT_X_circularProgressBar.Text = "0.00";
+            this.SMT_X_circularProgressBar.Text = "0.00 °C";
             this.SMT_X_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
             this.SMT_X_circularProgressBar.Value = 61;
             // 
@@ -1485,6 +1515,7 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.groupBox8.Controls.Add(this.label25);
             this.groupBox8.Controls.Add(this.PBT2_circularProgressBar);
             this.groupBox8.Controls.Add(this.label4);
@@ -1536,7 +1567,7 @@
             this.PBT2_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(0);
             this.PBT2_circularProgressBar.SuperscriptText = "";
             this.PBT2_circularProgressBar.TabIndex = 36;
-            this.PBT2_circularProgressBar.Text = "0.00";
+            this.PBT2_circularProgressBar.Text = "0.00 °C";
             this.PBT2_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
             this.PBT2_circularProgressBar.Value = 58;
             // 
@@ -1578,13 +1609,13 @@
             this.PBT1_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(0);
             this.PBT1_circularProgressBar.SuperscriptText = "";
             this.PBT1_circularProgressBar.TabIndex = 1;
-            this.PBT1_circularProgressBar.Text = "0.00";
+            this.PBT1_circularProgressBar.Text = "0.00 °C";
             this.PBT1_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
-            this.PBT1_circularProgressBar.Value = 58;
+            this.PBT1_circularProgressBar.Value = 68;
             // 
             // groupBox9
             // 
-            this.groupBox9.BackColor = System.Drawing.Color.DarkGray;
+            this.groupBox9.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.groupBox9.Controls.Add(this.CT2_circularProgressBar);
             this.groupBox9.Controls.Add(this.label26);
             this.groupBox9.Controls.Add(this.label27);
@@ -1626,7 +1657,7 @@
             this.CT2_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
             this.CT2_circularProgressBar.SuperscriptText = "";
             this.CT2_circularProgressBar.TabIndex = 37;
-            this.CT2_circularProgressBar.Text = "0.00";
+            this.CT2_circularProgressBar.Text = "0.00 °C";
             this.CT2_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
             this.CT2_circularProgressBar.Value = 27;
             // 
@@ -1678,7 +1709,7 @@
             this.CT1_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
             this.CT1_circularProgressBar.SuperscriptText = "";
             this.CT1_circularProgressBar.TabIndex = 1;
-            this.CT1_circularProgressBar.Text = "0.00";
+            this.CT1_circularProgressBar.Text = "0.00 °C";
             this.CT1_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
             this.CT1_circularProgressBar.Value = 90;
             // 
@@ -1691,24 +1722,24 @@
             this.groupBox7.ForeColor = System.Drawing.Color.DarkRed;
             this.groupBox7.Location = new System.Drawing.Point(421, 312);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(831, 447);
+            this.groupBox7.Size = new System.Drawing.Size(863, 447);
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Temperature Monitor";
             // 
-            // menuStrip1
+            // MainMenu
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.menuStrip1.Font = new System.Drawing.Font("Malgun Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MainMenu.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.MainMenu.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fILEToolStripMenuItem,
             this.aDVANCEDOPTIONSToolStripMenuItem,
             this.aBOUTToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1269, 25);
-            this.menuStrip1.TabIndex = 59;
-            this.menuStrip1.Text = "menuStrip1";
+            this.MainMenu.Location = new System.Drawing.Point(0, 0);
+            this.MainMenu.Name = "MainMenu";
+            this.MainMenu.Size = new System.Drawing.Size(1323, 24);
+            this.MainMenu.TabIndex = 59;
+            this.MainMenu.Text = "menuStrip1";
             // 
             // fILEToolStripMenuItem
             // 
@@ -1716,20 +1747,20 @@
             this.loadFirmwareToolStripMenuItem,
             this.eXITToolStripMenuItem});
             this.fILEToolStripMenuItem.Name = "fILEToolStripMenuItem";
-            this.fILEToolStripMenuItem.Size = new System.Drawing.Size(43, 21);
+            this.fILEToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.fILEToolStripMenuItem.Text = "FILE";
             // 
             // loadFirmwareToolStripMenuItem
             // 
             this.loadFirmwareToolStripMenuItem.Name = "loadFirmwareToolStripMenuItem";
-            this.loadFirmwareToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.loadFirmwareToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.loadFirmwareToolStripMenuItem.Text = "Load Firmware";
             // 
             // eXITToolStripMenuItem
             // 
             this.eXITToolStripMenuItem.Name = "eXITToolStripMenuItem";
             this.eXITToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.eXITToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.eXITToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.eXITToolStripMenuItem.Text = "EXIT";
             this.eXITToolStripMenuItem.Click += new System.EventHandler(this.Exit_MenuItem_Click);
             // 
@@ -1738,14 +1769,14 @@
             this.aDVANCEDOPTIONSToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Commands_MenuItem1});
             this.aDVANCEDOPTIONSToolStripMenuItem.Name = "aDVANCEDOPTIONSToolStripMenuItem";
-            this.aDVANCEDOPTIONSToolStripMenuItem.Size = new System.Drawing.Size(84, 21);
+            this.aDVANCEDOPTIONSToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.aDVANCEDOPTIONSToolStripMenuItem.Text = "CONTROL ";
             // 
             // Commands_MenuItem1
             // 
             this.Commands_MenuItem1.Name = "Commands_MenuItem1";
             this.Commands_MenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.Commands_MenuItem1.Size = new System.Drawing.Size(234, 22);
+            this.Commands_MenuItem1.Size = new System.Drawing.Size(218, 22);
             this.Commands_MenuItem1.Text = "Command Options";
             this.Commands_MenuItem1.Click += new System.EventHandler(this.Command_MenuItem_Click);
             // 
@@ -1755,14 +1786,14 @@
             this.systemInformationToolStripMenuItem,
             this.About_MenuItem});
             this.aBOUTToolStripMenuItem.Name = "aBOUTToolStripMenuItem";
-            this.aBOUTToolStripMenuItem.Size = new System.Drawing.Size(49, 21);
+            this.aBOUTToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.aBOUTToolStripMenuItem.Text = "HELP";
             // 
             // systemInformationToolStripMenuItem
             // 
             this.systemInformationToolStripMenuItem.Name = "systemInformationToolStripMenuItem";
             this.systemInformationToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
-            this.systemInformationToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.systemInformationToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.systemInformationToolStripMenuItem.Text = "System Information";
             this.systemInformationToolStripMenuItem.Click += new System.EventHandler(this.SystemInformationToolStripMenuItem_Click);
             // 
@@ -1770,33 +1801,9 @@
             // 
             this.About_MenuItem.Name = "About_MenuItem";
             this.About_MenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.About_MenuItem.Size = new System.Drawing.Size(213, 22);
+            this.About_MenuItem.Size = new System.Drawing.Size(197, 22);
             this.About_MenuItem.Text = "About";
             this.About_MenuItem.Click += new System.EventHandler(this.About_MenuItem_Click);
-            // 
-            // HDCPMsgbox_label
-            // 
-            this.HDCPMsgbox_label.BackColor = System.Drawing.Color.Gainsboro;
-            this.HDCPMsgbox_label.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
-            this.HDCPMsgbox_label.ForeColor = System.Drawing.SystemColors.Window;
-            this.HDCPMsgbox_label.Location = new System.Drawing.Point(97, 39);
-            this.HDCPMsgbox_label.Name = "HDCPMsgbox_label";
-            this.HDCPMsgbox_label.ReadOnly = true;
-            this.HDCPMsgbox_label.Size = new System.Drawing.Size(207, 22);
-            this.HDCPMsgbox_label.TabIndex = 64;
-            this.HDCPMsgbox_label.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // ConnectionMsgBox_label
-            // 
-            this.ConnectionMsgBox_label.BackColor = System.Drawing.Color.Gainsboro;
-            this.ConnectionMsgBox_label.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConnectionMsgBox_label.ForeColor = System.Drawing.Color.White;
-            this.ConnectionMsgBox_label.Location = new System.Drawing.Point(7, 118);
-            this.ConnectionMsgBox_label.Name = "ConnectionMsgBox_label";
-            this.ConnectionMsgBox_label.ReadOnly = true;
-            this.ConnectionMsgBox_label.Size = new System.Drawing.Size(233, 22);
-            this.ConnectionMsgBox_label.TabIndex = 65;
-            this.ConnectionMsgBox_label.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Main
             // 
@@ -1806,8 +1813,8 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1269, 837);
-            this.Controls.Add(this.menuStrip1);
+            this.ClientSize = new System.Drawing.Size(1323, 826);
+            this.Controls.Add(this.MainMenu);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.connection_groupBox);
             this.Controls.Add(this.groupBox13);
@@ -1819,10 +1826,10 @@
             this.ForeColor = System.Drawing.Color.DarkBlue;
             this.IsMdiContainer = true;
             this.KeyPreview = true;
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.MainMenu;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Advanced Cooling Control Software";
+            this.Text = "Advanced Cooling Control Software (v2.0)";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
@@ -1848,7 +1855,7 @@
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FanSpeedControl_numericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ACBFanSpeed_trackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FanSpeedControl_trackBar)).EndInit();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             this.groupBox10.ResumeLayout(false);
@@ -1858,8 +1865,8 @@
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             this.groupBox7.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.MainMenu.ResumeLayout(false);
+            this.MainMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1935,7 +1942,7 @@
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.TrackBar ACBFanSpeed_trackBar;
+        private System.Windows.Forms.TrackBar FanSpeedControl_trackBar;
         private System.Windows.Forms.NumericUpDown FanSpeedControl_numericUpDown;
         private System.Windows.Forms.Label FanSpeedControl_Label;
         private System.Windows.Forms.Label DS4;
@@ -1968,7 +1975,7 @@
         private System.Windows.Forms.Label label27;
         private CircularProgressBar.CircularProgressBar CT1_circularProgressBar;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip MainMenu;
         private System.Windows.Forms.ToolStripMenuItem fILEToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aDVANCEDOPTIONSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aBOUTToolStripMenuItem;
@@ -1978,7 +1985,7 @@
         private System.Windows.Forms.ToolStripMenuItem systemInformationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadFirmwareToolStripMenuItem;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox FanSpeedControl_comboBox;
+        private System.Windows.Forms.ComboBox FanSpeedControlDeviceList_comboBox;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label14;

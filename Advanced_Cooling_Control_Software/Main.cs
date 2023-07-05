@@ -1,5 +1,5 @@
-﻿using Microsoft.Msagl.Core.Geometry;
-using System;
+﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
@@ -29,6 +29,13 @@ namespace Advanced_Cooling_Control_Software
         string _COMPORT, _BAUDRATE;
         int I2C_INIT_FLAG = 0;
         int I2C_CONN_FLAG = 0;
+        private int preval;
+        private int selVal = 0;
+        private int preVal0 = 0;
+        private int preVal1 = 0;
+        private int preVal2 = 0;
+        private int preVal3 = 0;
+        private long counterDisCon = 0;
 
         public Main()
         {
@@ -40,6 +47,7 @@ namespace Advanced_Cooling_Control_Software
             Disconnect_button.Enabled = false;
             Disconnect_button.BackColor = Color.LightSteelBlue;
             Disconnect_button.ForeColor = Color.White;
+            SerialMonitor_textbox.Enabled = false;
 
             PCP_Indicator1.BackColor = Color.Maroon;
             PCP_Indicator2.BackColor = Color.Maroon;
@@ -54,8 +62,9 @@ namespace Advanced_Cooling_Control_Software
             CT2_circularProgressBar.Value = 1;
             SMT_X_circularProgressBar.Value = 1;
             SMT_Y_circularProgressBar.Value = 1;
-            SMT_Z_circularProgressBar.Value =1;
+            SMT_Z_circularProgressBar.Value = 1;
             SMT_E_circularProgressBar.Value = 1;
+
             /*
             PBT1_circularProgressBar.Text = "";
             PBT2_circularProgressBar.Text = "";
@@ -66,8 +75,10 @@ namespace Advanced_Cooling_Control_Software
             SMT_Z_circularProgressBar.Text = "";
             SMT_E_circularProgressBar.Text = "";*/
 
-            ACBFanSpeed_trackBar.Value = 0;
+            FanSpeedControl_trackBar.Value = 0;
+            FanSpeedControl_trackBar.Enabled = false;
             FanSpeedControl_numericUpDown.Value = 0;
+            FanSpeedControl_numericUpDown.Enabled = false;
 
             HDCPOff_button.Enabled = false;
             HDCPOn_button.Enabled = false;
@@ -84,13 +95,15 @@ namespace Advanced_Cooling_Control_Software
             Peltier4_checkBox.Enabled = false;
 
             FanSpeedControl_numericUpDown.Enabled = false;
-            ACBFanSpeed_trackBar.Enabled = false;
+            FanSpeedControl_trackBar.Enabled = false;
+
 
             //CoolingFanSpeed_numericUpDown.Enabled = false;
             //CoolingFanSpeed_trackBar.Enabled = false;
             //slidingLabel.Text = "Advanced Cooling Control Software [vishnus_technologies(C) 2023] ";
 
-            FanSpeedControl_comboBox.Enabled = false;
+            FanSpeedControlDeviceList_comboBox.Enabled = false;
+            FanSpeedControlDeviceList_comboBox.SelectedIndex = 0;
         }
 
         private void ArduinoReset_button_Click(object sender, EventArgs e)
@@ -128,6 +141,8 @@ namespace Advanced_Cooling_Control_Software
             }
             catch
             {
+                ConnectionMsgBox_label.BackColor = Color.MidnightBlue;
+                ConnectionMsgBox_label.ForeColor = SystemColors.HighlightText;
                 ConnectionMsgBox_label.Text = "COM Port not connected!";
             }
         }
@@ -191,6 +206,8 @@ namespace Advanced_Cooling_Control_Software
             }
             catch
             {
+                ConnectionMsgBox_label.BackColor = Color.MidnightBlue;
+                ConnectionMsgBox_label.ForeColor = SystemColors.HighlightText;
                 ConnectionMsgBox_label.Text = "Unable to detected Arduino";
             }
             return null;
@@ -213,6 +230,8 @@ namespace Advanced_Cooling_Control_Software
             }
             else
             {
+                ConnectionMsgBox_label.BackColor = Color.DarkSlateGray;
+                ConnectionMsgBox_label.ForeColor = Color.White;
                 ConnectionMsgBox_label.Text = "Arduino device not detected";
             }
         }
@@ -230,6 +249,7 @@ namespace Advanced_Cooling_Control_Software
                     {
                         if (Passcode_textBox.Text == AppAccessPasscode)
                         {
+                            Conn_progressBar.Value = 10;
                             SerialPort1.PortName = ComPort_comboBox.SelectedItem.ToString();
                             SerialPort1.BaudRate = Convert.ToInt32(BaudRate_comboBox.SelectedItem);
                             _COMPORT = ComPort_comboBox.SelectedItem.ToString();
@@ -237,20 +257,23 @@ namespace Advanced_Cooling_Control_Software
                             try
                             {
                                 // connects to serial port:
+                                Conn_progressBar.Value = 40;
                                 SerialPort1.Open();
+                                Conn_progressBar.Value = 75;
                                 Console.WriteLine("Connected: " + _COMPORT + " @" + _BAUDRATE);
                                 Console.WriteLine("> [MSG: Connected to port @" + _COMPORT + "]");
-                                // first software reset:
+
+                                // initial soft-reset:
                                 connection_groupBox.ForeColor = Color.DarkGreen;
                                 BeginInvoke(new EventHandler(ArduinoReset_button_Click));
 
+                                // @SECTION [Connection Panel]
                                 ConnectionMsgBox_label.ForeColor = Color.White;
                                 ConnectionMsgBox_label.BackColor = Color.SeaGreen;
-                                Conn_progressBar.Value = 100;
+                                Conn_progressBar.Value = 77;
                                 ConnectionMsgBox_label.Text = "Connected: " + _COMPORT + " @" + _BAUDRATE;
                                 ConsoleLog_textbox.Text = "> [MSG: Connected to port @" + _COMPORT + "]" + Environment.NewLine;
                                 SerialMonitor_groupBox.Text = SerialMonitor_groupBox.Text + " [ " + _COMPORT + " @" + _BAUDRATE + " ]";
-
                                 Passcode_textBox.Text = "";
                                 ComPort_comboBox.Enabled = false;
                                 BaudRate_comboBox.Enabled = false;
@@ -261,12 +284,10 @@ namespace Advanced_Cooling_Control_Software
                                 Disconnect_button.BackColor = Color.CornflowerBlue;
                                 CheckArduinoComPort_button.Enabled = false;
                                 CheckArduinoComPort_button.BackColor = Color.LightSteelBlue;
+                                AutoConnect_checkBox.Enabled = false;
+                                SerialMonitor_textbox.Enabled = true;
 
-                                HDCPOff_button.Enabled = true;
-                                HDCPOn_button.Enabled = true;
-                                HDCPDevicelist_Combobox.Enabled = true;
-                                HDCPMsgbox_label.Enabled = true;
-
+                                // @SECTION [Hardware Device Control : Main Power Control]
                                 MainPower_checkBox.Enabled = true;
                                 CabinLight_checkBox.Enabled = true;
                                 Peltier1_checkBox.Enabled = true;
@@ -274,17 +295,24 @@ namespace Advanced_Cooling_Control_Software
                                 Peltier3_checkBox.Enabled = true;
                                 Peltier4_checkBox.Enabled = true;
 
-                                AutoConnect_checkBox.Enabled = false;
-                                //CabinLight_checkBox.Checked = false;
+                                // @SECTION [Hardware Device Control : Device Power Control]
+                                HDCPOff_button.Enabled = true;
+                                HDCPOn_button.Enabled = true;
+                                HDCPDevicelist_Combobox.Enabled = true;
+                                HDCPMsgbox_label.Enabled = true;
 
+                                // @SECTION [Fan Speed Controls]
+                                FanSpeedControlDeviceList_comboBox.Enabled = true;
+                                FanSpeedControl_numericUpDown.Enabled = true;
+                                FanSpeedControl_trackBar.Enabled = true;
+
+                                // @SECTION [Serial Console]
                                 Command_textBox.Enabled = true;
                                 Send_button.Enabled = true;
                                 Send_button.BackColor = Color.DarkCyan;
                                 Send_button.ForeColor = Color.White;
-
                                 ConsoleLog_textbox.Enabled = true;
-
-                                FanSpeedControl_comboBox.Enabled = true;
+                                Conn_progressBar.Value = 100;
                             }
                             catch
                             {
@@ -294,31 +322,66 @@ namespace Advanced_Cooling_Control_Software
                         }
                         else
                         {
+                            ConnectionMsgBox_label.BackColor = Color.MidnightBlue;
+                            ConnectionMsgBox_label.ForeColor = SystemColors.HighlightText;
                             ConnectionMsgBox_label.Text = "Wrong passcode!";
                         }
                     }
                     else
                     {
+                        ConnectionMsgBox_label.BackColor = Color.MidnightBlue;
+                        ConnectionMsgBox_label.ForeColor = SystemColors.HighlightText;
                         ConnectionMsgBox_label.Text = "Please enter the passcode";
                     }
                 }
                 else
                 {
+                    ConnectionMsgBox_label.BackColor = Color.MidnightBlue;
+                    ConnectionMsgBox_label.ForeColor = SystemColors.HighlightText;
                     ConnectionMsgBox_label.Text = "Please select Baud Rate";
                 }
             }
             else
             {
+                ConnectionMsgBox_label.BackColor = Color.MidnightBlue;
+                ConnectionMsgBox_label.ForeColor = SystemColors.HighlightText;
                 ConnectionMsgBox_label.Text = "Please select COM Port";
             }
         }
+        
+
+        private async void SoftBlink(Control ctrl, Color c1, Color c2, short CycleTime_ms, bool BkClr, bool _stop = false)
+        {
+            var sw = new Stopwatch(); 
+            sw.Start();
+            short halfCycle = (short)Math.Round(CycleTime_ms * 0.5);
+            while (true)
+            {
+                await Task.Delay(1);
+                var n = sw.ElapsedMilliseconds % CycleTime_ms;
+                var per = (double)Math.Abs(n - halfCycle) / halfCycle;
+                var red = (short)Math.Round((c2.R - c1.R) * per) + c1.R;
+                var grn = (short)Math.Round((c2.G - c1.G) * per) + c1.G;
+                var blw = (short)Math.Round((c2.B - c1.B) * per) + c1.B;
+                var clr = Color.FromArgb(red, grn, blw);
+                if (BkClr) ctrl.BackColor = clr; else ctrl.ForeColor = clr;
+                if(_stop)
+                {
+                    break;
+                }
+            }
+        }
+
 
         private void Disconnect_button_Click(object sender, EventArgs e)
         {
             try
             {
-                // set all PWM value to zero:
-                SerialPort1.WriteLine("s0d");
+                // set all PWM value to zero [ stops all coolant pwm fans]:
+                SerialPort1.WriteLine("sk0d");
+                SerialPort1.WriteLine("sl0d");
+                SerialPort1.WriteLine("sm0d");
+                SerialPort1.WriteLine("sn0d");
 
                 // switch off all coolant/exhaust relays:
 
@@ -326,26 +389,28 @@ namespace Advanced_Cooling_Control_Software
                 // Disconnect serial COM:
                 SerialPort1.Close();
 
+                // @SECTION [Connection Panel]
                 connection_groupBox.ForeColor = Color.Maroon;
                 Conn_progressBar.Value = 0;
                 ConnectionMsgBox_label.ForeColor = Color.White;
                 ConnectionMsgBox_label.BackColor = Color.DarkRed;
                 ConnectionMsgBox_label.Text = "Disconnected: " + _COMPORT;
-                SerialMonitor_groupBox.Text = "Serial Monitor";
+                SerialMonitor_groupBox.Text = "Data Monitor";
+                SerialMonitor_textbox.Enabled = false;
 
-                PBT1_circularProgressBar.Value = 0;
-                PBT1_circularProgressBar.Text = "";
-                PBT2_circularProgressBar.Value = 0;
-                PBT2_circularProgressBar.Text = "";
-                CT1_circularProgressBar.Value = 0;
-                CT1_circularProgressBar.Text = "";
-                CT2_circularProgressBar.Value = 0;
-                CT2_circularProgressBar.Text = "";
+                PBT1_circularProgressBar.Value = 1;
+                PBT1_circularProgressBar.Text = "0.00 °C";
+                PBT2_circularProgressBar.Value = 1;
+                PBT2_circularProgressBar.Text = "0.00 °C";
+                CT1_circularProgressBar.Value = 1;
+                CT1_circularProgressBar.Text = "0.00 °C";
+                CT2_circularProgressBar.Value = 1;
+                CT2_circularProgressBar.Text = "0.00 °C";
                 SerialMonitor_textbox.Text = "";
                 ConsoleLog_textbox.Text = "";
 
-                // comment below line after debugging:
-                Passcode_textBox.Text = "20222023v"; /* SET SOFTWARE PASSWORD HERE */
+                // *IMPORTANT* comment below line after debugging:
+                Passcode_textBox.Text = AppAccessPasscode;
 
                 ConnectionMsgBox_label.Enabled = true;
                 ComPort_comboBox.Enabled = true;
@@ -383,21 +448,16 @@ namespace Advanced_Cooling_Control_Software
                 DIS6.BackColor = SystemColors.ControlDarkDark;
                 DIS6.ForeColor = Color.White;
 
+                // @SECTION [Fan Speed Controls]
                 FanSpeedControl_numericUpDown.Enabled = false;
-                ACBFanSpeed_trackBar.Enabled = false;
-                //CoolingFanSpeed_numericUpDown.Enabled = false;
-                //CoolingFanSpeed_trackBar.Enabled = false;
+                FanSpeedControl_trackBar.Enabled = false;
+                FanSpeedControlDeviceList_comboBox.Enabled = false;
 
-                ACBFanSpeed_trackBar.Value = 0;
+                FanSpeedControl_trackBar.Value = 0;
                 FanSpeedControl_numericUpDown.Value = 0;
-                //CoolingFanSpeed_trackBar.Value = 0;
-                //CoolingFanSpeed_numericUpDown.Value = 0;
 
                 AutoConnect_checkBox.Checked = false;
                 AutoConnect_checkBox.Enabled = true;
-
-                FanSpeedControl_comboBox.Enabled = false;
-
             }
             catch
             {
@@ -726,53 +786,76 @@ namespace Advanced_Cooling_Control_Software
 
         private void ExhaustFanSpeed_trackBar_Scroll(object sender, EventArgs e)
         {
-            if (FanSpeedControl_comboBox.Text != "--select device--")
-            {
-                FanSpeedControl_numericUpDown.Value = ACBFanSpeed_trackBar.Value;
-                // progressBar1.Value = ExhaustFanSpeed_trackBar.Value;
-                BeginInvoke(new EventHandler(FanPwmEncoder));
-            }
-            else
-            {
-
-            }
+            FanSpeedControl_numericUpDown.Value = FanSpeedControl_trackBar.Value;
+            BeginInvoke(new EventHandler(FanPwmEncoder));
         }
 
         private void ExhaustFanSpeed_numericUpDown_ValueChanged(object sender, EventArgs e)
         {
-            ACBFanSpeed_trackBar.Value = (int)FanSpeedControl_numericUpDown.Value;
+            FanSpeedControl_trackBar.Value = (int)FanSpeedControl_numericUpDown.Value;
             BeginInvoke(new EventHandler(FanPwmEncoder));
         }
 
 
         /* PWM VALUE ENCODE SECTION */
-        // delegate to convert percentage to pwm value. Encode pwm value and writes to
-        // arduino serial. Example data: [s102d] or [s255d] or [s125.44d] -> pwm: 102, 255, 125 
+        // converts percentage to pwm value. Encode pwm value and writes to arduino serial.
         private void FanPwmEncoder(object sender, EventArgs e)
         {
-            PWM = (1.0f * ACBFanSpeed_trackBar.Value) / 100 * 255;
+            PWM = (1.0f * FanSpeedControl_trackBar.Value) / 100 * 255;
             if (SerialPort1.IsOpen)
             {
-                if (FanSpeedControl_comboBox.SelectedIndex == 1)
+                if (FanSpeedControlDeviceList_comboBox.SelectedIndex == 0)
                 {
-                    SerialPort1.WriteLine("SA" + PWM.ToString());
-                    SerialMonitor_textbox.AppendText("SA" + PWM.ToString() + Environment.NewLine);
+                    SerialPort1.WriteLine("sk" + PWM.ToString());
+                    SerialMonitor_textbox.AppendText("sk" + PWM.ToString() + Environment.NewLine);
+                    preVal0 = FanSpeedControl_trackBar.Value;
                 }
-                else if (FanSpeedControl_comboBox.SelectedIndex == 2)
+                else if (FanSpeedControlDeviceList_comboBox.SelectedIndex == 1)
                 {
-                    SerialPort1.WriteLine("SB" + PWM.ToString());
-                    SerialMonitor_textbox.AppendText("SB" + PWM.ToString() + Environment.NewLine);
+                    SerialPort1.WriteLine("sl" + PWM.ToString());
+                    SerialMonitor_textbox.AppendText("sl" + PWM.ToString() + Environment.NewLine);
+                    preVal1 = FanSpeedControl_trackBar.Value;
                 }
-                else if (FanSpeedControl_comboBox.SelectedIndex == 3)
+                else if (FanSpeedControlDeviceList_comboBox.SelectedIndex == 2)
                 {
-                    SerialPort1.WriteLine("SC" + PWM.ToString());
-                    SerialMonitor_textbox.AppendText("SC" + PWM.ToString() + Environment.NewLine);
+                    SerialPort1.WriteLine("sm" + PWM.ToString());
+                    SerialMonitor_textbox.AppendText("sm" + PWM.ToString() + Environment.NewLine);
+                    preVal2 = FanSpeedControl_trackBar.Value;
                 }
-                else if (FanSpeedControl_comboBox.SelectedIndex == 4)
+                else if (FanSpeedControlDeviceList_comboBox.SelectedIndex == 3)
                 {
-                    SerialPort1.WriteLine("SD" + PWM.ToString());
-                    SerialMonitor_textbox.AppendText("SD" + PWM.ToString() + Environment.NewLine);
+                    SerialPort1.WriteLine("sn" + PWM.ToString());
+                    SerialMonitor_textbox.AppendText("sn" + PWM.ToString() + Environment.NewLine);
+                    preVal3 = FanSpeedControl_trackBar.Value;
                 }
+            }
+        }
+
+        private void FanSpeedControl_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selVal = FanSpeedControlDeviceList_comboBox.SelectedIndex;
+
+            FanSpeedControl_Label.Text = FanSpeedControlDeviceList_comboBox.Text + " fan speed";
+
+            if (FanSpeedControlDeviceList_comboBox.SelectedIndex == 0)
+            {
+                FanSpeedControl_trackBar.Value = preVal0;
+                FanSpeedControl_numericUpDown.Value = preVal0;
+            }
+            else if (FanSpeedControlDeviceList_comboBox.SelectedIndex == 1)
+            {
+                FanSpeedControl_trackBar.Value = preVal1;
+                FanSpeedControl_numericUpDown.Value = preVal1;
+            }
+            else if (FanSpeedControlDeviceList_comboBox.SelectedIndex == 2)
+            {
+                FanSpeedControl_trackBar.Value = preVal2;
+                FanSpeedControl_numericUpDown.Value = preVal2;
+            }
+            else if (FanSpeedControlDeviceList_comboBox.SelectedIndex == 3)
+            {
+                FanSpeedControl_trackBar.Value = preVal3;
+                FanSpeedControl_numericUpDown.Value = preVal3;
             }
         }
 
@@ -864,7 +947,7 @@ namespace Advanced_Cooling_Control_Software
                     try
                     {
                         SerialPort1.WriteLine(Command_textBox.Text);
-                        ClearConsoleTextBox_label.Text = "command sent successfull";
+                        ClearConsoleTextBox_label.Text = "command sent successful";
                     }
                     catch
                     {
@@ -935,9 +1018,12 @@ namespace Advanced_Cooling_Control_Software
 
         private async void SerialMonitor_textbox_DoubleClick(object sender, EventArgs e)
         {
-            SerialMonitor_textbox.Text = "console cleared!";
-            await Task.Delay(750);
             SerialMonitor_textbox.Text = "";
+            SerialMonitor_groupBox.ForeColor = Color.Maroon;
+            SerialMonitor_groupBox.Text = "console cleared!";
+            await Task.Delay(750);
+            SerialMonitor_groupBox.Text = "Data Monitor" + " [ " + _COMPORT + " @" + _BAUDRATE + " ]";
+            SerialMonitor_groupBox.ForeColor = SystemColors.ControlLightLight;
         }
 
         private void SystemInformationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -946,25 +1032,15 @@ namespace Advanced_Cooling_Control_Software
             systeminfohelper.Show();
         }
 
-        private void FanSpeedControl_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void SerialMonitor_textbox_TextChanged(object sender, EventArgs e)
         {
-            FanSpeedControl_Label.Text = FanSpeedControl_comboBox.Text + " fan speed";
-            if (FanSpeedControl_comboBox.SelectedIndex == 0)
-            {
-                ACBFanSpeed_trackBar.Enabled = false;
-                FanSpeedControl_numericUpDown.Enabled = false;
-            }
-            else
-            {
-                ACBFanSpeed_trackBar.Enabled = true;
-                FanSpeedControl_numericUpDown.Enabled = true;
-            }
+
         }
 
         private void ExhaustFanSpeed_trackBar_MouseDown(object sender, MouseEventArgs e)
         {
             InfoToolTip.Active = true;
-            InfoToolTip.Show("Speed controller for Exhaust Fans: ARDUINO_PIN: ~9", ACBFanSpeed_trackBar);
+            InfoToolTip.Show("Speed controller for Exhaust Fans: ARDUINO_PIN: ~9", FanSpeedControl_trackBar);
         }
 
         private void ComPort_comboBox_SelectedIndexChanged(object sender, EventArgs e)
