@@ -34,7 +34,6 @@
             this.Disconnect_button = new System.Windows.Forms.Button();
             this.Connect_button = new System.Windows.Forms.Button();
             this.Conn_progressBar = new System.Windows.Forms.ProgressBar();
-            this.ConnectionMsgBox_label = new System.Windows.Forms.Label();
             this.Peltier2_checkBox = new System.Windows.Forms.CheckBox();
             this.Peltier1_checkBox = new System.Windows.Forms.CheckBox();
             this.MainPower_checkBox = new System.Windows.Forms.CheckBox();
@@ -47,7 +46,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.HDCPMsgbox_label = new System.Windows.Forms.Label();
             this.DS3 = new System.Windows.Forms.Label();
             this.DS6 = new System.Windows.Forms.Label();
             this.DS2 = new System.Windows.Forms.Label();
@@ -64,7 +62,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.DS4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.HDCPOff_button = new System.Windows.Forms.Button();
             this.HDCPOn_button = new System.Windows.Forms.Button();
@@ -103,9 +100,12 @@
             this.Passcode_textBox = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.FanSpeedControl_Label = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.FanSpeedControl_comboBox = new System.Windows.Forms.ComboBox();
-            this.FanSpeedControl_Label = new System.Windows.Forms.Label();
             this.FanSpeedControl_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.ACBFanSpeed_trackBar = new System.Windows.Forms.TrackBar();
             this.ConsoleLog_textbox = new System.Windows.Forms.TextBox();
@@ -145,9 +145,8 @@
             this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.systemInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.About_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.HDCPMsgbox_label = new System.Windows.Forms.TextBox();
+            this.ConnectionMsgBox_label = new System.Windows.Forms.TextBox();
             this.SerialMonitor_groupBox.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -186,7 +185,7 @@
             // 
             // CheckArduinoComPort_button
             // 
-            this.CheckArduinoComPort_button.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.CheckArduinoComPort_button.BackColor = System.Drawing.SystemColors.Highlight;
             this.CheckArduinoComPort_button.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.CheckArduinoComPort_button.ForeColor = System.Drawing.Color.White;
             this.CheckArduinoComPort_button.Location = new System.Drawing.Point(3, 30);
@@ -227,23 +226,11 @@
             // 
             this.Conn_progressBar.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Conn_progressBar.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.Conn_progressBar.Location = new System.Drawing.Point(6, 140);
+            this.Conn_progressBar.Location = new System.Drawing.Point(6, 139);
             this.Conn_progressBar.MarqueeAnimationSpeed = 10;
             this.Conn_progressBar.Name = "Conn_progressBar";
             this.Conn_progressBar.Size = new System.Drawing.Size(234, 6);
             this.Conn_progressBar.TabIndex = 7;
-            // 
-            // ConnectionMsgBox_label
-            // 
-            this.ConnectionMsgBox_label.BackColor = System.Drawing.Color.Gainsboro;
-            this.ConnectionMsgBox_label.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ConnectionMsgBox_label.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
-            this.ConnectionMsgBox_label.ForeColor = System.Drawing.Color.DarkBlue;
-            this.ConnectionMsgBox_label.Location = new System.Drawing.Point(6, 115);
-            this.ConnectionMsgBox_label.Name = "ConnectionMsgBox_label";
-            this.ConnectionMsgBox_label.Size = new System.Drawing.Size(234, 24);
-            this.ConnectionMsgBox_label.TabIndex = 6;
-            this.ConnectionMsgBox_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Peltier2_checkBox
             // 
@@ -332,10 +319,10 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Gainsboro;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label8.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.ForeColor = System.Drawing.Color.MediumBlue;
             this.label8.Location = new System.Drawing.Point(180, 43);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(60, 17);
@@ -345,10 +332,10 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Gainsboro;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label7.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.ForeColor = System.Drawing.Color.MediumBlue;
             this.label7.Location = new System.Drawing.Point(28, 44);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(60, 17);
@@ -358,10 +345,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Gainsboro;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label6.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.ForeColor = System.Drawing.Color.MediumBlue;
             this.label6.Location = new System.Drawing.Point(162, 12);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 17);
@@ -371,27 +358,15 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Gainsboro;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label5.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(7, 12);
+            this.label5.ForeColor = System.Drawing.Color.MediumBlue;
+            this.label5.Location = new System.Drawing.Point(7, 10);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 17);
             this.label5.TabIndex = 10;
             this.label5.Text = "Main Power:";
-            // 
-            // HDCPMsgbox_label
-            // 
-            this.HDCPMsgbox_label.BackColor = System.Drawing.Color.Gainsboro;
-            this.HDCPMsgbox_label.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.HDCPMsgbox_label.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
-            this.HDCPMsgbox_label.ForeColor = System.Drawing.Color.DarkBlue;
-            this.HDCPMsgbox_label.Location = new System.Drawing.Point(121, 36);
-            this.HDCPMsgbox_label.Name = "HDCPMsgbox_label";
-            this.HDCPMsgbox_label.Size = new System.Drawing.Size(183, 27);
-            this.HDCPMsgbox_label.TabIndex = 10;
-            this.HDCPMsgbox_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DS3
             // 
@@ -488,7 +463,7 @@
             this.SerialMonitor_textbox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.SerialMonitor_textbox.Size = new System.Drawing.Size(369, 119);
             this.SerialMonitor_textbox.TabIndex = 0;
-            this.SerialMonitor_textbox.Click += new System.EventHandler(this.SerialMonitor_textbox_Click);
+            this.SerialMonitor_textbox.DoubleClick += new System.EventHandler(this.SerialMonitor_textbox_DoubleClick);
             // 
             // groupBox13
             // 
@@ -592,34 +567,21 @@
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel4.Controls.Add(this.label9);
+            this.panel4.Controls.Add(this.HDCPMsgbox_label);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.HDCPOff_button);
             this.panel4.Controls.Add(this.HDCPOn_button);
             this.panel4.Controls.Add(this.HDCPDevicelist_Combobox);
-            this.panel4.Controls.Add(this.HDCPMsgbox_label);
             this.panel4.Location = new System.Drawing.Point(9, 158);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(314, 90);
             this.panel4.TabIndex = 59;
             // 
-            // label9
-            // 
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label9.ForeColor = System.Drawing.Color.Navy;
-            this.label9.Location = new System.Drawing.Point(5, 46);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(61, 17);
-            this.label9.TabIndex = 59;
-            this.label9.Text = "Actions:";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label3
             // 
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.Navy;
+            this.label3.ForeColor = System.Drawing.Color.MediumBlue;
             this.label3.Location = new System.Drawing.Point(4, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(149, 17);
@@ -629,10 +591,10 @@
             // 
             // HDCPOff_button
             // 
-            this.HDCPOff_button.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.HDCPOff_button.BackColor = System.Drawing.Color.DarkRed;
             this.HDCPOff_button.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.HDCPOff_button.ForeColor = System.Drawing.Color.White;
-            this.HDCPOff_button.Location = new System.Drawing.Point(70, 53);
+            this.HDCPOff_button.Location = new System.Drawing.Point(52, 36);
             this.HDCPOff_button.Name = "HDCPOff_button";
             this.HDCPOff_button.Size = new System.Drawing.Size(45, 26);
             this.HDCPOff_button.TabIndex = 57;
@@ -642,10 +604,10 @@
             // 
             // HDCPOn_button
             // 
-            this.HDCPOn_button.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.HDCPOn_button.BackColor = System.Drawing.Color.DarkCyan;
             this.HDCPOn_button.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.HDCPOn_button.ForeColor = System.Drawing.Color.White;
-            this.HDCPOn_button.Location = new System.Drawing.Point(70, 25);
+            this.HDCPOn_button.Location = new System.Drawing.Point(9, 36);
             this.HDCPOn_button.Name = "HDCPOn_button";
             this.HDCPOn_button.Size = new System.Drawing.Size(45, 26);
             this.HDCPOn_button.TabIndex = 56;
@@ -670,6 +632,7 @@
             this.HDCPDevicelist_Combobox.Name = "HDCPDevicelist_Combobox";
             this.HDCPDevicelist_Combobox.Size = new System.Drawing.Size(144, 23);
             this.HDCPDevicelist_Combobox.TabIndex = 10;
+            this.HDCPDevicelist_Combobox.Text = "-- select a device --";
             this.HDCPDevicelist_Combobox.SelectedIndexChanged += new System.EventHandler(this.Hdcp_Devicelists_Combobox_SelectedIndexChanged);
             // 
             // label11
@@ -751,10 +714,10 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.BackColor = System.Drawing.Color.Gainsboro;
+            this.label32.BackColor = System.Drawing.Color.Transparent;
             this.label32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label32.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label32.ForeColor = System.Drawing.Color.Black;
+            this.label32.ForeColor = System.Drawing.Color.MediumBlue;
             this.label32.Location = new System.Drawing.Point(28, 76);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(60, 17);
@@ -764,10 +727,10 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.BackColor = System.Drawing.Color.Gainsboro;
+            this.label33.BackColor = System.Drawing.Color.Transparent;
             this.label33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label33.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label33.ForeColor = System.Drawing.Color.Black;
+            this.label33.ForeColor = System.Drawing.Color.MediumBlue;
             this.label33.Location = new System.Drawing.Point(180, 75);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(60, 17);
@@ -982,6 +945,7 @@
             // connection_groupBox
             // 
             this.connection_groupBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.connection_groupBox.Controls.Add(this.ConnectionMsgBox_label);
             this.connection_groupBox.Controls.Add(this.label1);
             this.connection_groupBox.Controls.Add(this.label2);
             this.connection_groupBox.Controls.Add(this.label17);
@@ -989,7 +953,6 @@
             this.connection_groupBox.Controls.Add(this.Passcode_textBox);
             this.connection_groupBox.Controls.Add(this.ComPort_comboBox);
             this.connection_groupBox.Controls.Add(this.BaudRate_comboBox);
-            this.connection_groupBox.Controls.Add(this.ConnectionMsgBox_label);
             this.connection_groupBox.Controls.Add(this.Conn_progressBar);
             this.connection_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
             this.connection_groupBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1103,11 +1066,62 @@
             this.panel7.Size = new System.Drawing.Size(263, 114);
             this.panel7.TabIndex = 66;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Malgun Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.MediumBlue;
+            this.label14.Location = new System.Drawing.Point(80, 91);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(61, 12);
+            this.label14.TabIndex = 69;
+            this.label14.Text = "Adjust speed";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // FanSpeedControl_Label
+            // 
+            this.FanSpeedControl_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.FanSpeedControl_Label.ForeColor = System.Drawing.Color.DarkGreen;
+            this.FanSpeedControl_Label.Location = new System.Drawing.Point(6, 5);
+            this.FanSpeedControl_Label.Name = "FanSpeedControl_Label";
+            this.FanSpeedControl_Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.FanSpeedControl_Label.Size = new System.Drawing.Size(245, 19);
+            this.FanSpeedControl_Label.TabIndex = 65;
+            this.FanSpeedControl_Label.Text = "Coolant fan speed settings";
+            this.FanSpeedControl_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Malgun Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.MediumBlue;
+            this.label13.Location = new System.Drawing.Point(174, 92);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(26, 12);
+            this.label13.TabIndex = 68;
+            this.label13.Text = "MAX";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Malgun Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.MediumBlue;
+            this.label12.Location = new System.Drawing.Point(5, 93);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(24, 12);
+            this.label12.TabIndex = 67;
+            this.label12.Text = "MIN";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Navy;
+            this.label10.ForeColor = System.Drawing.Color.MediumBlue;
             this.label10.Location = new System.Drawing.Point(6, 39);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(82, 15);
@@ -1116,7 +1130,7 @@
             // 
             // FanSpeedControl_comboBox
             // 
-            this.FanSpeedControl_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FanSpeedControl_comboBox.Font = new System.Drawing.Font("Malgun Gothic", 9F);
             this.FanSpeedControl_comboBox.FormattingEnabled = true;
             this.FanSpeedControl_comboBox.Items.AddRange(new object[] {
             "--select device--",
@@ -1126,22 +1140,10 @@
             "Exhaust 2 OUT"});
             this.FanSpeedControl_comboBox.Location = new System.Drawing.Point(94, 33);
             this.FanSpeedControl_comboBox.Name = "FanSpeedControl_comboBox";
-            this.FanSpeedControl_comboBox.Size = new System.Drawing.Size(160, 21);
+            this.FanSpeedControl_comboBox.Size = new System.Drawing.Size(160, 23);
             this.FanSpeedControl_comboBox.TabIndex = 66;
-            this.FanSpeedControl_comboBox.Text = "--select device--";
+            this.FanSpeedControl_comboBox.Text = "-- select a device --";
             this.FanSpeedControl_comboBox.SelectedIndexChanged += new System.EventHandler(this.FanSpeedControl_comboBox_SelectedIndexChanged);
-            // 
-            // FanSpeedControl_Label
-            // 
-            this.FanSpeedControl_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.FanSpeedControl_Label.ForeColor = System.Drawing.Color.DarkGreen;
-            this.FanSpeedControl_Label.Location = new System.Drawing.Point(6, 7);
-            this.FanSpeedControl_Label.Name = "FanSpeedControl_Label";
-            this.FanSpeedControl_Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.FanSpeedControl_Label.Size = new System.Drawing.Size(245, 19);
-            this.FanSpeedControl_Label.TabIndex = 65;
-            this.FanSpeedControl_Label.Text = "Coolant fan speed settings";
-            this.FanSpeedControl_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FanSpeedControl_numericUpDown
             // 
@@ -1320,6 +1322,7 @@
             this.SMT_E_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
             this.SMT_E_circularProgressBar.SuperscriptText = "";
             this.SMT_E_circularProgressBar.TabIndex = 38;
+            this.SMT_E_circularProgressBar.Text = "0.00";
             this.SMT_E_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
             this.SMT_E_circularProgressBar.Value = 30;
             // 
@@ -1382,6 +1385,7 @@
             this.SMT_Z_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
             this.SMT_Z_circularProgressBar.SuperscriptText = "";
             this.SMT_Z_circularProgressBar.TabIndex = 37;
+            this.SMT_Z_circularProgressBar.Text = "0.00";
             this.SMT_Z_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
             this.SMT_Z_circularProgressBar.Value = 45;
             // 
@@ -1423,6 +1427,7 @@
             this.SMT_Y_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
             this.SMT_Y_circularProgressBar.SuperscriptText = "";
             this.SMT_Y_circularProgressBar.TabIndex = 2;
+            this.SMT_Y_circularProgressBar.Text = "0.00";
             this.SMT_Y_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
             this.SMT_Y_circularProgressBar.Value = 77;
             // 
@@ -1454,6 +1459,7 @@
             this.SMT_X_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
             this.SMT_X_circularProgressBar.SuperscriptText = "";
             this.SMT_X_circularProgressBar.TabIndex = 1;
+            this.SMT_X_circularProgressBar.Text = "0.00";
             this.SMT_X_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
             this.SMT_X_circularProgressBar.Value = 61;
             // 
@@ -1530,6 +1536,7 @@
             this.PBT2_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(0);
             this.PBT2_circularProgressBar.SuperscriptText = "";
             this.PBT2_circularProgressBar.TabIndex = 36;
+            this.PBT2_circularProgressBar.Text = "0.00";
             this.PBT2_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
             this.PBT2_circularProgressBar.Value = 58;
             // 
@@ -1571,6 +1578,7 @@
             this.PBT1_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(0);
             this.PBT1_circularProgressBar.SuperscriptText = "";
             this.PBT1_circularProgressBar.TabIndex = 1;
+            this.PBT1_circularProgressBar.Text = "0.00";
             this.PBT1_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
             this.PBT1_circularProgressBar.Value = 58;
             // 
@@ -1618,6 +1626,7 @@
             this.CT2_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
             this.CT2_circularProgressBar.SuperscriptText = "";
             this.CT2_circularProgressBar.TabIndex = 37;
+            this.CT2_circularProgressBar.Text = "0.00";
             this.CT2_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
             this.CT2_circularProgressBar.Value = 27;
             // 
@@ -1669,6 +1678,7 @@
             this.CT1_circularProgressBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
             this.CT1_circularProgressBar.SuperscriptText = "";
             this.CT1_circularProgressBar.TabIndex = 1;
+            this.CT1_circularProgressBar.Text = "0.00";
             this.CT1_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
             this.CT1_circularProgressBar.Value = 90;
             // 
@@ -1754,7 +1764,7 @@
             this.systemInformationToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
             this.systemInformationToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.systemInformationToolStripMenuItem.Text = "System Information";
-            this.systemInformationToolStripMenuItem.Click += new System.EventHandler(this.systemInformationToolStripMenuItem_Click);
+            this.systemInformationToolStripMenuItem.Click += new System.EventHandler(this.SystemInformationToolStripMenuItem_Click);
             // 
             // About_MenuItem
             // 
@@ -1764,48 +1774,33 @@
             this.About_MenuItem.Text = "About";
             this.About_MenuItem.Click += new System.EventHandler(this.About_MenuItem_Click);
             // 
-            // label12
+            // HDCPMsgbox_label
             // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Malgun Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Navy;
-            this.label12.Location = new System.Drawing.Point(5, 93);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(24, 12);
-            this.label12.TabIndex = 67;
-            this.label12.Text = "MIN";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.HDCPMsgbox_label.BackColor = System.Drawing.Color.Gainsboro;
+            this.HDCPMsgbox_label.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.HDCPMsgbox_label.ForeColor = System.Drawing.SystemColors.Window;
+            this.HDCPMsgbox_label.Location = new System.Drawing.Point(97, 39);
+            this.HDCPMsgbox_label.Name = "HDCPMsgbox_label";
+            this.HDCPMsgbox_label.ReadOnly = true;
+            this.HDCPMsgbox_label.Size = new System.Drawing.Size(207, 22);
+            this.HDCPMsgbox_label.TabIndex = 64;
+            this.HDCPMsgbox_label.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label13
+            // ConnectionMsgBox_label
             // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Malgun Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Navy;
-            this.label13.Location = new System.Drawing.Point(174, 92);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(26, 12);
-            this.label13.TabIndex = 68;
-            this.label13.Text = "MAX";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Malgun Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.Navy;
-            this.label14.Location = new System.Drawing.Point(80, 91);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(61, 12);
-            this.label14.TabIndex = 69;
-            this.label14.Text = "Adjust speed";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ConnectionMsgBox_label.BackColor = System.Drawing.Color.Gainsboro;
+            this.ConnectionMsgBox_label.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConnectionMsgBox_label.ForeColor = System.Drawing.Color.White;
+            this.ConnectionMsgBox_label.Location = new System.Drawing.Point(7, 118);
+            this.ConnectionMsgBox_label.Name = "ConnectionMsgBox_label";
+            this.ConnectionMsgBox_label.ReadOnly = true;
+            this.ConnectionMsgBox_label.Size = new System.Drawing.Size(233, 22);
+            this.ConnectionMsgBox_label.TabIndex = 65;
+            this.ConnectionMsgBox_label.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Main
             // 
-            this.AcceptButton = this.Send_button;
+            this.AcceptButton = this.Connect_button;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
@@ -1839,6 +1834,7 @@
             this.panel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.groupBox12.ResumeLayout(false);
@@ -1871,7 +1867,6 @@
 
         #endregion
         private System.Windows.Forms.ProgressBar Conn_progressBar;
-        private System.Windows.Forms.Label ConnectionMsgBox_label;
         private System.Windows.Forms.Button Disconnect_button;
         private System.Windows.Forms.Button Connect_button;
         private System.Windows.Forms.Label label8;
@@ -1880,7 +1875,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox SerialMonitor_groupBox;
         private System.Windows.Forms.TextBox SerialMonitor_textbox;
-        private System.Windows.Forms.Label HDCPMsgbox_label;
         private System.Windows.Forms.Label DS5;
         private System.Windows.Forms.Label DS1;
         private System.Windows.Forms.Label DS7;
@@ -1931,7 +1925,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox DIS4B;
         private System.Windows.Forms.TextBox DIS4A;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox DIS3B;
         private System.Windows.Forms.TextBox DIS3A;
@@ -1989,6 +1982,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox HDCPMsgbox_label;
+        private System.Windows.Forms.TextBox ConnectionMsgBox_label;
     }
 }
 

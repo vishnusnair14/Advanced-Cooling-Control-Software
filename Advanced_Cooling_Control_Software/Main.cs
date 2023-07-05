@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Msagl.Core.Geometry;
+using System;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
@@ -47,14 +48,24 @@ namespace Advanced_Cooling_Control_Software
             PCP_Indicator5.BackColor = Color.Maroon;
             PCP_Indicator6.BackColor = Color.Maroon;
 
-            PBT1_circularProgressBar.Value = 0;
-            PBT2_circularProgressBar.Value = 0;
-            CT1_circularProgressBar.Value = 0;
-            CT2_circularProgressBar.Value = 0;
-            SMT_X_circularProgressBar.Value = 0;
-            SMT_Y_circularProgressBar.Value = 0;
-            SMT_Z_circularProgressBar.Value = 0;
-            SMT_E_circularProgressBar.Value = 0;
+            PBT1_circularProgressBar.Value = 1;
+            PBT2_circularProgressBar.Value = 1;
+            CT1_circularProgressBar.Value = 1;
+            CT2_circularProgressBar.Value = 1;
+            SMT_X_circularProgressBar.Value = 1;
+            SMT_Y_circularProgressBar.Value = 1;
+            SMT_Z_circularProgressBar.Value =1;
+            SMT_E_circularProgressBar.Value = 1;
+            /*
+            PBT1_circularProgressBar.Text = "";
+            PBT2_circularProgressBar.Text = "";
+            CT1_circularProgressBar.Text = "";
+            CT2_circularProgressBar.Text = "";
+            SMT_X_circularProgressBar.Text = "";
+            SMT_Y_circularProgressBar.Text = "";
+            SMT_Z_circularProgressBar.Text = "";
+            SMT_E_circularProgressBar.Text = "";*/
+
             ACBFanSpeed_trackBar.Value = 0;
             FanSpeedControl_numericUpDown.Value = 0;
 
@@ -190,7 +201,7 @@ namespace Advanced_Cooling_Control_Software
             ComPort_comboBox.Items.Clear();
             ComPort_comboBox.Items.AddRange(SerialPort.GetPortNames());
             ArduinoPortDect = AutoDetectArduinoPort();
-            if (String.IsNullOrEmpty(ArduinoPortDect) != true)
+            if (string.IsNullOrEmpty(ArduinoPortDect) != true)
             {
                 ConnectionMsgBox_label.Text = "Arduino detected @" + ArduinoPortDect;
                 ComPort_comboBox.Text = ArduinoPortDect;
@@ -233,10 +244,8 @@ namespace Advanced_Cooling_Control_Software
                                 connection_groupBox.ForeColor = Color.DarkGreen;
                                 BeginInvoke(new EventHandler(ArduinoReset_button_Click));
 
-                                // load m-code data:
-                                //LOAD_MCODE load_mcode = new LOAD_MCODE("/code.txt");
-
-                                ConnectionMsgBox_label.ForeColor = Color.DarkBlue;
+                                ConnectionMsgBox_label.ForeColor = Color.White;
+                                ConnectionMsgBox_label.BackColor = Color.SeaGreen;
                                 Conn_progressBar.Value = 100;
                                 ConnectionMsgBox_label.Text = "Connected: " + _COMPORT + " @" + _BAUDRATE;
                                 ConsoleLog_textbox.Text = "> [MSG: Connected to port @" + _COMPORT + "]" + Environment.NewLine;
@@ -265,15 +274,14 @@ namespace Advanced_Cooling_Control_Software
                                 Peltier3_checkBox.Enabled = true;
                                 Peltier4_checkBox.Enabled = true;
 
-
-                                //CoolingFanSpeed_numericUpDown.Enabled = true;
-                                //CoolingFanSpeed_trackBar.Enabled = true;
-
                                 AutoConnect_checkBox.Enabled = false;
                                 //CabinLight_checkBox.Checked = false;
 
                                 Command_textBox.Enabled = true;
                                 Send_button.Enabled = true;
+                                Send_button.BackColor = Color.DarkCyan;
+                                Send_button.ForeColor = Color.White;
+
                                 ConsoleLog_textbox.Enabled = true;
 
                                 FanSpeedControl_comboBox.Enabled = true;
@@ -320,7 +328,8 @@ namespace Advanced_Cooling_Control_Software
 
                 connection_groupBox.ForeColor = Color.Maroon;
                 Conn_progressBar.Value = 0;
-                ConnectionMsgBox_label.ForeColor = Color.Maroon;
+                ConnectionMsgBox_label.ForeColor = Color.White;
+                ConnectionMsgBox_label.BackColor = Color.DarkRed;
                 ConnectionMsgBox_label.Text = "Disconnected: " + _COMPORT;
                 SerialMonitor_groupBox.Text = "Serial Monitor";
 
@@ -352,7 +361,7 @@ namespace Advanced_Cooling_Control_Software
                 HDCPDevicelist_Combobox.Enabled = false;
                 HDCPMsgbox_label.Enabled = false;
                 CheckArduinoComPort_button.Enabled = true;
-                CheckArduinoComPort_button.BackColor = Color.CornflowerBlue;
+                CheckArduinoComPort_button.BackColor = SystemColors.Highlight;
 
                 MainPower_checkBox.Enabled = false;
                 CabinLight_checkBox.Enabled = false;
@@ -842,29 +851,39 @@ namespace Advanced_Cooling_Control_Software
         private string DecodeCommandFromFile(string _cmd)
         {
             Decode getCode = new Decode();
-
             return getCode.SearchCmdInDict(_cmd);
         }
 
         private async void Send_button_Click(object sender, EventArgs e)
         {
-            if (Command_textBox.Text.Length != 0)
+
+            if (SerialPort1.IsOpen)
             {
-                if (SerialPort1.IsOpen)
+                if (Command_textBox.Text.Length != 0)
                 {
-                    SerialPort1.WriteLine(Command_textBox.Text);
+                    try
+                    {
+                        SerialPort1.WriteLine(Command_textBox.Text);
+                        ClearConsoleTextBox_label.Text = "command sent successfull";
+                    }
+                    catch
+                    {
+                        ClearConsoleTextBox_label.Text = "unable to sent command!";
+                    }
+
                     //ConsoleLog_textbox.Text = DecodeCommandFromFile(Command_textBox.Text);
                 }
+
                 else
                 {
-                    ClearConsoleTextBox_label.Text = "Serial port closed!";
+                    ClearConsoleTextBox_label.Text = "No commands specified!";
                     await Task.Delay(4000);
                     ClearConsoleTextBox_label.Text = "";
                 }
             }
             else
             {
-                ClearConsoleTextBox_label.Text = "No commands specified!";
+                ClearConsoleTextBox_label.Text = "Serial port closed!";
                 await Task.Delay(4000);
                 ClearConsoleTextBox_label.Text = "";
             }
@@ -874,24 +893,23 @@ namespace Advanced_Cooling_Control_Software
         private void SoftwareInfo_MenuItem_Click(object sender, EventArgs e)
         {
             //Form2 container = new Form2();
-            CommandOptions cw = new CommandOptions(this.SerialPort1);
+            CommandOptions commandOptions = new CommandOptions(SerialPort1);
             //cw.MdiParent = this;
-            cw.ShowDialog();
+            commandOptions.ShowDialog();
         }
 
         private void About_MenuItem_Click(object sender, EventArgs e)
         {
-            About ob = new About();  // Form2: About.cs
-            ob.Show();
+            About about = new About();  // Form2: About.cs
+            about.Show();
         }
 
         private void Exit_MenuItem_Click(object sender, EventArgs e)
         {
             if (SerialPort1.IsOpen)
             {
-                string msg = "Serial port is connected. Do you want to close anyway?";
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show(msg, "Confirmation", buttons);
+                DialogResult result = MessageBox.Show("Serial port is connected. Do you want to close anyway?", "Confirmation", buttons);
                 if (result == DialogResult.Yes)
                 {
                     SerialPort1.Close();
@@ -915,12 +933,14 @@ namespace Advanced_Cooling_Control_Software
             commandContainer.ShowDialog();
         }
 
-        private void SerialMonitor_textbox_Click(object sender, EventArgs e)
+        private async void SerialMonitor_textbox_DoubleClick(object sender, EventArgs e)
         {
+            SerialMonitor_textbox.Text = "console cleared!";
+            await Task.Delay(750);
             SerialMonitor_textbox.Text = "";
         }
 
-        private void systemInformationToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SystemInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SystemInformation systeminfohelper = new SystemInformation();
             systeminfohelper.Show();
@@ -929,7 +949,7 @@ namespace Advanced_Cooling_Control_Software
         private void FanSpeedControl_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             FanSpeedControl_Label.Text = FanSpeedControl_comboBox.Text + " fan speed";
-            if (FanSpeedControl_comboBox.Text == "--select device--")
+            if (FanSpeedControl_comboBox.SelectedIndex == 0)
             {
                 ACBFanSpeed_trackBar.Enabled = false;
                 FanSpeedControl_numericUpDown.Enabled = false;
@@ -1036,6 +1056,8 @@ namespace Advanced_Cooling_Control_Software
 
         private void Hdcp_On_button_Click(object sender, EventArgs e)
         {
+            HDCPMsgbox_label.ForeColor = Color.White;
+            HDCPMsgbox_label.BackColor = SystemColors.MenuHighlight;
             if (HDCPDevicelist_Combobox.SelectedIndex == 0)
             {
                 BeginInvoke(new EventHandler(HdcpGlobalOn_button_Click));
