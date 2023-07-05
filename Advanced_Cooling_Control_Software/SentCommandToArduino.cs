@@ -40,12 +40,13 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (Command_textBox.Text.Length != 0)
                 {
-                    Sent_textBox.BackColor = SystemColors.MenuHighlight;
-                    Sent_textBox.ForeColor = SystemColors.Window;
+
                     //Sent_textBox.Text = "[ CONNECTED ]";
                     try
                     {
                         Sent_textBox.Text = "Command sent successfull";
+                        Sent_textBox.BackColor = SystemColors.MenuHighlight;
+                        Sent_textBox.ForeColor = SystemColors.Window;
                         serialport1.WriteLine(Command_textBox.Text);
                     }
                     catch

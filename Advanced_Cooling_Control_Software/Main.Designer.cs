@@ -102,26 +102,12 @@
             this.AutoConnect_checkBox = new System.Windows.Forms.CheckBox();
             this.Passcode_textBox = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.C1_ExhaustIN_trackBar = new System.Windows.Forms.TrackBar();
-            this.C1_ExhaustIN_numericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.label37 = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.C2_ExhaustOUT_trackBar = new System.Windows.Forms.TrackBar();
-            this.C2_ExhaustOUT_numericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.label36 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.C2_ExhaustIN_trackBar = new System.Windows.Forms.TrackBar();
-            this.C2_ExhaustIN_numericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.label35 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.C1_ExhaustOUT_trackBar = new System.Windows.Forms.TrackBar();
-            this.C1_ExhaustOUT_numericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.label34 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.FanSpeedControl_comboBox = new System.Windows.Forms.ComboBox();
+            this.FanSpeedControl_Label = new System.Windows.Forms.Label();
+            this.FanSpeedControl_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.ACBFanSpeed_trackBar = new System.Windows.Forms.TrackBar();
-            this.ExhaustFanSpeed_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.ConsoleLog_textbox = new System.Windows.Forms.TextBox();
             this.ConsoleClear_button = new System.Windows.Forms.Button();
             this.ClearConsoleTextBox_label = new System.Windows.Forms.Label();
@@ -158,8 +144,10 @@
             this.Commands_MenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.systemInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.SoftwareInfo_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.About_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.SerialMonitor_groupBox.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -171,21 +159,9 @@
             this.connection_groupBox.SuspendLayout();
             this.panel5.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.panel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.C1_ExhaustIN_trackBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.C1_ExhaustIN_numericUpDown)).BeginInit();
-            this.panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.C2_ExhaustOUT_trackBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.C2_ExhaustOUT_numericUpDown)).BeginInit();
-            this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.C2_ExhaustIN_trackBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.C2_ExhaustIN_numericUpDown)).BeginInit();
-            this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.C1_ExhaustOUT_trackBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.C1_ExhaustOUT_numericUpDown)).BeginInit();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FanSpeedControl_numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ACBFanSpeed_trackBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExhaustFanSpeed_numericUpDown)).BeginInit();
             this.groupBox11.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -494,7 +470,7 @@
             this.SerialMonitor_groupBox.Controls.Add(this.SerialMonitor_textbox);
             this.SerialMonitor_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
             this.SerialMonitor_groupBox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.SerialMonitor_groupBox.Location = new System.Drawing.Point(14, 328);
+            this.SerialMonitor_groupBox.Location = new System.Drawing.Point(14, 312);
             this.SerialMonitor_groupBox.Name = "SerialMonitor_groupBox";
             this.SerialMonitor_groupBox.Size = new System.Drawing.Size(382, 158);
             this.SerialMonitor_groupBox.TabIndex = 2;
@@ -525,7 +501,7 @@
             this.groupBox13.Controls.Add(this.panel3);
             this.groupBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
             this.groupBox13.ForeColor = System.Drawing.Color.DarkBlue;
-            this.groupBox13.Location = new System.Drawing.Point(492, 51);
+            this.groupBox13.Location = new System.Drawing.Point(492, 35);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Size = new System.Drawing.Size(462, 260);
             this.groupBox13.TabIndex = 38;
@@ -629,10 +605,9 @@
             // 
             // label9
             // 
-            this.label9.BackColor = System.Drawing.Color.Gainsboro;
-            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.ForeColor = System.Drawing.Color.Navy;
             this.label9.Location = new System.Drawing.Point(5, 46);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(61, 17);
@@ -642,11 +617,10 @@
             // 
             // label3
             // 
-            this.label3.BackColor = System.Drawing.Color.Gainsboro;
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(5, 6);
+            this.label3.ForeColor = System.Drawing.Color.Navy;
+            this.label3.Location = new System.Drawing.Point(4, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(149, 17);
             this.label3.TabIndex = 58;
@@ -805,7 +779,7 @@
             this.DIS4.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.DIS4.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.DIS4.ForeColor = System.Drawing.Color.White;
-            this.DIS4.Location = new System.Drawing.Point(3, 87);
+            this.DIS4.Location = new System.Drawing.Point(3, 94);
             this.DIS4.Name = "DIS4";
             this.DIS4.ReadOnly = true;
             this.DIS4.Size = new System.Drawing.Size(98, 23);
@@ -818,7 +792,7 @@
             this.DIS5.BackColor = System.Drawing.Color.DimGray;
             this.DIS5.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DIS5.ForeColor = System.Drawing.Color.White;
-            this.DIS5.Location = new System.Drawing.Point(3, 145);
+            this.DIS5.Location = new System.Drawing.Point(3, 152);
             this.DIS5.Name = "DIS5";
             this.DIS5.ReadOnly = true;
             this.DIS5.Size = new System.Drawing.Size(166, 23);
@@ -831,7 +805,7 @@
             this.DIS3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.DIS3.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DIS3.ForeColor = System.Drawing.Color.White;
-            this.DIS3.Location = new System.Drawing.Point(3, 58);
+            this.DIS3.Location = new System.Drawing.Point(3, 65);
             this.DIS3.Name = "DIS3";
             this.DIS3.ReadOnly = true;
             this.DIS3.Size = new System.Drawing.Size(98, 23);
@@ -844,7 +818,7 @@
             this.DIS6.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.DIS6.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DIS6.ForeColor = System.Drawing.Color.White;
-            this.DIS6.Location = new System.Drawing.Point(3, 116);
+            this.DIS6.Location = new System.Drawing.Point(3, 123);
             this.DIS6.Name = "DIS6";
             this.DIS6.ReadOnly = true;
             this.DIS6.Size = new System.Drawing.Size(166, 23);
@@ -857,7 +831,7 @@
             this.DIS1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.DIS1.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DIS1.ForeColor = System.Drawing.Color.White;
-            this.DIS1.Location = new System.Drawing.Point(3, 0);
+            this.DIS1.Location = new System.Drawing.Point(3, 7);
             this.DIS1.Name = "DIS1";
             this.DIS1.ReadOnly = true;
             this.DIS1.Size = new System.Drawing.Size(166, 23);
@@ -871,12 +845,12 @@
             this.groupBox12.Controls.Add(this.panel1);
             this.groupBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
             this.groupBox12.ForeColor = System.Drawing.Color.DarkBlue;
-            this.groupBox12.Location = new System.Drawing.Point(278, 51);
+            this.groupBox12.Location = new System.Drawing.Point(278, 35);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(196, 260);
             this.groupBox12.TabIndex = 7;
             this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Initialization Status";
+            this.groupBox12.Text = "Initial Status Panel";
             // 
             // panel1
             // 
@@ -895,7 +869,7 @@
             this.panel1.Controls.Add(this.DIS5);
             this.panel1.Location = new System.Drawing.Point(9, 19);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(176, 213);
+            this.panel1.Size = new System.Drawing.Size(176, 229);
             this.panel1.TabIndex = 57;
             // 
             // DIS3B
@@ -903,7 +877,7 @@
             this.DIS3B.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.DIS3B.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DIS3B.ForeColor = System.Drawing.Color.White;
-            this.DIS3B.Location = new System.Drawing.Point(141, 58);
+            this.DIS3B.Location = new System.Drawing.Point(141, 65);
             this.DIS3B.Name = "DIS3B";
             this.DIS3B.ReadOnly = true;
             this.DIS3B.Size = new System.Drawing.Size(28, 23);
@@ -916,7 +890,7 @@
             this.DIS3A.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.DIS3A.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DIS3A.ForeColor = System.Drawing.Color.White;
-            this.DIS3A.Location = new System.Drawing.Point(107, 58);
+            this.DIS3A.Location = new System.Drawing.Point(107, 65);
             this.DIS3A.Name = "DIS3A";
             this.DIS3A.ReadOnly = true;
             this.DIS3A.Size = new System.Drawing.Size(28, 23);
@@ -929,7 +903,7 @@
             this.DIS4B.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.DIS4B.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DIS4B.ForeColor = System.Drawing.Color.White;
-            this.DIS4B.Location = new System.Drawing.Point(141, 87);
+            this.DIS4B.Location = new System.Drawing.Point(141, 94);
             this.DIS4B.Name = "DIS4B";
             this.DIS4B.ReadOnly = true;
             this.DIS4B.Size = new System.Drawing.Size(28, 23);
@@ -942,7 +916,7 @@
             this.DIS4A.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.DIS4A.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DIS4A.ForeColor = System.Drawing.Color.White;
-            this.DIS4A.Location = new System.Drawing.Point(107, 87);
+            this.DIS4A.Location = new System.Drawing.Point(107, 94);
             this.DIS4A.Name = "DIS4A";
             this.DIS4A.ReadOnly = true;
             this.DIS4A.Size = new System.Drawing.Size(28, 23);
@@ -955,7 +929,7 @@
             this.DIS7.BackColor = System.Drawing.Color.DimGray;
             this.DIS7.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DIS7.ForeColor = System.Drawing.Color.White;
-            this.DIS7.Location = new System.Drawing.Point(3, 174);
+            this.DIS7.Location = new System.Drawing.Point(3, 181);
             this.DIS7.Name = "DIS7";
             this.DIS7.ReadOnly = true;
             this.DIS7.Size = new System.Drawing.Size(166, 23);
@@ -967,7 +941,7 @@
             this.DIS2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.DIS2.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DIS2.ForeColor = System.Drawing.Color.White;
-            this.DIS2.Location = new System.Drawing.Point(3, 29);
+            this.DIS2.Location = new System.Drawing.Point(3, 36);
             this.DIS2.Name = "DIS2";
             this.DIS2.ReadOnly = true;
             this.DIS2.Size = new System.Drawing.Size(166, 23);
@@ -1019,7 +993,7 @@
             this.connection_groupBox.Controls.Add(this.Conn_progressBar);
             this.connection_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
             this.connection_groupBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.connection_groupBox.Location = new System.Drawing.Point(14, 51);
+            this.connection_groupBox.Location = new System.Drawing.Point(14, 35);
             this.connection_groupBox.Name = "connection_groupBox";
             this.connection_groupBox.Size = new System.Drawing.Size(247, 260);
             this.connection_groupBox.TabIndex = 56;
@@ -1102,280 +1076,102 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.panel10);
-            this.groupBox2.Controls.Add(this.panel9);
-            this.groupBox2.Controls.Add(this.panel8);
-            this.groupBox2.Controls.Add(this.panel6);
             this.groupBox2.Controls.Add(this.panel7);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
             this.groupBox2.ForeColor = System.Drawing.Color.DarkBlue;
-            this.groupBox2.Location = new System.Drawing.Point(971, 51);
+            this.groupBox2.Location = new System.Drawing.Point(971, 35);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(390, 260);
+            this.groupBox2.Size = new System.Drawing.Size(281, 260);
             this.groupBox2.TabIndex = 57;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Fan Speed Controls";
-            // 
-            // panel10
-            // 
-            this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel10.Controls.Add(this.C1_ExhaustIN_trackBar);
-            this.panel10.Controls.Add(this.C1_ExhaustIN_numericUpDown);
-            this.panel10.Controls.Add(this.label37);
-            this.panel10.Location = new System.Drawing.Point(102, 19);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(280, 53);
-            this.panel10.TabIndex = 70;
-            // 
-            // C1_ExhaustIN_trackBar
-            // 
-            this.C1_ExhaustIN_trackBar.AutoSize = false;
-            this.C1_ExhaustIN_trackBar.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.C1_ExhaustIN_trackBar.Location = new System.Drawing.Point(3, 17);
-            this.C1_ExhaustIN_trackBar.Maximum = 100;
-            this.C1_ExhaustIN_trackBar.Name = "C1_ExhaustIN_trackBar";
-            this.C1_ExhaustIN_trackBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.C1_ExhaustIN_trackBar.Size = new System.Drawing.Size(218, 26);
-            this.C1_ExhaustIN_trackBar.SmallChange = 5;
-            this.C1_ExhaustIN_trackBar.TabIndex = 50;
-            this.C1_ExhaustIN_trackBar.TickFrequency = 5;
-            // 
-            // C1_ExhaustIN_numericUpDown
-            // 
-            this.C1_ExhaustIN_numericUpDown.BackColor = System.Drawing.Color.Gainsboro;
-            this.C1_ExhaustIN_numericUpDown.Font = new System.Drawing.Font("Malgun Gothic", 10.5F, System.Drawing.FontStyle.Bold);
-            this.C1_ExhaustIN_numericUpDown.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.C1_ExhaustIN_numericUpDown.Location = new System.Drawing.Point(227, 14);
-            this.C1_ExhaustIN_numericUpDown.Name = "C1_ExhaustIN_numericUpDown";
-            this.C1_ExhaustIN_numericUpDown.Size = new System.Drawing.Size(46, 26);
-            this.C1_ExhaustIN_numericUpDown.TabIndex = 41;
-            this.C1_ExhaustIN_numericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label37.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label37.Location = new System.Drawing.Point(77, -3);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(137, 19);
-            this.label37.TabIndex = 65;
-            this.label37.Text = "[Cabin 1] Exhaust IN";
-            // 
-            // panel9
-            // 
-            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel9.Controls.Add(this.C2_ExhaustOUT_trackBar);
-            this.panel9.Controls.Add(this.C2_ExhaustOUT_numericUpDown);
-            this.panel9.Controls.Add(this.label36);
-            this.panel9.Location = new System.Drawing.Point(102, 198);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(280, 53);
-            this.panel9.TabIndex = 69;
-            // 
-            // C2_ExhaustOUT_trackBar
-            // 
-            this.C2_ExhaustOUT_trackBar.AutoSize = false;
-            this.C2_ExhaustOUT_trackBar.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.C2_ExhaustOUT_trackBar.Location = new System.Drawing.Point(3, 17);
-            this.C2_ExhaustOUT_trackBar.Maximum = 100;
-            this.C2_ExhaustOUT_trackBar.Name = "C2_ExhaustOUT_trackBar";
-            this.C2_ExhaustOUT_trackBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.C2_ExhaustOUT_trackBar.Size = new System.Drawing.Size(218, 26);
-            this.C2_ExhaustOUT_trackBar.SmallChange = 5;
-            this.C2_ExhaustOUT_trackBar.TabIndex = 50;
-            this.C2_ExhaustOUT_trackBar.TickFrequency = 5;
-            // 
-            // C2_ExhaustOUT_numericUpDown
-            // 
-            this.C2_ExhaustOUT_numericUpDown.BackColor = System.Drawing.Color.Gainsboro;
-            this.C2_ExhaustOUT_numericUpDown.Font = new System.Drawing.Font("Malgun Gothic", 10.5F, System.Drawing.FontStyle.Bold);
-            this.C2_ExhaustOUT_numericUpDown.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.C2_ExhaustOUT_numericUpDown.Location = new System.Drawing.Point(227, 17);
-            this.C2_ExhaustOUT_numericUpDown.Name = "C2_ExhaustOUT_numericUpDown";
-            this.C2_ExhaustOUT_numericUpDown.Size = new System.Drawing.Size(46, 26);
-            this.C2_ExhaustOUT_numericUpDown.TabIndex = 41;
-            this.C2_ExhaustOUT_numericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label36.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label36.Location = new System.Drawing.Point(63, -3);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(158, 19);
-            this.label36.TabIndex = 65;
-            this.label36.Text = "[Cabin 2]  Exhaust OUT";
-            // 
-            // panel8
-            // 
-            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel8.Controls.Add(this.C2_ExhaustIN_trackBar);
-            this.panel8.Controls.Add(this.C2_ExhaustIN_numericUpDown);
-            this.panel8.Controls.Add(this.label35);
-            this.panel8.Location = new System.Drawing.Point(102, 139);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(280, 53);
-            this.panel8.TabIndex = 68;
-            // 
-            // C2_ExhaustIN_trackBar
-            // 
-            this.C2_ExhaustIN_trackBar.AutoSize = false;
-            this.C2_ExhaustIN_trackBar.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.C2_ExhaustIN_trackBar.Location = new System.Drawing.Point(3, 17);
-            this.C2_ExhaustIN_trackBar.Maximum = 100;
-            this.C2_ExhaustIN_trackBar.Name = "C2_ExhaustIN_trackBar";
-            this.C2_ExhaustIN_trackBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.C2_ExhaustIN_trackBar.Size = new System.Drawing.Size(218, 26);
-            this.C2_ExhaustIN_trackBar.SmallChange = 5;
-            this.C2_ExhaustIN_trackBar.TabIndex = 50;
-            this.C2_ExhaustIN_trackBar.TickFrequency = 5;
-            // 
-            // C2_ExhaustIN_numericUpDown
-            // 
-            this.C2_ExhaustIN_numericUpDown.BackColor = System.Drawing.Color.Gainsboro;
-            this.C2_ExhaustIN_numericUpDown.Font = new System.Drawing.Font("Malgun Gothic", 10.5F, System.Drawing.FontStyle.Bold);
-            this.C2_ExhaustIN_numericUpDown.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.C2_ExhaustIN_numericUpDown.Location = new System.Drawing.Point(227, 17);
-            this.C2_ExhaustIN_numericUpDown.Name = "C2_ExhaustIN_numericUpDown";
-            this.C2_ExhaustIN_numericUpDown.Size = new System.Drawing.Size(46, 26);
-            this.C2_ExhaustIN_numericUpDown.TabIndex = 41;
-            this.C2_ExhaustIN_numericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label35.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label35.Location = new System.Drawing.Point(73, -5);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(141, 19);
-            this.label35.TabIndex = 65;
-            this.label35.Text = "[Cabin 2]  Exhaust IN";
-            // 
-            // panel6
-            // 
-            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel6.Controls.Add(this.C1_ExhaustOUT_trackBar);
-            this.panel6.Controls.Add(this.C1_ExhaustOUT_numericUpDown);
-            this.panel6.Controls.Add(this.label34);
-            this.panel6.Location = new System.Drawing.Point(102, 78);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(280, 53);
-            this.panel6.TabIndex = 67;
-            // 
-            // C1_ExhaustOUT_trackBar
-            // 
-            this.C1_ExhaustOUT_trackBar.AutoSize = false;
-            this.C1_ExhaustOUT_trackBar.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.C1_ExhaustOUT_trackBar.Location = new System.Drawing.Point(3, 17);
-            this.C1_ExhaustOUT_trackBar.Maximum = 100;
-            this.C1_ExhaustOUT_trackBar.Name = "C1_ExhaustOUT_trackBar";
-            this.C1_ExhaustOUT_trackBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.C1_ExhaustOUT_trackBar.Size = new System.Drawing.Size(218, 26);
-            this.C1_ExhaustOUT_trackBar.SmallChange = 5;
-            this.C1_ExhaustOUT_trackBar.TabIndex = 50;
-            this.C1_ExhaustOUT_trackBar.TickFrequency = 5;
-            // 
-            // C1_ExhaustOUT_numericUpDown
-            // 
-            this.C1_ExhaustOUT_numericUpDown.BackColor = System.Drawing.Color.Gainsboro;
-            this.C1_ExhaustOUT_numericUpDown.Font = new System.Drawing.Font("Malgun Gothic", 10.5F, System.Drawing.FontStyle.Bold);
-            this.C1_ExhaustOUT_numericUpDown.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.C1_ExhaustOUT_numericUpDown.Location = new System.Drawing.Point(227, 17);
-            this.C1_ExhaustOUT_numericUpDown.Name = "C1_ExhaustOUT_numericUpDown";
-            this.C1_ExhaustOUT_numericUpDown.Size = new System.Drawing.Size(46, 26);
-            this.C1_ExhaustOUT_numericUpDown.TabIndex = 41;
-            this.C1_ExhaustOUT_numericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label34.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label34.Location = new System.Drawing.Point(63, -3);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(158, 19);
-            this.label34.TabIndex = 65;
-            this.label34.Text = "[Cabin 1]  Exhaust OUT";
             // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.Silver;
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel7.Controls.Add(this.label14);
+            this.panel7.Controls.Add(this.FanSpeedControl_Label);
+            this.panel7.Controls.Add(this.label13);
             this.panel7.Controls.Add(this.label12);
+            this.panel7.Controls.Add(this.label10);
+            this.panel7.Controls.Add(this.FanSpeedControl_comboBox);
+            this.panel7.Controls.Add(this.FanSpeedControl_numericUpDown);
             this.panel7.Controls.Add(this.ACBFanSpeed_trackBar);
-            this.panel7.Controls.Add(this.ExhaustFanSpeed_numericUpDown);
             this.panel7.Location = new System.Drawing.Point(6, 21);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(90, 230);
+            this.panel7.Size = new System.Drawing.Size(263, 114);
             this.panel7.TabIndex = 66;
             // 
-            // label12
+            // label10
             // 
-            this.label12.AutoSize = true;
-            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label12.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label12.Location = new System.Drawing.Point(5, -1);
-            this.label12.Name = "label12";
-            this.label12.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label12.Size = new System.Drawing.Size(78, 19);
-            this.label12.TabIndex = 65;
-            this.label12.Text = "A/C Blower";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Navy;
+            this.label10.Location = new System.Drawing.Point(6, 39);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(82, 15);
+            this.label10.TabIndex = 67;
+            this.label10.Text = "Select device:";
+            // 
+            // FanSpeedControl_comboBox
+            // 
+            this.FanSpeedControl_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FanSpeedControl_comboBox.FormattingEnabled = true;
+            this.FanSpeedControl_comboBox.Items.AddRange(new object[] {
+            "--select device--",
+            "Exhaust 1 IN",
+            "Exhaust 1 OUT",
+            "Exhaust 2 IN",
+            "Exhaust 2 OUT"});
+            this.FanSpeedControl_comboBox.Location = new System.Drawing.Point(94, 33);
+            this.FanSpeedControl_comboBox.Name = "FanSpeedControl_comboBox";
+            this.FanSpeedControl_comboBox.Size = new System.Drawing.Size(160, 21);
+            this.FanSpeedControl_comboBox.TabIndex = 66;
+            this.FanSpeedControl_comboBox.Text = "--select device--";
+            this.FanSpeedControl_comboBox.SelectedIndexChanged += new System.EventHandler(this.FanSpeedControl_comboBox_SelectedIndexChanged);
+            // 
+            // FanSpeedControl_Label
+            // 
+            this.FanSpeedControl_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.FanSpeedControl_Label.ForeColor = System.Drawing.Color.DarkGreen;
+            this.FanSpeedControl_Label.Location = new System.Drawing.Point(6, 7);
+            this.FanSpeedControl_Label.Name = "FanSpeedControl_Label";
+            this.FanSpeedControl_Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.FanSpeedControl_Label.Size = new System.Drawing.Size(245, 19);
+            this.FanSpeedControl_Label.TabIndex = 65;
+            this.FanSpeedControl_Label.Text = "Coolant fan speed settings";
+            this.FanSpeedControl_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // FanSpeedControl_numericUpDown
+            // 
+            this.FanSpeedControl_numericUpDown.BackColor = System.Drawing.Color.Gainsboro;
+            this.FanSpeedControl_numericUpDown.Font = new System.Drawing.Font("Malgun Gothic", 10.5F, System.Drawing.FontStyle.Bold);
+            this.FanSpeedControl_numericUpDown.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.FanSpeedControl_numericUpDown.Location = new System.Drawing.Point(207, 62);
+            this.FanSpeedControl_numericUpDown.Name = "FanSpeedControl_numericUpDown";
+            this.FanSpeedControl_numericUpDown.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.FanSpeedControl_numericUpDown.Size = new System.Drawing.Size(46, 26);
+            this.FanSpeedControl_numericUpDown.TabIndex = 41;
+            this.FanSpeedControl_numericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ACBFanSpeed_trackBar
             // 
             this.ACBFanSpeed_trackBar.AutoSize = false;
             this.ACBFanSpeed_trackBar.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ACBFanSpeed_trackBar.Location = new System.Drawing.Point(55, 21);
+            this.ACBFanSpeed_trackBar.Location = new System.Drawing.Point(8, 62);
             this.ACBFanSpeed_trackBar.Maximum = 100;
             this.ACBFanSpeed_trackBar.Name = "ACBFanSpeed_trackBar";
-            this.ACBFanSpeed_trackBar.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.ACBFanSpeed_trackBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.ACBFanSpeed_trackBar.Size = new System.Drawing.Size(26, 197);
+            this.ACBFanSpeed_trackBar.Size = new System.Drawing.Size(197, 26);
             this.ACBFanSpeed_trackBar.SmallChange = 5;
             this.ACBFanSpeed_trackBar.TabIndex = 50;
             this.ACBFanSpeed_trackBar.TickFrequency = 5;
             this.ACBFanSpeed_trackBar.Scroll += new System.EventHandler(this.ExhaustFanSpeed_trackBar_Scroll);
-            // 
-            // ExhaustFanSpeed_numericUpDown
-            // 
-            this.ExhaustFanSpeed_numericUpDown.BackColor = System.Drawing.Color.Gainsboro;
-            this.ExhaustFanSpeed_numericUpDown.Font = new System.Drawing.Font("Malgun Gothic", 10.5F, System.Drawing.FontStyle.Bold);
-            this.ExhaustFanSpeed_numericUpDown.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.ExhaustFanSpeed_numericUpDown.Location = new System.Drawing.Point(3, 24);
-            this.ExhaustFanSpeed_numericUpDown.Name = "ExhaustFanSpeed_numericUpDown";
-            this.ExhaustFanSpeed_numericUpDown.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.ExhaustFanSpeed_numericUpDown.Size = new System.Drawing.Size(46, 26);
-            this.ExhaustFanSpeed_numericUpDown.TabIndex = 41;
-            this.ExhaustFanSpeed_numericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ConsoleLog_textbox
             // 
@@ -1459,7 +1255,7 @@
             this.groupBox11.Controls.Add(this.ConsoleLog_textbox);
             this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
             this.groupBox11.ForeColor = System.Drawing.Color.DarkBlue;
-            this.groupBox11.Location = new System.Drawing.Point(14, 488);
+            this.groupBox11.Location = new System.Drawing.Point(14, 472);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(382, 343);
             this.groupBox11.TabIndex = 6;
@@ -1883,12 +1679,12 @@
             this.groupBox7.Controls.Add(this.groupBox10);
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
             this.groupBox7.ForeColor = System.Drawing.Color.DarkRed;
-            this.groupBox7.Location = new System.Drawing.Point(421, 328);
+            this.groupBox7.Location = new System.Drawing.Point(421, 312);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(914, 447);
+            this.groupBox7.Size = new System.Drawing.Size(831, 447);
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Temperature Console";
+            this.groupBox7.Text = "Temperature Monitor";
             // 
             // menuStrip1
             // 
@@ -1900,7 +1696,7 @@
             this.aBOUTToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1370, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(1269, 25);
             this.menuStrip1.TabIndex = 59;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1916,14 +1712,14 @@
             // loadFirmwareToolStripMenuItem
             // 
             this.loadFirmwareToolStripMenuItem.Name = "loadFirmwareToolStripMenuItem";
-            this.loadFirmwareToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadFirmwareToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.loadFirmwareToolStripMenuItem.Text = "Load Firmware";
             // 
             // eXITToolStripMenuItem
             // 
             this.eXITToolStripMenuItem.Name = "eXITToolStripMenuItem";
             this.eXITToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.eXITToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eXITToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.eXITToolStripMenuItem.Text = "EXIT";
             this.eXITToolStripMenuItem.Click += new System.EventHandler(this.Exit_MenuItem_Click);
             // 
@@ -1947,7 +1743,6 @@
             // 
             this.aBOUTToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.systemInformationToolStripMenuItem,
-            this.SoftwareInfo_MenuItem,
             this.About_MenuItem});
             this.aBOUTToolStripMenuItem.Name = "aBOUTToolStripMenuItem";
             this.aBOUTToolStripMenuItem.Size = new System.Drawing.Size(49, 21);
@@ -1956,24 +1751,57 @@
             // systemInformationToolStripMenuItem
             // 
             this.systemInformationToolStripMenuItem.Name = "systemInformationToolStripMenuItem";
-            this.systemInformationToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.systemInformationToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.systemInformationToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.systemInformationToolStripMenuItem.Text = "System Information";
             this.systemInformationToolStripMenuItem.Click += new System.EventHandler(this.systemInformationToolStripMenuItem_Click);
-            // 
-            // SoftwareInfo_MenuItem
-            // 
-            this.SoftwareInfo_MenuItem.AutoToolTip = true;
-            this.SoftwareInfo_MenuItem.Name = "SoftwareInfo_MenuItem";
-            this.SoftwareInfo_MenuItem.Size = new System.Drawing.Size(203, 22);
-            this.SoftwareInfo_MenuItem.Text = "Software Information";
-            this.SoftwareInfo_MenuItem.Click += new System.EventHandler(this.SoftwareInfo_MenuItem_Click);
             // 
             // About_MenuItem
             // 
             this.About_MenuItem.Name = "About_MenuItem";
-            this.About_MenuItem.Size = new System.Drawing.Size(203, 22);
+            this.About_MenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
+            this.About_MenuItem.Size = new System.Drawing.Size(213, 22);
             this.About_MenuItem.Text = "About";
             this.About_MenuItem.Click += new System.EventHandler(this.About_MenuItem_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Malgun Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Navy;
+            this.label12.Location = new System.Drawing.Point(5, 93);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(24, 12);
+            this.label12.TabIndex = 67;
+            this.label12.Text = "MIN";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Malgun Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Navy;
+            this.label13.Location = new System.Drawing.Point(174, 92);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(26, 12);
+            this.label13.TabIndex = 68;
+            this.label13.Text = "MAX";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Malgun Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Navy;
+            this.label14.Location = new System.Drawing.Point(80, 91);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(61, 12);
+            this.label14.TabIndex = 69;
+            this.label14.Text = "Adjust speed";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Main
             // 
@@ -1983,7 +1811,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.ClientSize = new System.Drawing.Size(1269, 837);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.connection_groupBox);
@@ -2021,26 +1849,10 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.C1_ExhaustIN_trackBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.C1_ExhaustIN_numericUpDown)).EndInit();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.C2_ExhaustOUT_trackBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.C2_ExhaustOUT_numericUpDown)).EndInit();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.C2_ExhaustIN_trackBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.C2_ExhaustIN_numericUpDown)).EndInit();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.C1_ExhaustOUT_trackBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.C1_ExhaustOUT_numericUpDown)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FanSpeedControl_numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ACBFanSpeed_trackBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExhaustFanSpeed_numericUpDown)).EndInit();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             this.groupBox10.ResumeLayout(false);
@@ -2129,26 +1941,10 @@
         private System.Windows.Forms.CheckBox Peltier3_checkBox;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.TrackBar C2_ExhaustIN_trackBar;
-        private System.Windows.Forms.NumericUpDown C2_ExhaustIN_numericUpDown;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.TrackBar C1_ExhaustOUT_trackBar;
-        private System.Windows.Forms.NumericUpDown C1_ExhaustOUT_numericUpDown;
-        private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.TrackBar ACBFanSpeed_trackBar;
-        private System.Windows.Forms.NumericUpDown ExhaustFanSpeed_numericUpDown;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.TrackBar C2_ExhaustOUT_trackBar;
-        private System.Windows.Forms.NumericUpDown C2_ExhaustOUT_numericUpDown;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.TrackBar C1_ExhaustIN_trackBar;
-        private System.Windows.Forms.NumericUpDown C1_ExhaustIN_numericUpDown;
-        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.NumericUpDown FanSpeedControl_numericUpDown;
+        private System.Windows.Forms.Label FanSpeedControl_Label;
         private System.Windows.Forms.Label DS4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox ConsoleLog_textbox;
@@ -2183,12 +1979,16 @@
         private System.Windows.Forms.ToolStripMenuItem fILEToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aDVANCEDOPTIONSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aBOUTToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem SoftwareInfo_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem Commands_MenuItem1;
         private System.Windows.Forms.ToolStripMenuItem About_MenuItem;
         private System.Windows.Forms.ToolStripMenuItem eXITToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem systemInformationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadFirmwareToolStripMenuItem;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox FanSpeedControl_comboBox;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label14;
     }
 }
 

@@ -59,21 +59,20 @@
             this.decodeCommandsToolStripMenuItem.Text = "Decode Commands";
             this.decodeCommandsToolStripMenuItem.Click += new System.EventHandler(this.decodeCommandsToolStripMenuItem_Click);
             // 
-            // CommandContainer
+            // CommandOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(385, 311);
             this.Controls.Add(this.Command_menuStrip);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.Command_menuStrip;
-            this.Name = "CommandContainer";
+            this.Name = "CommandOptions";
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Command";
+            this.Text = "Command Options";
             this.Command_menuStrip.ResumeLayout(false);
             this.Command_menuStrip.PerformLayout();
             this.ResumeLayout(false);

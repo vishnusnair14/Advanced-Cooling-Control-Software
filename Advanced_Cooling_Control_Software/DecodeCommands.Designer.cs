@@ -30,6 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Status_textBox = new System.Windows.Forms.TextBox();
             this.CommandFilePath_textBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.DecodeCommand_button = new System.Windows.Forms.Button();
@@ -40,7 +41,6 @@
             this.DecodeMsg_textBox = new System.Windows.Forms.TextBox();
             this.OpenCommand_MaplinkLabel = new System.Windows.Forms.LinkLabel();
             this.CloseCommand_MaplinkLabel = new System.Windows.Forms.LinkLabel();
-            this.Status_textBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.Decode_groupBox.SuspendLayout();
             this.SuspendLayout();
@@ -71,6 +71,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Decode Commands";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // Status_textBox
+            // 
+            this.Status_textBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Status_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Status_textBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.Status_textBox.Location = new System.Drawing.Point(96, 100);
+            this.Status_textBox.Name = "Status_textBox";
+            this.Status_textBox.ReadOnly = true;
+            this.Status_textBox.Size = new System.Drawing.Size(225, 20);
+            this.Status_textBox.TabIndex = 66;
+            this.Status_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // CommandFilePath_textBox
             // 
@@ -115,6 +127,7 @@
             this.Command_textBox.Name = "Command_textBox";
             this.Command_textBox.Size = new System.Drawing.Size(139, 20);
             this.Command_textBox.TabIndex = 61;
+            this.Command_textBox.TextChanged += new System.EventHandler(this.Command_textBox_TextChanged);
             // 
             // CommandType_comboBox
             // 
@@ -169,19 +182,6 @@
             this.CloseCommand_MaplinkLabel.TabStop = true;
             this.CloseCommand_MaplinkLabel.Text = "Close command map";
             this.CloseCommand_MaplinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.CloseCommand_MaplinkLabel_LinkClicked);
-            // 
-            // Status_textBox
-            // 
-            this.Status_textBox.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Status_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Status_textBox.ForeColor = System.Drawing.SystemColors.Window;
-            this.Status_textBox.Location = new System.Drawing.Point(96, 100);
-            this.Status_textBox.Name = "Status_textBox";
-            this.Status_textBox.ReadOnly = true;
-            this.Status_textBox.Size = new System.Drawing.Size(225, 20);
-            this.Status_textBox.TabIndex = 66;
-            this.Status_textBox.Text = "CONNECTED";
-            this.Status_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // DecodeCommands
             // 

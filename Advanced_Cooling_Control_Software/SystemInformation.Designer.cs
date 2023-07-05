@@ -34,7 +34,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 90);
+            this.button1.Location = new System.Drawing.Point(157, 289);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -44,23 +44,26 @@
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(108, 90);
+            this.textBox1.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(12, 12);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(593, 346);
+            this.textBox1.Size = new System.Drawing.Size(365, 271);
             this.textBox1.TabIndex = 1;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // SystemInfoHelper
+            // SystemInformation
             // 
+            this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(713, 450);
+            this.ClientSize = new System.Drawing.Size(387, 324);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
-            this.Name = "SystemInfoHelper";
-            this.Text = "SystemInfoHelper";
+            this.Name = "SystemInformation";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "System Information";
             this.ResumeLayout(false);
             this.PerformLayout();
 

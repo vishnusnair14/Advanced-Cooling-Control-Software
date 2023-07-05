@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
@@ -33,9 +32,6 @@ namespace Advanced_Cooling_Control_Software
         public Main()
         {
             InitializeComponent();
-            var MCODES_DICT1 = new Dictionary<string, string>();
-            //LOAD_MCODE ld = new LOAD_MCODE();
-            //ld.InitDictfromFile();
             ComPort_comboBox.Items.Clear();
             ComPort_comboBox.Items.AddRange(SerialPort.GetPortNames());
 
@@ -60,9 +56,7 @@ namespace Advanced_Cooling_Control_Software
             SMT_Z_circularProgressBar.Value = 0;
             SMT_E_circularProgressBar.Value = 0;
             ACBFanSpeed_trackBar.Value = 0;
-            ExhaustFanSpeed_numericUpDown.Value = 0;
-            //CoolingFanSpeed_trackBar.Value = 0;
-            // CoolingFanSpeed_numericUpDown.Value = 0;
+            FanSpeedControl_numericUpDown.Value = 0;
 
             HDCPOff_button.Enabled = false;
             HDCPOn_button.Enabled = false;
@@ -78,12 +72,14 @@ namespace Advanced_Cooling_Control_Software
             Peltier3_checkBox.Enabled = false;
             Peltier4_checkBox.Enabled = false;
 
-            ExhaustFanSpeed_numericUpDown.Enabled = false;
+            FanSpeedControl_numericUpDown.Enabled = false;
             ACBFanSpeed_trackBar.Enabled = false;
 
             //CoolingFanSpeed_numericUpDown.Enabled = false;
             //CoolingFanSpeed_trackBar.Enabled = false;
             //slidingLabel.Text = "Advanced Cooling Control Software [vishnus_technologies(C) 2023] ";
+
+            FanSpeedControl_comboBox.Enabled = false;
         }
 
         private void ArduinoReset_button_Click(object sender, EventArgs e)
@@ -269,8 +265,7 @@ namespace Advanced_Cooling_Control_Software
                                 Peltier3_checkBox.Enabled = true;
                                 Peltier4_checkBox.Enabled = true;
 
-                                ExhaustFanSpeed_numericUpDown.Enabled = true;
-                                ACBFanSpeed_trackBar.Enabled = true;
+
                                 //CoolingFanSpeed_numericUpDown.Enabled = true;
                                 //CoolingFanSpeed_trackBar.Enabled = true;
 
@@ -280,6 +275,8 @@ namespace Advanced_Cooling_Control_Software
                                 Command_textBox.Enabled = true;
                                 Send_button.Enabled = true;
                                 ConsoleLog_textbox.Enabled = true;
+
+                                FanSpeedControl_comboBox.Enabled = true;
                             }
                             catch
                             {
@@ -377,18 +374,20 @@ namespace Advanced_Cooling_Control_Software
                 DIS6.BackColor = SystemColors.ControlDarkDark;
                 DIS6.ForeColor = Color.White;
 
-                ExhaustFanSpeed_numericUpDown.Enabled = false;
+                FanSpeedControl_numericUpDown.Enabled = false;
                 ACBFanSpeed_trackBar.Enabled = false;
                 //CoolingFanSpeed_numericUpDown.Enabled = false;
                 //CoolingFanSpeed_trackBar.Enabled = false;
 
                 ACBFanSpeed_trackBar.Value = 0;
-                ExhaustFanSpeed_numericUpDown.Value = 0;
+                FanSpeedControl_numericUpDown.Value = 0;
                 //CoolingFanSpeed_trackBar.Value = 0;
                 //CoolingFanSpeed_numericUpDown.Value = 0;
 
                 AutoConnect_checkBox.Checked = false;
                 AutoConnect_checkBox.Enabled = true;
+
+                FanSpeedControl_comboBox.Enabled = false;
 
             }
             catch
@@ -718,14 +717,21 @@ namespace Advanced_Cooling_Control_Software
 
         private void ExhaustFanSpeed_trackBar_Scroll(object sender, EventArgs e)
         {
-            ExhaustFanSpeed_numericUpDown.Value = ACBFanSpeed_trackBar.Value;
-            // progressBar1.Value = ExhaustFanSpeed_trackBar.Value;
-            BeginInvoke(new EventHandler(FanPwmEncoder));
+            if (FanSpeedControl_comboBox.Text != "--select device--")
+            {
+                FanSpeedControl_numericUpDown.Value = ACBFanSpeed_trackBar.Value;
+                // progressBar1.Value = ExhaustFanSpeed_trackBar.Value;
+                BeginInvoke(new EventHandler(FanPwmEncoder));
+            }
+            else
+            {
+
+            }
         }
 
         private void ExhaustFanSpeed_numericUpDown_ValueChanged(object sender, EventArgs e)
         {
-            ACBFanSpeed_trackBar.Value = (int)ExhaustFanSpeed_numericUpDown.Value;
+            ACBFanSpeed_trackBar.Value = (int)FanSpeedControl_numericUpDown.Value;
             BeginInvoke(new EventHandler(FanPwmEncoder));
         }
 
@@ -738,8 +744,26 @@ namespace Advanced_Cooling_Control_Software
             PWM = (1.0f * ACBFanSpeed_trackBar.Value) / 100 * 255;
             if (SerialPort1.IsOpen)
             {
-                SerialPort1.WriteLine("S" + PWM.ToString());
-                SerialMonitor_textbox.AppendText("S" + PWM.ToString() + Environment.NewLine);
+                if (FanSpeedControl_comboBox.SelectedIndex == 1)
+                {
+                    SerialPort1.WriteLine("SA" + PWM.ToString());
+                    SerialMonitor_textbox.AppendText("SA" + PWM.ToString() + Environment.NewLine);
+                }
+                else if (FanSpeedControl_comboBox.SelectedIndex == 2)
+                {
+                    SerialPort1.WriteLine("SB" + PWM.ToString());
+                    SerialMonitor_textbox.AppendText("SB" + PWM.ToString() + Environment.NewLine);
+                }
+                else if (FanSpeedControl_comboBox.SelectedIndex == 3)
+                {
+                    SerialPort1.WriteLine("SC" + PWM.ToString());
+                    SerialMonitor_textbox.AppendText("SC" + PWM.ToString() + Environment.NewLine);
+                }
+                else if (FanSpeedControl_comboBox.SelectedIndex == 4)
+                {
+                    SerialPort1.WriteLine("SD" + PWM.ToString());
+                    SerialMonitor_textbox.AppendText("SD" + PWM.ToString() + Environment.NewLine);
+                }
             }
         }
 
@@ -840,7 +864,7 @@ namespace Advanced_Cooling_Control_Software
             }
             else
             {
-                ClearConsoleTextBox_label.Text = "No commands to sent!";
+                ClearConsoleTextBox_label.Text = "No commands specified!";
                 await Task.Delay(4000);
                 ClearConsoleTextBox_label.Text = "";
             }
@@ -900,6 +924,21 @@ namespace Advanced_Cooling_Control_Software
         {
             SystemInformation systeminfohelper = new SystemInformation();
             systeminfohelper.Show();
+        }
+
+        private void FanSpeedControl_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FanSpeedControl_Label.Text = FanSpeedControl_comboBox.Text + " fan speed";
+            if (FanSpeedControl_comboBox.Text == "--select device--")
+            {
+                ACBFanSpeed_trackBar.Enabled = false;
+                FanSpeedControl_numericUpDown.Enabled = false;
+            }
+            else
+            {
+                ACBFanSpeed_trackBar.Enabled = true;
+                FanSpeedControl_numericUpDown.Enabled = true;
+            }
         }
 
         private void ExhaustFanSpeed_trackBar_MouseDown(object sender, MouseEventArgs e)
@@ -1105,42 +1144,12 @@ namespace Advanced_Cooling_Control_Software
 
         private void HdcpGlobalOn_button_Click(object sender, EventArgs e)
         {
-            DS1.BackColor = Color.SeaGreen;
-            DS1.ForeColor = Color.Snow;
-            DS2.BackColor = Color.SeaGreen;
-            DS2.ForeColor = Color.Snow;
-            DS3.BackColor = Color.SeaGreen;
-            DS3.ForeColor = Color.Snow;
-            DS4.BackColor = Color.SeaGreen;
-            DS4.ForeColor = Color.Snow;
-            DS5.BackColor = Color.SeaGreen;
-            DS5.ForeColor = Color.Snow;
-            DS6.BackColor = Color.SeaGreen;
-            DS6.ForeColor = Color.Snow;
-            DS7.BackColor = Color.SeaGreen;
-            DS7.ForeColor = Color.Snow;
-
             BeginInvoke(new EventHandler(AllDev_SwitchON));
             HDCPMsgbox_label.Text = "Switched ON all devices!";
         }
 
         private void HdcpGlobalOff_button_Click(object sender, EventArgs e)
         {
-            DS1.BackColor = Color.Brown;
-            DS1.ForeColor = Color.Snow;
-            DS2.BackColor = Color.Brown;
-            DS2.ForeColor = Color.Snow;
-            DS3.BackColor = Color.Brown;
-            DS3.ForeColor = Color.Snow;
-            DS4.BackColor = Color.Brown;
-            DS4.ForeColor = Color.Snow;
-            DS5.BackColor = Color.Brown;
-            DS5.ForeColor = Color.Snow;
-            DS6.BackColor = Color.Brown;
-            DS6.ForeColor = Color.Snow;
-            DS7.BackColor = Color.Brown;
-            DS7.ForeColor = Color.Snow;
-
             BeginInvoke(new EventHandler(AllDev_SwitchOFF));
             HDCPMsgbox_label.Text = "Switched OFF all devices!";
         }
@@ -1155,6 +1164,21 @@ namespace Advanced_Cooling_Control_Software
             {
                 SerialPort1.WriteLine("DN10" + RelaySubs);
             }
+
+            DS1.BackColor = Color.SeaGreen;
+            DS1.ForeColor = Color.Snow;
+            DS2.BackColor = Color.SeaGreen;
+            DS2.ForeColor = Color.Snow;
+            DS3.BackColor = Color.SeaGreen;
+            DS3.ForeColor = Color.Snow;
+            DS4.BackColor = Color.SeaGreen;
+            DS4.ForeColor = Color.Snow;
+            DS5.BackColor = Color.SeaGreen;
+            DS5.ForeColor = Color.Snow;
+            DS6.BackColor = Color.SeaGreen;
+            DS6.ForeColor = Color.Snow;
+            DS7.BackColor = Color.SeaGreen;
+            DS7.ForeColor = Color.Snow;
         }
 
         private void AllDev_SwitchOFF(object sender, EventArgs e)
@@ -1167,6 +1191,21 @@ namespace Advanced_Cooling_Control_Software
             {
                 SerialPort1.WriteLine("DF10" + RelaySubs);
             }
+
+            DS1.BackColor = Color.Brown;
+            DS1.ForeColor = Color.Snow;
+            DS2.BackColor = Color.Brown;
+            DS2.ForeColor = Color.Snow;
+            DS3.BackColor = Color.Brown;
+            DS3.ForeColor = Color.Snow;
+            DS4.BackColor = Color.Brown;
+            DS4.ForeColor = Color.Snow;
+            DS5.BackColor = Color.Brown;
+            DS5.ForeColor = Color.Snow;
+            DS6.BackColor = Color.Brown;
+            DS6.ForeColor = Color.Snow;
+            DS7.BackColor = Color.Brown;
+            DS7.ForeColor = Color.Snow;
         }
 
         private async void ConsoleClear_button_Click(object sender, EventArgs e)
