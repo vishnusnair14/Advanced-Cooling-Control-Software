@@ -36,7 +36,6 @@
             this.Conn_progressBar = new System.Windows.Forms.ProgressBar();
             this.Peltier2_checkBox = new System.Windows.Forms.CheckBox();
             this.Peltier1_checkBox = new System.Windows.Forms.CheckBox();
-            this.MainPower_checkBox = new System.Windows.Forms.CheckBox();
             this.CabinLight_checkBox = new System.Windows.Forms.CheckBox();
             this.PCP_Indicator4 = new System.Windows.Forms.Label();
             this.PCP_Indicator3 = new System.Windows.Forms.Label();
@@ -102,6 +101,7 @@
             this.Passcode_textBox = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.zeroitProgressBarTransparent1 = new Zeroit.Framework.Progress.ZeroitProgressBarTransparent();
             this.label14 = new System.Windows.Forms.Label();
             this.FanSpeedControl_Label = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -147,7 +147,7 @@
             this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.systemInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.About_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.zeroitProgressBarTransparent1 = new Zeroit.Framework.Progress.ZeroitProgressBarTransparent();
+            this.MainPower_checkBox = new System.Windows.Forms.CheckBox();
             this.SerialMonitor_groupBox.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -237,6 +237,7 @@
             // 
             this.Peltier2_checkBox.Appearance = System.Windows.Forms.Appearance.Button;
             this.Peltier2_checkBox.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
+            this.Peltier2_checkBox.ForeColor = System.Drawing.Color.DarkGray;
             this.Peltier2_checkBox.Location = new System.Drawing.Point(244, 34);
             this.Peltier2_checkBox.Name = "Peltier2_checkBox";
             this.Peltier2_checkBox.Size = new System.Drawing.Size(43, 27);
@@ -250,6 +251,7 @@
             // 
             this.Peltier1_checkBox.Appearance = System.Windows.Forms.Appearance.Button;
             this.Peltier1_checkBox.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
+            this.Peltier1_checkBox.ForeColor = System.Drawing.Color.DarkGray;
             this.Peltier1_checkBox.Location = new System.Drawing.Point(91, 35);
             this.Peltier1_checkBox.Name = "Peltier1_checkBox";
             this.Peltier1_checkBox.Size = new System.Drawing.Size(43, 27);
@@ -259,23 +261,11 @@
             this.Peltier1_checkBox.UseVisualStyleBackColor = true;
             this.Peltier1_checkBox.CheckedChanged += new System.EventHandler(this.Peltier1_checkBox_CheckedChanged);
             // 
-            // MainPower_checkBox
-            // 
-            this.MainPower_checkBox.Appearance = System.Windows.Forms.Appearance.Button;
-            this.MainPower_checkBox.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
-            this.MainPower_checkBox.Location = new System.Drawing.Point(92, 4);
-            this.MainPower_checkBox.Name = "MainPower_checkBox";
-            this.MainPower_checkBox.Size = new System.Drawing.Size(43, 27);
-            this.MainPower_checkBox.TabIndex = 33;
-            this.MainPower_checkBox.Text = "ON";
-            this.MainPower_checkBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.MainPower_checkBox.UseVisualStyleBackColor = true;
-            this.MainPower_checkBox.CheckedChanged += new System.EventHandler(this.MainPower_checkBox_CheckedChanged);
-            // 
             // CabinLight_checkBox
             // 
             this.CabinLight_checkBox.Appearance = System.Windows.Forms.Appearance.Button;
             this.CabinLight_checkBox.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
+            this.CabinLight_checkBox.ForeColor = System.Drawing.Color.DarkGray;
             this.CabinLight_checkBox.Location = new System.Drawing.Point(244, 3);
             this.CabinLight_checkBox.Name = "CabinLight_checkBox";
             this.CabinLight_checkBox.Size = new System.Drawing.Size(43, 27);
@@ -663,6 +653,7 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.MainPower_checkBox);
             this.panel3.Controls.Add(this.Peltier4_checkBox);
             this.panel3.Controls.Add(this.PCP_Indicator5);
             this.panel3.Controls.Add(this.PCP_Indicator6);
@@ -670,7 +661,6 @@
             this.panel3.Controls.Add(this.label32);
             this.panel3.Controls.Add(this.label33);
             this.panel3.Controls.Add(this.Peltier2_checkBox);
-            this.panel3.Controls.Add(this.MainPower_checkBox);
             this.panel3.Controls.Add(this.PCP_Indicator3);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.PCP_Indicator4);
@@ -690,6 +680,7 @@
             // 
             this.Peltier4_checkBox.Appearance = System.Windows.Forms.Appearance.Button;
             this.Peltier4_checkBox.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
+            this.Peltier4_checkBox.ForeColor = System.Drawing.Color.DarkGray;
             this.Peltier4_checkBox.Location = new System.Drawing.Point(244, 66);
             this.Peltier4_checkBox.Name = "Peltier4_checkBox";
             this.Peltier4_checkBox.Size = new System.Drawing.Size(43, 27);
@@ -719,6 +710,7 @@
             // 
             this.Peltier3_checkBox.Appearance = System.Windows.Forms.Appearance.Button;
             this.Peltier3_checkBox.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
+            this.Peltier3_checkBox.ForeColor = System.Drawing.Color.DarkGray;
             this.Peltier3_checkBox.Location = new System.Drawing.Point(91, 67);
             this.Peltier3_checkBox.Name = "Peltier3_checkBox";
             this.Peltier3_checkBox.Size = new System.Drawing.Size(43, 27);
@@ -1077,7 +1069,7 @@
             this.groupBox2.Size = new System.Drawing.Size(313, 260);
             this.groupBox2.TabIndex = 57;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Fan Speed Controls";
+            this.groupBox2.Text = "Exhaust Fan Control";
             // 
             // panel7
             // 
@@ -1097,6 +1089,25 @@
             this.panel7.Size = new System.Drawing.Size(299, 119);
             this.panel7.TabIndex = 66;
             // 
+            // zeroitProgressBarTransparent1
+            // 
+            this.zeroitProgressBarTransparent1.AutoAnimate = false;
+            this.zeroitProgressBarTransparent1.BackColor = System.Drawing.Color.DarkGray;
+            this.zeroitProgressBarTransparent1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.zeroitProgressBarTransparent1.ForeColor = System.Drawing.Color.DarkCyan;
+            this.zeroitProgressBarTransparent1.Location = new System.Drawing.Point(8, 88);
+            this.zeroitProgressBarTransparent1.Maximum = 100;
+            this.zeroitProgressBarTransparent1.Minimum = 0;
+            this.zeroitProgressBarTransparent1.Name = "zeroitProgressBarTransparent1";
+            this.zeroitProgressBarTransparent1.ProgressBackground = System.Drawing.Color.RosyBrown;
+            this.zeroitProgressBarTransparent1.ProgressColor1 = System.Drawing.SystemColors.MenuHighlight;
+            this.zeroitProgressBarTransparent1.ProgressColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.zeroitProgressBarTransparent1.ShowText = true;
+            this.zeroitProgressBarTransparent1.Size = new System.Drawing.Size(284, 10);
+            this.zeroitProgressBarTransparent1.TabIndex = 67;
+            this.zeroitProgressBarTransparent1.TimerInterval = 1000;
+            this.zeroitProgressBarTransparent1.Value = 100;
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -1112,14 +1123,15 @@
             // 
             // FanSpeedControl_Label
             // 
-            this.FanSpeedControl_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FanSpeedControl_Label.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.FanSpeedControl_Label.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.FanSpeedControl_Label.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.FanSpeedControl_Label.Location = new System.Drawing.Point(7, 3);
+            this.FanSpeedControl_Label.Location = new System.Drawing.Point(7, 6);
             this.FanSpeedControl_Label.Name = "FanSpeedControl_Label";
             this.FanSpeedControl_Label.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.FanSpeedControl_Label.Size = new System.Drawing.Size(285, 19);
             this.FanSpeedControl_Label.TabIndex = 65;
-            this.FanSpeedControl_Label.Text = "Coolant Fan Speed Settings";
+            this.FanSpeedControl_Label.Text = "Coolant fan speed settings:";
             this.FanSpeedControl_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label13
@@ -1807,24 +1819,19 @@
             this.About_MenuItem.Text = "About";
             this.About_MenuItem.Click += new System.EventHandler(this.About_MenuItem_Click);
             // 
-            // zeroitProgressBarTransparent1
+            // MainPower_checkBox
             // 
-            this.zeroitProgressBarTransparent1.AutoAnimate = false;
-            this.zeroitProgressBarTransparent1.BackColor = System.Drawing.Color.DarkGray;
-            this.zeroitProgressBarTransparent1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.zeroitProgressBarTransparent1.ForeColor = System.Drawing.Color.DarkCyan;
-            this.zeroitProgressBarTransparent1.Location = new System.Drawing.Point(8, 88);
-            this.zeroitProgressBarTransparent1.Maximum = 100;
-            this.zeroitProgressBarTransparent1.Minimum = 0;
-            this.zeroitProgressBarTransparent1.Name = "zeroitProgressBarTransparent1";
-            this.zeroitProgressBarTransparent1.ProgressBackground = System.Drawing.Color.RosyBrown;
-            this.zeroitProgressBarTransparent1.ProgressColor1 = System.Drawing.SystemColors.MenuHighlight;
-            this.zeroitProgressBarTransparent1.ProgressColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.zeroitProgressBarTransparent1.ShowText = true;
-            this.zeroitProgressBarTransparent1.Size = new System.Drawing.Size(284, 10);
-            this.zeroitProgressBarTransparent1.TabIndex = 67;
-            this.zeroitProgressBarTransparent1.TimerInterval = 1000;
-            this.zeroitProgressBarTransparent1.Value = 100;
+            this.MainPower_checkBox.Appearance = System.Windows.Forms.Appearance.Button;
+            this.MainPower_checkBox.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
+            this.MainPower_checkBox.ForeColor = System.Drawing.Color.DarkGray;
+            this.MainPower_checkBox.Location = new System.Drawing.Point(91, 3);
+            this.MainPower_checkBox.Name = "MainPower_checkBox";
+            this.MainPower_checkBox.Size = new System.Drawing.Size(43, 27);
+            this.MainPower_checkBox.TabIndex = 42;
+            this.MainPower_checkBox.Text = "ON";
+            this.MainPower_checkBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.MainPower_checkBox.UseVisualStyleBackColor = true;
+            this.MainPower_checkBox.CheckedChanged += new System.EventHandler(this.MainPower_checkBox_CheckedChanged);
             // 
             // Main
             // 
@@ -1916,7 +1923,6 @@
         private System.Windows.Forms.Button CheckArduinoComPort_button;
         private System.Windows.Forms.CheckBox CabinLight_checkBox;
         private System.Windows.Forms.CheckBox Peltier1_checkBox;
-        private System.Windows.Forms.CheckBox MainPower_checkBox;
         private System.Windows.Forms.CheckBox Peltier2_checkBox;
         private System.Windows.Forms.GroupBox groupBox13;
         private System.Windows.Forms.TextBox DIS4;
@@ -2013,6 +2019,7 @@
         private System.Windows.Forms.TextBox HDCPMsgbox_label;
         private System.Windows.Forms.TextBox ConnectionMsgBox_label;
         private Zeroit.Framework.Progress.ZeroitProgressBarTransparent zeroitProgressBarTransparent1;
+        private System.Windows.Forms.CheckBox MainPower_checkBox;
     }
 }
 

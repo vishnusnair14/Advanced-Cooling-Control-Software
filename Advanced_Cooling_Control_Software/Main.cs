@@ -153,11 +153,15 @@ namespace Advanced_Cooling_Control_Software
             {
                 PCP_Indicator1.BackColor = Color.DarkGreen;
                 MainPower_checkBox.Text = "OFF";
+                MainPower_checkBox.ForeColor = Color.White;
+                MainPower_checkBox.BackColor = Color.DarkRed;
             }
             else if (MainPower_checkBox.Checked == false)
             {
                 PCP_Indicator1.BackColor = Color.Maroon;
                 MainPower_checkBox.Text = "ON";
+                MainPower_checkBox.ForeColor = Color.White;
+                MainPower_checkBox.BackColor = SystemColors.Highlight;
             }
         }
 
@@ -295,6 +299,15 @@ namespace Advanced_Cooling_Control_Software
                                 Peltier3_checkBox.Enabled = true;
                                 Peltier4_checkBox.Enabled = true;
 
+                                MainPower_checkBox.BackColor = CabinLight_checkBox.BackColor = 
+                                Peltier1_checkBox.BackColor = Peltier2_checkBox.BackColor = 
+                                Peltier3_checkBox.BackColor = Peltier4_checkBox.BackColor = SystemColors.Highlight;
+
+                                MainPower_checkBox.ForeColor = CabinLight_checkBox.ForeColor =
+                                Peltier1_checkBox.ForeColor = Peltier2_checkBox.ForeColor =
+                                Peltier3_checkBox.ForeColor = Peltier4_checkBox.ForeColor = Color.White;
+
+
                                 // @SECTION [Hardware Device Control : Device Power Control]
                                 HDCPOff_button.Enabled = true;
                                 HDCPOn_button.Enabled = true;
@@ -309,7 +322,7 @@ namespace Advanced_Cooling_Control_Software
                                 // @SECTION [Serial Console]
                                 Command_textBox.Enabled = true;
                                 Send_button.Enabled = true;
-                                Send_button.BackColor = Color.DarkCyan;
+                                Send_button.BackColor = SystemColors.Highlight;
                                 Send_button.ForeColor = Color.White;
                                 ConsoleLog_textbox.Enabled = true;
                                 Conn_progressBar.Value = 100;
@@ -348,11 +361,11 @@ namespace Advanced_Cooling_Control_Software
                 ConnectionMsgBox_label.Text = "Please select COM Port";
             }
         }
-        
+
 
         private async void SoftBlink(Control ctrl, Color c1, Color c2, short CycleTime_ms, bool BkClr, bool _stop = false)
         {
-            var sw = new Stopwatch(); 
+            var sw = new Stopwatch();
             sw.Start();
             short halfCycle = (short)Math.Round(CycleTime_ms * 0.5);
             while (true)
@@ -365,7 +378,7 @@ namespace Advanced_Cooling_Control_Software
                 var blw = (short)Math.Round((c2.B - c1.B) * per) + c1.B;
                 var clr = Color.FromArgb(red, grn, blw);
                 if (BkClr) ctrl.BackColor = clr; else ctrl.ForeColor = clr;
-                if(_stop)
+                if (_stop)
                 {
                     break;
                 }
@@ -1056,12 +1069,16 @@ namespace Advanced_Cooling_Control_Software
                 PCP_Indicator3.BackColor = Color.DarkGreen;
                 Peltier1_checkBox.Text = "OFF";
                 SerialPort1.WriteLine("DN101");
+                Peltier1_checkBox.ForeColor = Color.White;
+                Peltier1_checkBox.BackColor = Color.Red;
             }
             else if (Peltier1_checkBox.Checked == false)
             {
                 PCP_Indicator3.BackColor = Color.Maroon;
                 Peltier1_checkBox.Text = "ON";
                 SerialPort1.WriteLine("DF101");
+                Peltier1_checkBox.ForeColor = Color.White;
+                Peltier1_checkBox.BackColor = SystemColors.Highlight;
             }
         }
 
@@ -1072,12 +1089,16 @@ namespace Advanced_Cooling_Control_Software
                 PCP_Indicator4.BackColor = Color.DarkGreen;
                 Peltier2_checkBox.Text = "OFF";
                 SerialPort1.WriteLine("DN102");
+                Peltier2_checkBox.ForeColor = Color.White;
+                Peltier2_checkBox.BackColor = Color.Red;
             }
             else if (Peltier2_checkBox.Checked == false)
             {
                 PCP_Indicator4.BackColor = Color.Maroon;
                 Peltier2_checkBox.Text = "ON";
                 SerialPort1.WriteLine("DF102");
+                Peltier2_checkBox.ForeColor = Color.White;
+                Peltier2_checkBox.BackColor = SystemColors.Highlight;
             }
         }
 
@@ -1088,12 +1109,16 @@ namespace Advanced_Cooling_Control_Software
                 PCP_Indicator5.BackColor = Color.DarkGreen;
                 Peltier3_checkBox.Text = "OFF";
                 SerialPort1.WriteLine("DN103");
+                Peltier3_checkBox.ForeColor = Color.White;
+                Peltier3_checkBox.BackColor = Color.Red;
             }
             else if (Peltier3_checkBox.Checked == false)
             {
                 PCP_Indicator5.BackColor = Color.Maroon;
                 Peltier3_checkBox.Text = "ON";
                 SerialPort1.WriteLine("DF103");
+                Peltier3_checkBox.ForeColor = Color.White;
+                Peltier3_checkBox.BackColor = SystemColors.Highlight;
             }
         }
 
@@ -1104,12 +1129,16 @@ namespace Advanced_Cooling_Control_Software
                 PCP_Indicator6.BackColor = Color.DarkGreen;
                 Peltier4_checkBox.Text = "OFF";
                 SerialPort1.WriteLine("DN104");
+                Peltier4_checkBox.ForeColor = Color.White;
+                Peltier4_checkBox.BackColor = Color.Red;
             }
             else if (Peltier4_checkBox.Checked == false)
             {
                 PCP_Indicator6.BackColor = Color.Maroon;
                 Peltier4_checkBox.Text = "ON";
                 SerialPort1.WriteLine("DF104");
+                Peltier4_checkBox.ForeColor = Color.White;
+                Peltier4_checkBox.BackColor = SystemColors.Highlight;
             }
         }
 
