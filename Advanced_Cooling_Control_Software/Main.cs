@@ -788,6 +788,7 @@ namespace Advanced_Cooling_Control_Software
         {
             FanSpeedControl_numericUpDown.Value = FanSpeedControl_trackBar.Value;
             BeginInvoke(new EventHandler(FanPwmEncoder));
+            zeroitProgressBarTransparent1.Value = FanSpeedControl_trackBar.Value;
         }
 
         private void ExhaustFanSpeed_numericUpDown_ValueChanged(object sender, EventArgs e)

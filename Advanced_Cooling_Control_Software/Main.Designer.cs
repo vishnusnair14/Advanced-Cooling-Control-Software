@@ -147,6 +147,7 @@
             this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.systemInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.About_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zeroitProgressBarTransparent1 = new Zeroit.Framework.Progress.ZeroitProgressBarTransparent();
             this.SerialMonitor_groupBox.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -454,7 +455,7 @@
             // 
             // SerialMonitor_textbox
             // 
-            this.SerialMonitor_textbox.BackColor = System.Drawing.SystemColors.Control;
+            this.SerialMonitor_textbox.BackColor = System.Drawing.SystemColors.ControlLight;
             this.SerialMonitor_textbox.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.SerialMonitor_textbox.Location = new System.Drawing.Point(7, 19);
             this.SerialMonitor_textbox.Multiline = true;
@@ -568,7 +569,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.LightGray;
+            this.panel4.BackColor = System.Drawing.Color.Silver;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel4.Controls.Add(this.HDCPMsgbox_label);
             this.panel4.Controls.Add(this.label3);
@@ -620,7 +621,7 @@
             // 
             // HDCPOn_button
             // 
-            this.HDCPOn_button.BackColor = System.Drawing.Color.DarkCyan;
+            this.HDCPOn_button.BackColor = System.Drawing.SystemColors.Highlight;
             this.HDCPOn_button.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.HDCPOn_button.ForeColor = System.Drawing.Color.White;
             this.HDCPOn_button.Location = new System.Drawing.Point(9, 36);
@@ -1080,8 +1081,9 @@
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.Color.LightGray;
+            this.panel7.BackColor = System.Drawing.Color.Silver;
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel7.Controls.Add(this.zeroitProgressBarTransparent1);
             this.panel7.Controls.Add(this.label14);
             this.panel7.Controls.Add(this.FanSpeedControl_Label);
             this.panel7.Controls.Add(this.label13);
@@ -1092,7 +1094,7 @@
             this.panel7.Controls.Add(this.FanSpeedControl_trackBar);
             this.panel7.Location = new System.Drawing.Point(6, 21);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(299, 114);
+            this.panel7.Size = new System.Drawing.Size(299, 119);
             this.panel7.TabIndex = 66;
             // 
             // label14
@@ -1101,7 +1103,7 @@
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Malgun Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.MediumBlue;
-            this.label14.Location = new System.Drawing.Point(96, 91);
+            this.label14.Location = new System.Drawing.Point(122, 101);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(61, 12);
             this.label14.TabIndex = 69;
@@ -1126,7 +1128,7 @@
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Malgun Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Maroon;
-            this.label13.Location = new System.Drawing.Point(214, 92);
+            this.label13.Location = new System.Drawing.Point(266, 101);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(26, 12);
             this.label13.TabIndex = 68;
@@ -1139,7 +1141,7 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Malgun Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Green;
-            this.label12.Location = new System.Drawing.Point(5, 93);
+            this.label12.Location = new System.Drawing.Point(6, 103);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(24, 12);
             this.label12.TabIndex = 67;
@@ -1206,7 +1208,7 @@
             // 
             // ConsoleLog_textbox
             // 
-            this.ConsoleLog_textbox.BackColor = System.Drawing.SystemColors.Control;
+            this.ConsoleLog_textbox.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ConsoleLog_textbox.Enabled = false;
             this.ConsoleLog_textbox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConsoleLog_textbox.Location = new System.Drawing.Point(6, 24);
@@ -1665,7 +1667,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.ForeColor = System.Drawing.Color.Black;
-            this.label26.Location = new System.Drawing.Point(221, 178);
+            this.label26.Location = new System.Drawing.Point(225, 178);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(48, 15);
             this.label26.TabIndex = 36;
@@ -1675,7 +1677,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.ForeColor = System.Drawing.Color.Black;
-            this.label27.Location = new System.Drawing.Point(51, 178);
+            this.label27.Location = new System.Drawing.Point(58, 178);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(48, 15);
             this.label27.TabIndex = 35;
@@ -1737,7 +1739,7 @@
             this.aBOUTToolStripMenuItem});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
-            this.MainMenu.Size = new System.Drawing.Size(1323, 24);
+            this.MainMenu.Size = new System.Drawing.Size(1296, 24);
             this.MainMenu.TabIndex = 59;
             this.MainMenu.Text = "menuStrip1";
             // 
@@ -1805,6 +1807,25 @@
             this.About_MenuItem.Text = "About";
             this.About_MenuItem.Click += new System.EventHandler(this.About_MenuItem_Click);
             // 
+            // zeroitProgressBarTransparent1
+            // 
+            this.zeroitProgressBarTransparent1.AutoAnimate = false;
+            this.zeroitProgressBarTransparent1.BackColor = System.Drawing.Color.DarkGray;
+            this.zeroitProgressBarTransparent1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.zeroitProgressBarTransparent1.ForeColor = System.Drawing.Color.DarkCyan;
+            this.zeroitProgressBarTransparent1.Location = new System.Drawing.Point(8, 88);
+            this.zeroitProgressBarTransparent1.Maximum = 100;
+            this.zeroitProgressBarTransparent1.Minimum = 0;
+            this.zeroitProgressBarTransparent1.Name = "zeroitProgressBarTransparent1";
+            this.zeroitProgressBarTransparent1.ProgressBackground = System.Drawing.Color.RosyBrown;
+            this.zeroitProgressBarTransparent1.ProgressColor1 = System.Drawing.SystemColors.MenuHighlight;
+            this.zeroitProgressBarTransparent1.ProgressColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.zeroitProgressBarTransparent1.ShowText = true;
+            this.zeroitProgressBarTransparent1.Size = new System.Drawing.Size(284, 10);
+            this.zeroitProgressBarTransparent1.TabIndex = 67;
+            this.zeroitProgressBarTransparent1.TimerInterval = 1000;
+            this.zeroitProgressBarTransparent1.Value = 100;
+            // 
             // Main
             // 
             this.AcceptButton = this.Connect_button;
@@ -1813,7 +1834,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1323, 826);
+            this.ClientSize = new System.Drawing.Size(1296, 826);
             this.Controls.Add(this.MainMenu);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.connection_groupBox);
@@ -1991,6 +2012,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox HDCPMsgbox_label;
         private System.Windows.Forms.TextBox ConnectionMsgBox_label;
+        private Zeroit.Framework.Progress.ZeroitProgressBarTransparent zeroitProgressBarTransparent1;
     }
 }
 
