@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports;
@@ -29,13 +30,13 @@ namespace Advanced_Cooling_Control_Software
         string _COMPORT, _BAUDRATE;
         int I2C_INIT_FLAG = 0;
         int I2C_CONN_FLAG = 0;
-        private int preval;
         private int selVal = 0;
         private int preVal0 = 0;
         private int preVal1 = 0;
         private int preVal2 = 0;
         private int preVal3 = 0;
         private long counterDisCon = 0;
+        private bool tickcolor = true;
 
         public Main()
         {
@@ -104,6 +105,9 @@ namespace Advanced_Cooling_Control_Software
 
             FanSpeedControlDeviceList_comboBox.Enabled = false;
             FanSpeedControlDeviceList_comboBox.SelectedIndex = 0;
+
+            // HTA_textBox.Cursor = Cursors.Arrow;
+            HTA_textBox.Select(0, 0);
         }
 
         private void ArduinoReset_button_Click(object sender, EventArgs e)
@@ -147,23 +151,7 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
-        private void MainPower_checkBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (MainPower_checkBox.Checked == true)
-            {
-                PCP_Indicator1.BackColor = Color.DarkGreen;
-                MainPower_checkBox.Text = "OFF";
-                MainPower_checkBox.ForeColor = Color.White;
-                MainPower_checkBox.BackColor = Color.DarkRed;
-            }
-            else if (MainPower_checkBox.Checked == false)
-            {
-                PCP_Indicator1.BackColor = Color.Maroon;
-                MainPower_checkBox.Text = "ON";
-                MainPower_checkBox.ForeColor = Color.White;
-                MainPower_checkBox.BackColor = SystemColors.Highlight;
-            }
-        }
+
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -299,8 +287,8 @@ namespace Advanced_Cooling_Control_Software
                                 Peltier3_checkBox.Enabled = true;
                                 Peltier4_checkBox.Enabled = true;
 
-                                MainPower_checkBox.BackColor = CabinLight_checkBox.BackColor = 
-                                Peltier1_checkBox.BackColor = Peltier2_checkBox.BackColor = 
+                                MainPower_checkBox.BackColor = CabinLight_checkBox.BackColor =
+                                Peltier1_checkBox.BackColor = Peltier2_checkBox.BackColor =
                                 Peltier3_checkBox.BackColor = Peltier4_checkBox.BackColor = SystemColors.Highlight;
 
                                 MainPower_checkBox.ForeColor = CabinLight_checkBox.ForeColor =
@@ -439,7 +427,7 @@ namespace Advanced_Cooling_Control_Software
                 HDCPDevicelist_Combobox.Enabled = false;
                 HDCPMsgbox_label.Enabled = false;
                 CheckArduinoComPort_button.Enabled = true;
-                CheckArduinoComPort_button.BackColor = SystemColors.Highlight;
+                CheckArduinoComPort_button.BackColor = SystemColors.InactiveBorder;
 
                 MainPower_checkBox.Enabled = false;
                 CabinLight_checkBox.Enabled = false;
@@ -447,6 +435,10 @@ namespace Advanced_Cooling_Control_Software
                 Peltier2_checkBox.Enabled = false;
                 Peltier3_checkBox.Enabled = false;
                 Peltier4_checkBox.Enabled = false;
+
+                MainPower_checkBox.BackColor = CabinLight_checkBox.BackColor =
+                Peltier1_checkBox.BackColor = Peltier2_checkBox.BackColor =
+                Peltier3_checkBox.BackColor = Peltier4_checkBox.BackColor = Color.DarkGray;
 
                 DIS1.BackColor = SystemColors.ControlDarkDark;
                 DIS1.ForeColor = Color.White;
@@ -849,7 +841,7 @@ namespace Advanced_Cooling_Control_Software
         {
             selVal = FanSpeedControlDeviceList_comboBox.SelectedIndex;
 
-            FanSpeedControl_Label.Text = FanSpeedControlDeviceList_comboBox.Text + " fan speed";
+            FanSpeedControl_Label.Text = "Adjust " + FanSpeedControlDeviceList_comboBox.Text + " fan speed";
 
             if (FanSpeedControlDeviceList_comboBox.SelectedIndex == 0)
             {
@@ -923,27 +915,6 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
-
-        public void Form1_Load(object sender, EventArgs e)
-        {
-        }
-
-
-        private void CabinLight_checkBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (CabinLight_checkBox.Checked == true)
-            {
-                PCP_Indicator2.BackColor = Color.DarkGreen;
-                CabinLight_checkBox.Text = "OFF";
-                SerialPort1.WriteLine("DN201");
-            }
-            else if (CabinLight_checkBox.Checked == false)
-            {
-                PCP_Indicator2.BackColor = Color.Maroon;
-                CabinLight_checkBox.Text = "ON";
-                SerialPort1.WriteLine("DF201");
-            }
-        }
 
         private string DecodeCommandFromFile(string _cmd)
         {
@@ -1062,6 +1033,88 @@ namespace Advanced_Cooling_Control_Software
             ConnectionMsgBox_label.Text = "";
         }
 
+
+        private Color c1, c2;
+        private Control ctrl;
+        private void BlinkTimer1_Tick(object sender, EventArgs e)
+        {
+            if (tickcolor)
+            {
+                ctrl.BackColor = c1;
+                ctrl.ForeColor = c2;
+            }
+            if (!tickcolor)
+            {
+                ctrl.BackColor = c2;
+                ctrl.ForeColor = c1;
+            }
+            tickcolor = !tickcolor;
+        }
+
+        private void BlinkAnim(Control _ctrl, Color _c1, Color _c2, int _interval)
+        {
+            c1 = _c1; c2 = _c2; ctrl = _ctrl;
+            BlinkTimer1.Interval = _interval;
+            BlinkTimer1.Start();
+            // ctrl.Focus();
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CT2_circularProgressBar_Click(object sender, EventArgs e)
+        {
+            BlinkAnim(HTA_textBox, Color.DarkRed, Color.Gold, 400);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            BlinkTimer1.Stop();
+            ctrl.BackColor = Color.White;
+        }
+
+        private void MainPower_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (MainPower_checkBox.Checked == true)
+            {
+                PCP_Indicator1.BackColor = Color.DarkGreen;
+                MainPower_checkBox.Text = "OFF";
+                MainPower_checkBox.ForeColor = Color.White;
+                MainPower_checkBox.BackColor = Color.DarkRed;
+            }
+            else if (MainPower_checkBox.Checked == false)
+            {
+                PCP_Indicator1.BackColor = Color.Maroon;
+                MainPower_checkBox.Text = "ON";
+                MainPower_checkBox.ForeColor = Color.White;
+                MainPower_checkBox.BackColor = SystemColors.Highlight;
+            }
+        }
+
+
+        private void CabinLight_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CabinLight_checkBox.Checked == true)
+            {
+                PCP_Indicator2.BackColor = Color.DarkGreen;
+                CabinLight_checkBox.Text = "OFF";
+                SerialPort1.WriteLine("DN201");
+                CabinLight_checkBox.ForeColor = Color.White;
+                CabinLight_checkBox.BackColor = Color.DarkRed;
+            }
+            else if (CabinLight_checkBox.Checked == false)
+            {
+                PCP_Indicator2.BackColor = Color.Maroon;
+                CabinLight_checkBox.Text = "ON";
+                SerialPort1.WriteLine("DF201");
+                CabinLight_checkBox.ForeColor = Color.White;
+                CabinLight_checkBox.BackColor = SystemColors.Highlight;
+            }
+        }
+
+
         private void Peltier1_checkBox_CheckedChanged(object sender, EventArgs e)
         {
             if (Peltier1_checkBox.Checked == true)
@@ -1070,7 +1123,7 @@ namespace Advanced_Cooling_Control_Software
                 Peltier1_checkBox.Text = "OFF";
                 SerialPort1.WriteLine("DN101");
                 Peltier1_checkBox.ForeColor = Color.White;
-                Peltier1_checkBox.BackColor = Color.Red;
+                Peltier1_checkBox.BackColor = Color.DarkRed;
             }
             else if (Peltier1_checkBox.Checked == false)
             {
@@ -1090,7 +1143,7 @@ namespace Advanced_Cooling_Control_Software
                 Peltier2_checkBox.Text = "OFF";
                 SerialPort1.WriteLine("DN102");
                 Peltier2_checkBox.ForeColor = Color.White;
-                Peltier2_checkBox.BackColor = Color.Red;
+                Peltier2_checkBox.BackColor = Color.DarkRed;
             }
             else if (Peltier2_checkBox.Checked == false)
             {
@@ -1110,7 +1163,7 @@ namespace Advanced_Cooling_Control_Software
                 Peltier3_checkBox.Text = "OFF";
                 SerialPort1.WriteLine("DN103");
                 Peltier3_checkBox.ForeColor = Color.White;
-                Peltier3_checkBox.BackColor = Color.Red;
+                Peltier3_checkBox.BackColor = Color.DarkRed;
             }
             else if (Peltier3_checkBox.Checked == false)
             {
@@ -1130,7 +1183,7 @@ namespace Advanced_Cooling_Control_Software
                 Peltier4_checkBox.Text = "OFF";
                 SerialPort1.WriteLine("DN104");
                 Peltier4_checkBox.ForeColor = Color.White;
-                Peltier4_checkBox.BackColor = Color.Red;
+                Peltier4_checkBox.BackColor = Color.DarkRed;
             }
             else if (Peltier4_checkBox.Checked == false)
             {

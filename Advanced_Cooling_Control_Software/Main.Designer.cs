@@ -100,6 +100,7 @@
             this.AutoConnect_checkBox = new System.Windows.Forms.CheckBox();
             this.Passcode_textBox = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.zeroitProgressBarTransparent1 = new Zeroit.Framework.Progress.ZeroitProgressBarTransparent();
             this.label14 = new System.Windows.Forms.Label();
@@ -138,6 +139,7 @@
             this.label27 = new System.Windows.Forms.Label();
             this.CT1_circularProgressBar = new CircularProgressBar.CircularProgressBar();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.fILEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadFirmwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -147,6 +149,9 @@
             this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.systemInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.About_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.BlinkTimer1 = new System.Windows.Forms.Timer(this.components);
+            this.HTA_textBox = new System.Windows.Forms.TextBox();
             this.MainPower_checkBox = new System.Windows.Forms.CheckBox();
             this.SerialMonitor_groupBox.SuspendLayout();
             this.groupBox13.SuspendLayout();
@@ -167,6 +172,7 @@
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.MainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -249,6 +255,7 @@
             // 
             // Peltier1_checkBox
             // 
+            this.Peltier1_checkBox.AccessibleDescription = "";
             this.Peltier1_checkBox.Appearance = System.Windows.Forms.Appearance.Button;
             this.Peltier1_checkBox.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
             this.Peltier1_checkBox.ForeColor = System.Drawing.Color.DarkGray;
@@ -1071,6 +1078,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Exhaust Fan Control";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 70);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 68;
+            this.button1.Text = "stop";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.Silver;
@@ -1321,9 +1338,9 @@
             this.groupBox10.Controls.Add(this.label28);
             this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.9F);
             this.groupBox10.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.groupBox10.Location = new System.Drawing.Point(11, 232);
+            this.groupBox10.Location = new System.Drawing.Point(11, 227);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(678, 202);
+            this.groupBox10.Size = new System.Drawing.Size(672, 202);
             this.groupBox10.TabIndex = 38;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Stepper Motor Temperature";
@@ -1331,10 +1348,11 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.ForeColor = System.Drawing.Color.Black;
-            this.label31.Location = new System.Drawing.Point(561, 178);
+            this.label31.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label31.Location = new System.Drawing.Point(552, 177);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(74, 15);
+            this.label31.Size = new System.Drawing.Size(71, 16);
             this.label31.TabIndex = 40;
             this.label31.Text = "EXTRUDER";
             // 
@@ -1348,7 +1366,7 @@
             this.SMT_E_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
             this.SMT_E_circularProgressBar.InnerMargin = 2;
             this.SMT_E_circularProgressBar.InnerWidth = -1;
-            this.SMT_E_circularProgressBar.Location = new System.Drawing.Point(513, 19);
+            this.SMT_E_circularProgressBar.Location = new System.Drawing.Point(507, 19);
             this.SMT_E_circularProgressBar.MarqueeAnimationSpeed = 2000;
             this.SMT_E_circularProgressBar.Name = "SMT_E_circularProgressBar";
             this.SMT_E_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
@@ -1411,7 +1429,7 @@
             this.SMT_Z_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
             this.SMT_Z_circularProgressBar.InnerMargin = 2;
             this.SMT_Z_circularProgressBar.InnerWidth = -1;
-            this.SMT_Z_circularProgressBar.Location = new System.Drawing.Point(345, 19);
+            this.SMT_Z_circularProgressBar.Location = new System.Drawing.Point(339, 19);
             this.SMT_Z_circularProgressBar.MarqueeAnimationSpeed = 2000;
             this.SMT_Z_circularProgressBar.Name = "SMT_Z_circularProgressBar";
             this.SMT_Z_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
@@ -1436,10 +1454,11 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.ForeColor = System.Drawing.Color.Black;
-            this.label30.Location = new System.Drawing.Point(403, 178);
+            this.label30.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label30.Location = new System.Drawing.Point(397, 178);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(44, 15);
+            this.label30.Size = new System.Drawing.Size(49, 15);
             this.label30.TabIndex = 39;
             this.label30.Text = "Z-AXIS";
             // 
@@ -1453,7 +1472,7 @@
             this.SMT_Y_circularProgressBar.InnerColor = System.Drawing.SystemColors.ControlLightLight;
             this.SMT_Y_circularProgressBar.InnerMargin = 2;
             this.SMT_Y_circularProgressBar.InnerWidth = -1;
-            this.SMT_Y_circularProgressBar.Location = new System.Drawing.Point(175, 19);
+            this.SMT_Y_circularProgressBar.Location = new System.Drawing.Point(169, 19);
             this.SMT_Y_circularProgressBar.MarqueeAnimationSpeed = 2000;
             this.SMT_Y_circularProgressBar.Name = "SMT_Y_circularProgressBar";
             this.SMT_Y_circularProgressBar.OuterColor = System.Drawing.Color.Gainsboro;
@@ -1510,20 +1529,22 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.ForeColor = System.Drawing.Color.Black;
-            this.label29.Location = new System.Drawing.Point(65, 178);
+            this.label29.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label29.Location = new System.Drawing.Point(57, 178);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(45, 15);
+            this.label29.Size = new System.Drawing.Size(55, 16);
             this.label29.TabIndex = 35;
             this.label29.Text = "X-AXIS";
             // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.ForeColor = System.Drawing.Color.Black;
-            this.label28.Location = new System.Drawing.Point(231, 178);
+            this.label28.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label28.Location = new System.Drawing.Point(215, 178);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(44, 15);
+            this.label28.Size = new System.Drawing.Size(55, 16);
             this.label28.TabIndex = 36;
             this.label28.Text = "Y-AXIS";
             // 
@@ -1546,10 +1567,11 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.ForeColor = System.Drawing.Color.Black;
-            this.label25.Location = new System.Drawing.Point(213, 178);
+            this.label25.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label25.Location = new System.Drawing.Point(208, 178);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(63, 15);
+            this.label25.Size = new System.Drawing.Size(71, 16);
             this.label25.TabIndex = 36;
             this.label25.Text = "HOT SIDE";
             // 
@@ -1588,10 +1610,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(50, 178);
+            this.label4.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label4.Location = new System.Drawing.Point(46, 178);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 15);
+            this.label4.Size = new System.Drawing.Size(79, 16);
             this.label4.TabIndex = 35;
             this.label4.Text = "COOL SIDE";
             // 
@@ -1636,7 +1659,7 @@
             this.groupBox9.Controls.Add(this.CT1_circularProgressBar);
             this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.9F);
             this.groupBox9.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.groupBox9.Location = new System.Drawing.Point(356, 19);
+            this.groupBox9.Location = new System.Drawing.Point(350, 19);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(333, 202);
             this.groupBox9.TabIndex = 37;
@@ -1674,24 +1697,27 @@
             this.CT2_circularProgressBar.Text = "0.00 °C";
             this.CT2_circularProgressBar.TextMargin = new System.Windows.Forms.Padding(0);
             this.CT2_circularProgressBar.Value = 27;
+            this.CT2_circularProgressBar.Click += new System.EventHandler(this.CT2_circularProgressBar_Click);
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.ForeColor = System.Drawing.Color.Black;
-            this.label26.Location = new System.Drawing.Point(225, 178);
+            this.label26.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label26.Location = new System.Drawing.Point(223, 178);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(48, 15);
+            this.label26.Size = new System.Drawing.Size(55, 16);
             this.label26.TabIndex = 36;
             this.label26.Text = "TANK 2";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.ForeColor = System.Drawing.Color.Black;
+            this.label27.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.label27.Location = new System.Drawing.Point(58, 178);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(48, 15);
+            this.label27.Size = new System.Drawing.Size(55, 16);
             this.label27.TabIndex = 35;
             this.label27.Text = "TANK 1";
             // 
@@ -1729,6 +1755,7 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.groupBox1);
             this.groupBox7.Controls.Add(this.groupBox9);
             this.groupBox7.Controls.Add(this.groupBox8);
             this.groupBox7.Controls.Add(this.groupBox10);
@@ -1740,6 +1767,20 @@
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Temperature Monitor";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.groupBox1.Controls.Add(this.HTA_textBox);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.9F);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.groupBox1.Location = new System.Drawing.Point(689, 19);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(166, 410);
+            this.groupBox1.TabIndex = 39;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Notifications";
             // 
             // MainMenu
             // 
@@ -1819,8 +1860,39 @@
             this.About_MenuItem.Text = "About";
             this.About_MenuItem.Click += new System.EventHandler(this.About_MenuItem_Click);
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.ForeColor = System.Drawing.Color.DarkCyan;
+            this.linkLabel1.LinkColor = System.Drawing.SystemColors.ButtonFace;
+            this.linkLabel1.Location = new System.Drawing.Point(1139, 800);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(145, 15);
+            this.linkLabel1.TabIndex = 61;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "vishnustechnologies.com";
+            this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // BlinkTimer1
+            // 
+            this.BlinkTimer1.Tick += new System.EventHandler(this.BlinkTimer1_Tick);
+            // 
+            // HTA_textBox
+            // 
+            this.HTA_textBox.BackColor = System.Drawing.Color.Gainsboro;
+            this.HTA_textBox.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HTA_textBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.HTA_textBox.Location = new System.Drawing.Point(6, 31);
+            this.HTA_textBox.Name = "HTA_textBox";
+            this.HTA_textBox.ReadOnly = true;
+            this.HTA_textBox.Size = new System.Drawing.Size(155, 24);
+            this.HTA_textBox.TabIndex = 69;
+            this.HTA_textBox.Text = "HIGH TEMP. ALERT";
+            this.HTA_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // MainPower_checkBox
             // 
+            this.MainPower_checkBox.AccessibleDescription = "";
             this.MainPower_checkBox.Appearance = System.Windows.Forms.Appearance.Button;
             this.MainPower_checkBox.Font = new System.Drawing.Font("Malgun Gothic", 9.5F, System.Drawing.FontStyle.Bold);
             this.MainPower_checkBox.ForeColor = System.Drawing.Color.DarkGray;
@@ -1842,6 +1914,7 @@
             this.BackColor = System.Drawing.Color.DarkGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1296, 826);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.MainMenu);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.connection_groupBox);
@@ -1861,7 +1934,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Main_Load);
             this.SerialMonitor_groupBox.ResumeLayout(false);
             this.SerialMonitor_groupBox.PerformLayout();
             this.groupBox13.ResumeLayout(false);
@@ -1893,6 +1966,8 @@
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             this.groupBox7.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
             this.ResumeLayout(false);
@@ -2019,6 +2094,11 @@
         private System.Windows.Forms.TextBox HDCPMsgbox_label;
         private System.Windows.Forms.TextBox ConnectionMsgBox_label;
         private Zeroit.Framework.Progress.ZeroitProgressBarTransparent zeroitProgressBarTransparent1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Timer BlinkTimer1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox HTA_textBox;
         private System.Windows.Forms.CheckBox MainPower_checkBox;
     }
 }
