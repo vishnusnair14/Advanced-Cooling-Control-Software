@@ -246,6 +246,12 @@
     <Compile Include="SystemInformation.Designer.cs">
       <DependentUpon>SystemInformation.cs</DependentUpon>
     </Compile>
+    <Compile Include="TemperatureSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TemperatureSettings.Designer.cs">
+      <DependentUpon>TemperatureSettings.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CommandOptions.resx">
       <DependentUpon>CommandOptions.cs</DependentUpon>
     </EmbeddedResource>
@@ -276,6 +282,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SystemInformation.resx">
       <DependentUpon>SystemInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TemperatureSettings.resx">
+      <DependentUpon>TemperatureSettings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

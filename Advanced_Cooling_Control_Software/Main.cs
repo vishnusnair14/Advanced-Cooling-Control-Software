@@ -1,5 +1,4 @@
 ﻿using System;
-using System.CodeDom;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports;
@@ -30,12 +29,10 @@ namespace Advanced_Cooling_Control_Software
         string _COMPORT, _BAUDRATE;
         int I2C_INIT_FLAG = 0;
         int I2C_CONN_FLAG = 0;
-        private int selVal = 0;
         private int preVal0 = 0;
         private int preVal1 = 0;
         private int preVal2 = 0;
         private int preVal3 = 0;
-        private long counterDisCon = 0;
         private bool tickcolor = true;
 
         public Main()
@@ -74,7 +71,8 @@ namespace Advanced_Cooling_Control_Software
             SMT_X_circularProgressBar.Text = "";
             SMT_Y_circularProgressBar.Text = "";
             SMT_Z_circularProgressBar.Text = "";
-            SMT_E_circularProgressBar.Text = "";*/
+            SMT_E_circularProgressBar.Text = "";
+            */
 
             FanSpeedControl_trackBar.Value = 0;
             FanSpeedControl_trackBar.Enabled = false;
@@ -107,7 +105,7 @@ namespace Advanced_Cooling_Control_Software
             FanSpeedControlDeviceList_comboBox.SelectedIndex = 0;
 
             // HTA_textBox.Cursor = Cursors.Arrow;
-            HTA_textBox.Select(0, 0);
+            // HTA_textBox.Select(0, 0);
         }
 
         private void ArduinoReset_button_Click(object sender, EventArgs e)
@@ -347,29 +345,6 @@ namespace Advanced_Cooling_Control_Software
                 ConnectionMsgBox_label.BackColor = Color.MidnightBlue;
                 ConnectionMsgBox_label.ForeColor = SystemColors.HighlightText;
                 ConnectionMsgBox_label.Text = "Please select COM Port";
-            }
-        }
-
-
-        private async void SoftBlink(Control ctrl, Color c1, Color c2, short CycleTime_ms, bool BkClr, bool _stop = false)
-        {
-            var sw = new Stopwatch();
-            sw.Start();
-            short halfCycle = (short)Math.Round(CycleTime_ms * 0.5);
-            while (true)
-            {
-                await Task.Delay(1);
-                var n = sw.ElapsedMilliseconds % CycleTime_ms;
-                var per = (double)Math.Abs(n - halfCycle) / halfCycle;
-                var red = (short)Math.Round((c2.R - c1.R) * per) + c1.R;
-                var grn = (short)Math.Round((c2.G - c1.G) * per) + c1.G;
-                var blw = (short)Math.Round((c2.B - c1.B) * per) + c1.B;
-                var clr = Color.FromArgb(red, grn, blw);
-                if (BkClr) ctrl.BackColor = clr; else ctrl.ForeColor = clr;
-                if (_stop)
-                {
-                    break;
-                }
             }
         }
 
@@ -793,7 +768,6 @@ namespace Advanced_Cooling_Control_Software
         {
             FanSpeedControl_numericUpDown.Value = FanSpeedControl_trackBar.Value;
             BeginInvoke(new EventHandler(FanPwmEncoder));
-            zeroitProgressBarTransparent1.Value = FanSpeedControl_trackBar.Value;
         }
 
         private void ExhaustFanSpeed_numericUpDown_ValueChanged(object sender, EventArgs e)
@@ -839,7 +813,7 @@ namespace Advanced_Cooling_Control_Software
 
         private void FanSpeedControl_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selVal = FanSpeedControlDeviceList_comboBox.SelectedIndex;
+            //selVal = FanSpeedControlDeviceList_comboBox.SelectedIndex;
 
             FanSpeedControl_Label.Text = "Adjust " + FanSpeedControlDeviceList_comboBox.Text + " fan speed";
 
@@ -995,11 +969,19 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
-        private void Command_MenuItem_Click(object sender, EventArgs e)
+        private void CommandOptions_MenuItem_Click(object sender, EventArgs e)
         {
             CommandOptions commandContainer = new CommandOptions(this.SerialPort1);
             commandContainer.ShowDialog();
         }
+
+
+        private void TemperatureSettings_MenuItem_Click(object sender, EventArgs e)
+        {
+            TemperatureSettings temperatureSettings = new TemperatureSettings();
+            temperatureSettings.ShowDialog();
+        }
+
 
         private async void SerialMonitor_textbox_DoubleClick(object sender, EventArgs e)
         {
@@ -1034,10 +1016,14 @@ namespace Advanced_Cooling_Control_Software
         }
 
 
+        // ---------------------------------------------------------------------------------------------------
+        // BLINK ANIMATION SECTION [MAIN]
+        //
         private Color c1, c2;
         private Control ctrl;
         private void BlinkTimer1_Tick(object sender, EventArgs e)
         {
+
             if (tickcolor)
             {
                 ctrl.BackColor = c1;
@@ -1051,7 +1037,9 @@ namespace Advanced_Cooling_Control_Software
             tickcolor = !tickcolor;
         }
 
-        private void BlinkAnim(Control _ctrl, Color _c1, Color _c2, int _interval)
+
+        // NORMAL BLINK FUNCION:
+        private void StandardBlink(Control _ctrl, Color _c1, Color _c2, int _interval)
         {
             c1 = _c1; c2 = _c2; ctrl = _ctrl;
             BlinkTimer1.Interval = _interval;
@@ -1059,21 +1047,80 @@ namespace Advanced_Cooling_Control_Software
             // ctrl.Focus();
         }
 
+
+        // SOFT BLINK FUNCTION:
+        private bool SoftBlink_Flag = false;
+        private async void HighTempSoftBlink(Control ctrl, int compareVal, Color c1, Color c2, short CycleTime_ms, bool BkClr)
+        {
+            var _sw = new Stopwatch();
+            _sw.Start();
+            short halfCycle = (short)Math.Round(CycleTime_ms * 0.5);
+            ctrl.ForeColor = Color.White;
+            ctrl.Text = "HIGH TEMP. ALERT";
+            //ctrl.Location = new Point(514, 178);
+            while (SMT_E_circularProgressBar.Value >= compareVal)
+            {
+                SoftBlink_Flag = true;
+                await Task.Delay(1);
+                var n = _sw.ElapsedMilliseconds % CycleTime_ms;
+                var per = (double)Math.Abs(n - halfCycle) / halfCycle;
+                var red = (short)Math.Round((c2.R - c1.R) * per) + c1.R;
+                var grn = (short)Math.Round((c2.G - c1.G) * per) + c1.G;
+                var blw = (short)Math.Round((c2.B - c1.B) * per) + c1.B;
+                var clr = Color.FromArgb(red, grn, blw);
+                if (BkClr) ctrl.BackColor = clr; else ctrl.ForeColor = clr;
+            }
+            _sw.Stop();
+            SoftBlink_Flag = false;
+            ctrl.BackColor = Color.Transparent;
+            ctrl.ForeColor = Color.White;
+            //ctrl.Location = new Point(550, 178);
+            ctrl.Text = "Extruder";
+        }
+
+        private void HighTempAlert_WatchDog()
+        {
+            SMT_E_circularProgressBar.Value = Convert.ToInt32(trackBar1.Value);
+            SMT_E_circularProgressBar.Text = trackBar1.Value + " °C".ToString();
+            if (SMT_E_circularProgressBar.Value >= TemperatureSettings.CoolSideMaxTemp)
+            {
+                if (!SoftBlink_Flag)
+                {
+                    HighTempSoftBlink(ExtruderTM_label, TemperatureSettings.CoolSideMaxTemp, SystemColors.MenuHighlight, Color.Blue, 1000, true);
+                }
+            }
+            else
+            {
+
+            }
+        }
+        //
+        // ---------------------------------------------------------------------------------------------------
+        //
+
         private void Main_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void CT2_circularProgressBar_Click(object sender, EventArgs e)
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            BlinkAnim(HTA_textBox, Color.DarkRed, Color.Gold, 400);
+            SMT_E_circularProgressBar.Value = Convert.ToInt32(trackBar1.Value);
+            SMT_E_circularProgressBar.Text = trackBar1.Value + " °C".ToString();
+            if (SMT_E_circularProgressBar.Value >= TemperatureSettings.CoolSideMaxTemp)
+            {
+                if (!SoftBlink_Flag)
+                {
+                    HighTempSoftBlink(ExtruderTM_label, TemperatureSettings.CoolSideMaxTemp, SystemColors.MenuHighlight, Color.Blue, 1000, true);
+                }
+            }
+            else
+            {
+
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            BlinkTimer1.Stop();
-            ctrl.BackColor = Color.White;
-        }
 
         private void MainPower_checkBox_CheckedChanged(object sender, EventArgs e)
         {
