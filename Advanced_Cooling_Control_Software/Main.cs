@@ -112,7 +112,7 @@ namespace Advanced_Cooling_Control_Software
         {
             try
             {
-                if (SerialPort1.IsOpen)
+                if (Main_SerialPort1.IsOpen)
                 {
                     BeginInvoke(new EventHandler(ClearBuffer_button_Click));
                     SerialMonitor_textbox.Text = "";
@@ -139,7 +139,7 @@ namespace Advanced_Cooling_Control_Software
                     CT2_circularProgressBar.Value = 0;
                     CT2_circularProgressBar.Text = "";
                 }
-                SerialPort1.WriteLine("r");  // arduino software reset code:  'r' 
+                Main_SerialPort1.WriteLine("r");  // arduino software reset code:  'r' 
             }
             catch
             {
@@ -155,7 +155,7 @@ namespace Advanced_Cooling_Control_Software
         {
             try
             {
-                SerialPort1.Close();
+                Main_SerialPort1.Close();
             }
             catch
             {
@@ -167,7 +167,7 @@ namespace Advanced_Cooling_Control_Software
         {
             try
             {
-                SerialPort1.Close();
+                Main_SerialPort1.Close();
             }
             catch
             {
@@ -240,15 +240,15 @@ namespace Advanced_Cooling_Control_Software
                         if (Passcode_textBox.Text == AppAccessPasscode)
                         {
                             Conn_progressBar.Value = 10;
-                            SerialPort1.PortName = ComPort_comboBox.SelectedItem.ToString();
-                            SerialPort1.BaudRate = Convert.ToInt32(BaudRate_comboBox.SelectedItem);
+                            Main_SerialPort1.PortName = ComPort_comboBox.SelectedItem.ToString();
+                            Main_SerialPort1.BaudRate = Convert.ToInt32(BaudRate_comboBox.SelectedItem);
                             _COMPORT = ComPort_comboBox.SelectedItem.ToString();
                             _BAUDRATE = BaudRate_comboBox.SelectedItem.ToString();
                             try
                             {
                                 // connects to serial port:
                                 Conn_progressBar.Value = 40;
-                                SerialPort1.Open();
+                                Main_SerialPort1.Open();
                                 Conn_progressBar.Value = 75;
                                 Console.WriteLine("Connected: " + _COMPORT + " @" + _BAUDRATE);
                                 Console.WriteLine("> [MSG: Connected to port @" + _COMPORT + "]");
@@ -354,16 +354,16 @@ namespace Advanced_Cooling_Control_Software
             try
             {
                 // set all PWM value to zero [ stops all coolant pwm fans]:
-                SerialPort1.WriteLine("sk0d");
-                SerialPort1.WriteLine("sl0d");
-                SerialPort1.WriteLine("sm0d");
-                SerialPort1.WriteLine("sn0d");
+                Main_SerialPort1.WriteLine("sk0d");
+                Main_SerialPort1.WriteLine("sl0d");
+                Main_SerialPort1.WriteLine("sm0d");
+                Main_SerialPort1.WriteLine("sn0d");
 
                 // switch off all coolant/exhaust relays:
 
 
                 // Disconnect serial COM:
-                SerialPort1.Close();
+                Main_SerialPort1.Close();
 
                 // @SECTION [Connection Panel]
                 connection_groupBox.ForeColor = Color.Maroon;
@@ -449,7 +449,7 @@ namespace Advanced_Cooling_Control_Software
         {
             try
             {
-                _serialData = SerialPort1.ReadLine().Trim();
+                _serialData = Main_SerialPort1.ReadLine().Trim();
                 // BeginInvoke(new EventHandler(SerialDataDecoder));
                 SerialDataDecoder(_serialData);
             }
@@ -782,29 +782,29 @@ namespace Advanced_Cooling_Control_Software
         private void FanPwmEncoder(object sender, EventArgs e)
         {
             PWM = (1.0f * FanSpeedControl_trackBar.Value) / 100 * 255;
-            if (SerialPort1.IsOpen)
+            if (Main_SerialPort1.IsOpen)
             {
                 if (FanSpeedControlDeviceList_comboBox.SelectedIndex == 0)
                 {
-                    SerialPort1.WriteLine("sk" + PWM.ToString());
+                    Main_SerialPort1.WriteLine("sk" + PWM.ToString());
                     SerialMonitor_textbox.AppendText("sk" + PWM.ToString() + Environment.NewLine);
                     preVal0 = FanSpeedControl_trackBar.Value;
                 }
                 else if (FanSpeedControlDeviceList_comboBox.SelectedIndex == 1)
                 {
-                    SerialPort1.WriteLine("sl" + PWM.ToString());
+                    Main_SerialPort1.WriteLine("sl" + PWM.ToString());
                     SerialMonitor_textbox.AppendText("sl" + PWM.ToString() + Environment.NewLine);
                     preVal1 = FanSpeedControl_trackBar.Value;
                 }
                 else if (FanSpeedControlDeviceList_comboBox.SelectedIndex == 2)
                 {
-                    SerialPort1.WriteLine("sm" + PWM.ToString());
+                    Main_SerialPort1.WriteLine("sm" + PWM.ToString());
                     SerialMonitor_textbox.AppendText("sm" + PWM.ToString() + Environment.NewLine);
                     preVal2 = FanSpeedControl_trackBar.Value;
                 }
                 else if (FanSpeedControlDeviceList_comboBox.SelectedIndex == 3)
                 {
-                    SerialPort1.WriteLine("sn" + PWM.ToString());
+                    Main_SerialPort1.WriteLine("sn" + PWM.ToString());
                     SerialMonitor_textbox.AppendText("sn" + PWM.ToString() + Environment.NewLine);
                     preVal3 = FanSpeedControl_trackBar.Value;
                 }
@@ -899,13 +899,13 @@ namespace Advanced_Cooling_Control_Software
         private async void Send_button_Click(object sender, EventArgs e)
         {
 
-            if (SerialPort1.IsOpen)
+            if (Main_SerialPort1.IsOpen)
             {
                 if (Command_textBox.Text.Length != 0)
                 {
                     try
                     {
-                        SerialPort1.WriteLine(Command_textBox.Text);
+                        Main_SerialPort1.WriteLine(Command_textBox.Text);
                         ClearConsoleTextBox_label.Text = "command sent successful";
                     }
                     catch
@@ -935,7 +935,7 @@ namespace Advanced_Cooling_Control_Software
         private void SoftwareInfo_MenuItem_Click(object sender, EventArgs e)
         {
             //Form2 container = new Form2();
-            CommandOptions commandOptions = new CommandOptions(SerialPort1);
+            CommandOptions commandOptions = new CommandOptions(Main_SerialPort1);
             //cw.MdiParent = this;
             commandOptions.ShowDialog();
         }
@@ -948,13 +948,13 @@ namespace Advanced_Cooling_Control_Software
 
         private void Exit_MenuItem_Click(object sender, EventArgs e)
         {
-            if (SerialPort1.IsOpen)
+            if (Main_SerialPort1.IsOpen)
             {
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                 DialogResult result = MessageBox.Show("Serial port is connected. Do you want to close anyway?", "Confirmation", buttons);
                 if (result == DialogResult.Yes)
                 {
-                    SerialPort1.Close();
+                    Main_SerialPort1.Close();
                     Console.WriteLine("Serial port closed success");
                     Close();
                 }
@@ -971,7 +971,7 @@ namespace Advanced_Cooling_Control_Software
 
         private void CommandOptions_MenuItem_Click(object sender, EventArgs e)
         {
-            CommandOptions commandContainer = new CommandOptions(this.SerialPort1);
+            CommandOptions commandContainer = new CommandOptions(Main_SerialPort1);
             commandContainer.ShowDialog();
         }
 
@@ -985,12 +985,15 @@ namespace Advanced_Cooling_Control_Software
 
         private async void SerialMonitor_textbox_DoubleClick(object sender, EventArgs e)
         {
-            SerialMonitor_textbox.Text = "";
-            SerialMonitor_groupBox.ForeColor = Color.Maroon;
-            SerialMonitor_groupBox.Text = "console cleared!";
-            await Task.Delay(750);
-            SerialMonitor_groupBox.Text = "Data Monitor" + " [ " + _COMPORT + " @" + _BAUDRATE + " ]";
-            SerialMonitor_groupBox.ForeColor = SystemColors.ControlLightLight;
+            if (SerialMonitor_textbox.Text.Length != 0)
+            {
+                SerialMonitor_textbox.Text = "";
+                SerialMonitor_groupBox.ForeColor = Color.Maroon;
+                SerialMonitor_groupBox.Text = "console cleared!";
+                await Task.Delay(750);
+                SerialMonitor_groupBox.ForeColor = SystemColors.ControlLightLight;
+                SerialMonitor_groupBox.Text = "Data Monitor" + " [ " + _COMPORT + " @" + _BAUDRATE + " ]";
+            }
         }
 
         private void SystemInformationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1080,6 +1083,7 @@ namespace Advanced_Cooling_Control_Software
 
         private void HighTempAlert_WatchDog()
         {
+            // @debug.enable.start
             SMT_E_circularProgressBar.Value = Convert.ToInt32(trackBar1.Value);
             SMT_E_circularProgressBar.Text = trackBar1.Value + " °C".ToString();
             if (SMT_E_circularProgressBar.Value >= TemperatureSettings.CoolSideMaxTemp)
@@ -1088,6 +1092,79 @@ namespace Advanced_Cooling_Control_Software
                 {
                     HighTempSoftBlink(ExtruderTM_label, TemperatureSettings.CoolSideMaxTemp, SystemColors.MenuHighlight, Color.Blue, 1000, true);
                 }
+            }
+            else
+            {
+
+            }
+            // @debug.end
+
+            if(PBT1_circularProgressBar.Value >= TemperatureSettings.CoolSideMaxTemp)
+            {
+
+            }
+            else
+            {
+
+            }
+
+            if(PBT2_circularProgressBar.Value >= TemperatureSettings.HotSideMaxTemp)
+            {
+
+            }
+            else
+            {
+
+            }
+
+            if (CT1_circularProgressBar.Value >= TemperatureSettings.Tank1MaxTemp)
+            {
+
+            }
+            else
+            {
+
+            }
+
+            if (CT2_circularProgressBar.Value >= TemperatureSettings.Tank2MaxTemp)
+            {
+
+            }
+            else
+            {
+
+            }
+
+            if (SMT_X_circularProgressBar.Value >= TemperatureSettings.XaxisMaxTemp)
+            {
+
+            }
+            else
+            {
+
+            }
+
+            if (SMT_Y_circularProgressBar.Value >= TemperatureSettings.YaxisMaxTemp)
+            {
+
+            }
+            else
+            {
+
+            }
+
+            if (SMT_Z_circularProgressBar.Value >= TemperatureSettings.ZaxisMaxTemp)
+            {
+
+            }
+            else
+            {
+
+            }
+
+            if (SMT_E_circularProgressBar.Value >= TemperatureSettings.ExtruderMaxTemp)
+            {
+
             }
             else
             {
@@ -1147,7 +1224,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 PCP_Indicator2.BackColor = Color.DarkGreen;
                 CabinLight_checkBox.Text = "OFF";
-                SerialPort1.WriteLine("DN201");
+                Main_SerialPort1.WriteLine("DN201");
                 CabinLight_checkBox.ForeColor = Color.White;
                 CabinLight_checkBox.BackColor = Color.DarkRed;
             }
@@ -1155,7 +1232,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 PCP_Indicator2.BackColor = Color.Maroon;
                 CabinLight_checkBox.Text = "ON";
-                SerialPort1.WriteLine("DF201");
+                Main_SerialPort1.WriteLine("DF201");
                 CabinLight_checkBox.ForeColor = Color.White;
                 CabinLight_checkBox.BackColor = SystemColors.Highlight;
             }
@@ -1168,7 +1245,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 PCP_Indicator3.BackColor = Color.DarkGreen;
                 Peltier1_checkBox.Text = "OFF";
-                SerialPort1.WriteLine("DN101");
+                Main_SerialPort1.WriteLine("DN101");
                 Peltier1_checkBox.ForeColor = Color.White;
                 Peltier1_checkBox.BackColor = Color.DarkRed;
             }
@@ -1176,7 +1253,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 PCP_Indicator3.BackColor = Color.Maroon;
                 Peltier1_checkBox.Text = "ON";
-                SerialPort1.WriteLine("DF101");
+                Main_SerialPort1.WriteLine("DF101");
                 Peltier1_checkBox.ForeColor = Color.White;
                 Peltier1_checkBox.BackColor = SystemColors.Highlight;
             }
@@ -1188,7 +1265,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 PCP_Indicator4.BackColor = Color.DarkGreen;
                 Peltier2_checkBox.Text = "OFF";
-                SerialPort1.WriteLine("DN102");
+                Main_SerialPort1.WriteLine("DN102");
                 Peltier2_checkBox.ForeColor = Color.White;
                 Peltier2_checkBox.BackColor = Color.DarkRed;
             }
@@ -1196,7 +1273,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 PCP_Indicator4.BackColor = Color.Maroon;
                 Peltier2_checkBox.Text = "ON";
-                SerialPort1.WriteLine("DF102");
+                Main_SerialPort1.WriteLine("DF102");
                 Peltier2_checkBox.ForeColor = Color.White;
                 Peltier2_checkBox.BackColor = SystemColors.Highlight;
             }
@@ -1208,7 +1285,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 PCP_Indicator5.BackColor = Color.DarkGreen;
                 Peltier3_checkBox.Text = "OFF";
-                SerialPort1.WriteLine("DN103");
+                Main_SerialPort1.WriteLine("DN103");
                 Peltier3_checkBox.ForeColor = Color.White;
                 Peltier3_checkBox.BackColor = Color.DarkRed;
             }
@@ -1216,7 +1293,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 PCP_Indicator5.BackColor = Color.Maroon;
                 Peltier3_checkBox.Text = "ON";
-                SerialPort1.WriteLine("DF103");
+                Main_SerialPort1.WriteLine("DF103");
                 Peltier3_checkBox.ForeColor = Color.White;
                 Peltier3_checkBox.BackColor = SystemColors.Highlight;
             }
@@ -1228,7 +1305,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 PCP_Indicator6.BackColor = Color.DarkGreen;
                 Peltier4_checkBox.Text = "OFF";
-                SerialPort1.WriteLine("DN104");
+                Main_SerialPort1.WriteLine("DN104");
                 Peltier4_checkBox.ForeColor = Color.White;
                 Peltier4_checkBox.BackColor = Color.DarkRed;
             }
@@ -1236,7 +1313,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 PCP_Indicator6.BackColor = Color.Maroon;
                 Peltier4_checkBox.Text = "ON";
-                SerialPort1.WriteLine("DF104");
+                Main_SerialPort1.WriteLine("DF104");
                 Peltier4_checkBox.ForeColor = Color.White;
                 Peltier4_checkBox.BackColor = SystemColors.Highlight;
             }
@@ -1246,8 +1323,8 @@ namespace Advanced_Cooling_Control_Software
         {
             try
             {
-                SerialPort1.DiscardInBuffer();
-                SerialPort1.DiscardOutBuffer();
+                Main_SerialPort1.DiscardInBuffer();
+                Main_SerialPort1.DiscardOutBuffer();
             }
             catch
             {
@@ -1271,43 +1348,43 @@ namespace Advanced_Cooling_Control_Software
             else if (HDCPDevicelist_Combobox.SelectedIndex == 1)
             {
                 DS1.BackColor = Color.SeaGreen;
-                SerialPort1.WriteLine("DN201");
+                Main_SerialPort1.WriteLine("DN201");
                 HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": ON";
             }
             else if (HDCPDevicelist_Combobox.SelectedIndex == 2)
             {
                 DS2.BackColor = Color.SeaGreen;
-                SerialPort1.WriteLine("DN202");
+                Main_SerialPort1.WriteLine("DN202");
                 HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": ON";
             }
             else if (HDCPDevicelist_Combobox.SelectedIndex == 3)
             {
                 DS3.BackColor = Color.SeaGreen;
-                SerialPort1.WriteLine("DN203");
+                Main_SerialPort1.WriteLine("DN203");
                 HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": ON";
             }
             else if (HDCPDevicelist_Combobox.SelectedIndex == 4)
             {
                 DS4.BackColor = Color.SeaGreen;
-                SerialPort1.WriteLine("DN204");
+                Main_SerialPort1.WriteLine("DN204");
                 HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": ON";
             }
             else if (HDCPDevicelist_Combobox.SelectedIndex == 5)
             {
                 DS5.BackColor = Color.SeaGreen;
-                SerialPort1.WriteLine("DN107");
+                Main_SerialPort1.WriteLine("DN107");
                 HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": ON";
             }
             else if (HDCPDevicelist_Combobox.SelectedIndex == 6)
             {
                 DS6.BackColor = Color.SeaGreen;
-                SerialPort1.WriteLine("DN108");
+                Main_SerialPort1.WriteLine("DN108");
                 HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": ON";
             }
             else if (HDCPDevicelist_Combobox.SelectedIndex == 7)
             {
                 DS7.BackColor = Color.SeaGreen;
-                SerialPort1.WriteLine("DN106");
+                Main_SerialPort1.WriteLine("DN106");
                 HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": ON";
             }
             else
@@ -1325,43 +1402,43 @@ namespace Advanced_Cooling_Control_Software
             else if (HDCPDevicelist_Combobox.SelectedIndex == 1)
             {
                 DS1.BackColor = Color.Brown;
-                SerialPort1.WriteLine("DF201");
+                Main_SerialPort1.WriteLine("DF201");
                 HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": OFF";
             }
             else if (HDCPDevicelist_Combobox.SelectedIndex == 2)
             {
                 DS2.BackColor = Color.Brown;
-                SerialPort1.WriteLine("DF202");
+                Main_SerialPort1.WriteLine("DF202");
                 HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": OFF";
             }
             else if (HDCPDevicelist_Combobox.SelectedIndex == 3)
             {
                 DS3.BackColor = Color.Brown;
-                SerialPort1.WriteLine("DF203");
+                Main_SerialPort1.WriteLine("DF203");
                 HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": OFF";
             }
             else if (HDCPDevicelist_Combobox.SelectedIndex == 4)
             {
                 DS4.BackColor = Color.Brown;
-                SerialPort1.WriteLine("DF204");
+                Main_SerialPort1.WriteLine("DF204");
                 HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": OFF";
             }
             else if (HDCPDevicelist_Combobox.SelectedIndex == 5)
             {
                 DS5.BackColor = Color.Brown;
-                SerialPort1.WriteLine("DF107");
+                Main_SerialPort1.WriteLine("DF107");
                 HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": OFF";
             }
             else if (HDCPDevicelist_Combobox.SelectedIndex == 6)
             {
                 DS6.BackColor = Color.Brown;
-                SerialPort1.WriteLine("DF108");
+                Main_SerialPort1.WriteLine("DF108");
                 HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": OFF";
             }
             else if (HDCPDevicelist_Combobox.SelectedIndex == 7)
             {
                 DS7.BackColor = Color.Brown;
-                SerialPort1.WriteLine("DF106");
+                Main_SerialPort1.WriteLine("DF106");
                 HDCPMsgbox_label.Text = HDCPDevicelist_Combobox.SelectedItem + ": OFF";
             }
             else
@@ -1386,11 +1463,11 @@ namespace Advanced_Cooling_Control_Software
         {
             for (int RelaySubs = 1; RelaySubs <= 4; RelaySubs++)
             {
-                SerialPort1.WriteLine("DN20" + RelaySubs);
+                Main_SerialPort1.WriteLine("DN20" + RelaySubs);
             }
             for (int RelaySubs = 6; RelaySubs <= 8; RelaySubs++)
             {
-                SerialPort1.WriteLine("DN10" + RelaySubs);
+                Main_SerialPort1.WriteLine("DN10" + RelaySubs);
             }
 
             DS1.BackColor = Color.SeaGreen;
@@ -1413,11 +1490,11 @@ namespace Advanced_Cooling_Control_Software
         {
             for (int RelaySubs = 1; RelaySubs <= 4; RelaySubs++)
             {
-                SerialPort1.WriteLine("DF20" + RelaySubs);
+                Main_SerialPort1.WriteLine("DF20" + RelaySubs);
             }
             for (int RelaySubs = 6; RelaySubs <= 8; RelaySubs++)
             {
-                SerialPort1.WriteLine("DF10" + RelaySubs);
+                Main_SerialPort1.WriteLine("DF10" + RelaySubs);
             }
 
             DS1.BackColor = Color.Brown;

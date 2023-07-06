@@ -6,8 +6,16 @@ namespace Advanced_Cooling_Control_Software
 {
     public partial class TemperatureSettings : Form
     {
-        public static int CoolSideMaxTemp = 55;
-        public static int HotSideMaxTemp = 55;
+        private const int ConstantTempVal = 70;
+
+        public static int CoolSideMaxTemp = 62;
+        public static int HotSideMaxTemp = 62;
+        public static int Tank1MaxTemp = 62;
+        public static int Tank2MaxTemp = 62;
+        public static int XaxisMaxTemp = 0;
+        public static int YaxisMaxTemp = 0;
+        public static int ZaxisMaxTemp = 0;
+        public static int ExtruderMaxTemp = 0;
 
         public TemperatureSettings()
         {
@@ -67,6 +75,12 @@ namespace Advanced_Cooling_Control_Software
         {
             CoolSideMaxTemp_numericUpDown.Value = CoolSideMaxTemp;
             HotSideMaxTemp_numericUpDown.Value = HotSideMaxTemp;
+            Tank1MaxTemp_numericUpDown.Value = Tank1MaxTemp;
+            Tank2MaxTemp_numericUpDown.Value = Tank2MaxTemp;
+            XaxisMaxTemp_numericUpDown.Value = XaxisMaxTemp;
+            YaxisMaxTemp_numericUpDown.Value = YaxisMaxTemp;
+            ZaxisMaxTemp_numericUpDown.Value = ZaxisMaxTemp;
+            ExtruderMaxTemp_numericUpDown.Value = ExtruderMaxTemp;
         }
     }
 }

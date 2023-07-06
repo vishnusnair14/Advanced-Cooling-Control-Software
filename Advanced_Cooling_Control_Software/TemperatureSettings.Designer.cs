@@ -208,11 +208,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.Color.Teal;
-            this.label7.Location = new System.Drawing.Point(22, 168);
+            this.label7.Location = new System.Drawing.Point(29, 170);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(217, 13);
+            this.label7.Size = new System.Drawing.Size(216, 16);
             this.label7.TabIndex = 15;
             this.label7.Text = "Set stepper motors\' max temperature:";
             // 
@@ -283,11 +283,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.label4.Location = new System.Drawing.Point(66, 95);
+            this.label4.Location = new System.Drawing.Point(75, 92);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(173, 13);
+            this.label4.Size = new System.Drawing.Size(170, 16);
             this.label4.TabIndex = 6;
             this.label4.Text = "Set coolant max temperature:";
             // 
@@ -316,11 +316,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label1.Location = new System.Drawing.Point(38, 46);
+            this.label1.Location = new System.Drawing.Point(48, 43);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(201, 13);
+            this.label1.Size = new System.Drawing.Size(197, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Set peltier block max temperature:";
             // 
@@ -328,7 +328,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 294);
+            this.ClientSize = new System.Drawing.Size(436, 276);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;

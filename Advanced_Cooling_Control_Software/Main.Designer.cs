@@ -88,7 +88,7 @@
             this.DIS4A = new System.Windows.Forms.TextBox();
             this.DIS7 = new System.Windows.Forms.TextBox();
             this.DIS2 = new System.Windows.Forms.TextBox();
-            this.SerialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.Main_SerialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.InfoToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.BaudRate_comboBox = new System.Windows.Forms.ComboBox();
             this.ComPort_comboBox = new System.Windows.Forms.ComboBox();
@@ -943,9 +943,9 @@
             this.DIS2.Text = "MCU I/O Pins";
             this.DIS2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // SerialPort1
+            // Main_SerialPort1
             // 
-            this.SerialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SerialPort1_serialDataReceived);
+            this.Main_SerialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.SerialPort1_serialDataReceived);
             // 
             // BaudRate_comboBox
             // 
@@ -1996,7 +1996,7 @@
         private System.Windows.Forms.TextBox DIS1;
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.TextBox DIS2;
-        private System.IO.Ports.SerialPort SerialPort1;
+        private System.IO.Ports.SerialPort Main_SerialPort1;
         private System.Windows.Forms.Button ArduinoReset_button;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ToolTip InfoToolTip;
