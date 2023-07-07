@@ -1081,7 +1081,7 @@ namespace Advanced_Cooling_Control_Software
                 ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
                 ctrl.Text = TemperatureSettings.HighTempAlertText;
                 //ctrl.Location = new Point(514, 178);
-                while (PBT1_circularProgressBar.Value >= compareVal)
+                while (PBT1_circularProgressBar.Value >= TemperatureSettings.CoolSideMaxTemp)
                 {
                     PBT1_flag = true;
                     await Task.Delay(1);
@@ -1108,7 +1108,7 @@ namespace Advanced_Cooling_Control_Software
                 ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
                 ctrl.Text = TemperatureSettings.HighTempAlertText;
                 //ctrl.Location = new Point(514, 178);
-                while (PBT2_circularProgressBar.Value >= compareVal)
+                while (PBT2_circularProgressBar.Value >= TemperatureSettings.HotSideMaxTemp)
                 {
                     PBT2_flag = true;
                     await Task.Delay(1);
@@ -1135,7 +1135,7 @@ namespace Advanced_Cooling_Control_Software
                 ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
                 ctrl.Text = TemperatureSettings.HighTempAlertText;
                 //ctrl.Location = new Point(514, 178);
-                while (CT1_circularProgressBar.Value >= compareVal)
+                while (CT1_circularProgressBar.Value >= TemperatureSettings.Tank1MaxTemp)
                 {
                     CT1_flag = true;
                     await Task.Delay(1);
@@ -1162,7 +1162,7 @@ namespace Advanced_Cooling_Control_Software
                 ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
                 ctrl.Text = TemperatureSettings.HighTempAlertText;
                 //ctrl.Location = new Point(514, 178);
-                while (CT2_circularProgressBar.Value >= compareVal)
+                while (CT2_circularProgressBar.Value >= TemperatureSettings.Tank2MaxTemp)
                 {
                     CT2_flag = true;
                     await Task.Delay(1);
@@ -1189,7 +1189,7 @@ namespace Advanced_Cooling_Control_Software
                 ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
                 ctrl.Text = TemperatureSettings.HighTempAlertText;
                 //ctrl.Location = new Point(514, 178);
-                while (SMT_X_circularProgressBar.Value >= compareVal)
+                while (SMT_X_circularProgressBar.Value >= TemperatureSettings.XaxisMaxTemp)
                 {
                     Xaxis_flag= true;
                     await Task.Delay(1);
@@ -1216,7 +1216,7 @@ namespace Advanced_Cooling_Control_Software
                 ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
                 ctrl.Text = TemperatureSettings.HighTempAlertText;
                 //ctrl.Location = new Point(514, 178);
-                while (SMT_Y_circularProgressBar.Value >= compareVal)
+                while (SMT_Y_circularProgressBar.Value >= TemperatureSettings.YaxisMaxTemp)
                 {
                     Yaxis_flag = true;
                     await Task.Delay(1);
@@ -1243,7 +1243,7 @@ namespace Advanced_Cooling_Control_Software
                 ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
                 ctrl.Text = TemperatureSettings.HighTempAlertText;
                 //ctrl.Location = new Point(514, 178);
-                while (SMT_Z_circularProgressBar.Value >= compareVal)
+                while (SMT_Z_circularProgressBar.Value >= TemperatureSettings.ZaxisMaxTemp)
                 {
                     Zaxis_flag = true;
                     await Task.Delay(1);
@@ -1270,7 +1270,7 @@ namespace Advanced_Cooling_Control_Software
                 ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
                 ctrl.Text = TemperatureSettings.HighTempAlertText;
                 //ctrl.Location = new Point(514, 178);
-                while (SMT_E_circularProgressBar.Value >= compareVal)
+                while (SMT_E_circularProgressBar.Value >= TemperatureSettings.ExtruderMaxTemp)
                 {
                     Extruder_flag = true;
                     await Task.Delay(1);

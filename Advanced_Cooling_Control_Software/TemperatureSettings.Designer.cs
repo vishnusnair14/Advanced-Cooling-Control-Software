@@ -513,6 +513,7 @@
             this.AlertC1_textBox.Name = "AlertC1_textBox";
             this.AlertC1_textBox.Size = new System.Drawing.Size(103, 22);
             this.AlertC1_textBox.TabIndex = 2;
+            this.AlertC1_textBox.TextChanged += new System.EventHandler(this.AlertC1_textBox_TextChanged);
             // 
             // label13
             // 

@@ -162,6 +162,11 @@ namespace Advanced_Cooling_Control_Software
         {
             HighTempAlertDelayMs = (short)HighTempBlinkDelay_numericUpDown.Value;
         }
+
+        private void AlertC1_textBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
