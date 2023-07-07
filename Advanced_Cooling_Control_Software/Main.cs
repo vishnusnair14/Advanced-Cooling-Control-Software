@@ -1070,7 +1070,7 @@ namespace Advanced_Cooling_Control_Software
         }
 
 
-        private async void HighTempBlinkAlert(string _id, Control ctrl, int compareVal, Color c1, Color c2, short CycleTime_ms, bool BkClr)
+        private async void HighTempBlinkAlert(string _id, Control ctrl, Color c1, Color c2, short CycleTime_ms, bool BkClr)
         {
             _id = _id.ToUpper();
             if (_id == "PBT1")
@@ -1081,7 +1081,7 @@ namespace Advanced_Cooling_Control_Software
                 ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
                 ctrl.Text = TemperatureSettings.HighTempAlertText;
                 //ctrl.Location = new Point(514, 178);
-                while (PBT1_circularProgressBar.Value >= TemperatureSettings.CoolSideMaxTemp)
+                while (PBT1_circularProgressBar.Value >= TemperatureSettings.CoolSideMaxTemp && HighTempWarning_checkBox.Checked)
                 {
                     PBT1_flag = true;
                     await Task.Delay(1);
@@ -1108,7 +1108,7 @@ namespace Advanced_Cooling_Control_Software
                 ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
                 ctrl.Text = TemperatureSettings.HighTempAlertText;
                 //ctrl.Location = new Point(514, 178);
-                while (PBT2_circularProgressBar.Value >= TemperatureSettings.HotSideMaxTemp)
+                while (PBT2_circularProgressBar.Value >= TemperatureSettings.HotSideMaxTemp && HighTempWarning_checkBox.Checked)
                 {
                     PBT2_flag = true;
                     await Task.Delay(1);
@@ -1135,7 +1135,7 @@ namespace Advanced_Cooling_Control_Software
                 ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
                 ctrl.Text = TemperatureSettings.HighTempAlertText;
                 //ctrl.Location = new Point(514, 178);
-                while (CT1_circularProgressBar.Value >= TemperatureSettings.Tank1MaxTemp)
+                while (CT1_circularProgressBar.Value >= TemperatureSettings.Tank1MaxTemp && HighTempWarning_checkBox.Checked)
                 {
                     CT1_flag = true;
                     await Task.Delay(1);
@@ -1162,7 +1162,7 @@ namespace Advanced_Cooling_Control_Software
                 ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
                 ctrl.Text = TemperatureSettings.HighTempAlertText;
                 //ctrl.Location = new Point(514, 178);
-                while (CT2_circularProgressBar.Value >= TemperatureSettings.Tank2MaxTemp)
+                while (CT2_circularProgressBar.Value >= TemperatureSettings.Tank2MaxTemp && HighTempWarning_checkBox.Checked)
                 {
                     CT2_flag = true;
                     await Task.Delay(1);
@@ -1189,7 +1189,7 @@ namespace Advanced_Cooling_Control_Software
                 ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
                 ctrl.Text = TemperatureSettings.HighTempAlertText;
                 //ctrl.Location = new Point(514, 178);
-                while (SMT_X_circularProgressBar.Value >= TemperatureSettings.XaxisMaxTemp)
+                while (SMT_X_circularProgressBar.Value >= TemperatureSettings.XaxisMaxTemp && HighTempWarning_checkBox.Checked)
                 {
                     Xaxis_flag= true;
                     await Task.Delay(1);
@@ -1216,7 +1216,7 @@ namespace Advanced_Cooling_Control_Software
                 ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
                 ctrl.Text = TemperatureSettings.HighTempAlertText;
                 //ctrl.Location = new Point(514, 178);
-                while (SMT_Y_circularProgressBar.Value >= TemperatureSettings.YaxisMaxTemp)
+                while (SMT_Y_circularProgressBar.Value >= TemperatureSettings.YaxisMaxTemp && HighTempWarning_checkBox.Checked)
                 {
                     Yaxis_flag = true;
                     await Task.Delay(1);
@@ -1243,7 +1243,7 @@ namespace Advanced_Cooling_Control_Software
                 ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
                 ctrl.Text = TemperatureSettings.HighTempAlertText;
                 //ctrl.Location = new Point(514, 178);
-                while (SMT_Z_circularProgressBar.Value >= TemperatureSettings.ZaxisMaxTemp)
+                while (SMT_Z_circularProgressBar.Value >= TemperatureSettings.ZaxisMaxTemp && HighTempWarning_checkBox.Checked)
                 {
                     Zaxis_flag = true;
                     await Task.Delay(1);
@@ -1270,7 +1270,7 @@ namespace Advanced_Cooling_Control_Software
                 ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
                 ctrl.Text = TemperatureSettings.HighTempAlertText;
                 //ctrl.Location = new Point(514, 178);
-                while (SMT_E_circularProgressBar.Value >= TemperatureSettings.ExtruderMaxTemp)
+                while (SMT_E_circularProgressBar.Value >= TemperatureSettings.ExtruderMaxTemp && HighTempWarning_checkBox.Checked)
                 {
                     Extruder_flag = true;
                     await Task.Delay(1);
@@ -1316,7 +1316,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (!PBT1_flag)
                 {
-                    HighTempBlinkAlert("PBT1", CoolSideTM_label, TemperatureSettings.CoolSideMaxTemp, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true); 
+                    HighTempBlinkAlert("PBT1", CoolSideTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true); 
                 }
             }
 
@@ -1324,7 +1324,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (!PBT2_flag)
                 {
-                    HighTempBlinkAlert("PBT2", HotSideTM_label, TemperatureSettings.HotSideMaxTemp, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
+                    HighTempBlinkAlert("PBT2", HotSideTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
             }
 
@@ -1332,7 +1332,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (!CT1_flag)
                 {
-                    HighTempBlinkAlert("CT1", Tank1TM_label, TemperatureSettings.Tank1MaxTemp, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
+                    HighTempBlinkAlert("CT1", Tank1TM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
             }
 
@@ -1340,7 +1340,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (!CT2_flag)
                 {
-                    HighTempBlinkAlert("CT2", Tank2TM_label, TemperatureSettings.Tank2MaxTemp, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
+                    HighTempBlinkAlert("CT2", Tank2TM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
             }
 
@@ -1348,7 +1348,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (!Xaxis_flag)
                 {
-                    HighTempBlinkAlert("XAxis_SM", XAxisTM_label, TemperatureSettings.XaxisMaxTemp, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
+                    HighTempBlinkAlert("XAxis_SM", XAxisTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
             }
 
@@ -1356,7 +1356,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (!Yaxis_flag)
                 {
-                    HighTempBlinkAlert("YAxis_SM", YAxisTM_label, TemperatureSettings.YaxisMaxTemp, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
+                    HighTempBlinkAlert("YAxis_SM", YAxisTM_label,  TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
             }
 
@@ -1364,7 +1364,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (!Zaxis_flag)
                 {
-                    HighTempBlinkAlert("ZAxis_SM", ZAxisTM_label, TemperatureSettings.ZaxisMaxTemp, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
+                    HighTempBlinkAlert("ZAxis_SM", ZAxisTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
             }
            /*
@@ -1372,7 +1372,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (!Extruder_flag)
                 {
-                    HighTempBlinkAlert("Extruder_SM", ExtruderTM_label, TemperatureSettings.ExtruderMaxTemp, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
+                    HighTempBlinkAlert("Extruder_SM", ExtruderTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
             }*/
         }
@@ -1388,7 +1388,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (!Extruder_flag)
                 {
-                    HighTempBlinkAlert("Extruder_SM", ExtruderTM_label, TemperatureSettings.ExtruderMaxTemp, TemperatureSettings.AlertC1,TemperatureSettings.AlertC2, 1000, true);
+                    HighTempBlinkAlert("Extruder_SM", ExtruderTM_label,  TemperatureSettings.AlertC1,TemperatureSettings.AlertC2, 1000, true);
                 }
             }
         }
