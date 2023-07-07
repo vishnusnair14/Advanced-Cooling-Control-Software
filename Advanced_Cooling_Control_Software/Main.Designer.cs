@@ -139,6 +139,8 @@
             this.Tank2TM_label = new System.Windows.Forms.Label();
             this.CT1_circularProgressBar = new CircularProgressBar.CircularProgressBar();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.HighTempWarning_checkBox = new System.Windows.Forms.CheckBox();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.fILEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -318,12 +320,11 @@
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label8.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label8.ForeColor = System.Drawing.Color.MediumBlue;
+            this.label8.ForeColor = System.Drawing.Color.SteelBlue;
             this.label8.Location = new System.Drawing.Point(180, 43);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(60, 17);
+            this.label8.Size = new System.Drawing.Size(58, 15);
             this.label8.TabIndex = 13;
             this.label8.Text = "Peltier 2:";
             // 
@@ -331,12 +332,11 @@
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label7.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label7.ForeColor = System.Drawing.Color.MediumBlue;
+            this.label7.ForeColor = System.Drawing.Color.SteelBlue;
             this.label7.Location = new System.Drawing.Point(28, 44);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(60, 17);
+            this.label7.Size = new System.Drawing.Size(58, 15);
             this.label7.TabIndex = 12;
             this.label7.Text = "Peltier 1:";
             // 
@@ -344,12 +344,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label6.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.Color.MediumBlue;
+            this.label6.ForeColor = System.Drawing.Color.SteelBlue;
             this.label6.Location = new System.Drawing.Point(162, 12);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 17);
+            this.label6.Size = new System.Drawing.Size(76, 15);
             this.label6.TabIndex = 11;
             this.label6.Text = "Cabin Light:";
             // 
@@ -357,12 +356,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label5.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.MediumBlue;
+            this.label5.ForeColor = System.Drawing.Color.SteelBlue;
             this.label5.Location = new System.Drawing.Point(7, 10);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 17);
+            this.label5.Size = new System.Drawing.Size(79, 15);
             this.label5.TabIndex = 10;
             this.label5.Text = "Main Power:";
             // 
@@ -595,7 +593,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.MediumBlue;
+            this.label3.ForeColor = System.Drawing.Color.SteelBlue;
             this.label3.Location = new System.Drawing.Point(6, 11);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 15);
@@ -746,12 +744,11 @@
             // 
             this.label32.AutoSize = true;
             this.label32.BackColor = System.Drawing.Color.Transparent;
-            this.label32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label32.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label32.ForeColor = System.Drawing.Color.MediumBlue;
+            this.label32.ForeColor = System.Drawing.Color.SteelBlue;
             this.label32.Location = new System.Drawing.Point(28, 76);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(60, 17);
+            this.label32.Size = new System.Drawing.Size(58, 15);
             this.label32.TabIndex = 36;
             this.label32.Text = "Peltier 3:";
             // 
@@ -759,12 +756,11 @@
             // 
             this.label33.AutoSize = true;
             this.label33.BackColor = System.Drawing.Color.Transparent;
-            this.label33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label33.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label33.ForeColor = System.Drawing.Color.MediumBlue;
+            this.label33.ForeColor = System.Drawing.Color.SteelBlue;
             this.label33.Location = new System.Drawing.Point(180, 75);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(60, 17);
+            this.label33.Size = new System.Drawing.Size(58, 15);
             this.label33.TabIndex = 37;
             this.label33.Text = "Peltier 4:";
             // 
@@ -1359,19 +1355,19 @@
             this.YAxisTM_label.Name = "YAxisTM_label";
             this.YAxisTM_label.Size = new System.Drawing.Size(152, 17);
             this.YAxisTM_label.TabIndex = 44;
-            this.YAxisTM_label.Text = "Y - AXIS";
+            this.YAxisTM_label.Text = "Y-AXIS";
             this.YAxisTM_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // XAxisTM_label
             // 
             this.XAxisTM_label.BackColor = System.Drawing.Color.Transparent;
-            this.XAxisTM_label.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.XAxisTM_label.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold);
             this.XAxisTM_label.ForeColor = System.Drawing.Color.White;
             this.XAxisTM_label.Location = new System.Drawing.Point(12, 178);
             this.XAxisTM_label.Name = "XAxisTM_label";
             this.XAxisTM_label.Size = new System.Drawing.Size(152, 17);
             this.XAxisTM_label.TabIndex = 43;
-            this.XAxisTM_label.Text = "X - AXIS";
+            this.XAxisTM_label.Text = "X-AXIS";
             this.XAxisTM_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ExtruderTM_label
@@ -1395,7 +1391,7 @@
             this.ZAxisTM_label.Name = "ZAxisTM_label";
             this.ZAxisTM_label.Size = new System.Drawing.Size(152, 17);
             this.ZAxisTM_label.TabIndex = 41;
-            this.ZAxisTM_label.Text = "Z - AXIS";
+            this.ZAxisTM_label.Text = "Z-AXIS";
             this.ZAxisTM_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // SMT_E_circularProgressBar
@@ -1576,7 +1572,7 @@
             // CoolSideTM_label
             // 
             this.CoolSideTM_label.BackColor = System.Drawing.Color.Transparent;
-            this.CoolSideTM_label.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CoolSideTM_label.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold);
             this.CoolSideTM_label.ForeColor = System.Drawing.Color.White;
             this.CoolSideTM_label.Location = new System.Drawing.Point(12, 178);
             this.CoolSideTM_label.Name = "CoolSideTM_label";
@@ -1588,7 +1584,7 @@
             // HotSideTM_label
             // 
             this.HotSideTM_label.BackColor = System.Drawing.Color.Transparent;
-            this.HotSideTM_label.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HotSideTM_label.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HotSideTM_label.ForeColor = System.Drawing.Color.White;
             this.HotSideTM_label.Location = new System.Drawing.Point(172, 178);
             this.HotSideTM_label.Name = "HotSideTM_label";
@@ -1767,18 +1763,44 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.button1);
+            this.groupBox7.Controls.Add(this.HighTempWarning_checkBox);
             this.groupBox7.Controls.Add(this.trackBar1);
             this.groupBox7.Controls.Add(this.groupBox9);
             this.groupBox7.Controls.Add(this.groupBox8);
             this.groupBox7.Controls.Add(this.groupBox10);
-            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
+            this.groupBox7.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold);
             this.groupBox7.ForeColor = System.Drawing.Color.DarkRed;
             this.groupBox7.Location = new System.Drawing.Point(421, 312);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(982, 447);
+            this.groupBox7.Size = new System.Drawing.Size(928, 503);
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Temperature Monitor";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button1.Location = new System.Drawing.Point(11, 466);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(125, 28);
+            this.button1.TabIndex = 71;
+            this.button1.Text = "Open temp settings";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // HighTempWarning_checkBox
+            // 
+            this.HighTempWarning_checkBox.AutoSize = true;
+            this.HighTempWarning_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.HighTempWarning_checkBox.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.HighTempWarning_checkBox.Location = new System.Drawing.Point(11, 443);
+            this.HighTempWarning_checkBox.Name = "HighTempWarning_checkBox";
+            this.HighTempWarning_checkBox.Size = new System.Drawing.Size(180, 17);
+            this.HighTempWarning_checkBox.TabIndex = 58;
+            this.HighTempWarning_checkBox.Text = "Show high temperature warnings";
+            this.HighTempWarning_checkBox.UseVisualStyleBackColor = true;
             // 
             // trackBar1
             // 
@@ -1956,6 +1978,7 @@
             this.groupBox8.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
@@ -2089,6 +2112,8 @@
         private System.Windows.Forms.Label XAxisTM_label;
         private System.Windows.Forms.Label YAxisTM_label;
         private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.CheckBox HighTempWarning_checkBox;
+        private System.Windows.Forms.Button button1;
     }
 }
 

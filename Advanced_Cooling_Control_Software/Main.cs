@@ -25,15 +25,26 @@ namespace Advanced_Cooling_Control_Software
         string TEMP1, TEMP2, TEMP3, TEMP4;
         string DeviceRelayID, DeviceRelayState;
         string DTEMP_X, DTEMP_Y, DTEMP_Z, DTEMP_E;  //for dallas temperatures (X,Y,Z,E)
+
         string ArduinoPortDect;
         string _COMPORT, _BAUDRATE;
         int I2C_INIT_FLAG = 0;
         int I2C_CONN_FLAG = 0;
+
         private int preVal0 = 0;
         private int preVal1 = 0;
         private int preVal2 = 0;
         private int preVal3 = 0;
         private bool tickcolor = true;
+
+        private bool PBT1_flag = false;
+        private bool PBT2_flag = false;
+        private bool CT1_flag = false;
+        private bool CT2_flag = false;
+        private bool Xaxis_flag = false;
+        private bool Yaxis_flag = false;
+        private bool Zaxis_flag = false;
+        private bool Extruder_flag = false;
 
         public Main()
         {
@@ -452,6 +463,14 @@ namespace Advanced_Cooling_Control_Software
                 _serialData = Main_SerialPort1.ReadLine().Trim();
                 // BeginInvoke(new EventHandler(SerialDataDecoder));
                 SerialDataDecoder(_serialData);
+                if (HighTempWarning_checkBox.Checked)
+                {
+                    HighTemp_WatchDog();
+                }
+                else if(HighTempWarning_checkBox.Checked == false)
+                {
+                    //MakeAlertIndicatorNormal();
+                }
             }
             catch
             {
@@ -492,7 +511,7 @@ namespace Advanced_Cooling_Control_Software
                     CT2_circularProgressBar.Text = TEMP4 + "℃";
 
                     ConsoleLog_textbox.AppendText(Environment.NewLine + "Peltier temp:- CS: " + TEMP1 + " | HS: " + TEMP2 + Environment.NewLine
-                        + "Coolant temp:- CS: " + TEMP3 + " | HS: " + TEMP4 + Environment.NewLine + Environment.NewLine);
+                        + "Coolant temp:- TANK1: " + TEMP3 + " | TANK2: " + TEMP4 + Environment.NewLine + Environment.NewLine);
                 }
                 catch
                 {
@@ -990,7 +1009,7 @@ namespace Advanced_Cooling_Control_Software
                 SerialMonitor_textbox.Text = "";
                 SerialMonitor_groupBox.ForeColor = Color.Maroon;
                 SerialMonitor_groupBox.Text = "console cleared!";
-                await Task.Delay(750);
+                await Task.Delay(TemperatureSettings.HighTempAlertDelayMs);
                 SerialMonitor_groupBox.ForeColor = SystemColors.ControlLightLight;
                 SerialMonitor_groupBox.Text = "Data Monitor" + " [ " + _COMPORT + " @" + _BAUDRATE + " ]";
             }
@@ -1020,7 +1039,7 @@ namespace Advanced_Cooling_Control_Software
 
 
         // ---------------------------------------------------------------------------------------------------
-        // BLINK ANIMATION SECTION [MAIN]
+        // HIGH TEMPEARATURE ALERT ANIMATION SECTION [~ main]
         //
         private Color c1, c2;
         private Control ctrl;
@@ -1051,151 +1070,338 @@ namespace Advanced_Cooling_Control_Software
         }
 
 
-        // SOFT BLINK FUNCTION:
-        private bool SoftBlink_Flag = false;
-        private async void HighTempSoftBlink(Control ctrl, int compareVal, Color c1, Color c2, short CycleTime_ms, bool BkClr)
+        private async void HighTempBlinkAlert(string _id, Control ctrl, int compareVal, Color c1, Color c2, short CycleTime_ms, bool BkClr)
         {
-            var _sw = new Stopwatch();
-            _sw.Start();
-            short halfCycle = (short)Math.Round(CycleTime_ms * 0.5);
-            ctrl.ForeColor = Color.White;
-            ctrl.Text = "HIGH TEMP. ALERT";
-            //ctrl.Location = new Point(514, 178);
-            while (SMT_E_circularProgressBar.Value >= compareVal)
+            _id = _id.ToUpper();
+            if (_id == "PBT1")
             {
-                SoftBlink_Flag = true;
-                await Task.Delay(1);
-                var n = _sw.ElapsedMilliseconds % CycleTime_ms;
-                var per = (double)Math.Abs(n - halfCycle) / halfCycle;
-                var red = (short)Math.Round((c2.R - c1.R) * per) + c1.R;
-                var grn = (short)Math.Round((c2.G - c1.G) * per) + c1.G;
-                var blw = (short)Math.Round((c2.B - c1.B) * per) + c1.B;
-                var clr = Color.FromArgb(red, grn, blw);
-                if (BkClr) ctrl.BackColor = clr; else ctrl.ForeColor = clr;
+                var _sw = new Stopwatch();
+                _sw.Start();
+                short halfCycle = (short)Math.Round(CycleTime_ms * 0.5);
+                ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
+                ctrl.Text = TemperatureSettings.HighTempAlertText;
+                //ctrl.Location = new Point(514, 178);
+                while (PBT1_circularProgressBar.Value >= compareVal)
+                {
+                    PBT1_flag = true;
+                    await Task.Delay(1);
+                    var n = _sw.ElapsedMilliseconds % CycleTime_ms;
+                    var per = (double)Math.Abs(n - halfCycle) / halfCycle;
+                    var red = (short)Math.Round((c2.R - c1.R) * per) + c1.R;
+                    var grn = (short)Math.Round((c2.G - c1.G) * per) + c1.G;
+                    var blw = (short)Math.Round((c2.B - c1.B) * per) + c1.B;
+                    var clr = Color.FromArgb(red, grn, blw);
+                    if (BkClr) ctrl.BackColor = clr; else ctrl.ForeColor = clr;
+                }
+                _sw.Stop();
+                PBT1_flag = false;
+                ctrl.BackColor = Color.Transparent;
+                ctrl.ForeColor = TemperatureSettings.labelForeColor;
+                //ctrl.Location = new Point(550, 178);
+                ctrl.Text = "COOL SIDE";
             }
-            _sw.Stop();
-            SoftBlink_Flag = false;
-            ctrl.BackColor = Color.Transparent;
-            ctrl.ForeColor = Color.White;
-            //ctrl.Location = new Point(550, 178);
-            ctrl.Text = "Extruder";
+            else if (_id == "PBT2")
+            {
+                var _sw = new Stopwatch();
+                _sw.Start();
+                short halfCycle = (short)Math.Round(CycleTime_ms * 0.5);
+                ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
+                ctrl.Text = TemperatureSettings.HighTempAlertText;
+                //ctrl.Location = new Point(514, 178);
+                while (PBT2_circularProgressBar.Value >= compareVal)
+                {
+                    PBT2_flag = true;
+                    await Task.Delay(1);
+                    var n = _sw.ElapsedMilliseconds % CycleTime_ms;
+                    var per = (double)Math.Abs(n - halfCycle) / halfCycle;
+                    var red = (short)Math.Round((c2.R - c1.R) * per) + c1.R;
+                    var grn = (short)Math.Round((c2.G - c1.G) * per) + c1.G;
+                    var blw = (short)Math.Round((c2.B - c1.B) * per) + c1.B;
+                    var clr = Color.FromArgb(red, grn, blw);
+                    if (BkClr) ctrl.BackColor = clr; else ctrl.ForeColor = clr;
+                }
+                _sw.Stop();
+                PBT2_flag = false;
+                ctrl.BackColor = Color.Transparent;
+                ctrl.ForeColor = TemperatureSettings.labelForeColor;
+                //ctrl.Location = new Point(550, 178);
+                ctrl.Text = "HOT SIDE";
+            }
+            else if (_id == "CT1")
+            {
+                var _sw = new Stopwatch();
+                _sw.Start();
+                short halfCycle = (short)Math.Round(CycleTime_ms * 0.5);
+                ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
+                ctrl.Text = TemperatureSettings.HighTempAlertText;
+                //ctrl.Location = new Point(514, 178);
+                while (CT1_circularProgressBar.Value >= compareVal)
+                {
+                    CT1_flag = true;
+                    await Task.Delay(1);
+                    var n = _sw.ElapsedMilliseconds % CycleTime_ms;
+                    var per = (double)Math.Abs(n - halfCycle) / halfCycle;
+                    var red = (short)Math.Round((c2.R - c1.R) * per) + c1.R;
+                    var grn = (short)Math.Round((c2.G - c1.G) * per) + c1.G;
+                    var blw = (short)Math.Round((c2.B - c1.B) * per) + c1.B;
+                    var clr = Color.FromArgb(red, grn, blw);
+                    if (BkClr) ctrl.BackColor = clr; else ctrl.ForeColor = clr;
+                }
+                _sw.Stop();
+                CT1_flag = false;
+                ctrl.BackColor = Color.Transparent;
+                ctrl.ForeColor = TemperatureSettings.labelForeColor;
+                //ctrl.Location = new Point(550, 178);
+                ctrl.Text = "TANK 1";
+            }
+            else if (_id == "CT2")
+            {
+                var _sw = new Stopwatch();
+                _sw.Start();
+                short halfCycle = (short)Math.Round(CycleTime_ms * 0.5);
+                ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
+                ctrl.Text = TemperatureSettings.HighTempAlertText;
+                //ctrl.Location = new Point(514, 178);
+                while (CT2_circularProgressBar.Value >= compareVal)
+                {
+                    CT2_flag = true;
+                    await Task.Delay(1);
+                    var n = _sw.ElapsedMilliseconds % CycleTime_ms;
+                    var per = (double)Math.Abs(n - halfCycle) / halfCycle;
+                    var red = (short)Math.Round((c2.R - c1.R) * per) + c1.R;
+                    var grn = (short)Math.Round((c2.G - c1.G) * per) + c1.G;
+                    var blw = (short)Math.Round((c2.B - c1.B) * per) + c1.B;
+                    var clr = Color.FromArgb(red, grn, blw);
+                    if (BkClr) ctrl.BackColor = clr; else ctrl.ForeColor = clr;
+                }
+                _sw.Stop();
+                CT2_flag = false;
+                ctrl.BackColor = Color.Transparent;
+                ctrl.ForeColor = TemperatureSettings.labelForeColor;
+                //ctrl.Location = new Point(550, 178);
+                ctrl.Text = "TANK 2";
+            }
+            else if(_id == "XAxis_SM")
+            {
+                var _sw = new Stopwatch();
+                _sw.Start();
+                short halfCycle = (short)Math.Round(CycleTime_ms * 0.5);
+                ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
+                ctrl.Text = TemperatureSettings.HighTempAlertText;
+                //ctrl.Location = new Point(514, 178);
+                while (SMT_X_circularProgressBar.Value >= compareVal)
+                {
+                    Xaxis_flag= true;
+                    await Task.Delay(1);
+                    var n = _sw.ElapsedMilliseconds % CycleTime_ms;
+                    var per = (double)Math.Abs(n - halfCycle) / halfCycle;
+                    var red = (short)Math.Round((c2.R - c1.R) * per) + c1.R;
+                    var grn = (short)Math.Round((c2.G - c1.G) * per) + c1.G;
+                    var blw = (short)Math.Round((c2.B - c1.B) * per) + c1.B;
+                    var clr = Color.FromArgb(red, grn, blw);
+                    if (BkClr) ctrl.BackColor = clr; else ctrl.ForeColor = clr;
+                }
+                _sw.Stop();
+                Xaxis_flag = false;
+                ctrl.BackColor = Color.Transparent;
+                ctrl.ForeColor = TemperatureSettings.labelForeColor;
+                //ctrl.Location = new Point(550, 178);
+                ctrl.Text = "X-AXIS";
+            }
+            else if (_id == "YAxis_SM")
+            {
+                var _sw = new Stopwatch();
+                _sw.Start();
+                short halfCycle = (short)Math.Round(CycleTime_ms * 0.5);
+                ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
+                ctrl.Text = TemperatureSettings.HighTempAlertText;
+                //ctrl.Location = new Point(514, 178);
+                while (SMT_Y_circularProgressBar.Value >= compareVal)
+                {
+                    Yaxis_flag = true;
+                    await Task.Delay(1);
+                    var n = _sw.ElapsedMilliseconds % CycleTime_ms;
+                    var per = (double)Math.Abs(n - halfCycle) / halfCycle;
+                    var red = (short)Math.Round((c2.R - c1.R) * per) + c1.R;
+                    var grn = (short)Math.Round((c2.G - c1.G) * per) + c1.G;
+                    var blw = (short)Math.Round((c2.B - c1.B) * per) + c1.B;
+                    var clr = Color.FromArgb(red, grn, blw);
+                    if (BkClr) ctrl.BackColor = clr; else ctrl.ForeColor = clr;
+                }
+                _sw.Stop();
+                Yaxis_flag = false;
+                ctrl.BackColor = Color.Transparent;
+                ctrl.ForeColor = TemperatureSettings.labelForeColor;
+                //ctrl.Location = new Point(550, 178);
+                ctrl.Text = "Y-AXIS";
+            }
+            else if (_id == "ZAxis_SM")
+            {
+                var _sw = new Stopwatch();
+                _sw.Start();
+                short halfCycle = (short)Math.Round(CycleTime_ms * 0.5);
+                ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
+                ctrl.Text = TemperatureSettings.HighTempAlertText;
+                //ctrl.Location = new Point(514, 178);
+                while (SMT_Z_circularProgressBar.Value >= compareVal)
+                {
+                    Zaxis_flag = true;
+                    await Task.Delay(1);
+                    var n = _sw.ElapsedMilliseconds % CycleTime_ms;
+                    var per = (double)Math.Abs(n - halfCycle) / halfCycle;
+                    var red = (short)Math.Round((c2.R - c1.R) * per) + c1.R;
+                    var grn = (short)Math.Round((c2.G - c1.G) * per) + c1.G;
+                    var blw = (short)Math.Round((c2.B - c1.B) * per) + c1.B;
+                    var clr = Color.FromArgb(red, grn, blw);
+                    if (BkClr) ctrl.BackColor = clr; else ctrl.ForeColor = clr;
+                }
+                _sw.Stop();
+                Zaxis_flag = false;
+                ctrl.BackColor = Color.Transparent;
+                ctrl.ForeColor = TemperatureSettings.labelForeColor;
+                //ctrl.Location = new Point(550, 178);
+                ctrl.Text = "Z-AXIS";
+            }
+            else if (_id == "Extruder_SM")
+            {
+                var _sw = new Stopwatch();
+                _sw.Start();
+                short halfCycle = (short)Math.Round(CycleTime_ms * 0.5);
+                ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
+                ctrl.Text = TemperatureSettings.HighTempAlertText;
+                //ctrl.Location = new Point(514, 178);
+                while (SMT_E_circularProgressBar.Value >= compareVal)
+                {
+                    Extruder_flag = true;
+                    await Task.Delay(1);
+                    var n = _sw.ElapsedMilliseconds % CycleTime_ms;
+                    var per = (double)Math.Abs(n - halfCycle) / halfCycle;
+                    var red = (short)Math.Round((c2.R - c1.R) * per) + c1.R;
+                    var grn = (short)Math.Round((c2.G - c1.G) * per) + c1.G;
+                    var blw = (short)Math.Round((c2.B - c1.B) * per) + c1.B;
+                    var clr = Color.FromArgb(red, grn, blw);
+                    if (BkClr) ctrl.BackColor = clr; else ctrl.ForeColor = clr;
+                }
+                _sw.Stop();
+                Extruder_flag = false;
+                ctrl.BackColor = Color.Transparent;
+                ctrl.ForeColor = TemperatureSettings.labelForeColor;
+                //ctrl.Location = new Point(550, 178);
+                ctrl.Text = "EXTRUDER";
+            }
         }
 
-        private void HighTempAlert_WatchDog()
+
+        private void MakeAlertIndicatorNormal()
         {
-            // @debug.enable.start
-            SMT_E_circularProgressBar.Value = Convert.ToInt32(trackBar1.Value);
-            SMT_E_circularProgressBar.Text = trackBar1.Value + " °C".ToString();
-            if (SMT_E_circularProgressBar.Value >= TemperatureSettings.CoolSideMaxTemp)
+            Control[] indicatorControlName = { CoolSideTM_label, HotSideTM_label, Tank1TM_label, Tank2TM_label, XAxisTM_label, YAxisTM_label, ZAxisTM_label, ExtruderTM_label };
+
+            string[] indicatorText = { "COOL SIDE", "HOT SIDE", "TANK 1", "TANK 2", "X-AXIS", "Y-AXIS", "Z-AXIS", "EXTRUDER" };
+
+            for (int i = 0; i < indicatorControlName.Length; i++)
             {
-                if (!SoftBlink_Flag)
+                indicatorControlName[i].BackColor = Color.Transparent;
+                indicatorControlName[i].ForeColor = Color.White;
+            }
+            for (int i = 0; i < indicatorText.Length; i++)
+            {
+                indicatorControlName[i].Text = indicatorText[i];
+            }
+        }
+
+
+        private void HighTemp_WatchDog()
+        {
+            if (PBT1_circularProgressBar.Value >= TemperatureSettings.CoolSideMaxTemp)
+            {
+                if (!PBT1_flag)
                 {
-                    HighTempSoftBlink(ExtruderTM_label, TemperatureSettings.CoolSideMaxTemp, SystemColors.MenuHighlight, Color.Blue, 1000, true);
+                    HighTempBlinkAlert("PBT1", CoolSideTM_label, TemperatureSettings.CoolSideMaxTemp, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true); 
                 }
             }
-            else
+
+            if (PBT2_circularProgressBar.Value >= TemperatureSettings.HotSideMaxTemp)
             {
-
-            }
-            // @debug.end
-
-            if(PBT1_circularProgressBar.Value >= TemperatureSettings.CoolSideMaxTemp)
-            {
-
-            }
-            else
-            {
-
-            }
-
-            if(PBT2_circularProgressBar.Value >= TemperatureSettings.HotSideMaxTemp)
-            {
-
-            }
-            else
-            {
-
+                if (!PBT2_flag)
+                {
+                    HighTempBlinkAlert("PBT2", HotSideTM_label, TemperatureSettings.HotSideMaxTemp, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
+                }
             }
 
             if (CT1_circularProgressBar.Value >= TemperatureSettings.Tank1MaxTemp)
             {
-
-            }
-            else
-            {
-
+                if (!CT1_flag)
+                {
+                    HighTempBlinkAlert("CT1", Tank1TM_label, TemperatureSettings.Tank1MaxTemp, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
+                }
             }
 
             if (CT2_circularProgressBar.Value >= TemperatureSettings.Tank2MaxTemp)
             {
-
-            }
-            else
-            {
-
+                if (!CT2_flag)
+                {
+                    HighTempBlinkAlert("CT2", Tank2TM_label, TemperatureSettings.Tank2MaxTemp, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
+                }
             }
 
             if (SMT_X_circularProgressBar.Value >= TemperatureSettings.XaxisMaxTemp)
             {
-
-            }
-            else
-            {
-
+                if (!Xaxis_flag)
+                {
+                    HighTempBlinkAlert("XAxis_SM", XAxisTM_label, TemperatureSettings.XaxisMaxTemp, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
+                }
             }
 
             if (SMT_Y_circularProgressBar.Value >= TemperatureSettings.YaxisMaxTemp)
             {
-
-            }
-            else
-            {
-
+                if (!Yaxis_flag)
+                {
+                    HighTempBlinkAlert("YAxis_SM", YAxisTM_label, TemperatureSettings.YaxisMaxTemp, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
+                }
             }
 
             if (SMT_Z_circularProgressBar.Value >= TemperatureSettings.ZaxisMaxTemp)
             {
-
+                if (!Zaxis_flag)
+                {
+                    HighTempBlinkAlert("ZAxis_SM", ZAxisTM_label, TemperatureSettings.ZaxisMaxTemp, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
+                }
             }
-            else
-            {
-
-            }
-
+           /*
             if (SMT_E_circularProgressBar.Value >= TemperatureSettings.ExtruderMaxTemp)
             {
-
-            }
-            else
-            {
-
-            }
+                if (!Extruder_flag)
+                {
+                    HighTempBlinkAlert("Extruder_SM", ExtruderTM_label, TemperatureSettings.ExtruderMaxTemp, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
+                }
+            }*/
         }
         //
-        // ---------------------------------------------------------------------------------------------------
+        // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            SMT_E_circularProgressBar.Value = Convert.ToInt32(trackBar1.Value);
+            SMT_E_circularProgressBar.Text = trackBar1.Value + " °C".ToString();
+            if (SMT_E_circularProgressBar.Value >= TemperatureSettings.ExtruderMaxTemp)
+            {
+                if (!Extruder_flag)
+                {
+                    HighTempBlinkAlert("Extruder_SM", ExtruderTM_label, TemperatureSettings.ExtruderMaxTemp, TemperatureSettings.AlertC1,TemperatureSettings.AlertC2, 1000, true);
+                }
+            }
+        }
+
 
         private void Main_Load(object sender, EventArgs e)
         {
 
         }
 
-
-        private void trackBar1_Scroll(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            SMT_E_circularProgressBar.Value = Convert.ToInt32(trackBar1.Value);
-            SMT_E_circularProgressBar.Text = trackBar1.Value + " °C".ToString();
-            if (SMT_E_circularProgressBar.Value >= TemperatureSettings.CoolSideMaxTemp)
-            {
-                if (!SoftBlink_Flag)
-                {
-                    HighTempSoftBlink(ExtruderTM_label, TemperatureSettings.CoolSideMaxTemp, SystemColors.MenuHighlight, Color.Blue, 1000, true);
-                }
-            }
-            else
-            {
-
-            }
+            BeginInvoke(new EventHandler(TemperatureSettings_MenuItem_Click));
         }
 
 
