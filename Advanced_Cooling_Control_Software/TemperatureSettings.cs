@@ -147,7 +147,6 @@ namespace Advanced_Cooling_Control_Software
             colorDialog1 = new ColorDialog();
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-
                 LabelForeColor_textbox.Text = colorDialog1.Color.Name;
                 LabelForeColor_textbox.ForeColor = colorDialog1.Color;
                 labelForeColor = colorDialog1.Color;
