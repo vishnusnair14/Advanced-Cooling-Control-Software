@@ -23,17 +23,74 @@ namespace Advanced_Cooling_Control_Software
         public static string HighTempAlertText = "HIGH TEMP ALERT!";
 
         public static Color AlertC1 = Color.Maroon;
-        public static Color AlertC2 = Color.Transparent;
+        public static Color AlertC2 = Color.DarkGray;
 
         public static Color labelForeColor = Color.White;
         public static Color AlertlabelForeColor = Color.Yellow;
+        private readonly Control[] indicatorControlName;
+
+        public static string ASFCommand_PBT1;
+        public static string ASFCommand_PBT2;
+        public static string ASFCommand_CT1;
+        public static string ASFCommand_CT2;
+        public static string ASFCommand_XAXIS;
+        public static string ASFCommand_YAXIS;
+        public static string ASFCommand_ZAXIS;
+        public static string ASFCommand_EXTRUDER;
 
 
-        public TemperatureSettings()
+        public TemperatureSettings(Control[] _indicatorControlName)
         {
             InitializeComponent();
-
+            indicatorControlName = _indicatorControlName;
+            LabelForeColor_textbox.BackColor = Color.LightGray;
+            AlertLabelForeColor_textbox.BackColor = Color.LightGray;
+            AlertC1_textBox.BackColor = Color.LightGray;
+            AlertC2_textBox.BackColor = Color.LightGray;
+            ASFCommandUpdate_button_Click();
         }
+
+        private void TemperatureSettings_Load(object sender, EventArgs e)
+        {
+            CoolSideMaxTemp_numericUpDown.Value = CoolSideMaxTemp;
+            HotSideMaxTemp_numericUpDown.Value = HotSideMaxTemp;
+            Tank1MaxTemp_numericUpDown.Value = Tank1MaxTemp;
+            Tank2MaxTemp_numericUpDown.Value = Tank2MaxTemp;
+            XaxisMaxTemp_numericUpDown.Value = XaxisMaxTemp;
+            YaxisMaxTemp_numericUpDown.Value = YaxisMaxTemp;
+            ZaxisMaxTemp_numericUpDown.Value = ZaxisMaxTemp;
+            ExtruderMaxTemp_numericUpDown.Value = ExtruderMaxTemp;
+            HighTempAlertText_textBox.Text = HighTempAlertText;
+
+            AlertC1_textBox.Text = AlertC1.Name;
+            AlertC1_textBox.ForeColor = AlertC1;
+            AlertC2_textBox.Text = AlertC2.Name;
+            AlertC2_textBox.ForeColor = AlertC2;
+
+            AlertLabelForeColor_textbox.ForeColor = AlertlabelForeColor;
+            AlertLabelForeColor_textbox.Text = AlertlabelForeColor.Name;
+
+            LabelForeColor_textbox.ForeColor = labelForeColor;
+            LabelForeColor_textbox.Text = labelForeColor.Name;
+            HighTempAlertOptions_groupBox.Visible = true;
+            HighTempAlertAdvancedSettings_groupbox.Visible = false;
+            Size = new Size(712, 412);
+
+            AlertCount_checkBox.Checked = true;
+        }
+
+        private void ASFCommandUpdate_button_Click()
+        {
+            ASFCommand_PBT1 = ASFCommandPBT1_textBox.Text;
+            ASFCommand_PBT2 = ASFCommandPBT2_textBox.Text;
+            ASFCommand_CT1 = ASFCommandCT1_textBox.Text;
+            ASFCommand_CT2 = ASFCommandCT2_textBox.Text;
+            ASFCommand_XAXIS = ASFCommandXaxis_textBox.Text;
+            ASFCommand_YAXIS = ASFCommandYaxis_textBox.Text;
+            ASFCommand_ZAXIS = ASFCommandZaxis_textBox.Text;
+            ASFCommand_EXTRUDER = ASFCommandExtruder_textBox.Text;
+        }
+
 
         private async void MaxTempUpdate_button_Click(object sender, EventArgs e)
         {
@@ -47,10 +104,81 @@ namespace Advanced_Cooling_Control_Software
             ZaxisMaxTemp = Convert.ToInt32(ZaxisMaxTemp_numericUpDown.Value);
             ExtruderMaxTemp = Convert.ToInt32(ExtruderMaxTemp_numericUpDown.Value);
 
+            labelForeColor = LabelForeColor_textbox.ForeColor;
+
             MaxTempNotification_label.Text = "value updated successfully";
             await Task.Delay(100);
             MaxTempNotification_label.Text = "";
         }
+
+        private void MakeIndicatorLabelNormal()
+        {
+            for (int i = 0; i < indicatorControlName.Length; i++)
+            {
+                indicatorControlName[i].ForeColor = labelForeColor;
+                indicatorControlName[i].BackColor = Color.Transparent;
+                //indicatorControlName[i].Text = labelForeColor.Name;
+            }
+        }
+
+
+        private void AlertC1ColorSet_button_Click(object sender, EventArgs e)
+        {
+            colorDialog1 = new ColorDialog();
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                AlertC1_textBox.Text = colorDialog1.Color.Name;
+                AlertC1_textBox.ForeColor = colorDialog1.Color;
+                AlertC1 = colorDialog1.Color;
+            }
+        }
+
+        private void AlertC2ColorSet_button_Click(object sender, EventArgs e)
+        {
+            colorDialog1 = new ColorDialog();
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                AlertC2_textBox.Text = colorDialog1.Color.Name;
+                AlertC2_textBox.ForeColor = colorDialog1.Color;
+                AlertC2 = colorDialog1.Color;
+            }
+        }
+
+        private void AlertLabelColorSet_button_Click(object sender, EventArgs e)
+        {
+            colorDialog1 = new ColorDialog();
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                AlertLabelForeColor_textbox.Text = colorDialog1.Color.Name;
+                AlertLabelForeColor_textbox.ForeColor = colorDialog1.Color;
+                AlertlabelForeColor = colorDialog1.Color;
+            }
+        }
+
+
+        private void LabelColorSet_button_Click(object sender, EventArgs e)
+        {
+            colorDialog1 = new ColorDialog();
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                LabelForeColor_textbox.Text = colorDialog1.Color.Name;
+                LabelForeColor_textbox.ForeColor = colorDialog1.Color;
+                labelForeColor = colorDialog1.Color;
+                MakeIndicatorLabelNormal();
+            }
+        }
+
+        private void AlertText_textBox_TextChanged(object sender, EventArgs e)
+        {
+            HighTempAlertText = HighTempAlertText_textBox.Text;
+        }
+
+
+        private void HighTempBlinkDelay_numericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            HighTempAlertDelayMs = (short)HighTempBlinkDelay_numericUpDown.Value;
+        }
+
 
         private void CoolSideMaxTemp_numericUpDown_ValueChanged(object sender, EventArgs e)
         {
@@ -92,80 +220,122 @@ namespace Advanced_Cooling_Control_Software
             BeginInvoke(new EventHandler(MaxTempUpdate_button_Click));
         }
 
-        private void TemperatureSettings_Load(object sender, EventArgs e)
+        private void Reset_button_Click(object sender, EventArgs e)
         {
-            CoolSideMaxTemp_numericUpDown.Value = CoolSideMaxTemp;
-            HotSideMaxTemp_numericUpDown.Value = HotSideMaxTemp;
-            Tank1MaxTemp_numericUpDown.Value = Tank1MaxTemp;
-            Tank2MaxTemp_numericUpDown.Value = Tank2MaxTemp;
-            XaxisMaxTemp_numericUpDown.Value = XaxisMaxTemp;
-            YaxisMaxTemp_numericUpDown.Value = YaxisMaxTemp;
-            ZaxisMaxTemp_numericUpDown.Value = ZaxisMaxTemp;
-            ExtruderMaxTemp_numericUpDown.Value = ExtruderMaxTemp;
-            HighTempAlertText_textBox.Text = HighTempAlertText;
+            CoolSideMaxTemp_numericUpDown.Value = 62;
+            HotSideMaxTemp_numericUpDown.Value = 62;
+            Tank1MaxTemp_numericUpDown.Value = 62;
+            Tank2MaxTemp_numericUpDown.Value = 62;
+            XaxisMaxTemp_numericUpDown.Value = 50;
+            YaxisMaxTemp_numericUpDown.Value = 50;
+            ZaxisMaxTemp_numericUpDown.Value = 50;
+            ExtruderMaxTemp_numericUpDown.Value = 50;
+            HighTempBlinkDelay_numericUpDown.Value = 750;
+            HighTempAlertText_textBox.Text = "HIGH TEMP ALERT!";
 
-            AlertC1_textBox.Text = AlertC1.Name;
-            AlertC1_textBox.ForeColor = AlertC1;
-            AlertC2_textBox.Text = AlertC2.Name;
+            /*
+            AlertC1 = Color.Maroon;
+            AlertC1_textBox.Text = Color.Maroon.Name;
+            AlertC1_textBox.ForeColor = Color.Maroon;
+
+            AlertC2 = Color.DarkGray;
+            AlertC2_textBox.Text = Color.DarkGray.Name;
+            AlertC2_textBox.ForeColor = Color.DarkGray;
+
+            labelForeColor = Color.White;
+            LabelForeColor_textbox.Text = Color.White.Name;
+            LabelForeColor_textbox.ForeColor = Color.White;
+
+            AlertlabelForeColor = Color.Yellow;
+            AlertLabelForeColor_textbox.Text = Color.Yellow.Name;
+            AlertLabelForeColor_textbox.ForeColor = Color.Yellow;
+            */
+
+            MakeIndicatorLabelNormal();
         }
 
-        private void AlertC1ColorSet_button_Click(object sender, EventArgs e)
+        private void HighTempAlertOptions_MenuItem_Click(object sender, EventArgs e)
         {
-            colorDialog1 = new ColorDialog();
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            HighTempAlertOptions_groupBox.Visible = true;
+            HighTempAlertOptions_groupBox.Location = new Point(3, 27);
+            HighTempAlertAdvancedSettings_groupbox.Visible = false;
+        }
+
+        private void advancedSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HighTempAlertAdvancedSettings_groupbox.Visible = true;
+            HighTempAlertAdvancedSettings_groupbox.Location = new Point(3, 27);
+            HighTempAlertOptions_groupBox.Visible = false;
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void label27_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AlertCount_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (AlertCount_checkBox.Checked)
             {
-                AlertC1_textBox.Text = colorDialog1.Color.Name;
-                AlertC1_textBox.ForeColor =  colorDialog1.Color;
-                AlertC1 = colorDialog1.Color;
+                AlertCustomCount_textBox.Enabled = false;
+                oia_label.Enabled = false;
+            }
+            else
+            {
+                AlertCustomCount_textBox.Enabled = true;
+                oia_label.Enabled = true;
             }
         }
 
-        private void AlertC2ColorSet_button_Click(object sender, EventArgs e)
+        public static int ASF_TRIGGER_COUNT;
+        private void AlertCustomCount_textBox_TextChanged(object sender, EventArgs e)
         {
-            colorDialog1 = new ColorDialog();
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                AlertC2_textBox.Text = colorDialog1.Color.Name;
-                AlertC2_textBox.ForeColor = colorDialog1.Color;
-                AlertC2 = colorDialog1.Color;
-            }
+            ASF_TRIGGER_COUNT = Convert.ToInt32(AlertCustomCount_textBox.Text);
         }
 
-        private void AlertLabelColorSet_button_Click(object sender, EventArgs e)
+        private void ASFCommandPBT1_textBox_TextChanged(object sender, EventArgs e)
         {
-            colorDialog1 = new ColorDialog();
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                AlertLabelForeColor_textbox.Text = colorDialog1.Color.Name;
-                AlertLabelForeColor_textbox.ForeColor = colorDialog1.Color;
-                AlertlabelForeColor = colorDialog1.Color;
-            }
+            ASFCommandUpdate_button_Click();
         }
 
-        private void LabelColorSet_button_Click(object sender, EventArgs e)
+        private void ASFCommandPBT2_textBox_TextChanged(object sender, EventArgs e)
         {
-            colorDialog1 = new ColorDialog();
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                LabelForeColor_textbox.Text = colorDialog1.Color.Name;
-                LabelForeColor_textbox.ForeColor = colorDialog1.Color;
-                labelForeColor = colorDialog1.Color;
-            }
+            ASFCommandUpdate_button_Click();
         }
 
-        private void AlertText_textBox_TextChanged(object sender, EventArgs e)
+        private void ASFCommandCT1_textBox_TextChanged(object sender, EventArgs e)
         {
-            HighTempAlertText = HighTempAlertText_textBox.Text;
+            ASFCommandUpdate_button_Click();
         }
 
-        private void HighTempBlinkDelay_numericUpDown_ValueChanged(object sender, EventArgs e)
+        private void ASFCommandCT2_textBox_TextChanged(object sender, EventArgs e)
         {
-            HighTempAlertDelayMs = (short)HighTempBlinkDelay_numericUpDown.Value;
+            ASFCommandUpdate_button_Click();
         }
 
-        private void AlertC1_textBox_TextChanged(object sender, EventArgs e)
+        private void ASFCommandXaxis_textBox_TextChanged(object sender, EventArgs e)
         {
+            ASFCommandUpdate_button_Click();
+        }
 
+        private void ASFCommandYaxis_textBox_TextChanged(object sender, EventArgs e)
+        {
+            ASFCommandUpdate_button_Click();
+        }
+
+        private void ASFCommandZaxis_textBox_TextChanged(object sender, EventArgs e)
+        {
+            ASFCommandUpdate_button_Click();
+        }
+
+        private void ASFCommandExtruder_textBox_TextChanged(object sender, EventArgs e)
+        {
+            ASFCommandUpdate_button_Click();
         }
     }
 }

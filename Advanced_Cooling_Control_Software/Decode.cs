@@ -6,6 +6,7 @@ namespace Advanced_Cooling_Control_Software
 {
     public class Decode
     {
+        public static string KeyNotfoundstr = "KEY NOT FOUND!";
         // detects m-codes and messages from txt file, stores it
         // into dictionary like data structue[MCODE_DICT <str, str>]
         public string SearchCmdInDict(string _code, string _path = @"codes.txt")
@@ -42,7 +43,7 @@ namespace Advanced_Cooling_Control_Software
             }
             catch (KeyNotFoundException)
             {
-                fcmd = "[KEY NOT FOUND!]" + Environment.NewLine;
+                fcmd = KeyNotfoundstr + Environment.NewLine;
             }
             // Console.WriteLine("[ MSG: dictionary initiated success <code> <msg> ]");
             return fcmd;

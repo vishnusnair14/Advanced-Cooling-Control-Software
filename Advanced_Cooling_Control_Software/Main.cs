@@ -46,6 +46,26 @@ namespace Advanced_Cooling_Control_Software
         private bool Zaxis_flag = false;
         private bool Extruder_flag = false;
 
+        private Color c1, c2;
+        private Control ctrl;
+
+        private Color writeLogForeColor = Color.White;
+        private Color writeLogBackColor = Color.Navy;
+
+        private Color receiveLogForeColor = Color.White;
+        private Color receiveLogBackColor = Color.DarkGreen;
+
+        private short ASF_PBT1_Flag = 0;
+        private short ASF_PBT2_Flag = 0;
+        private short ASF_CT1_Flag = 0;
+        private short ASF_CT2_Flag = 0;
+        private short ASF_XAXIS_Flag = 0;
+        private short ASF_YAXIS_Flag = 0;
+        private short ASF_ZAXIS_Flag = 0;
+        private short ASF_EXTRUDER_Flag = 0;
+        public TemperatureSettings ts;
+
+
         public Main()
         {
             InitializeComponent();
@@ -56,7 +76,8 @@ namespace Advanced_Cooling_Control_Software
             Disconnect_button.Enabled = false;
             Disconnect_button.BackColor = Color.LightSteelBlue;
             Disconnect_button.ForeColor = Color.White;
-            SerialMonitor_textbox.Enabled = false;
+            SerialMonitor_richTextBox.Enabled = false;
+            AutoConnect_checkBox.Checked = true;
 
             PCP_Indicator1.BackColor = Color.Maroon;
             PCP_Indicator2.BackColor = Color.Maroon;
@@ -73,6 +94,9 @@ namespace Advanced_Cooling_Control_Software
             SMT_Y_circularProgressBar.Value = 1;
             SMT_Z_circularProgressBar.Value = 1;
             SMT_E_circularProgressBar.Value = 1;
+
+            HighTempWarning_checkBox.Enabled = false;
+            OpenTempSettings_button.Enabled = false;
 
             /*
             PBT1_circularProgressBar.Text = "";
@@ -107,17 +131,10 @@ namespace Advanced_Cooling_Control_Software
             FanSpeedControl_numericUpDown.Enabled = false;
             FanSpeedControl_trackBar.Enabled = false;
 
-
-            //CoolingFanSpeed_numericUpDown.Enabled = false;
-            //CoolingFanSpeed_trackBar.Enabled = false;
-            //slidingLabel.Text = "Advanced Cooling Control Software [vishnus_technologies(C) 2023] ";
-
             FanSpeedControlDeviceList_comboBox.Enabled = false;
             FanSpeedControlDeviceList_comboBox.SelectedIndex = 0;
-
-            // HTA_textBox.Cursor = Cursors.Arrow;
-            // HTA_textBox.Select(0, 0);
         }
+
 
         private void ArduinoReset_button_Click(object sender, EventArgs e)
         {
@@ -126,8 +143,9 @@ namespace Advanced_Cooling_Control_Software
                 if (Main_SerialPort1.IsOpen)
                 {
                     BeginInvoke(new EventHandler(ClearBuffer_button_Click));
-                    SerialMonitor_textbox.Text = "";
-                    ConsoleLog_textbox.Text = "";
+                    SerialMonitor_richTextBox.Text = "";
+                    ConsoleLog_richTextBox.Text = "";
+                    ConsoleLog_richTextBox.AppendText("> [MSG: Connected to port: " + _COMPORT + " @" + _BAUDRATE + "]..." + Environment.NewLine);
                     DIS1.BackColor = SystemColors.ControlDarkDark;
                     DIS1.ForeColor = Color.White;
                     DIS2.BackColor = SystemColors.ControlDarkDark;
@@ -161,7 +179,6 @@ namespace Advanced_Cooling_Control_Software
         }
 
 
-
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             try
@@ -174,6 +191,7 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
+
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             try
@@ -185,6 +203,7 @@ namespace Advanced_Cooling_Control_Software
 
             }
         }
+
 
         private string AutoDetectArduinoPort()
         {
@@ -214,6 +233,7 @@ namespace Advanced_Cooling_Control_Software
             return null;
         }
 
+
         private void CheckArduinoComPort_button_Click(object sender, EventArgs e)
         {
             ComPort_comboBox.Items.Clear();
@@ -236,6 +256,7 @@ namespace Advanced_Cooling_Control_Software
                 ConnectionMsgBox_label.Text = "Arduino device not detected";
             }
         }
+
 
         private void Connect_button_Click(object sender, EventArgs e)
         {
@@ -261,6 +282,7 @@ namespace Advanced_Cooling_Control_Software
                                 Conn_progressBar.Value = 40;
                                 Main_SerialPort1.Open();
                                 Conn_progressBar.Value = 75;
+
                                 Console.WriteLine("Connected: " + _COMPORT + " @" + _BAUDRATE);
                                 Console.WriteLine("> [MSG: Connected to port @" + _COMPORT + "]");
 
@@ -273,7 +295,7 @@ namespace Advanced_Cooling_Control_Software
                                 ConnectionMsgBox_label.BackColor = Color.SeaGreen;
                                 Conn_progressBar.Value = 77;
                                 ConnectionMsgBox_label.Text = "Connected: " + _COMPORT + " @" + _BAUDRATE;
-                                ConsoleLog_textbox.Text = "> [MSG: Connected to port @" + _COMPORT + "]" + Environment.NewLine;
+
                                 SerialMonitor_groupBox.Text = SerialMonitor_groupBox.Text + " [ " + _COMPORT + " @" + _BAUDRATE + " ]";
                                 Passcode_textBox.Text = "";
                                 ComPort_comboBox.Enabled = false;
@@ -286,7 +308,7 @@ namespace Advanced_Cooling_Control_Software
                                 CheckArduinoComPort_button.Enabled = false;
                                 CheckArduinoComPort_button.BackColor = Color.LightSteelBlue;
                                 AutoConnect_checkBox.Enabled = false;
-                                SerialMonitor_textbox.Enabled = true;
+                                SerialMonitor_richTextBox.Enabled = true;
 
                                 // @SECTION [Hardware Device Control : Main Power Control]
                                 MainPower_checkBox.Enabled = true;
@@ -321,8 +343,22 @@ namespace Advanced_Cooling_Control_Software
                                 Send_button.Enabled = true;
                                 Send_button.BackColor = SystemColors.Highlight;
                                 Send_button.ForeColor = Color.White;
-                                ConsoleLog_textbox.Enabled = true;
+                                ConsoleLog_richTextBox.Enabled = true;
+
+                                // @SECTION [Temperature Monitor]
+                                HighTempWarning_checkBox.Enabled = true;
+                                OpenTempSettings_button.Enabled = true;
                                 Conn_progressBar.Value = 100;
+                                try
+                                {
+                                    Control[] indicatorControlName = { CoolSideTM_label, HotSideTM_label, Tank1TM_label, Tank2TM_label, XAxisTM_label, YAxisTM_label, ZAxisTM_label, ExtruderTM_label };
+                                    TemperatureSettings temperatureSettings = new TemperatureSettings(indicatorControlName);
+                                    ts = temperatureSettings;
+                                }
+                                catch (Exception w)
+                                {
+                                    Console.WriteLine(w);
+                                }
                             }
                             catch
                             {
@@ -383,7 +419,7 @@ namespace Advanced_Cooling_Control_Software
                 ConnectionMsgBox_label.BackColor = Color.DarkRed;
                 ConnectionMsgBox_label.Text = "Disconnected: " + _COMPORT;
                 SerialMonitor_groupBox.Text = "Data Monitor";
-                SerialMonitor_textbox.Enabled = false;
+                SerialMonitor_richTextBox.Enabled = false;
 
                 PBT1_circularProgressBar.Value = 1;
                 PBT1_circularProgressBar.Text = "0.00 °C";
@@ -393,8 +429,11 @@ namespace Advanced_Cooling_Control_Software
                 CT1_circularProgressBar.Text = "0.00 °C";
                 CT2_circularProgressBar.Value = 1;
                 CT2_circularProgressBar.Text = "0.00 °C";
-                SerialMonitor_textbox.Text = "";
-                ConsoleLog_textbox.Text = "";
+                SerialMonitor_richTextBox.Text = "";
+                ConsoleLog_richTextBox.Text = "";
+
+                HighTempWarning_checkBox.Enabled = false;
+                OpenTempSettings_button.Enabled = false;
 
                 // *IMPORTANT* comment below line after debugging:
                 Passcode_textBox.Text = AppAccessPasscode;
@@ -449,6 +488,8 @@ namespace Advanced_Cooling_Control_Software
 
                 AutoConnect_checkBox.Checked = false;
                 AutoConnect_checkBox.Enabled = true;
+
+                // ConsoleLog_richTextBox.Text = "> [MSG: Disconnected: port @" + _COMPORT + "]" + Environment.NewLine;
             }
             catch
             {
@@ -456,7 +497,9 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
-        private void SerialPort1_serialDataReceived(object sender, SerialDataReceivedEventArgs e)
+
+        // ***** ON SERIAL DATA RECIEVED *****
+        private void Main_SerialPort1_serialDataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             try
             {
@@ -465,12 +508,14 @@ namespace Advanced_Cooling_Control_Software
                 SerialDataDecoder(_serialData);
                 if (HighTempWarning_checkBox.Checked)
                 {
-                    HighTemp_WatchDog();
+                    HighTempAlert_WatchDog();
                 }
-                else if(HighTempWarning_checkBox.Checked == false)
+                /*
+                if (AdvSecurityFeature_checkBox.Checked)
                 {
-                    //MakeAlertIndicatorNormal();
+                    AdvSecurityFeature_WatchDog();
                 }
+                */
             }
             catch
             {
@@ -478,11 +523,37 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
+
+        private void SerialPort_DataLog(string _data, char _type) //_type: [w, r]
+        {
+            if (_type == 'w' || _type == 'W')
+            {
+                ConsoleLog_richTextBox.SelectionStart = ConsoleLog_richTextBox.TextLength;
+                ConsoleLog_richTextBox.SelectionLength = 0;
+                ConsoleLog_richTextBox.SelectionColor = writeLogForeColor;
+                ConsoleLog_richTextBox.SelectionBackColor = writeLogBackColor;
+                ConsoleLog_richTextBox.AppendText(Environment.NewLine+ _data + Environment.NewLine);
+                ConsoleLog_richTextBox.SelectionColor = ConsoleLog_richTextBox.ForeColor;
+                ConsoleLog_richTextBox.SelectionBackColor = ConsoleLog_richTextBox.BackColor;
+            }
+            else if (_type == 'r' || _type == 'R')
+            {
+                ConsoleLog_richTextBox.SelectionStart = ConsoleLog_richTextBox.TextLength;
+                ConsoleLog_richTextBox.SelectionLength = 0;
+                ConsoleLog_richTextBox.SelectionColor = receiveLogForeColor;
+                ConsoleLog_richTextBox.SelectionBackColor = receiveLogBackColor;
+                ConsoleLog_richTextBox.AppendText(Environment.NewLine + _data + Environment.NewLine);
+                ConsoleLog_richTextBox.SelectionColor = ConsoleLog_richTextBox.ForeColor;
+                ConsoleLog_richTextBox.SelectionBackColor = ConsoleLog_richTextBox.BackColor;
+            }
+        }
+
+
         /* SERIAL DATA DECODER SECTION */
         private void SerialDataDecoder(string _serialData)
         {
             // writes serial data to console log:
-            SerialMonitor_textbox.AppendText(_serialData + Environment.NewLine);
+            SerialMonitor_richTextBox.AppendText(_serialData + Environment.NewLine);
 
             /*  TEMPERATURE DATA DECODE SECTION  (peltier block, coolant temp) */
             // example data: [T12A25B16C44D] or [T45.33A46.17B44.51C34.54D]
@@ -510,7 +581,7 @@ namespace Advanced_Cooling_Control_Software
                     CT2_circularProgressBar.Value = (int)Convert.ToDouble(TEMP4);
                     CT2_circularProgressBar.Text = TEMP4 + "℃";
 
-                    ConsoleLog_textbox.AppendText(Environment.NewLine + "Peltier temp:- CS: " + TEMP1 + " | HS: " + TEMP2 + Environment.NewLine
+                    ConsoleLog_richTextBox.AppendText(Environment.NewLine + "Peltier temp:- CS: " + TEMP1 + " | HS: " + TEMP2 + Environment.NewLine
                         + "Coolant temp:- TANK1: " + TEMP3 + " | TANK2: " + TEMP4 + Environment.NewLine + Environment.NewLine);
                 }
                 catch
@@ -541,90 +612,90 @@ namespace Advanced_Cooling_Control_Software
                     if (DeviceRelayState == "An")
                     {
                         // if matches with I2C RELAY  #1 ID's
-                        if (DeviceRelayID == "0") ConsoleLog_textbox.AppendText("> Undefined device switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "11") ConsoleLog_textbox.AppendText("> PELTIER 1 switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "12") ConsoleLog_textbox.AppendText("> PELTIER 2 switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "13") ConsoleLog_textbox.AppendText("> PELTIER 3 switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "14") ConsoleLog_textbox.AppendText("> PELTIER 4 switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "15") ConsoleLog_textbox.AppendText("> AC BLOWER FAN FAN switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "16") ConsoleLog_textbox.AppendText("> RADIATOR FAN switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "17") ConsoleLog_textbox.AppendText("> HS WATER PUMP switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "18") ConsoleLog_textbox.AppendText("> CS WATER PUMP switched ON" + Environment.NewLine);
+                        if (DeviceRelayID == "0") ConsoleLog_richTextBox.AppendText("> Undefined device switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "11") ConsoleLog_richTextBox.AppendText("> PELTIER 1 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "12") ConsoleLog_richTextBox.AppendText("> PELTIER 2 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "13") ConsoleLog_richTextBox.AppendText("> PELTIER 3 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "14") ConsoleLog_richTextBox.AppendText("> PELTIER 4 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "15") ConsoleLog_richTextBox.AppendText("> AC BLOWER FAN FAN switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "16") ConsoleLog_richTextBox.AppendText("> RADIATOR FAN switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "17") ConsoleLog_richTextBox.AppendText("> HS WATER PUMP switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "18") ConsoleLog_richTextBox.AppendText("> CS WATER PUMP switched ON" + Environment.NewLine);
                         // if matches with I2C RELAY  #2 ID's
-                        else if (DeviceRelayID == "21") ConsoleLog_textbox.AppendText("> CABIN EXHAUST IN #1 switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "22") ConsoleLog_textbox.AppendText("> CABIN EXHAUST OUT #1 switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "23") ConsoleLog_textbox.AppendText("> CABIN EXHAUST IN #2 switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "24") ConsoleLog_textbox.AppendText("> CABIN EXHAUST OUT #2 switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "25") ConsoleLog_textbox.AppendText("> CABIN LIGHT switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "26") ConsoleLog_textbox.AppendText("> NOCP#A switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "27") ConsoleLog_textbox.AppendText("> NOCP#B switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "28") ConsoleLog_textbox.AppendText("> NOCP#C switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "21") ConsoleLog_richTextBox.AppendText("> CABIN EXHAUST IN #1 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "22") ConsoleLog_richTextBox.AppendText("> CABIN EXHAUST OUT #1 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "23") ConsoleLog_richTextBox.AppendText("> CABIN EXHAUST IN #2 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "24") ConsoleLog_richTextBox.AppendText("> CABIN EXHAUST OUT #2 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "25") ConsoleLog_richTextBox.AppendText("> CABIN LIGHT switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "26") ConsoleLog_richTextBox.AppendText("> NOCP#A switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "27") ConsoleLog_richTextBox.AppendText("> NOCP#B switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "28") ConsoleLog_richTextBox.AppendText("> NOCP#C switched ON" + Environment.NewLine);
                     }
                     else if (DeviceRelayState == "Bn")
                     {
                         // if matches with I2C RELAY  #1 ID's
-                        if (DeviceRelayID == "0") ConsoleLog_textbox.AppendText("> Undefined device switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "11") ConsoleLog_textbox.AppendText("> PELTIER 1 already switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "12") ConsoleLog_textbox.AppendText("> PELTIER 2 already switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "13") ConsoleLog_textbox.AppendText("> PELTIER 3 already switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "14") ConsoleLog_textbox.AppendText("> PELTIER 4 already switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "15") ConsoleLog_textbox.AppendText("> AC BLOWER FAN FAN already switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "16") ConsoleLog_textbox.AppendText("> RADIATOR FAN already switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "17") ConsoleLog_textbox.AppendText("> HS WATER PUMP already switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "18") ConsoleLog_textbox.AppendText("> CS WATER PUMP already switched ON" + Environment.NewLine);
+                        if (DeviceRelayID == "0") ConsoleLog_richTextBox.AppendText("> Undefined device switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "11") ConsoleLog_richTextBox.AppendText("> PELTIER 1 already switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "12") ConsoleLog_richTextBox.AppendText("> PELTIER 2 already switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "13") ConsoleLog_richTextBox.AppendText("> PELTIER 3 already switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "14") ConsoleLog_richTextBox.AppendText("> PELTIER 4 already switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "15") ConsoleLog_richTextBox.AppendText("> AC BLOWER FAN FAN already switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "16") ConsoleLog_richTextBox.AppendText("> RADIATOR FAN already switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "17") ConsoleLog_richTextBox.AppendText("> HS WATER PUMP already switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "18") ConsoleLog_richTextBox.AppendText("> CS WATER PUMP already switched ON" + Environment.NewLine);
                         // if matches with I2C RELAY  #2 ID's
-                        else if (DeviceRelayID == "21") ConsoleLog_textbox.AppendText("> CABIN EXHAUST IN #1 switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "22") ConsoleLog_textbox.AppendText("> CABIN EXHAUST OUT #1 switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "23") ConsoleLog_textbox.AppendText("> CABIN EXHAUST IN #2 switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "24") ConsoleLog_textbox.AppendText("> CABIN EXHAUST OUT #2 switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "25") ConsoleLog_textbox.AppendText("> CABIN LIGHT switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "26") ConsoleLog_textbox.AppendText("> NOCP#A switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "27") ConsoleLog_textbox.AppendText("> NOCP#B switched ON" + Environment.NewLine);
-                        else if (DeviceRelayID == "28") ConsoleLog_textbox.AppendText("> NOCP#C switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "21") ConsoleLog_richTextBox.AppendText("> CABIN EXHAUST IN #1 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "22") ConsoleLog_richTextBox.AppendText("> CABIN EXHAUST OUT #1 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "23") ConsoleLog_richTextBox.AppendText("> CABIN EXHAUST IN #2 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "24") ConsoleLog_richTextBox.AppendText("> CABIN EXHAUST OUT #2 switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "25") ConsoleLog_richTextBox.AppendText("> CABIN LIGHT switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "26") ConsoleLog_richTextBox.AppendText("> NOCP#A switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "27") ConsoleLog_richTextBox.AppendText("> NOCP#B switched ON" + Environment.NewLine);
+                        else if (DeviceRelayID == "28") ConsoleLog_richTextBox.AppendText("> NOCP#C switched ON" + Environment.NewLine);
                     }
                     else if (DeviceRelayState == "Xf")
                     {
                         // if matches with I2C RELAY  #1 ID's
-                        if (DeviceRelayID == "0") ConsoleLog_textbox.AppendText("> Undefined device switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "11") ConsoleLog_textbox.AppendText("> PELTIER 1 switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "12") ConsoleLog_textbox.AppendText("> PELTIER 2 switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "13") ConsoleLog_textbox.AppendText("> PELTIER 3 switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "14") ConsoleLog_textbox.AppendText("> PELTIER 4 switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "15") ConsoleLog_textbox.AppendText("> AC BLOWER FAN FAN switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "16") ConsoleLog_textbox.AppendText("> RADIATOR FAN switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "17") ConsoleLog_textbox.AppendText("> HS WATER PUMP switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "18") ConsoleLog_textbox.AppendText("> CS WATER PUMP switched OFF" + Environment.NewLine);
+                        if (DeviceRelayID == "0") ConsoleLog_richTextBox.AppendText("> Undefined device switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "11") ConsoleLog_richTextBox.AppendText("> PELTIER 1 switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "12") ConsoleLog_richTextBox.AppendText("> PELTIER 2 switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "13") ConsoleLog_richTextBox.AppendText("> PELTIER 3 switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "14") ConsoleLog_richTextBox.AppendText("> PELTIER 4 switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "15") ConsoleLog_richTextBox.AppendText("> AC BLOWER FAN FAN switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "16") ConsoleLog_richTextBox.AppendText("> RADIATOR FAN switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "17") ConsoleLog_richTextBox.AppendText("> HS WATER PUMP switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "18") ConsoleLog_richTextBox.AppendText("> CS WATER PUMP switched OFF" + Environment.NewLine);
                         // if matches with I2C RELAY  #2 ID's
-                        else if (DeviceRelayID == "21") ConsoleLog_textbox.AppendText("> CABIN EXHAUST IN #1 switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "22") ConsoleLog_textbox.AppendText("> CABIN EXHAUST OUT #1 switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "23") ConsoleLog_textbox.AppendText("> CABIN EXHAUST IN #2 switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "24") ConsoleLog_textbox.AppendText("> CABIN EXHAUST OUT #2 switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "25") ConsoleLog_textbox.AppendText("> CABIN LIGHT switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "26") ConsoleLog_textbox.AppendText("> NOCP#A switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "27") ConsoleLog_textbox.AppendText("> NOCP#B switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "28") ConsoleLog_textbox.AppendText("> NOCP#C switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "21") ConsoleLog_richTextBox.AppendText("> CABIN EXHAUST IN #1 switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "22") ConsoleLog_richTextBox.AppendText("> CABIN EXHAUST OUT #1 switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "23") ConsoleLog_richTextBox.AppendText("> CABIN EXHAUST IN #2 switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "24") ConsoleLog_richTextBox.AppendText("> CABIN EXHAUST OUT #2 switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "25") ConsoleLog_richTextBox.AppendText("> CABIN LIGHT switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "26") ConsoleLog_richTextBox.AppendText("> NOCP#A switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "27") ConsoleLog_richTextBox.AppendText("> NOCP#B switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "28") ConsoleLog_richTextBox.AppendText("> NOCP#C switched OFF" + Environment.NewLine);
                     }
                     else if (DeviceRelayState == "Yf")
                     {
                         // if matches with I2C RELAY  #1 ID's
-                        if (DeviceRelayID == "0") ConsoleLog_textbox.AppendText("> Undefined device switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "11") ConsoleLog_textbox.AppendText("> PELTIER 1 already switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "12") ConsoleLog_textbox.AppendText("> PELTIER 2 already switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "13") ConsoleLog_textbox.AppendText("> PELTIER 3 already switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "14") ConsoleLog_textbox.AppendText("> PELTIER 4 already switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "15") ConsoleLog_textbox.AppendText("> AC BLOWER FAN FAN already switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "16") ConsoleLog_textbox.AppendText("> RADIATOR FAN already switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "17") ConsoleLog_textbox.AppendText("> HS WATER PUMP already switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "18") ConsoleLog_textbox.AppendText("> CS WATER PUMP already switched OFF" + Environment.NewLine);
+                        if (DeviceRelayID == "0") ConsoleLog_richTextBox.AppendText("> Undefined device switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "11") ConsoleLog_richTextBox.AppendText("> PELTIER 1 already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "12") ConsoleLog_richTextBox.AppendText("> PELTIER 2 already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "13") ConsoleLog_richTextBox.AppendText("> PELTIER 3 already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "14") ConsoleLog_richTextBox.AppendText("> PELTIER 4 already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "15") ConsoleLog_richTextBox.AppendText("> AC BLOWER FAN FAN already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "16") ConsoleLog_richTextBox.AppendText("> RADIATOR FAN already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "17") ConsoleLog_richTextBox.AppendText("> HS WATER PUMP already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "18") ConsoleLog_richTextBox.AppendText("> CS WATER PUMP already switched OFF" + Environment.NewLine);
                         // if matches with I2C RELAY  #2 ID's
-                        else if (DeviceRelayID == "21") ConsoleLog_textbox.AppendText("> CABIN EXHAUST IN #1 already switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "22") ConsoleLog_textbox.AppendText("> CABIN EXHAUST OUT #1 already switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "23") ConsoleLog_textbox.AppendText("> CABIN EXHAUST IN #2 already switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "24") ConsoleLog_textbox.AppendText("> CABIN EXHAUST OUT #2 already switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "25") ConsoleLog_textbox.AppendText("> CABIN LIGHT already switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "26") ConsoleLog_textbox.AppendText("> NOCP#A already switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "27") ConsoleLog_textbox.AppendText("> NOCP#B already switched OFF" + Environment.NewLine);
-                        else if (DeviceRelayID == "28") ConsoleLog_textbox.AppendText("> NOCP#C already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "21") ConsoleLog_richTextBox.AppendText("> CABIN EXHAUST IN #1 already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "22") ConsoleLog_richTextBox.AppendText("> CABIN EXHAUST OUT #1 already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "23") ConsoleLog_richTextBox.AppendText("> CABIN EXHAUST IN #2 already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "24") ConsoleLog_richTextBox.AppendText("> CABIN EXHAUST OUT #2 already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "25") ConsoleLog_richTextBox.AppendText("> CABIN LIGHT already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "26") ConsoleLog_richTextBox.AppendText("> NOCP#A already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "27") ConsoleLog_richTextBox.AppendText("> NOCP#B already switched OFF" + Environment.NewLine);
+                        else if (DeviceRelayID == "28") ConsoleLog_richTextBox.AppendText("> NOCP#C already switched OFF" + Environment.NewLine);
                     }
 
                 }
@@ -673,37 +744,43 @@ namespace Advanced_Cooling_Control_Software
             // example data: [M102] [K001] or [S304] etc...
             else if (_serialData.Equals("M101"))
             {
-                ConsoleLog_textbox.AppendText("> [MCU I/O pin modes initiated]" + Environment.NewLine);
+                // ConsoleLog_richTextBox.AppendText("> [MCU I/O pin modes initiated]" + Environment.NewLine);
+                SerialPort_DataLog("> [MCU I/O pin modes initiated]", 'r');
                 DIS2.BackColor = Color.DarkBlue;
                 DIS2.ForeColor = Color.White;
             }
             else if (_serialData.Equals("M102"))
             {
-                ConsoleLog_textbox.AppendText("> [DS18B20 sensors initiated]" + Environment.NewLine);
+               //  ConsoleLog_richTextBox.AppendText("> [DS18B20 sensors initiated]" + Environment.NewLine);
+                SerialPort_DataLog("> [DS18B20 sensors initiated]", 'r');
                 DIS6.BackColor = Color.DarkBlue;
                 DIS6.ForeColor = Color.White;
             }
             else if (_serialData.Equals("M103"))
             {
-                ConsoleLog_textbox.AppendText("> [Unable to initiated DS18B20 sensors]" + Environment.NewLine);
+                // ConsoleLog_richTextBox.AppendText("> [Unable to initiated DS18B20 sensors]" + Environment.NewLine);
+                SerialPort_DataLog("> [Unable to initiated DS18B20 sensors]", 'r');
                 DIS6.BackColor = Color.Maroon;
                 DIS6.ForeColor = Color.Yellow;
             }
             else if (_serialData.Equals("M104"))
             {
-                ConsoleLog_textbox.AppendText("> [Serial COM started @" + _BAUDRATE + " successfully]" + Environment.NewLine);
+                // ConsoleLog_richTextBox.AppendText("> [Serial COM started @" + _BAUDRATE + " successfully]" + Environment.NewLine);
+                SerialPort_DataLog("> [Serial COM started @" + _BAUDRATE + " successfully]", 'r');
                 DIS1.BackColor = Color.DarkBlue;
                 DIS1.ForeColor = Color.White;
             }
             else if (_serialData.Equals("P201"))
             {
-                ConsoleLog_textbox.AppendText("> [Initializing PCF8574 module]" + Environment.NewLine);
+                // ConsoleLog_richTextBox.AppendText("> [Initializing PCF8574 module]" + Environment.NewLine);
+                SerialPort_DataLog("> [Initializing PCF8574 module]", 'r');
                 DIS3.BackColor = Color.Maroon;
                 DIS3.ForeColor = Color.Yellow;
             }
             else if (_serialData.Equals("P202"))
             {
-                ConsoleLog_textbox.AppendText("> [I2C RELAY #1 module initialised]" + Environment.NewLine);
+                // ConsoleLog_richTextBox.AppendText("> [I2C RELAY #1 module initialised]" + Environment.NewLine);
+                SerialPort_DataLog("> [I2C RELAY #1 module initialised]", 'r');
                 DIS3A.BackColor = Color.DarkBlue;
                 DIS3A.ForeColor = Color.White;
                 I2C_INIT_FLAG++;
@@ -711,19 +788,22 @@ namespace Advanced_Cooling_Control_Software
             }
             else if (_serialData.Equals("P203"))
             {
-                ConsoleLog_textbox.AppendText("> [I2C RELAY #1 I/O pins initiated]" + Environment.NewLine);
+                // ConsoleLog_richTextBox.AppendText("> [I2C RELAY #1 I/O pins initiated]" + Environment.NewLine);
+                SerialPort_DataLog("> [I2C RELAY #1 I/O pins initiated]", 'r');
                 DIS4A.BackColor = Color.DarkBlue;
                 DIS4A.ForeColor = Color.White;
             }
             else if (_serialData.Equals("P204"))
             {
-                ConsoleLog_textbox.AppendText("> [I2C RELAY #1 device error!]" + Environment.NewLine);
+                // ConsoleLog_richTextBox.AppendText("> [I2C RELAY #1 device error!]" + Environment.NewLine);
+                SerialPort_DataLog("> [I2C RELAY #1 device error!]", 'r');
                 DIS3A.BackColor = Color.Maroon;
                 DIS3A.ForeColor = Color.Yellow;
             }
             else if (_serialData.Equals("P205"))
             {
-                ConsoleLog_textbox.AppendText("> [I2C RELAY #2 module initialised]" + Environment.NewLine);
+                // ConsoleLog_richTextBox.AppendText("> [I2C RELAY #2 module initialised]" + Environment.NewLine);
+                SerialPort_DataLog("> [I2C RELAY #2 module initialised]", 'r');
                 DIS3B.BackColor = Color.DarkBlue;
                 DIS3B.ForeColor = Color.White;
                 I2C_INIT_FLAG++;
@@ -731,19 +811,22 @@ namespace Advanced_Cooling_Control_Software
             }
             else if (_serialData.Equals("P206"))
             {
-                ConsoleLog_textbox.AppendText("> [I2C_RELAY #2 I/O pins initiated]" + Environment.NewLine);
+                // ConsoleLog_richTextBox.AppendText("> [I2C_RELAY #2 I/O pins initiated]" + Environment.NewLine);
+                SerialPort_DataLog("> [I2C_RELAY #2 I/O pins initiated]", 'r');
                 DIS4B.BackColor = Color.DarkBlue;
                 DIS4B.ForeColor = Color.White;
             }
             else if (_serialData.Equals("P207"))
             {
-                ConsoleLog_textbox.AppendText("> [I2C RELAY #2 device error!]" + Environment.NewLine);
+                // ConsoleLog_richTextBox.AppendText("> [I2C RELAY #2 device error!]" + Environment.NewLine);
+                SerialPort_DataLog("> [MCU I/O pin modes initiated]", 'r');
                 DIS3B.BackColor = Color.Maroon;
                 DIS3B.ForeColor = Color.Yellow;
             }
             else if (_serialData.Equals("P208"))
             {
-                ConsoleLog_textbox.AppendText("> [I2C RELAY #1 CONNECTED]" + Environment.NewLine);
+                // ConsoleLog_richTextBox.AppendText("> [I2C RELAY #1 CONNECTED]" + Environment.NewLine);
+                SerialPort_DataLog("> [I2C RELAY #1 CONNECTED]", 'r');
                 DIS4A.BackColor = Color.DarkBlue;
                 DIS4A.ForeColor = Color.White;
                 I2C_CONN_FLAG++;
@@ -751,13 +834,15 @@ namespace Advanced_Cooling_Control_Software
             }
             else if (_serialData.Equals("P209"))
             {
-                ConsoleLog_textbox.AppendText("> [I2C RELAY #1 DISCONNECTED!]" + Environment.NewLine);
+                // ConsoleLog_richTextBox.AppendText("> [I2C RELAY #1 DISCONNECTED!]" + Environment.NewLine);
+                SerialPort_DataLog("> [I2C RELAY #1 DISCONNECTED!]", 'r');
                 DIS4A.BackColor = Color.Maroon;
                 DIS4A.ForeColor = Color.Yellow;
             }
             else if (_serialData.Equals("P210"))
             {
-                ConsoleLog_textbox.AppendText("> [I2C RELAY #2 CONNECTED]" + Environment.NewLine);
+                // ConsoleLog_richTextBox.AppendText("> [I2C RELAY #2 CONNECTED]" + Environment.NewLine);
+                SerialPort_DataLog("> [I2C RELAY #2 CONNECTED]", 'r');
                 DIS4B.BackColor = Color.DarkBlue;
                 DIS4B.ForeColor = Color.White;
                 I2C_CONN_FLAG++;
@@ -765,29 +850,36 @@ namespace Advanced_Cooling_Control_Software
             }
             else if (_serialData.Equals("P211"))
             {
-                ConsoleLog_textbox.AppendText("> [I2C RELAY #2 DISCONNECTED!]" + Environment.NewLine);
+                // ConsoleLog_richTextBox.AppendText("> [I2C RELAY #2 DISCONNECTED!]" + Environment.NewLine);
+                SerialPort_DataLog("> [I2C RELAY #2 DISCONNECTED!]", 'r');
                 DIS4B.BackColor = Color.Maroon;
                 DIS4B.ForeColor = Color.Yellow;
             }
             else if (_serialData.Equals("S101"))
             {
-                ConsoleLog_textbox.AppendText("> [Auto initialised DS18B20 sensors]" + Environment.NewLine);
+                // ConsoleLog_richTextBox.AppendText("> [Auto initialised DS18B20 sensors]" + Environment.NewLine);
+                SerialPort_DataLog("> [Auto initialised DS18B20 sensors]", 'r');
                 DIS5.BackColor = Color.DarkBlue;
                 DIS5.ForeColor = Color.White;
             }
             else if (_serialData.Equals("S102"))
             {
-                ConsoleLog_textbox.AppendText("> [Pre-initialised DS18B20 sensors]" + Environment.NewLine);
+                // ConsoleLog_richTextBox.AppendText("> [Pre-initialised DS18B20 sensors]" + Environment.NewLine);
+                SerialPort_DataLog("> [Pre-initialised DS18B20 sensors]", 'r');
                 DIS5.BackColor = Color.Maroon;
                 DIS5.ForeColor = Color.Yellow;
             }
+            // SerialMonitor_richTextBox.ScrollToCaret();
+            // ConsoleLog_richTextBox.ScrollToCaret();
         }
+
 
         private void ExhaustFanSpeed_trackBar_Scroll(object sender, EventArgs e)
         {
             FanSpeedControl_numericUpDown.Value = FanSpeedControl_trackBar.Value;
             BeginInvoke(new EventHandler(FanPwmEncoder));
         }
+
 
         private void ExhaustFanSpeed_numericUpDown_ValueChanged(object sender, EventArgs e)
         {
@@ -806,29 +898,30 @@ namespace Advanced_Cooling_Control_Software
                 if (FanSpeedControlDeviceList_comboBox.SelectedIndex == 0)
                 {
                     Main_SerialPort1.WriteLine("sk" + PWM.ToString());
-                    SerialMonitor_textbox.AppendText("sk" + PWM.ToString() + Environment.NewLine);
+                    SerialMonitor_richTextBox.AppendText("sk" + PWM.ToString() + Environment.NewLine);
                     preVal0 = FanSpeedControl_trackBar.Value;
                 }
                 else if (FanSpeedControlDeviceList_comboBox.SelectedIndex == 1)
                 {
                     Main_SerialPort1.WriteLine("sl" + PWM.ToString());
-                    SerialMonitor_textbox.AppendText("sl" + PWM.ToString() + Environment.NewLine);
+                    SerialMonitor_richTextBox.AppendText("sl" + PWM.ToString() + Environment.NewLine);
                     preVal1 = FanSpeedControl_trackBar.Value;
                 }
                 else if (FanSpeedControlDeviceList_comboBox.SelectedIndex == 2)
                 {
                     Main_SerialPort1.WriteLine("sm" + PWM.ToString());
-                    SerialMonitor_textbox.AppendText("sm" + PWM.ToString() + Environment.NewLine);
+                    SerialMonitor_richTextBox.AppendText("sm" + PWM.ToString() + Environment.NewLine);
                     preVal2 = FanSpeedControl_trackBar.Value;
                 }
                 else if (FanSpeedControlDeviceList_comboBox.SelectedIndex == 3)
                 {
                     Main_SerialPort1.WriteLine("sn" + PWM.ToString());
-                    SerialMonitor_textbox.AppendText("sn" + PWM.ToString() + Environment.NewLine);
+                    SerialMonitor_richTextBox.AppendText("sn" + PWM.ToString() + Environment.NewLine);
                     preVal3 = FanSpeedControl_trackBar.Value;
                 }
             }
         }
+
 
         private void FanSpeedControl_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -915,38 +1008,41 @@ namespace Advanced_Cooling_Control_Software
             return getCode.SearchCmdInDict(_cmd);
         }
 
+
         private async void Send_button_Click(object sender, EventArgs e)
         {
-
-            if (Main_SerialPort1.IsOpen)
+            if (SentCommandToArduino.SentCommandDirectly_checkState)
             {
-                if (Command_textBox.Text.Length != 0)
+                if (Main_SerialPort1.IsOpen)
                 {
-                    try
+                    if (Command_textBox.Text.Length != 0)
                     {
-                        Main_SerialPort1.WriteLine(Command_textBox.Text);
-                        ClearConsoleTextBox_label.Text = "command sent successful";
-                    }
-                    catch
-                    {
-                        ClearConsoleTextBox_label.Text = "unable to sent command!";
+                        try
+                        {
+                            Main_SerialPort1.WriteLine(Command_textBox.Text);
+                            ClearConsoleTextBox_label.Text = "command sent successful";
+                        }
+                        catch
+                        {
+                            ClearConsoleTextBox_label.Text = "unable to sent command!";
+                        }
+
+                        //ConsoleLog_textbox.Text = DecodeCommandFromFile(Command_textBox.Text);
                     }
 
-                    //ConsoleLog_textbox.Text = DecodeCommandFromFile(Command_textBox.Text);
+                    else
+                    {
+                        ClearConsoleTextBox_label.Text = "No commands specified!";
+                        await Task.Delay(4000);
+                        ClearConsoleTextBox_label.Text = "";
+                    }
                 }
-
                 else
                 {
-                    ClearConsoleTextBox_label.Text = "No commands specified!";
+                    ClearConsoleTextBox_label.Text = "Serial port closed!";
                     await Task.Delay(4000);
                     ClearConsoleTextBox_label.Text = "";
                 }
-            }
-            else
-            {
-                ClearConsoleTextBox_label.Text = "Serial port closed!";
-                await Task.Delay(4000);
-                ClearConsoleTextBox_label.Text = "";
             }
         }
 
@@ -959,11 +1055,13 @@ namespace Advanced_Cooling_Control_Software
             commandOptions.ShowDialog();
         }
 
+
         private void About_MenuItem_Click(object sender, EventArgs e)
         {
             About about = new About();  // Form2: About.cs
             about.Show();
         }
+
 
         private void Exit_MenuItem_Click(object sender, EventArgs e)
         {
@@ -988,6 +1086,7 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
+
         private void CommandOptions_MenuItem_Click(object sender, EventArgs e)
         {
             CommandOptions commandContainer = new CommandOptions(Main_SerialPort1);
@@ -997,23 +1096,9 @@ namespace Advanced_Cooling_Control_Software
 
         private void TemperatureSettings_MenuItem_Click(object sender, EventArgs e)
         {
-            TemperatureSettings temperatureSettings = new TemperatureSettings();
-            temperatureSettings.ShowDialog();
+            ts.ShowDialog();
         }
 
-
-        private async void SerialMonitor_textbox_DoubleClick(object sender, EventArgs e)
-        {
-            if (SerialMonitor_textbox.Text.Length != 0)
-            {
-                SerialMonitor_textbox.Text = "";
-                SerialMonitor_groupBox.ForeColor = Color.Maroon;
-                SerialMonitor_groupBox.Text = "console cleared!";
-                await Task.Delay(TemperatureSettings.HighTempAlertDelayMs);
-                SerialMonitor_groupBox.ForeColor = SystemColors.ControlLightLight;
-                SerialMonitor_groupBox.Text = "Data Monitor" + " [ " + _COMPORT + " @" + _BAUDRATE + " ]";
-            }
-        }
 
         private void SystemInformationToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1021,16 +1106,19 @@ namespace Advanced_Cooling_Control_Software
             systeminfohelper.Show();
         }
 
+
         private void SerialMonitor_textbox_TextChanged(object sender, EventArgs e)
         {
 
         }
+
 
         private void ExhaustFanSpeed_trackBar_MouseDown(object sender, MouseEventArgs e)
         {
             InfoToolTip.Active = true;
             InfoToolTip.Show("Speed controller for Exhaust Fans: ARDUINO_PIN: ~9", FanSpeedControl_trackBar);
         }
+
 
         private void ComPort_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1041,8 +1129,6 @@ namespace Advanced_Cooling_Control_Software
         // ---------------------------------------------------------------------------------------------------
         // HIGH TEMPEARATURE ALERT ANIMATION SECTION [~ main]
         //
-        private Color c1, c2;
-        private Control ctrl;
         private void BlinkTimer1_Tick(object sender, EventArgs e)
         {
 
@@ -1084,6 +1170,8 @@ namespace Advanced_Cooling_Control_Software
                 while (PBT1_circularProgressBar.Value >= TemperatureSettings.CoolSideMaxTemp && HighTempWarning_checkBox.Checked)
                 {
                     PBT1_flag = true;
+                    ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
+                    ctrl.Text = TemperatureSettings.HighTempAlertText;
                     await Task.Delay(1);
                     var n = _sw.ElapsedMilliseconds % CycleTime_ms;
                     var per = (double)Math.Abs(n - halfCycle) / halfCycle;
@@ -1111,6 +1199,8 @@ namespace Advanced_Cooling_Control_Software
                 while (PBT2_circularProgressBar.Value >= TemperatureSettings.HotSideMaxTemp && HighTempWarning_checkBox.Checked)
                 {
                     PBT2_flag = true;
+                    ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
+                    ctrl.Text = TemperatureSettings.HighTempAlertText;
                     await Task.Delay(1);
                     var n = _sw.ElapsedMilliseconds % CycleTime_ms;
                     var per = (double)Math.Abs(n - halfCycle) / halfCycle;
@@ -1138,6 +1228,8 @@ namespace Advanced_Cooling_Control_Software
                 while (CT1_circularProgressBar.Value >= TemperatureSettings.Tank1MaxTemp && HighTempWarning_checkBox.Checked)
                 {
                     CT1_flag = true;
+                    ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
+                    ctrl.Text = TemperatureSettings.HighTempAlertText;
                     await Task.Delay(1);
                     var n = _sw.ElapsedMilliseconds % CycleTime_ms;
                     var per = (double)Math.Abs(n - halfCycle) / halfCycle;
@@ -1165,6 +1257,8 @@ namespace Advanced_Cooling_Control_Software
                 while (CT2_circularProgressBar.Value >= TemperatureSettings.Tank2MaxTemp && HighTempWarning_checkBox.Checked)
                 {
                     CT2_flag = true;
+                    ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
+                    ctrl.Text = TemperatureSettings.HighTempAlertText;
                     await Task.Delay(1);
                     var n = _sw.ElapsedMilliseconds % CycleTime_ms;
                     var per = (double)Math.Abs(n - halfCycle) / halfCycle;
@@ -1181,7 +1275,7 @@ namespace Advanced_Cooling_Control_Software
                 //ctrl.Location = new Point(550, 178);
                 ctrl.Text = "TANK 2";
             }
-            else if(_id == "XAxis_SM")
+            else if (_id == "XAxis_SM")
             {
                 var _sw = new Stopwatch();
                 _sw.Start();
@@ -1191,7 +1285,9 @@ namespace Advanced_Cooling_Control_Software
                 //ctrl.Location = new Point(514, 178);
                 while (SMT_X_circularProgressBar.Value >= TemperatureSettings.XaxisMaxTemp && HighTempWarning_checkBox.Checked)
                 {
-                    Xaxis_flag= true;
+                    Xaxis_flag = true;
+                    ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
+                    ctrl.Text = TemperatureSettings.HighTempAlertText;
                     await Task.Delay(1);
                     var n = _sw.ElapsedMilliseconds % CycleTime_ms;
                     var per = (double)Math.Abs(n - halfCycle) / halfCycle;
@@ -1219,6 +1315,8 @@ namespace Advanced_Cooling_Control_Software
                 while (SMT_Y_circularProgressBar.Value >= TemperatureSettings.YaxisMaxTemp && HighTempWarning_checkBox.Checked)
                 {
                     Yaxis_flag = true;
+                    ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
+                    ctrl.Text = TemperatureSettings.HighTempAlertText;
                     await Task.Delay(1);
                     var n = _sw.ElapsedMilliseconds % CycleTime_ms;
                     var per = (double)Math.Abs(n - halfCycle) / halfCycle;
@@ -1246,6 +1344,8 @@ namespace Advanced_Cooling_Control_Software
                 while (SMT_Z_circularProgressBar.Value >= TemperatureSettings.ZaxisMaxTemp && HighTempWarning_checkBox.Checked)
                 {
                     Zaxis_flag = true;
+                    ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
+                    ctrl.Text = TemperatureSettings.HighTempAlertText;
                     await Task.Delay(1);
                     var n = _sw.ElapsedMilliseconds % CycleTime_ms;
                     var per = (double)Math.Abs(n - halfCycle) / halfCycle;
@@ -1273,6 +1373,8 @@ namespace Advanced_Cooling_Control_Software
                 while (SMT_E_circularProgressBar.Value >= TemperatureSettings.ExtruderMaxTemp && HighTempWarning_checkBox.Checked)
                 {
                     Extruder_flag = true;
+                    ctrl.ForeColor = TemperatureSettings.AlertlabelForeColor;
+                    ctrl.Text = TemperatureSettings.HighTempAlertText;
                     await Task.Delay(1);
                     var n = _sw.ElapsedMilliseconds % CycleTime_ms;
                     var per = (double)Math.Abs(n - halfCycle) / halfCycle;
@@ -1292,31 +1394,54 @@ namespace Advanced_Cooling_Control_Software
         }
 
 
-        private void MakeAlertIndicatorNormal()
+        private void ExecuteAutoShutdownCommands(string _id, string _cmd)
         {
-            Control[] indicatorControlName = { CoolSideTM_label, HotSideTM_label, Tank1TM_label, Tank2TM_label, XAxisTM_label, YAxisTM_label, ZAxisTM_label, ExtruderTM_label };
-
-            string[] indicatorText = { "COOL SIDE", "HOT SIDE", "TANK 1", "TANK 2", "X-AXIS", "Y-AXIS", "Z-AXIS", "EXTRUDER" };
-
-            for (int i = 0; i < indicatorControlName.Length; i++)
+            if (Main_SerialPort1.IsOpen)
             {
-                indicatorControlName[i].BackColor = Color.Transparent;
-                indicatorControlName[i].ForeColor = Color.White;
-            }
-            for (int i = 0; i < indicatorText.Length; i++)
-            {
-                indicatorControlName[i].Text = indicatorText[i];
+                try
+                {
+                    Main_SerialPort1.Write(_cmd);
+
+                    Console.WriteLine("command executed successful. [ID: " + _id + "] [COMMAND: " + _cmd + "]");
+                }
+                catch
+                {
+                    Console.WriteLine("unable to execute command! [ID: " + _id + "] [COMMAND: " + _cmd + "]");
+                }
             }
         }
 
 
-        private void HighTemp_WatchDog()
+        private void AdvSecurityFeature_WatchDog()
+        {
+            if (ASF_PBT1_Flag > TemperatureSettings.ASF_TRIGGER_COUNT)
+            {
+                ExecuteAutoShutdownCommands("PBT1", TemperatureSettings.ASFCommand_PBT1);
+                ASF_PBT1_Flag = 0;
+            }
+            if (ASF_PBT2_Flag > TemperatureSettings.ASF_TRIGGER_COUNT)
+            {
+                ExecuteAutoShutdownCommands("PBT2", TemperatureSettings.ASFCommand_PBT2);
+            }
+            if (ASF_CT1_Flag > TemperatureSettings.ASF_TRIGGER_COUNT)
+            {
+                ExecuteAutoShutdownCommands("CT1", TemperatureSettings.ASFCommand_CT1);
+            }
+            if (ASF_CT2_Flag > TemperatureSettings.ASF_TRIGGER_COUNT)
+            {
+                ExecuteAutoShutdownCommands("CT2", TemperatureSettings.ASFCommand_CT2);
+            }
+        }
+
+
+        private void HighTempAlert_WatchDog()
         {
             if (PBT1_circularProgressBar.Value >= TemperatureSettings.CoolSideMaxTemp)
             {
                 if (!PBT1_flag)
                 {
-                    HighTempBlinkAlert("PBT1", CoolSideTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true); 
+                    ASF_PBT1_Flag++;
+                    HighTempBlinkAlert("PBT1", CoolSideTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
             }
 
@@ -1324,6 +1449,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (!PBT2_flag)
                 {
+                    ASF_PBT2_Flag++;
                     HighTempBlinkAlert("PBT2", HotSideTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
             }
@@ -1332,6 +1458,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (!CT1_flag)
                 {
+                    ASF_CT1_Flag++;
                     HighTempBlinkAlert("CT1", Tank1TM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
             }
@@ -1340,6 +1467,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (!CT2_flag)
                 {
+                    ASF_CT2_Flag++;
                     HighTempBlinkAlert("CT2", Tank2TM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
             }
@@ -1348,6 +1476,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (!Xaxis_flag)
                 {
+                    ASF_XAXIS_Flag++;
                     HighTempBlinkAlert("XAxis_SM", XAxisTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
             }
@@ -1356,7 +1485,8 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (!Yaxis_flag)
                 {
-                    HighTempBlinkAlert("YAxis_SM", YAxisTM_label,  TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
+                    ASF_YAXIS_Flag++;
+                    HighTempBlinkAlert("YAxis_SM", YAxisTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
             }
 
@@ -1364,43 +1494,116 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (!Zaxis_flag)
                 {
+                    ASF_ZAXIS_Flag++;
                     HighTempBlinkAlert("ZAxis_SM", ZAxisTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
             }
-           /*
+
             if (SMT_E_circularProgressBar.Value >= TemperatureSettings.ExtruderMaxTemp)
             {
                 if (!Extruder_flag)
                 {
+                    ASF_EXTRUDER_Flag++;
                     HighTempBlinkAlert("Extruder_SM", ExtruderTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
-            }*/
+            }
         }
         //
         // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
+        private void Main_Load(object sender, EventArgs e)
         {
-            SMT_E_circularProgressBar.Value = Convert.ToInt32(trackBar1.Value);
-            SMT_E_circularProgressBar.Text = trackBar1.Value + " °C".ToString();
-            if (SMT_E_circularProgressBar.Value >= TemperatureSettings.ExtruderMaxTemp)
+            BeginInvoke(new EventHandler(CheckArduinoComPort_button_Click));
+            /*
+            Control[] indicatorControlName = { CoolSideTM_label, HotSideTM_label, Tank1TM_label, Tank2TM_label, XAxisTM_label, YAxisTM_label, ZAxisTM_label, ExtruderTM_label };
+            TemperatureSettings temperatureSettings = new TemperatureSettings(indicatorControlName);
+            ts = temperatureSettings;*/
+        }
+
+
+        private void HighTempWarning_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HighTempWarning_checkBox.Checked)
             {
-                if (!Extruder_flag)
-                {
-                    HighTempBlinkAlert("Extruder_SM", ExtruderTM_label,  TemperatureSettings.AlertC1,TemperatureSettings.AlertC2, 1000, true);
-                }
+                HighTempWarning_checkBox.BackColor = SystemColors.Highlight;
+                HighTempWarning_checkBox.ForeColor = Color.White;
+            }
+            else if (!HighTempWarning_checkBox.Checked)
+            {
+                HighTempWarning_checkBox.BackColor = Color.DarkRed;
+                HighTempWarning_checkBox.ForeColor = Color.White;
             }
         }
 
 
-        private void Main_Load(object sender, EventArgs e)
+        private void AdvSecurityFeature_checkBox_CheckedChanged(object sender, EventArgs e)
         {
+            if (!AdvSecurityFeature_checkBox.Checked)
+            {
+                ASF_PBT1_Flag = 0;
+                ASF_PBT2_Flag = 0;
+                ASF_CT1_Flag = 0;
+                ASF_CT2_Flag = 0;
+                ASF_XAXIS_Flag = 0;
+                ASF_YAXIS_Flag = 0;
+                ASF_ZAXIS_Flag = 0;
+                ASF_EXTRUDER_Flag = 0;
+                AdvancedSecurityFeature_watchTimer.Stop();
+                Console.WriteLine("AdvancedSecurityFeature_watchTimer: STOPPED!");
+            }
+            else
+            {
+                AdvancedSecurityFeature_watchTimer.Interval = 1000;
+                AdvancedSecurityFeature_watchTimer.Start();
+                Console.WriteLine("AdvancedSecurityFeature_watchTimer: STARTED");
+            }
+        }
 
+
+        private async void SerialMonitor_richTextBox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (SerialMonitor_richTextBox.Text.Length != 0)
+            {
+                SerialMonitor_richTextBox.Text = "";
+                SerialMonitor_groupBox.ForeColor = Color.Maroon;
+                SerialMonitor_groupBox.Text = "console cleared!";
+                await Task.Delay(1750);
+                SerialMonitor_groupBox.ForeColor = SystemColors.ControlLightLight;
+                SerialMonitor_groupBox.Text = "Data Monitor" + " [ " + _COMPORT + " @" + _BAUDRATE + " ]";
+            }
+        }
+
+
+        private void ConsoleLog_richTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ConsoleLog_richTextBox.ScrollToCaret();
+        }
+
+
+        private void SerialMonitor_richTextBox_TextChanged(object sender, EventArgs e)
+        {
+            SerialMonitor_richTextBox.ScrollToCaret();
+        }
+
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            SerialPort_DataLog("sent command success", 'w');
+            SerialPort_DataLog("recieve command success", 'r');
+        }
+
+        private void AdvancedSecurityFeature_watchTimer_Tick(object sender, EventArgs e)
+        {
+            if(AdvSecurityFeature_checkBox.Checked)
+            {
+                AdvSecurityFeature_WatchDog();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             BeginInvoke(new EventHandler(TemperatureSettings_MenuItem_Click));
         }
 
@@ -1465,6 +1668,7 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
+
         private void Peltier2_checkBox_CheckedChanged(object sender, EventArgs e)
         {
             if (Peltier2_checkBox.Checked == true)
@@ -1484,6 +1688,7 @@ namespace Advanced_Cooling_Control_Software
                 Peltier2_checkBox.BackColor = SystemColors.Highlight;
             }
         }
+
 
         private void Peltier3_checkBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -1505,6 +1710,7 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
+
         private void Peltier4_checkBox_CheckedChanged(object sender, EventArgs e)
         {
             if (Peltier4_checkBox.Checked == true)
@@ -1525,6 +1731,7 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
+
         private void ClearBuffer_button_Click(object sender, EventArgs e)
         {
             try
@@ -1538,10 +1745,12 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
+
         private void Hdcp_Devicelists_Combobox_SelectedIndexChanged(object sender, EventArgs e)
         {
             HDCPMsgbox_label.Text = "";
         }
+
 
         private void Hdcp_On_button_Click(object sender, EventArgs e)
         {
@@ -1599,6 +1808,7 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
+
         public void Hdcp_Off_button_Click(object sender, EventArgs e)
         {
             if (HDCPDevicelist_Combobox.SelectedIndex == 0)
@@ -1653,17 +1863,20 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
+
         private void HdcpGlobalOn_button_Click(object sender, EventArgs e)
         {
             BeginInvoke(new EventHandler(AllDev_SwitchON));
             HDCPMsgbox_label.Text = "Switched ON all devices!";
         }
 
+
         private void HdcpGlobalOff_button_Click(object sender, EventArgs e)
         {
             BeginInvoke(new EventHandler(AllDev_SwitchOFF));
             HDCPMsgbox_label.Text = "Switched OFF all devices!";
         }
+
 
         private void AllDev_SwitchON(object sender, EventArgs e)
         {
@@ -1692,6 +1905,7 @@ namespace Advanced_Cooling_Control_Software
             DS7.ForeColor = Color.Snow;
         }
 
+
         private void AllDev_SwitchOFF(object sender, EventArgs e)
         {
             for (int RelaySubs = 1; RelaySubs <= 4; RelaySubs++)
@@ -1719,12 +1933,13 @@ namespace Advanced_Cooling_Control_Software
             DS7.ForeColor = Color.Snow;
         }
 
+
         private async void ConsoleClear_button_Click(object sender, EventArgs e)
         {
             //ConsoleLog_textbox.Text = "";
             int awaitDelay = 4000;
-            if (ConsoleLog_textbox.Text.Length == 0) { ClearConsoleTextBox_label.Text = "Nothing to clear"; }
-            else { ClearConsoleTextBox_label.Text = "Console cleared"; ConsoleLog_textbox.Text = ""; }
+            if (ConsoleLog_richTextBox.Text.Length == 0) { ClearConsoleTextBox_label.Text = "Nothing to clear"; }
+            else { ClearConsoleTextBox_label.Text = "Console cleared"; ConsoleLog_richTextBox.Text = ""; }
             await Task.Delay(awaitDelay);
             ClearConsoleTextBox_label.Text = "";
         }

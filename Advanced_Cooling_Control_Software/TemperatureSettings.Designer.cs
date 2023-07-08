@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Reset_button = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.XaxisMaxTemp_numericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -74,6 +75,39 @@
             this.label14 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.HighTempAlertOptions_groupBox = new System.Windows.Forms.GroupBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.HighTempAlertOptions_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.advancedSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.HighTempAlertAdvancedSettings_groupbox = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.ASFCommandPBT1_textBox = new System.Windows.Forms.TextBox();
+            this.ASFCommandPBT2_textBox = new System.Windows.Forms.TextBox();
+            this.ASFCommandCT1_textBox = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.ASFCommandCT2_textBox = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.ASFCommandXaxis_textBox = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.ASFCommandYaxis_textBox = new System.Windows.Forms.TextBox();
+            this.ASFCommandExtruder_textBox = new System.Windows.Forms.TextBox();
+            this.ASFCommandZaxis_textBox = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.AlertCount_checkBox = new System.Windows.Forms.CheckBox();
+            this.AlertCustomCount_textBox = new System.Windows.Forms.TextBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.oia_label = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.LogFilePath_textBox = new System.Windows.Forms.TextBox();
+            this.OpenFile_button = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.XaxisMaxTemp_numericUpDown)).BeginInit();
@@ -89,10 +123,17 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HighTempBlinkDelay_numericUpDown)).BeginInit();
             this.groupBox6.SuspendLayout();
+            this.HighTempAlertOptions_groupBox.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
+            this.HighTempAlertAdvancedSettings_groupbox.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.groupBox1.Controls.Add(this.Reset_button);
             this.groupBox1.Controls.Add(this.groupBox5);
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.MaxTempNotification_label);
@@ -101,12 +142,25 @@
             this.groupBox1.Controls.Add(this.MaxTemp_label);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold);
             this.groupBox1.ForeColor = System.Drawing.Color.DarkBlue;
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(6, 9);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(414, 325);
+            this.groupBox1.Size = new System.Drawing.Size(398, 325);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Alert Trigger Settings";
+            this.groupBox1.Text = "Max Trigger Temperature Settings";
+            // 
+            // Reset_button
+            // 
+            this.Reset_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Reset_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Reset_button.ForeColor = System.Drawing.Color.DarkGreen;
+            this.Reset_button.Location = new System.Drawing.Point(314, 292);
+            this.Reset_button.Name = "Reset_button";
+            this.Reset_button.Size = new System.Drawing.Size(75, 23);
+            this.Reset_button.TabIndex = 1;
+            this.Reset_button.Text = "Reset";
+            this.Reset_button.UseVisualStyleBackColor = true;
+            this.Reset_button.Click += new System.EventHandler(this.Reset_button_Click);
             // 
             // groupBox5
             // 
@@ -121,7 +175,7 @@
             this.groupBox5.Controls.Add(this.ZaxisMaxTemp_numericUpDown);
             this.groupBox5.Location = new System.Drawing.Point(9, 176);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(399, 115);
+            this.groupBox5.Size = new System.Drawing.Size(380, 115);
             this.groupBox5.TabIndex = 28;
             this.groupBox5.TabStop = false;
             // 
@@ -139,6 +193,7 @@
             // XaxisMaxTemp_numericUpDown
             // 
             this.XaxisMaxTemp_numericUpDown.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.XaxisMaxTemp_numericUpDown.ForeColor = System.Drawing.Color.Black;
             this.XaxisMaxTemp_numericUpDown.Location = new System.Drawing.Point(228, 32);
             this.XaxisMaxTemp_numericUpDown.Name = "XaxisMaxTemp_numericUpDown";
             this.XaxisMaxTemp_numericUpDown.Size = new System.Drawing.Size(69, 24);
@@ -150,7 +205,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(237, 16);
+            this.label8.Location = new System.Drawing.Point(240, 16);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(36, 13);
             this.label8.TabIndex = 17;
@@ -170,6 +225,7 @@
             // YaxisMaxTemp_numericUpDown
             // 
             this.YaxisMaxTemp_numericUpDown.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.YaxisMaxTemp_numericUpDown.ForeColor = System.Drawing.Color.Black;
             this.YaxisMaxTemp_numericUpDown.Location = new System.Drawing.Point(309, 34);
             this.YaxisMaxTemp_numericUpDown.Name = "YaxisMaxTemp_numericUpDown";
             this.YaxisMaxTemp_numericUpDown.Size = new System.Drawing.Size(69, 24);
@@ -179,6 +235,7 @@
             // ExtruderMaxTemp_numericUpDown
             // 
             this.ExtruderMaxTemp_numericUpDown.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExtruderMaxTemp_numericUpDown.ForeColor = System.Drawing.Color.Black;
             this.ExtruderMaxTemp_numericUpDown.Location = new System.Drawing.Point(309, 81);
             this.ExtruderMaxTemp_numericUpDown.Name = "ExtruderMaxTemp_numericUpDown";
             this.ExtruderMaxTemp_numericUpDown.Size = new System.Drawing.Size(69, 24);
@@ -201,7 +258,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(237, 65);
+            this.label10.Location = new System.Drawing.Point(240, 65);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(36, 13);
             this.label10.TabIndex = 21;
@@ -210,6 +267,7 @@
             // ZaxisMaxTemp_numericUpDown
             // 
             this.ZaxisMaxTemp_numericUpDown.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ZaxisMaxTemp_numericUpDown.ForeColor = System.Drawing.Color.Black;
             this.ZaxisMaxTemp_numericUpDown.Location = new System.Drawing.Point(228, 81);
             this.ZaxisMaxTemp_numericUpDown.Name = "ZaxisMaxTemp_numericUpDown";
             this.ZaxisMaxTemp_numericUpDown.Size = new System.Drawing.Size(69, 24);
@@ -225,7 +283,7 @@
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Location = new System.Drawing.Point(9, 100);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(399, 70);
+            this.groupBox4.Size = new System.Drawing.Size(380, 70);
             this.groupBox4.TabIndex = 27;
             this.groupBox4.TabStop = false;
             // 
@@ -234,15 +292,16 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label4.Location = new System.Drawing.Point(52, 36);
+            this.label4.Location = new System.Drawing.Point(37, 35);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(170, 16);
+            this.label4.Size = new System.Drawing.Size(185, 16);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Set coolant max temperature:";
+            this.label4.Text = "Set coolant trigger temperature:";
             // 
             // Tank2MaxTemp_numericUpDown
             // 
             this.Tank2MaxTemp_numericUpDown.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tank2MaxTemp_numericUpDown.ForeColor = System.Drawing.Color.Black;
             this.Tank2MaxTemp_numericUpDown.Location = new System.Drawing.Point(309, 34);
             this.Tank2MaxTemp_numericUpDown.Name = "Tank2MaxTemp_numericUpDown";
             this.Tank2MaxTemp_numericUpDown.Size = new System.Drawing.Size(69, 24);
@@ -252,6 +311,7 @@
             // Tank1MaxTemp_numericUpDown
             // 
             this.Tank1MaxTemp_numericUpDown.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tank1MaxTemp_numericUpDown.ForeColor = System.Drawing.Color.Black;
             this.Tank1MaxTemp_numericUpDown.Location = new System.Drawing.Point(228, 33);
             this.Tank1MaxTemp_numericUpDown.Name = "Tank1MaxTemp_numericUpDown";
             this.Tank1MaxTemp_numericUpDown.Size = new System.Drawing.Size(69, 24);
@@ -296,7 +356,7 @@
             this.MaxTempUpdate_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.MaxTempUpdate_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaxTempUpdate_button.ForeColor = System.Drawing.Color.DarkGreen;
-            this.MaxTempUpdate_button.Location = new System.Drawing.Point(333, 296);
+            this.MaxTempUpdate_button.Location = new System.Drawing.Point(233, 292);
             this.MaxTempUpdate_button.Name = "MaxTempUpdate_button";
             this.MaxTempUpdate_button.Size = new System.Drawing.Size(75, 23);
             this.MaxTempUpdate_button.TabIndex = 1;
@@ -306,6 +366,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.BackColor = System.Drawing.SystemColors.ControlLight;
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.HotSideMaxTemp_numericUpDown);
             this.groupBox3.Controls.Add(this.CoolSideMaxTemp_numericUpDown);
@@ -313,7 +374,7 @@
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Location = new System.Drawing.Point(9, 25);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(399, 69);
+            this.groupBox3.Size = new System.Drawing.Size(380, 69);
             this.groupBox3.TabIndex = 26;
             this.groupBox3.TabStop = false;
             // 
@@ -322,15 +383,16 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label1.Location = new System.Drawing.Point(25, 31);
+            this.label1.Location = new System.Drawing.Point(10, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(197, 16);
+            this.label1.Size = new System.Drawing.Size(212, 16);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Set peltier block max temperature:";
+            this.label1.Text = "Set peltier block trigger temperature:";
             // 
             // HotSideMaxTemp_numericUpDown
             // 
             this.HotSideMaxTemp_numericUpDown.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HotSideMaxTemp_numericUpDown.ForeColor = System.Drawing.Color.Black;
             this.HotSideMaxTemp_numericUpDown.Location = new System.Drawing.Point(309, 29);
             this.HotSideMaxTemp_numericUpDown.Name = "HotSideMaxTemp_numericUpDown";
             this.HotSideMaxTemp_numericUpDown.Size = new System.Drawing.Size(69, 24);
@@ -345,6 +407,7 @@
             // CoolSideMaxTemp_numericUpDown
             // 
             this.CoolSideMaxTemp_numericUpDown.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CoolSideMaxTemp_numericUpDown.ForeColor = System.Drawing.Color.Black;
             this.CoolSideMaxTemp_numericUpDown.Location = new System.Drawing.Point(228, 29);
             this.CoolSideMaxTemp_numericUpDown.Name = "CoolSideMaxTemp_numericUpDown";
             this.CoolSideMaxTemp_numericUpDown.Size = new System.Drawing.Size(69, 24);
@@ -389,6 +452,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.LabelColorSet_button);
             this.groupBox2.Controls.Add(this.LabelForeColor_textbox);
@@ -403,7 +467,7 @@
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.DarkBlue;
-            this.groupBox2.Location = new System.Drawing.Point(432, 12);
+            this.groupBox2.Location = new System.Drawing.Point(410, 9);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(269, 140);
             this.groupBox2.TabIndex = 1;
@@ -436,6 +500,7 @@
             // LabelForeColor_textbox
             // 
             this.LabelForeColor_textbox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.LabelForeColor_textbox.ForeColor = System.Drawing.Color.Black;
             this.LabelForeColor_textbox.Location = new System.Drawing.Point(86, 109);
             this.LabelForeColor_textbox.Name = "LabelForeColor_textbox";
             this.LabelForeColor_textbox.Size = new System.Drawing.Size(103, 22);
@@ -457,6 +522,7 @@
             // AlertLabelForeColor_textbox
             // 
             this.AlertLabelForeColor_textbox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.AlertLabelForeColor_textbox.ForeColor = System.Drawing.Color.Black;
             this.AlertLabelForeColor_textbox.Location = new System.Drawing.Point(86, 81);
             this.AlertLabelForeColor_textbox.Name = "AlertLabelForeColor_textbox";
             this.AlertLabelForeColor_textbox.Size = new System.Drawing.Size(103, 22);
@@ -501,6 +567,7 @@
             // AlertC2_textBox
             // 
             this.AlertC2_textBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.AlertC2_textBox.ForeColor = System.Drawing.Color.Black;
             this.AlertC2_textBox.Location = new System.Drawing.Point(86, 53);
             this.AlertC2_textBox.Name = "AlertC2_textBox";
             this.AlertC2_textBox.Size = new System.Drawing.Size(103, 22);
@@ -509,11 +576,11 @@
             // AlertC1_textBox
             // 
             this.AlertC1_textBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.AlertC1_textBox.ForeColor = System.Drawing.Color.Black;
             this.AlertC1_textBox.Location = new System.Drawing.Point(86, 25);
             this.AlertC1_textBox.Name = "AlertC1_textBox";
             this.AlertC1_textBox.Size = new System.Drawing.Size(103, 22);
             this.AlertC1_textBox.TabIndex = 2;
-            this.AlertC1_textBox.TextChanged += new System.EventHandler(this.AlertC1_textBox_TextChanged);
             // 
             // label13
             // 
@@ -537,6 +604,7 @@
             // 
             // HighTempBlinkDelay_numericUpDown
             // 
+            this.HighTempBlinkDelay_numericUpDown.ForeColor = System.Drawing.Color.Black;
             this.HighTempBlinkDelay_numericUpDown.Location = new System.Drawing.Point(87, 23);
             this.HighTempBlinkDelay_numericUpDown.Maximum = new decimal(new int[] {
             5500,
@@ -572,7 +640,7 @@
             // HighTempAlertText_textBox
             // 
             this.HighTempAlertText_textBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
-            this.HighTempAlertText_textBox.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.HighTempAlertText_textBox.ForeColor = System.Drawing.Color.Black;
             this.HighTempAlertText_textBox.Location = new System.Drawing.Point(87, 49);
             this.HighTempAlertText_textBox.Name = "HighTempAlertText_textBox";
             this.HighTempAlertText_textBox.Size = new System.Drawing.Size(176, 22);
@@ -583,7 +651,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label14.Location = new System.Drawing.Point(12, 58);
+            this.label14.Location = new System.Drawing.Point(15, 58);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(66, 13);
             this.label14.TabIndex = 6;
@@ -591,35 +659,419 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.BackColor = System.Drawing.SystemColors.ControlLight;
             this.groupBox6.Controls.Add(this.label15);
             this.groupBox6.Controls.Add(this.HighTempAlertText_textBox);
             this.groupBox6.Controls.Add(this.label14);
             this.groupBox6.Controls.Add(this.HighTempBlinkDelay_numericUpDown);
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.groupBox6.ForeColor = System.Drawing.Color.DarkBlue;
-            this.groupBox6.Location = new System.Drawing.Point(432, 158);
+            this.groupBox6.Location = new System.Drawing.Point(410, 155);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(269, 86);
             this.groupBox6.TabIndex = 10;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Other Settings";
+            this.groupBox6.Text = "Miscellaneous Settings";
+            // 
+            // HighTempAlertOptions_groupBox
+            // 
+            this.HighTempAlertOptions_groupBox.BackColor = System.Drawing.SystemColors.Control;
+            this.HighTempAlertOptions_groupBox.Controls.Add(this.groupBox1);
+            this.HighTempAlertOptions_groupBox.Controls.Add(this.groupBox6);
+            this.HighTempAlertOptions_groupBox.Controls.Add(this.groupBox2);
+            this.HighTempAlertOptions_groupBox.Location = new System.Drawing.Point(3, 27);
+            this.HighTempAlertOptions_groupBox.Name = "HighTempAlertOptions_groupBox";
+            this.HighTempAlertOptions_groupBox.Size = new System.Drawing.Size(688, 340);
+            this.HighTempAlertOptions_groupBox.TabIndex = 12;
+            this.HighTempAlertOptions_groupBox.TabStop = false;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.HighTempAlertOptions_MenuItem,
+            this.advancedSettingsToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1440, 24);
+            this.menuStrip1.TabIndex = 13;
+            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
+            // 
+            // HighTempAlertOptions_MenuItem
+            // 
+            this.HighTempAlertOptions_MenuItem.Name = "HighTempAlertOptions_MenuItem";
+            this.HighTempAlertOptions_MenuItem.Size = new System.Drawing.Size(150, 20);
+            this.HighTempAlertOptions_MenuItem.Text = "High Temp Alert Options";
+            this.HighTempAlertOptions_MenuItem.Click += new System.EventHandler(this.HighTempAlertOptions_MenuItem_Click);
+            // 
+            // advancedSettingsToolStripMenuItem
+            // 
+            this.advancedSettingsToolStripMenuItem.Name = "advancedSettingsToolStripMenuItem";
+            this.advancedSettingsToolStripMenuItem.Size = new System.Drawing.Size(117, 20);
+            this.advancedSettingsToolStripMenuItem.Text = "Advanced Settings";
+            this.advancedSettingsToolStripMenuItem.Click += new System.EventHandler(this.advancedSettingsToolStripMenuItem_Click);
+            // 
+            // HighTempAlertAdvancedSettings_groupbox
+            // 
+            this.HighTempAlertAdvancedSettings_groupbox.Controls.Add(this.groupBox8);
+            this.HighTempAlertAdvancedSettings_groupbox.Controls.Add(this.groupBox7);
+            this.HighTempAlertAdvancedSettings_groupbox.Controls.Add(this.label17);
+            this.HighTempAlertAdvancedSettings_groupbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.HighTempAlertAdvancedSettings_groupbox.ForeColor = System.Drawing.Color.DarkBlue;
+            this.HighTempAlertAdvancedSettings_groupbox.Location = new System.Drawing.Point(697, 27);
+            this.HighTempAlertAdvancedSettings_groupbox.Name = "HighTempAlertAdvancedSettings_groupbox";
+            this.HighTempAlertAdvancedSettings_groupbox.Size = new System.Drawing.Size(688, 340);
+            this.HighTempAlertAdvancedSettings_groupbox.TabIndex = 15;
+            this.HighTempAlertAdvancedSettings_groupbox.TabStop = false;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label17.Location = new System.Drawing.Point(6, 34);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(0, 13);
+            this.label17.TabIndex = 2;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.groupBox7.Controls.Add(this.label27);
+            this.groupBox7.Controls.Add(this.ASFCommandZaxis_textBox);
+            this.groupBox7.Controls.Add(this.ASFCommandExtruder_textBox);
+            this.groupBox7.Controls.Add(this.label26);
+            this.groupBox7.Controls.Add(this.label25);
+            this.groupBox7.Controls.Add(this.ASFCommandYaxis_textBox);
+            this.groupBox7.Controls.Add(this.ASFCommandXaxis_textBox);
+            this.groupBox7.Controls.Add(this.label24);
+            this.groupBox7.Controls.Add(this.ASFCommandCT2_textBox);
+            this.groupBox7.Controls.Add(this.label23);
+            this.groupBox7.Controls.Add(this.ASFCommandCT1_textBox);
+            this.groupBox7.Controls.Add(this.label22);
+            this.groupBox7.Controls.Add(this.ASFCommandPBT2_textBox);
+            this.groupBox7.Controls.Add(this.ASFCommandPBT1_textBox);
+            this.groupBox7.Controls.Add(this.label21);
+            this.groupBox7.Controls.Add(this.label20);
+            this.groupBox7.Controls.Add(this.label19);
+            this.groupBox7.Controls.Add(this.textBox1);
+            this.groupBox7.ForeColor = System.Drawing.Color.DarkBlue;
+            this.groupBox7.Location = new System.Drawing.Point(6, 9);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(529, 229);
+            this.groupBox7.TabIndex = 3;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "M-CODE Settings";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.AliceBlue;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.textBox1.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.textBox1.Location = new System.Drawing.Point(6, 22);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(517, 53);
+            this.textBox1.TabIndex = 8;
+            this.textBox1.Text = "Define M-Code command for \'Auto security feature\'. \r\nNOTE: This command will be e" +
+    "xecuted when temperature exceeds Max Trigger Temperature. (High Temp Alert notif" +
+    "ication)";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label19.Location = new System.Drawing.Point(6, 88);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(145, 13);
+            this.label19.TabIndex = 16;
+            this.label19.Text = "Define M-CODES below:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label20.Location = new System.Drawing.Point(6, 118);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(141, 13);
+            this.label20.TabIndex = 17;
+            this.label20.Text = "Peltier Block Cool Side:";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label21.Location = new System.Drawing.Point(11, 146);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(136, 13);
+            this.label21.TabIndex = 18;
+            this.label21.Text = "Peltier Block Hot Side:";
+            // 
+            // ASFCommandPBT1_textBox
+            // 
+            this.ASFCommandPBT1_textBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ASFCommandPBT1_textBox.ForeColor = System.Drawing.Color.Black;
+            this.ASFCommandPBT1_textBox.Location = new System.Drawing.Point(153, 109);
+            this.ASFCommandPBT1_textBox.Name = "ASFCommandPBT1_textBox";
+            this.ASFCommandPBT1_textBox.Size = new System.Drawing.Size(103, 22);
+            this.ASFCommandPBT1_textBox.TabIndex = 19;
+            this.ASFCommandPBT1_textBox.Text = "AS405";
+            this.ASFCommandPBT1_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ASFCommandPBT1_textBox.TextChanged += new System.EventHandler(this.ASFCommandPBT1_textBox_TextChanged);
+            // 
+            // ASFCommandPBT2_textBox
+            // 
+            this.ASFCommandPBT2_textBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ASFCommandPBT2_textBox.ForeColor = System.Drawing.Color.Black;
+            this.ASFCommandPBT2_textBox.Location = new System.Drawing.Point(153, 137);
+            this.ASFCommandPBT2_textBox.Name = "ASFCommandPBT2_textBox";
+            this.ASFCommandPBT2_textBox.Size = new System.Drawing.Size(103, 22);
+            this.ASFCommandPBT2_textBox.TabIndex = 20;
+            this.ASFCommandPBT2_textBox.Text = "AS406";
+            this.ASFCommandPBT2_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ASFCommandPBT2_textBox.TextChanged += new System.EventHandler(this.ASFCommandPBT2_textBox_TextChanged);
+            // 
+            // ASFCommandCT1_textBox
+            // 
+            this.ASFCommandCT1_textBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ASFCommandCT1_textBox.ForeColor = System.Drawing.Color.Black;
+            this.ASFCommandCT1_textBox.Location = new System.Drawing.Point(153, 165);
+            this.ASFCommandCT1_textBox.Name = "ASFCommandCT1_textBox";
+            this.ASFCommandCT1_textBox.Size = new System.Drawing.Size(103, 22);
+            this.ASFCommandCT1_textBox.TabIndex = 22;
+            this.ASFCommandCT1_textBox.Text = "AS407";
+            this.ASFCommandCT1_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ASFCommandCT1_textBox.TextChanged += new System.EventHandler(this.ASFCommandCT1_textBox_TextChanged);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label22.Location = new System.Drawing.Point(45, 174);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(102, 13);
+            this.label22.TabIndex = 21;
+            this.label22.Text = "Coolant TANK 1:";
+            // 
+            // ASFCommandCT2_textBox
+            // 
+            this.ASFCommandCT2_textBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ASFCommandCT2_textBox.ForeColor = System.Drawing.Color.Black;
+            this.ASFCommandCT2_textBox.Location = new System.Drawing.Point(153, 193);
+            this.ASFCommandCT2_textBox.Name = "ASFCommandCT2_textBox";
+            this.ASFCommandCT2_textBox.Size = new System.Drawing.Size(103, 22);
+            this.ASFCommandCT2_textBox.TabIndex = 24;
+            this.ASFCommandCT2_textBox.Text = "AS408";
+            this.ASFCommandCT2_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ASFCommandCT2_textBox.TextChanged += new System.EventHandler(this.ASFCommandCT2_textBox_TextChanged);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label23.Location = new System.Drawing.Point(45, 202);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(102, 13);
+            this.label23.TabIndex = 23;
+            this.label23.Text = "Coolant TANK 2:";
+            // 
+            // ASFCommandXaxis_textBox
+            // 
+            this.ASFCommandXaxis_textBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ASFCommandXaxis_textBox.ForeColor = System.Drawing.Color.Black;
+            this.ASFCommandXaxis_textBox.Location = new System.Drawing.Point(396, 109);
+            this.ASFCommandXaxis_textBox.Name = "ASFCommandXaxis_textBox";
+            this.ASFCommandXaxis_textBox.Size = new System.Drawing.Size(103, 22);
+            this.ASFCommandXaxis_textBox.TabIndex = 26;
+            this.ASFCommandXaxis_textBox.Text = "AS409";
+            this.ASFCommandXaxis_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ASFCommandXaxis_textBox.TextChanged += new System.EventHandler(this.ASFCommandXaxis_textBox_TextChanged);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label24.Location = new System.Drawing.Point(303, 118);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(87, 13);
+            this.label24.TabIndex = 25;
+            this.label24.Text = "X AXIS Motor:";
+            // 
+            // ASFCommandYaxis_textBox
+            // 
+            this.ASFCommandYaxis_textBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ASFCommandYaxis_textBox.ForeColor = System.Drawing.Color.Black;
+            this.ASFCommandYaxis_textBox.Location = new System.Drawing.Point(396, 137);
+            this.ASFCommandYaxis_textBox.Name = "ASFCommandYaxis_textBox";
+            this.ASFCommandYaxis_textBox.Size = new System.Drawing.Size(103, 22);
+            this.ASFCommandYaxis_textBox.TabIndex = 28;
+            this.ASFCommandYaxis_textBox.Text = "AS410";
+            this.ASFCommandYaxis_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ASFCommandYaxis_textBox.TextChanged += new System.EventHandler(this.ASFCommandYaxis_textBox_TextChanged);
+            // 
+            // ASFCommandExtruder_textBox
+            // 
+            this.ASFCommandExtruder_textBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ASFCommandExtruder_textBox.ForeColor = System.Drawing.Color.Black;
+            this.ASFCommandExtruder_textBox.Location = new System.Drawing.Point(396, 193);
+            this.ASFCommandExtruder_textBox.Name = "ASFCommandExtruder_textBox";
+            this.ASFCommandExtruder_textBox.Size = new System.Drawing.Size(103, 22);
+            this.ASFCommandExtruder_textBox.TabIndex = 30;
+            this.ASFCommandExtruder_textBox.Text = "AS412";
+            this.ASFCommandExtruder_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ASFCommandExtruder_textBox.TextChanged += new System.EventHandler(this.ASFCommandExtruder_textBox_TextChanged);
+            // 
+            // ASFCommandZaxis_textBox
+            // 
+            this.ASFCommandZaxis_textBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ASFCommandZaxis_textBox.ForeColor = System.Drawing.Color.Black;
+            this.ASFCommandZaxis_textBox.Location = new System.Drawing.Point(396, 167);
+            this.ASFCommandZaxis_textBox.Name = "ASFCommandZaxis_textBox";
+            this.ASFCommandZaxis_textBox.Size = new System.Drawing.Size(103, 22);
+            this.ASFCommandZaxis_textBox.TabIndex = 32;
+            this.ASFCommandZaxis_textBox.Text = "AS411";
+            this.ASFCommandZaxis_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ASFCommandZaxis_textBox.TextChanged += new System.EventHandler(this.ASFCommandZaxis_textBox_TextChanged);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label25.Location = new System.Drawing.Point(303, 146);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(87, 13);
+            this.label25.TabIndex = 33;
+            this.label25.Text = "Y AXIS Motor:";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label26.Location = new System.Drawing.Point(303, 174);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(87, 13);
+            this.label26.TabIndex = 34;
+            this.label26.Text = "Z AXIS Motor:";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label27.Location = new System.Drawing.Point(275, 202);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(115, 13);
+            this.label27.TabIndex = 35;
+            this.label27.Text = "EXTRUDER Motor:";
+            this.label27.Click += new System.EventHandler(this.label27_Click);
+            // 
+            // AlertCount_checkBox
+            // 
+            this.AlertCount_checkBox.AutoSize = true;
+            this.AlertCount_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.AlertCount_checkBox.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.AlertCount_checkBox.Location = new System.Drawing.Point(6, 22);
+            this.AlertCount_checkBox.Name = "AlertCount_checkBox";
+            this.AlertCount_checkBox.Size = new System.Drawing.Size(243, 17);
+            this.AlertCount_checkBox.TabIndex = 58;
+            this.AlertCount_checkBox.Text = "Use default command execution trigger count:";
+            this.AlertCount_checkBox.UseVisualStyleBackColor = true;
+            this.AlertCount_checkBox.CheckedChanged += new System.EventHandler(this.AlertCount_checkBox_CheckedChanged);
+            // 
+            // AlertCustomCount_textBox
+            // 
+            this.AlertCustomCount_textBox.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold);
+            this.AlertCustomCount_textBox.ForeColor = System.Drawing.Color.Black;
+            this.AlertCustomCount_textBox.Location = new System.Drawing.Point(255, 19);
+            this.AlertCustomCount_textBox.Name = "AlertCustomCount_textBox";
+            this.AlertCustomCount_textBox.Size = new System.Drawing.Size(61, 24);
+            this.AlertCustomCount_textBox.TabIndex = 60;
+            this.AlertCustomCount_textBox.Text = "5";
+            this.AlertCustomCount_textBox.TextChanged += new System.EventHandler(this.AlertCustomCount_textBox_TextChanged);
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.groupBox8.Controls.Add(this.OpenFile_button);
+            this.groupBox8.Controls.Add(this.LogFilePath_textBox);
+            this.groupBox8.Controls.Add(this.label29);
+            this.groupBox8.Controls.Add(this.oia_label);
+            this.groupBox8.Controls.Add(this.AlertCount_checkBox);
+            this.groupBox8.Controls.Add(this.AlertCustomCount_textBox);
+            this.groupBox8.ForeColor = System.Drawing.Color.DarkBlue;
+            this.groupBox8.Location = new System.Drawing.Point(6, 244);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(529, 90);
+            this.groupBox8.TabIndex = 61;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Miscellaneous Options";
+            // 
+            // oia_label
+            // 
+            this.oia_label.AutoSize = true;
+            this.oia_label.ForeColor = System.Drawing.Color.IndianRed;
+            this.oia_label.Location = new System.Drawing.Point(321, 23);
+            this.oia_label.Name = "oia_label";
+            this.oia_label.Size = new System.Drawing.Size(167, 13);
+            this.oia_label.TabIndex = 61;
+            this.oia_label.Text = "(only integer value allowed!)";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label29.Location = new System.Drawing.Point(164, 58);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(85, 13);
+            this.label29.TabIndex = 62;
+            this.label29.Text = "Log File path:";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // LogFilePath_textBox
+            // 
+            this.LogFilePath_textBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.LogFilePath_textBox.Location = new System.Drawing.Point(254, 49);
+            this.LogFilePath_textBox.Name = "LogFilePath_textBox";
+            this.LogFilePath_textBox.Size = new System.Drawing.Size(144, 22);
+            this.LogFilePath_textBox.TabIndex = 63;
+            // 
+            // OpenFile_button
+            // 
+            this.OpenFile_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.OpenFile_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OpenFile_button.ForeColor = System.Drawing.Color.DarkGreen;
+            this.OpenFile_button.Location = new System.Drawing.Point(404, 48);
+            this.OpenFile_button.Name = "OpenFile_button";
+            this.OpenFile_button.Size = new System.Drawing.Size(63, 23);
+            this.OpenFile_button.TabIndex = 64;
+            this.OpenFile_button.Text = "open file";
+            this.OpenFile_button.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.OpenFile_button.UseVisualStyleBackColor = true;
             // 
             // TemperatureSettings
             // 
             this.AcceptButton = this.MaxTempUpdate_button;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(716, 396);
-            this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(1440, 578);
+            this.Controls.Add(this.HighTempAlertAdvancedSettings_groupbox);
+            this.Controls.Add(this.HighTempAlertOptions_groupBox);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.IsMdiContainer = true;
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "TemperatureSettings";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Temperature Settings";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.TemperatureSettings_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -642,7 +1094,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.HighTempBlinkDelay_numericUpDown)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.HighTempAlertOptions_groupBox.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.HighTempAlertAdvancedSettings_groupbox.ResumeLayout(false);
+            this.HighTempAlertAdvancedSettings_groupbox.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -694,5 +1156,39 @@
         private System.Windows.Forms.TextBox LabelForeColor_textbox;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button Reset_button;
+        private System.Windows.Forms.GroupBox HighTempAlertOptions_groupBox;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem HighTempAlertOptions_MenuItem;
+        private System.Windows.Forms.ToolStripMenuItem advancedSettingsToolStripMenuItem;
+        private System.Windows.Forms.GroupBox HighTempAlertAdvancedSettings_groupbox;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox ASFCommandPBT2_textBox;
+        private System.Windows.Forms.TextBox ASFCommandPBT1_textBox;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox ASFCommandCT1_textBox;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox ASFCommandCT2_textBox;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox ASFCommandZaxis_textBox;
+        private System.Windows.Forms.TextBox ASFCommandExtruder_textBox;
+        private System.Windows.Forms.TextBox ASFCommandYaxis_textBox;
+        private System.Windows.Forms.TextBox ASFCommandXaxis_textBox;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.CheckBox AlertCount_checkBox;
+        private System.Windows.Forms.TextBox AlertCustomCount_textBox;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label oia_label;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox LogFilePath_textBox;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button OpenFile_button;
     }
 }

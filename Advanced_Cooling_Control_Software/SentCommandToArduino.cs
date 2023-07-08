@@ -8,13 +8,15 @@ namespace Advanced_Cooling_Control_Software
     public partial class SentCommandToArduino : Form
     {
         readonly SerialPort serialport1;
+        public static bool SentCommandDirectly_checkState = false;
+
         public SentCommandToArduino(SerialPort serialPort)
         {
             serialport1 = serialPort;
             InitializeComponent();
             if (serialport1.IsOpen)
             {
-                Sent_textBox.Text = "Connected: " + serialport1.PortName + " @ " + serialport1.BaudRate;
+                Sent_textBox.Text = "Connected: " + serialport1.PortName + " @" + serialport1.BaudRate;
                 Status_label.Text = "ONLINE";
                 Sent_textBox.BackColor = SystemColors.MenuHighlight;
                 Sent_textBox.ForeColor = SystemColors.Window;
@@ -84,6 +86,11 @@ namespace Advanced_Cooling_Control_Software
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void SentCommandDirectly_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            SentCommandDirectly_checkState = SentCommandDirectly_checkBox.Checked;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Advanced_Cooling_Control_Software
@@ -33,17 +34,62 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (CommandFilePath_textBox.Text.Length != 0)
                 {
-                    DecodeMsg_textBox.Text = decode.SearchCmdInDict(Command_textBox.Text.ToUpper(), CommandFilePath_textBox.Text);
-                    Status_textBox.Text = "command sent successfull";
-                    Status_textBox.BackColor = SystemColors.MenuHighlight;
-                    Status_textBox.ForeColor = SystemColors.Window;
+                    if (File.Exists(CommandFilePath_textBox.Text))
+                    {
+                        try
+                        {
+                            DecodeMsg_textBox.Text = decode.SearchCmdInDict(Command_textBox.Text.ToUpper(), CommandFilePath_textBox.Text);
+                            if (DecodeMsg_textBox.Text.Trim() != Decode.KeyNotfoundstr.Trim())
+                            {
+                                Status_textBox.Text = "command decode successfull";
+                                Status_textBox.BackColor = SystemColors.MenuHighlight;
+                                Status_textBox.ForeColor = SystemColors.Window;
+                            }
+                            else
+                            {
+                                Status_textBox.Text = Decode.KeyNotfoundstr;
+                                Status_textBox.BackColor = Color.Crimson;
+                                Status_textBox.ForeColor = SystemColors.Window;
+                            }
+                        }
+                        catch
+                        {
+                            Status_textBox.Text = "unable to decode command!";
+                            Status_textBox.BackColor = Color.Crimson;
+                            Status_textBox.ForeColor = SystemColors.Window;
+                        }
+                    }
+                    else
+                    {
+                        Status_textBox.Text = "Code file path not exists!";
+                        Status_textBox.BackColor = Color.Crimson;
+                        Status_textBox.ForeColor = SystemColors.Window;
+                    }
                 }
                 else
                 {
-                    DecodeMsg_textBox.Text = decode.SearchCmdInDict(Command_textBox.Text.ToUpper());
-                    Status_textBox.Text = "command sent successfull";
-                    Status_textBox.BackColor = SystemColors.MenuHighlight;
-                    Status_textBox.ForeColor = SystemColors.Window;
+                    try
+                    {
+                        DecodeMsg_textBox.Text = decode.SearchCmdInDict(Command_textBox.Text.ToUpper());
+                        if (DecodeMsg_textBox.Text.Trim() != Decode.KeyNotfoundstr.Trim())
+                        {
+                            Status_textBox.Text = "command decode successfull";
+                            Status_textBox.BackColor = SystemColors.MenuHighlight;
+                            Status_textBox.ForeColor = SystemColors.Window;
+                        }
+                        else
+                        {
+                            Status_textBox.Text = Decode.KeyNotfoundstr;
+                            Status_textBox.BackColor = Color.Crimson;
+                            Status_textBox.ForeColor = SystemColors.Window;
+                        }
+                    }
+                    catch
+                    {
+                        Status_textBox.Text = "unable to decode command!";
+                        Status_textBox.BackColor = Color.Crimson;
+                        Status_textBox.ForeColor = SystemColors.Window;
+                    }
                 }
             }
             else
@@ -92,8 +138,9 @@ namespace Advanced_Cooling_Control_Software
         private void Command_textBox_TextChanged(object sender, EventArgs e)
         {
             Status_textBox.Text = "";
-            Status_textBox.BackColor = SystemColors.ControlLightLight;
+            Status_textBox.BackColor = Color.DarkGray;
             Status_textBox.ForeColor = SystemColors.Window;
+            DecodeMsg_textBox.Text = "";
         }
     }
 }

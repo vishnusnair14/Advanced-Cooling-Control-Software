@@ -190,11 +190,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(382, 276);
+            this.ControlBox = false;
             this.Controls.Add(this.CloseCommand_MaplinkLabel);
             this.Controls.Add(this.OpenCommand_MaplinkLabel);
             this.Controls.Add(this.Decode_groupBox);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
             this.Name = "DecodeCommands";
             this.ShowInTaskbar = false;
             this.Text = "Decode Commands";

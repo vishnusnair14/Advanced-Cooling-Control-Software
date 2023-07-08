@@ -31,13 +31,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Status_label = new System.Windows.Forms.Label();
             this.Sent_groupBox = new System.Windows.Forms.GroupBox();
+            this.SentCommandDirectly_checkBox = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.Sent_textBox = new System.Windows.Forms.TextBox();
             this.GetInfo_button = new System.Windows.Forms.Button();
             this.SentCommand_button = new System.Windows.Forms.Button();
             this.Command_textBox = new System.Windows.Forms.TextBox();
             this.Decode_groupBox = new System.Windows.Forms.GroupBox();
             this.decodeMsg_textBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.Sent_groupBox.SuspendLayout();
             this.Decode_groupBox.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +67,7 @@
             // 
             // Sent_groupBox
             // 
+            this.Sent_groupBox.Controls.Add(this.SentCommandDirectly_checkBox);
             this.Sent_groupBox.Controls.Add(this.label2);
             this.Sent_groupBox.Controls.Add(this.Sent_textBox);
             this.Sent_groupBox.Controls.Add(this.GetInfo_button);
@@ -75,10 +77,34 @@
             this.Sent_groupBox.Controls.Add(this.label1);
             this.Sent_groupBox.Location = new System.Drawing.Point(66, 12);
             this.Sent_groupBox.Name = "Sent_groupBox";
-            this.Sent_groupBox.Size = new System.Drawing.Size(244, 148);
+            this.Sent_groupBox.Size = new System.Drawing.Size(244, 153);
             this.Sent_groupBox.TabIndex = 4;
             this.Sent_groupBox.TabStop = false;
             this.Sent_groupBox.Text = "Sent Command";
+            // 
+            // SentCommandDirectly_checkBox
+            // 
+            this.SentCommandDirectly_checkBox.AutoSize = true;
+            this.SentCommandDirectly_checkBox.BackColor = System.Drawing.Color.Transparent;
+            this.SentCommandDirectly_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.SentCommandDirectly_checkBox.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.SentCommandDirectly_checkBox.Location = new System.Drawing.Point(5, 131);
+            this.SentCommandDirectly_checkBox.Name = "SentCommandDirectly_checkBox";
+            this.SentCommandDirectly_checkBox.Size = new System.Drawing.Size(192, 17);
+            this.SentCommandDirectly_checkBox.TabIndex = 73;
+            this.SentCommandDirectly_checkBox.Text = "Sent commands from serial console";
+            this.SentCommandDirectly_checkBox.UseVisualStyleBackColor = false;
+            this.SentCommandDirectly_checkBox.CheckedChanged += new System.EventHandler(this.SentCommandDirectly_checkBox_CheckedChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(20, 47);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 13);
+            this.label2.TabIndex = 64;
+            this.label2.Text = "Commands:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // Sent_textBox
             // 
@@ -125,7 +151,7 @@
             // Decode_groupBox
             // 
             this.Decode_groupBox.Controls.Add(this.decodeMsg_textBox);
-            this.Decode_groupBox.Location = new System.Drawing.Point(12, 166);
+            this.Decode_groupBox.Location = new System.Drawing.Point(10, 171);
             this.Decode_groupBox.Name = "Decode_groupBox";
             this.Decode_groupBox.Size = new System.Drawing.Size(358, 104);
             this.Decode_groupBox.TabIndex = 5;
@@ -140,16 +166,6 @@
             this.decodeMsg_textBox.Size = new System.Drawing.Size(346, 76);
             this.decodeMsg_textBox.TabIndex = 0;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 47);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 13);
-            this.label2.TabIndex = 64;
-            this.label2.Text = "Commands:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
             // SentCommandToArduino
             // 
             this.AcceptButton = this.SentCommand_button;
@@ -157,7 +173,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(382, 276);
+            this.ClientSize = new System.Drawing.Size(380, 280);
             this.ControlBox = false;
             this.Controls.Add(this.Decode_groupBox);
             this.Controls.Add(this.Sent_groupBox);
@@ -167,6 +183,7 @@
             this.Name = "SentCommandToArduino";
             this.ShowInTaskbar = false;
             this.Text = "Sent_Commands_to_Arduino";
+            this.TopMost = true;
             this.Sent_groupBox.ResumeLayout(false);
             this.Sent_groupBox.PerformLayout();
             this.Decode_groupBox.ResumeLayout(false);
@@ -186,5 +203,6 @@
         private System.Windows.Forms.GroupBox Decode_groupBox;
         private System.Windows.Forms.TextBox decodeMsg_textBox;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox SentCommandDirectly_checkBox;
     }
 }
