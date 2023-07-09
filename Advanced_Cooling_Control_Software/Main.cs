@@ -135,6 +135,11 @@ namespace Advanced_Cooling_Control_Software
 
             FanSpeedControlDeviceList_comboBox.Enabled = false;
             FanSpeedControlDeviceList_comboBox.SelectedIndex = 0;
+
+            AN1_label.Visible = false;
+            AN2_label.Visible = false;
+            AN3_label.Visible = false;
+            AN4_label.Visible = false;
         }
 
 
@@ -1410,7 +1415,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (PBT1_flag == -1 /*@start*/ || PBT1_flag == 0)
                 {
-                    ConsoleWrite("[PBT1-(high temp warning count): " + (BlinkAlert_PBT1_Count + 1)+"]", ConsoleColor.DarkYellow);
+                    ConsoleWrite("[PBT1-(high temp warning count): " + (BlinkAlert_PBT1_Count + 1) + "]", ConsoleColor.DarkYellow);
                     // BlinkAlert_PBT1_Count+= BlinkAlert_PBT1_Count;
                     HighTempBlinkAlert("PBT1", CoolSideTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
@@ -1420,7 +1425,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (PBT2_flag == -1 || PBT2_flag == 0)
                 {
-                    ConsoleWrite("[PBT2-(high temp warning count): " + (BlinkAlert_PBT2_Count + 1)+"]", ConsoleColor.DarkBlue);
+                    ConsoleWrite("[PBT2-(high temp warning count): " + (BlinkAlert_PBT2_Count + 1) + "]", ConsoleColor.DarkBlue);
                     // BlinkAlert_PBT2_Count+= BlinkAlert_PBT2_Count;
                     HighTempBlinkAlert("PBT2", HotSideTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
@@ -1515,11 +1520,19 @@ namespace Advanced_Cooling_Control_Software
         private bool EAFC_CT1_flag = false;
         private bool EAFC_CT2_flag = false; */
 
-        private void AdvSecurityFeature_WatchDog()
+        private void AdvSecurityFeature_WatchDog()   // command executor
         {
             if (BlinkAlert_PBT1_Count > TemperatureSettings.ASF_TRIGGER_COUNT)
             {
+                AN1_label.Enabled = true;
+                AN1_label.Visible = true;
+                AN1_label.Text = TemperatureSettings.AN1_label;
+                AN1_label.BackColor = Color.DarkRed;
+                AN1_label.ForeColor = Color.Yellow;
+                Console.WriteLine("OKKKKKKKKKKK");
                 ExecuteAutoFeatureCommand("PBT1", TemperatureSettings.ASFCommand_PBT1);
+               
+
                 BlinkAlert_PBT1_Count = 0;
             }
             if (BlinkAlert_PBT2_Count > TemperatureSettings.ASF_TRIGGER_COUNT)
@@ -1547,6 +1560,8 @@ namespace Advanced_Cooling_Control_Software
 
         private void Main_Load(object sender, EventArgs e)
         {
+            //AdvancedNotification_groupBox.Enabled   = false;
+
             BeginInvoke(new EventHandler(CheckArduinoComPort_button_Click));
             /*
             Control[] indicatorControlName = { CoolSideTM_label, HotSideTM_label, Tank1TM_label, Tank2TM_label, XAxisTM_label, YAxisTM_label, ZAxisTM_label, ExtruderTM_label };
@@ -1647,6 +1662,8 @@ namespace Advanced_Cooling_Control_Software
         {
             SerialPort_DataLog("sent command success", 'w');
             SerialPort_DataLog("recieve command success", 'r');
+            AN1_label.ForeColor = Color.Yellow;
+            AN1_label.BackColor = Color.DarkRed;
         }
 
 

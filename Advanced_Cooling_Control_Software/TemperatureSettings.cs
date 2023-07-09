@@ -39,6 +39,12 @@ namespace Advanced_Cooling_Control_Software
         public static string ASFCommand_EXTRUDER;
         public static int ASF_TRIGGER_COUNT = 5;
 
+        public static string AN1_label;
+        public static string AN2_label;
+        public static string AN3_label;
+        public static string AN4_label;
+        public static string AN5_label;
+
 
         public TemperatureSettings(Control[] _indicatorControlName)
         {
@@ -49,6 +55,7 @@ namespace Advanced_Cooling_Control_Software
             AlertC1_textBox.BackColor = Color.LightGray;
             AlertC2_textBox.BackColor = Color.LightGray;
             ASFCommandUpdate_button_Click();
+            AdvancedNotificationLabelUpdate();
 
         }
 
@@ -75,7 +82,7 @@ namespace Advanced_Cooling_Control_Software
             LabelForeColor_textbox.ForeColor = labelForeColor;
             LabelForeColor_textbox.Text = labelForeColor.Name;
             HighTempAlertOptions_groupBox.Visible = true;
-            HighTempAlertAdvancedSettings_groupbox.Visible = false;
+            AdvancedSettings_groupbox.Visible = false;
             Size = new Size(712, 412);
 
             AlertCount_checkBox.Checked = true;
@@ -91,6 +98,15 @@ namespace Advanced_Cooling_Control_Software
             ASFCommand_YAXIS = ASFCommandYaxis_textBox.Text;
             ASFCommand_ZAXIS = ASFCommandZaxis_textBox.Text;
             ASFCommand_EXTRUDER = ASFCommandExtruder_textBox.Text;
+        }
+
+
+        private void AdvancedNotificationLabelUpdate()
+        {
+            AN1_label = AN1_NFT_textBox.Text;
+            AN2_label = AN2_NFT_textBox.Text;
+            AN3_label = AN3_NFT_textBox.Text;
+            AN4_label = AN4_NFT_textBox.Text;    
         }
 
 
@@ -260,15 +276,27 @@ namespace Advanced_Cooling_Control_Software
         {
             HighTempAlertOptions_groupBox.Visible = true;
             HighTempAlertOptions_groupBox.Location = new Point(3, 27);
-            HighTempAlertAdvancedSettings_groupbox.Visible = false;
+            AdvancedSettings_groupbox.Visible = false;
+            NotificationSettings_groupBox.Visible = false;
         }
 
-        private void advancedSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AdvancedSettings_MenuItem_Click(object sender, EventArgs e)
         {
-            HighTempAlertAdvancedSettings_groupbox.Visible = true;
-            HighTempAlertAdvancedSettings_groupbox.Location = new Point(3, 27);
+            AdvancedSettings_groupbox.Visible = true;
+            AdvancedSettings_groupbox.Location = new Point(3, 27);
+            HighTempAlertOptions_groupBox.Visible = false;
+            NotificationSettings_groupBox.Visible = false;
+        }
+
+
+        private void NotificationSettings_MenuItem_Click(object sender, EventArgs e)
+        {
+            NotificationSettings_groupBox.Visible = true;
+            NotificationSettings_groupBox.Location = new Point(3, 27);
+            AdvancedSettings_groupbox.Visible = false;
             HighTempAlertOptions_groupBox.Visible = false;
         }
+
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -347,6 +375,11 @@ namespace Advanced_Cooling_Control_Software
         private void ASFCommandExtruder_textBox_TextChanged(object sender, EventArgs e)
         {
             ASFCommandUpdate_button_Click();
+        }
+
+        private void AN1_NFT_textBox_TextChanged(object sender, EventArgs e)
+        {
+            AdvancedNotificationLabelUpdate();
         }
     }
 }

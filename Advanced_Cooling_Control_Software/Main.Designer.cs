@@ -140,11 +140,11 @@
             this.Tank2TM_label = new System.Windows.Forms.Label();
             this.CT1_circularProgressBar = new CircularProgressBar.CircularProgressBar();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
+            this.AdvancedNotification_groupBox = new System.Windows.Forms.GroupBox();
+            this.AN1_label = new System.Windows.Forms.Label();
+            this.AN4_label = new System.Windows.Forms.Label();
+            this.AN3_label = new System.Windows.Forms.Label();
+            this.AN2_label = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.HighTempWarning_checkBox = new System.Windows.Forms.CheckBox();
             this.OpenTempSettings_button = new System.Windows.Forms.Button();
@@ -181,7 +181,7 @@
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox7.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.AdvancedNotification_groupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.MainMenu.SuspendLayout();
             this.SuspendLayout();
@@ -953,14 +953,15 @@
             // 
             // AdvSecurityFeature_checkBox
             // 
+            this.AdvSecurityFeature_checkBox.AutoSize = true;
             this.AdvSecurityFeature_checkBox.BackColor = System.Drawing.SystemColors.Highlight;
             this.AdvSecurityFeature_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.AdvSecurityFeature_checkBox.ForeColor = System.Drawing.Color.White;
             this.AdvSecurityFeature_checkBox.Location = new System.Drawing.Point(6, 52);
             this.AdvSecurityFeature_checkBox.Name = "AdvSecurityFeature_checkBox";
-            this.AdvSecurityFeature_checkBox.Size = new System.Drawing.Size(180, 17);
+            this.AdvSecurityFeature_checkBox.Size = new System.Drawing.Size(198, 17);
             this.AdvSecurityFeature_checkBox.TabIndex = 72;
-            this.AdvSecurityFeature_checkBox.Text = "Enable advance security feature";
+            this.AdvSecurityFeature_checkBox.Text = "Execute advance security command";
             this.InfoToolTip.SetToolTip(this.AdvSecurityFeature_checkBox, "Auto shutdown respective system on High Temp Alert");
             this.AdvSecurityFeature_checkBox.UseVisualStyleBackColor = false;
             this.AdvSecurityFeature_checkBox.CheckedChanged += new System.EventHandler(this.AdvSecurityFeature_checkBox_CheckedChanged);
@@ -1785,7 +1786,7 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.groupBox3);
+            this.groupBox7.Controls.Add(this.AdvancedNotification_groupBox);
             this.groupBox7.Controls.Add(this.groupBox1);
             this.groupBox7.Controls.Add(this.groupBox9);
             this.groupBox7.Controls.Add(this.groupBox8);
@@ -1794,73 +1795,73 @@
             this.groupBox7.ForeColor = System.Drawing.Color.DarkRed;
             this.groupBox7.Location = new System.Drawing.Point(421, 312);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(886, 434);
+            this.groupBox7.Size = new System.Drawing.Size(902, 434);
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Temperature Monitor";
             // 
-            // groupBox3
+            // AdvancedNotification_groupBox
             // 
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Controls.Add(this.label23);
-            this.groupBox3.Controls.Add(this.label21);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.groupBox3.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.groupBox3.Location = new System.Drawing.Point(684, 130);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(195, 298);
-            this.groupBox3.TabIndex = 73;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Advanced Notifications";
+            this.AdvancedNotification_groupBox.Controls.Add(this.AN1_label);
+            this.AdvancedNotification_groupBox.Controls.Add(this.AN4_label);
+            this.AdvancedNotification_groupBox.Controls.Add(this.AN3_label);
+            this.AdvancedNotification_groupBox.Controls.Add(this.AN2_label);
+            this.AdvancedNotification_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.AdvancedNotification_groupBox.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.AdvancedNotification_groupBox.Location = new System.Drawing.Point(684, 130);
+            this.AdvancedNotification_groupBox.Name = "AdvancedNotification_groupBox";
+            this.AdvancedNotification_groupBox.Size = new System.Drawing.Size(211, 298);
+            this.AdvancedNotification_groupBox.TabIndex = 73;
+            this.AdvancedNotification_groupBox.TabStop = false;
+            this.AdvancedNotification_groupBox.Text = "Advanced Notifications";
             // 
-            // label4
+            // AN1_label
             // 
-            this.label4.BackColor = System.Drawing.Color.DarkRed;
-            this.label4.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Yellow;
-            this.label4.Location = new System.Drawing.Point(6, 132);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(183, 33);
-            this.label4.TabIndex = 77;
-            this.label4.Text = "Performed coolant change\r\ncycle - TANK 2";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.AN1_label.BackColor = System.Drawing.SystemColors.Desktop;
+            this.AN1_label.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AN1_label.ForeColor = System.Drawing.Color.Yellow;
+            this.AN1_label.Location = new System.Drawing.Point(14, 25);
+            this.AN1_label.Name = "AN1_label";
+            this.AN1_label.Size = new System.Drawing.Size(183, 33);
+            this.AN1_label.TabIndex = 78;
+            this.AN1_label.Text = "Initiated auto-shutdown\r\n[ Peltier 1 ]";
+            this.AN1_label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label18
+            // AN4_label
             // 
-            this.label18.BackColor = System.Drawing.Color.DarkRed;
-            this.label18.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.Yellow;
-            this.label18.Location = new System.Drawing.Point(6, 21);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(183, 33);
-            this.label18.TabIndex = 73;
-            this.label18.Text = "Initiated auto-shutdown\r\n[ Peltier 1 ]";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.AN4_label.BackColor = System.Drawing.Color.DarkRed;
+            this.AN4_label.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AN4_label.ForeColor = System.Drawing.Color.Yellow;
+            this.AN4_label.Location = new System.Drawing.Point(14, 136);
+            this.AN4_label.Name = "AN4_label";
+            this.AN4_label.Size = new System.Drawing.Size(183, 33);
+            this.AN4_label.TabIndex = 77;
+            this.AN4_label.Text = "Performed coolant change\r\ncycle - TANK 2";
+            this.AN4_label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label23
+            // AN3_label
             // 
-            this.label23.BackColor = System.Drawing.Color.DarkRed;
-            this.label23.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.Color.Yellow;
-            this.label23.Location = new System.Drawing.Point(6, 95);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(183, 33);
-            this.label23.TabIndex = 76;
-            this.label23.Text = "Performed coolant change\r\ncycle - TANK 1";
-            this.label23.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.AN3_label.BackColor = System.Drawing.Color.DarkRed;
+            this.AN3_label.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AN3_label.ForeColor = System.Drawing.Color.Yellow;
+            this.AN3_label.Location = new System.Drawing.Point(14, 99);
+            this.AN3_label.Name = "AN3_label";
+            this.AN3_label.Size = new System.Drawing.Size(183, 33);
+            this.AN3_label.TabIndex = 76;
+            this.AN3_label.Text = "Performed coolant change\r\ncycle - TANK 1";
+            this.AN3_label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label21
+            // AN2_label
             // 
-            this.label21.BackColor = System.Drawing.Color.DarkRed;
-            this.label21.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.Yellow;
-            this.label21.Location = new System.Drawing.Point(6, 58);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(183, 33);
-            this.label21.TabIndex = 75;
-            this.label21.Text = "Initiated auto-shutdown\r\n[ Peltier 2 ]";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.AN2_label.BackColor = System.Drawing.Color.DarkRed;
+            this.AN2_label.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AN2_label.ForeColor = System.Drawing.Color.Yellow;
+            this.AN2_label.Location = new System.Drawing.Point(14, 62);
+            this.AN2_label.Name = "AN2_label";
+            this.AN2_label.Size = new System.Drawing.Size(183, 33);
+            this.AN2_label.TabIndex = 75;
+            this.AN2_label.Text = "Initiated auto-shutdown\r\n[ Peltier 2 ]";
+            this.AN2_label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // groupBox1
             // 
@@ -1871,7 +1872,7 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.groupBox1.Location = new System.Drawing.Point(684, 19);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(195, 105);
+            this.groupBox1.Size = new System.Drawing.Size(211, 105);
             this.groupBox1.TabIndex = 72;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Miscellaneous Options";
@@ -1883,7 +1884,7 @@
             this.HighTempWarning_checkBox.ForeColor = System.Drawing.Color.White;
             this.HighTempWarning_checkBox.Location = new System.Drawing.Point(6, 29);
             this.HighTempWarning_checkBox.Name = "HighTempWarning_checkBox";
-            this.HighTempWarning_checkBox.Size = new System.Drawing.Size(180, 17);
+            this.HighTempWarning_checkBox.Size = new System.Drawing.Size(198, 17);
             this.HighTempWarning_checkBox.TabIndex = 58;
             this.HighTempWarning_checkBox.Text = "Show high temperature warnings";
             this.HighTempWarning_checkBox.UseVisualStyleBackColor = false;
@@ -1912,7 +1913,7 @@
             this.aBOUTToolStripMenuItem});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
-            this.MainMenu.Size = new System.Drawing.Size(1318, 24);
+            this.MainMenu.Size = new System.Drawing.Size(1346, 24);
             this.MainMenu.TabIndex = 59;
             this.MainMenu.Text = "menuStrip1";
             // 
@@ -2018,7 +2019,6 @@
             // 
             // AdvancedSecurityFeature_watchTimer
             // 
-            this.AdvancedSecurityFeature_watchTimer.Interval = 1000;
             this.AdvancedSecurityFeature_watchTimer.Tick += new System.EventHandler(this.AdvancedSecurityFeature_watchTimer_Tick);
             // 
             // Main
@@ -2029,7 +2029,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1318, 826);
+            this.ClientSize = new System.Drawing.Size(1346, 826);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.MainMenu);
@@ -2079,7 +2079,7 @@
             this.groupBox8.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
+            this.AdvancedNotification_groupBox.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.MainMenu.ResumeLayout(false);
@@ -2214,15 +2214,15 @@
         private System.Windows.Forms.Button OpenTempSettings_button;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox AdvSecurityFeature_checkBox;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label AN3_label;
+        private System.Windows.Forms.Label AN2_label;
+        private System.Windows.Forms.Label AN4_label;
+        private System.Windows.Forms.GroupBox AdvancedNotification_groupBox;
         private System.Windows.Forms.RichTextBox SerialMonitor_richTextBox;
         private System.Windows.Forms.RichTextBox ConsoleLog_richTextBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer AdvancedSecurityFeature_watchTimer;
+        private System.Windows.Forms.Label AN1_label;
     }
 }
 
