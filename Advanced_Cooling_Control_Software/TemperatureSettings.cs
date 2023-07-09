@@ -37,6 +37,7 @@ namespace Advanced_Cooling_Control_Software
         public static string ASFCommand_YAXIS;
         public static string ASFCommand_ZAXIS;
         public static string ASFCommand_EXTRUDER;
+        public static int ASF_TRIGGER_COUNT = 5;
 
 
         public TemperatureSettings(Control[] _indicatorControlName)
@@ -48,6 +49,7 @@ namespace Advanced_Cooling_Control_Software
             AlertC1_textBox.BackColor = Color.LightGray;
             AlertC2_textBox.BackColor = Color.LightGray;
             ASFCommandUpdate_button_Click();
+
         }
 
         private void TemperatureSettings_Load(object sender, EventArgs e)
@@ -292,11 +294,20 @@ namespace Advanced_Cooling_Control_Software
             }
         }
 
-        public static int ASF_TRIGGER_COUNT;
+
+
         private void AlertCustomCount_textBox_TextChanged(object sender, EventArgs e)
         {
-            ASF_TRIGGER_COUNT = Convert.ToInt32(AlertCustomCount_textBox.Text);
+            if (AlertCustomCount_textBox.Text.Length == 0)
+            {
+                ASF_TRIGGER_COUNT = 0;
+            }
+            else
+            {
+                ASF_TRIGGER_COUNT = Convert.ToInt32(AlertCustomCount_textBox.Text);
+            }
         }
+
 
         private void ASFCommandPBT1_textBox_TextChanged(object sender, EventArgs e)
         {
