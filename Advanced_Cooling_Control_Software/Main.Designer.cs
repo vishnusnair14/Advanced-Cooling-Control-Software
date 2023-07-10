@@ -91,6 +91,7 @@
             this.Main_SerialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.InfoToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.AdvSecurityFeature_checkBox = new System.Windows.Forms.CheckBox();
+            this.ResetAllSystems_checkBox = new System.Windows.Forms.CheckBox();
             this.BaudRate_comboBox = new System.Windows.Forms.ComboBox();
             this.ComPort_comboBox = new System.Windows.Forms.ComboBox();
             this.connection_groupBox = new System.Windows.Forms.GroupBox();
@@ -162,6 +163,8 @@
             this.BlinkTimer1 = new System.Windows.Forms.Timer(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.AdvancedSecurityFeature_watchTimer = new System.Windows.Forms.Timer(this.components);
+            this.HighTempAlert_watchTimer = new System.Windows.Forms.Timer(this.components);
+            this.SSD_PBT1_label = new System.Windows.Forms.Label();
             this.SerialMonitor_groupBox.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -966,6 +969,22 @@
             this.AdvSecurityFeature_checkBox.UseVisualStyleBackColor = false;
             this.AdvSecurityFeature_checkBox.CheckedChanged += new System.EventHandler(this.AdvSecurityFeature_checkBox_CheckedChanged);
             // 
+            // ResetAllSystems_checkBox
+            // 
+            this.ResetAllSystems_checkBox.Appearance = System.Windows.Forms.Appearance.Button;
+            this.ResetAllSystems_checkBox.AutoSize = true;
+            this.ResetAllSystems_checkBox.BackColor = System.Drawing.SystemColors.Highlight;
+            this.ResetAllSystems_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.ResetAllSystems_checkBox.ForeColor = System.Drawing.Color.White;
+            this.ResetAllSystems_checkBox.Location = new System.Drawing.Point(6, 75);
+            this.ResetAllSystems_checkBox.Name = "ResetAllSystems_checkBox";
+            this.ResetAllSystems_checkBox.Size = new System.Drawing.Size(98, 23);
+            this.ResetAllSystems_checkBox.TabIndex = 73;
+            this.ResetAllSystems_checkBox.Text = "Reset all systems";
+            this.InfoToolTip.SetToolTip(this.ResetAllSystems_checkBox, "Auto shutdown respective system on High Temp Alert");
+            this.ResetAllSystems_checkBox.UseVisualStyleBackColor = false;
+            this.ResetAllSystems_checkBox.CheckedChanged += new System.EventHandler(this.ResetAllSystems_checkBox_CheckedChanged);
+            // 
             // BaudRate_comboBox
             // 
             this.BaudRate_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -1579,6 +1598,7 @@
             // groupBox8
             // 
             this.groupBox8.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.groupBox8.Controls.Add(this.SSD_PBT1_label);
             this.groupBox8.Controls.Add(this.CoolSideTM_label);
             this.groupBox8.Controls.Add(this.HotSideTM_label);
             this.groupBox8.Controls.Add(this.PBT2_circularProgressBar);
@@ -1795,7 +1815,7 @@
             this.groupBox7.ForeColor = System.Drawing.Color.DarkRed;
             this.groupBox7.Location = new System.Drawing.Point(421, 312);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(902, 434);
+            this.groupBox7.Size = new System.Drawing.Size(902, 440);
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Temperature Monitor";
@@ -1808,16 +1828,16 @@
             this.AdvancedNotification_groupBox.Controls.Add(this.AN2_label);
             this.AdvancedNotification_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.AdvancedNotification_groupBox.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.AdvancedNotification_groupBox.Location = new System.Drawing.Point(684, 130);
+            this.AdvancedNotification_groupBox.Location = new System.Drawing.Point(684, 179);
             this.AdvancedNotification_groupBox.Name = "AdvancedNotification_groupBox";
-            this.AdvancedNotification_groupBox.Size = new System.Drawing.Size(211, 298);
+            this.AdvancedNotification_groupBox.Size = new System.Drawing.Size(211, 273);
             this.AdvancedNotification_groupBox.TabIndex = 73;
             this.AdvancedNotification_groupBox.TabStop = false;
             this.AdvancedNotification_groupBox.Text = "Advanced Notifications";
             // 
             // AN1_label
             // 
-            this.AN1_label.BackColor = System.Drawing.SystemColors.Desktop;
+            this.AN1_label.BackColor = System.Drawing.Color.DarkRed;
             this.AN1_label.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AN1_label.ForeColor = System.Drawing.Color.Yellow;
             this.AN1_label.Location = new System.Drawing.Point(14, 25);
@@ -1865,6 +1885,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ResetAllSystems_checkBox);
             this.groupBox1.Controls.Add(this.AdvSecurityFeature_checkBox);
             this.groupBox1.Controls.Add(this.HighTempWarning_checkBox);
             this.groupBox1.Controls.Add(this.OpenTempSettings_button);
@@ -1872,7 +1893,7 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.groupBox1.Location = new System.Drawing.Point(684, 19);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(211, 105);
+            this.groupBox1.Size = new System.Drawing.Size(211, 133);
             this.groupBox1.TabIndex = 72;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Miscellaneous Options";
@@ -1895,13 +1916,13 @@
             this.OpenTempSettings_button.AutoSize = true;
             this.OpenTempSettings_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OpenTempSettings_button.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.OpenTempSettings_button.Location = new System.Drawing.Point(6, 75);
+            this.OpenTempSettings_button.Location = new System.Drawing.Point(6, 104);
             this.OpenTempSettings_button.Name = "OpenTempSettings_button";
             this.OpenTempSettings_button.Size = new System.Drawing.Size(138, 23);
             this.OpenTempSettings_button.TabIndex = 71;
             this.OpenTempSettings_button.Text = "Advance security settings";
             this.OpenTempSettings_button.UseVisualStyleBackColor = true;
-            this.OpenTempSettings_button.Click += new System.EventHandler(this.button1_Click);
+            this.OpenTempSettings_button.Click += new System.EventHandler(this.OpenTempSettings_button_Click);
             // 
             // MainMenu
             // 
@@ -2015,11 +2036,28 @@
             this.button1.TabIndex = 63;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.button1.Visible = false;
             // 
             // AdvancedSecurityFeature_watchTimer
             // 
             this.AdvancedSecurityFeature_watchTimer.Tick += new System.EventHandler(this.AdvancedSecurityFeature_watchTimer_Tick);
+            // 
+            // HighTempAlert_watchTimer
+            // 
+            this.HighTempAlert_watchTimer.Tick += new System.EventHandler(this.HighTempAlert_watchTimer_Tick);
+            // 
+            // SSD_PBT1_label
+            // 
+            this.SSD_PBT1_label.BackColor = System.Drawing.Color.DarkRed;
+            this.SSD_PBT1_label.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold);
+            this.SSD_PBT1_label.ForeColor = System.Drawing.Color.White;
+            this.SSD_PBT1_label.Location = new System.Drawing.Point(14, 178);
+            this.SSD_PBT1_label.Name = "SSD_PBT1_label";
+            this.SSD_PBT1_label.Size = new System.Drawing.Size(152, 17);
+            this.SSD_PBT1_label.TabIndex = 41;
+            this.SSD_PBT1_label.Text = "SYSTEM SHUTDOWN";
+            this.SSD_PBT1_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SSD_PBT1_label.Visible = false;
             // 
             // Main
             // 
@@ -2223,6 +2261,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer AdvancedSecurityFeature_watchTimer;
         private System.Windows.Forms.Label AN1_label;
+        private System.Windows.Forms.CheckBox ResetAllSystems_checkBox;
+        private System.Windows.Forms.Timer HighTempAlert_watchTimer;
+        private System.Windows.Forms.Label SSD_PBT1_label;
     }
 }
 

@@ -71,6 +71,12 @@ namespace Advanced_Cooling_Control_Software
         public Main()
         {
             InitializeComponent();
+            InitializeFields();
+        }
+
+
+        private void InitializeFields()
+        {
             ComPort_comboBox.Items.Clear();
             ComPort_comboBox.Items.AddRange(SerialPort.GetPortNames());
 
@@ -356,6 +362,7 @@ namespace Advanced_Cooling_Control_Software
                                 HighTempWarning_checkBox.Enabled = true;
                                 OpenTempSettings_button.Enabled = true;
                                 Conn_progressBar.Value = 100;
+
                                 try
                                 {
                                     Control[] indicatorControlName = { CoolSideTM_label, HotSideTM_label, Tank1TM_label, Tank2TM_label, XAxisTM_label, YAxisTM_label, ZAxisTM_label, ExtruderTM_label };
@@ -521,6 +528,7 @@ namespace Advanced_Cooling_Control_Software
                 if (AdvSecurityFeature_checkBox.Checked)
                 {
                     AdvSecurityFeature_WatchDog();
+                    //Console.WriteLine("adv on recieve");
                 }
                 */
             }
@@ -1409,13 +1417,41 @@ namespace Advanced_Cooling_Control_Software
         }
 
 
+        private void HighTempWarning_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (HighTempWarning_checkBox.Checked)
+            {
+                HighTempWarning_checkBox.BackColor = SystemColors.Highlight;
+                HighTempWarning_checkBox.ForeColor = Color.White;
+            }
+            else if (!HighTempWarning_checkBox.Checked)
+            {
+                BlinkAlert_PBT1_Count = 0;
+                BlinkAlert_PBT2_Count = 0;
+                BlinkAlert_CT1_Count = 0;
+                BlinkAlert_CT2_Count = 0;
+                BlinkAlert_Xaxis_Count = 0;
+                BlinkAlert_Yaxis_Count = 0;
+                BlinkAlert_Zaxis_Count = 0;
+
+                HighTempWarning_checkBox.BackColor = Color.DarkRed;
+                HighTempWarning_checkBox.ForeColor = Color.White;
+            }
+        }
+
+        private void HighTempAlert_watchTimer_Tick(object sender, EventArgs e)
+        {
+            HighTempAlert_WatchDog();
+        }
+
+
         private void HighTempAlert_WatchDog()
         {
             if (PBT1_circularProgressBar.Value >= TemperatureSettings.CoolSideMaxTemp)
             {
                 if (PBT1_flag == -1 /*@start*/ || PBT1_flag == 0)
                 {
-                    ConsoleWrite("[PBT1-(high temp warning count): " + (BlinkAlert_PBT1_Count + 1) + "]", ConsoleColor.DarkYellow);
+                    ConsoleWrite("[PBT1-(high-temp-warning-count): " + (BlinkAlert_PBT1_Count + 1) + "]", ConsoleColor.DarkYellow);
                     // BlinkAlert_PBT1_Count+= BlinkAlert_PBT1_Count;
                     HighTempBlinkAlert("PBT1", CoolSideTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
@@ -1425,7 +1461,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (PBT2_flag == -1 || PBT2_flag == 0)
                 {
-                    ConsoleWrite("[PBT2-(high temp warning count): " + (BlinkAlert_PBT2_Count + 1) + "]", ConsoleColor.DarkBlue);
+                    ConsoleWrite("[PBT2-(high-temp-warning-count): " + (BlinkAlert_PBT2_Count + 1) + "]", ConsoleColor.DarkBlue);
                     // BlinkAlert_PBT2_Count+= BlinkAlert_PBT2_Count;
                     HighTempBlinkAlert("PBT2", HotSideTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
@@ -1435,7 +1471,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (CT1_flag == -1 || CT1_flag == 0)
                 {
-                    ConsoleWrite("[CT1-(high temp warning count): " + (BlinkAlert_CT1_Count + 1) + "]", ConsoleColor.DarkRed);
+                    ConsoleWrite("[CT1-(high-temp-warning-count): " + (BlinkAlert_CT1_Count + 1) + "]", ConsoleColor.DarkRed);
                     // BlinkAlert_CT1_Count+= BlinkAlert_CT1_Count;
                     HighTempBlinkAlert("CT1", Tank1TM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
@@ -1445,7 +1481,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (CT2_flag == -1 || CT2_flag == 0)
                 {
-                    ConsoleWrite("[CT2-(high temp warning count): " + (BlinkAlert_CT2_Count + 1) + "]", ConsoleColor.DarkGreen);
+                    ConsoleWrite("[CT2-(high-temp-warning-count): " + (BlinkAlert_CT2_Count + 1) + "]", ConsoleColor.DarkGreen);
                     // BlinkAlert_CT2_Count+= BlinkAlert_CT2_Count;
                     HighTempBlinkAlert("CT2", Tank2TM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
@@ -1455,7 +1491,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (Xaxis_flag == -1 || Xaxis_flag == 0)
                 {
-                    ConsoleWrite("[X_Axis_SM-(high temp warning count): " + (BlinkAlert_Xaxis_Count + 1) + "]");
+                    ConsoleWrite("[X_Axis_SM-(high-temp-warning-count): " + (BlinkAlert_Xaxis_Count + 1) + "]");
                     // BlinkAlert_Xaxis_Count+= BlinkAlert_Xaxis_Count;
                     HighTempBlinkAlert("XAxis_SM", XAxisTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
@@ -1465,7 +1501,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (Yaxis_flag == -1 || Yaxis_flag == 0)
                 {
-                    ConsoleWrite("[Y_Axis_SM-(high temp warning count): " + (BlinkAlert_Yaxis_Count + 1) + "]");
+                    ConsoleWrite("[Y_Axis_SM-(high-temp-warning-count): " + (BlinkAlert_Yaxis_Count + 1) + "]");
                     // BlinkAlert_Yaxis_Count+= BlinkAlert_Yaxis_Count;
                     HighTempBlinkAlert("YAxis_SM", YAxisTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
@@ -1475,7 +1511,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (Zaxis_flag == -1 || Zaxis_flag == 0)
                 {
-                    ConsoleWrite("[Z_Axis_SM-(high temp warning count): " + (BlinkAlert_Zaxis_Count + 1) + "]");
+                    ConsoleWrite("[Z_Axis_SM-(high-temp-warning-count): " + (BlinkAlert_Zaxis_Count + 1) + "]");
                     // BlinkAlert_Zaxis_Count+= BlinkAlert_Zaxis_Count;
                     HighTempBlinkAlert("ZAxis_SM", ZAxisTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
@@ -1485,7 +1521,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (Extruder_flag == -1 || Extruder_flag == 0)
                 {
-                    ConsoleWrite("[Extruder_SM-(high temp warning count): " + (BlinkAlert_Extruder_Count + 1) + "]");
+                    ConsoleWrite("[Extruder_SM-(high-temp-warning-count): " + (BlinkAlert_Extruder_Count + 1) + "]");
                     // BlinkAlert_Extruder_Count+= BlinkAlert_Extruder_Count;
                     HighTempBlinkAlert("Extruder_SM", ExtruderTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
@@ -1520,78 +1556,6 @@ namespace Advanced_Cooling_Control_Software
         private bool EAFC_CT1_flag = false;
         private bool EAFC_CT2_flag = false; */
 
-        private void AdvSecurityFeature_WatchDog()   // command executor
-        {
-            if (BlinkAlert_PBT1_Count > TemperatureSettings.ASF_TRIGGER_COUNT)
-            {
-                AN1_label.Enabled = true;
-                AN1_label.Visible = true;
-                AN1_label.Text = TemperatureSettings.AN1_label;
-                AN1_label.BackColor = Color.DarkRed;
-                AN1_label.ForeColor = Color.Yellow;
-                Console.WriteLine("OKKKKKKKKKKK");
-                ExecuteAutoFeatureCommand("PBT1", TemperatureSettings.ASFCommand_PBT1);
-               
-
-                BlinkAlert_PBT1_Count = 0;
-            }
-            if (BlinkAlert_PBT2_Count > TemperatureSettings.ASF_TRIGGER_COUNT)
-            {
-                ExecuteAutoFeatureCommand("PBT2", TemperatureSettings.ASFCommand_PBT2);
-                BlinkAlert_PBT2_Count = 0;
-
-            }
-            if (BlinkAlert_CT1_Count > TemperatureSettings.ASF_TRIGGER_COUNT)
-            {
-
-                ExecuteAutoFeatureCommand("CT1", TemperatureSettings.ASFCommand_CT1);
-                BlinkAlert_CT1_Count = 0;
-
-            }
-            if (BlinkAlert_CT2_Count > TemperatureSettings.ASF_TRIGGER_COUNT)
-            {
-                ExecuteAutoFeatureCommand("CT2", TemperatureSettings.ASFCommand_CT2);
-                BlinkAlert_CT2_Count = 0;
-            }
-        }
-        //
-        // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        //
-
-        private void Main_Load(object sender, EventArgs e)
-        {
-            //AdvancedNotification_groupBox.Enabled   = false;
-
-            BeginInvoke(new EventHandler(CheckArduinoComPort_button_Click));
-            /*
-            Control[] indicatorControlName = { CoolSideTM_label, HotSideTM_label, Tank1TM_label, Tank2TM_label, XAxisTM_label, YAxisTM_label, ZAxisTM_label, ExtruderTM_label };
-            TemperatureSettings temperatureSettings = new TemperatureSettings(indicatorControlName);
-            ts = temperatureSettings;*/
-        }
-
-
-        private void HighTempWarning_checkBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (HighTempWarning_checkBox.Checked)
-            {
-                HighTempWarning_checkBox.BackColor = SystemColors.Highlight;
-                HighTempWarning_checkBox.ForeColor = Color.White;
-            }
-            else if (!HighTempWarning_checkBox.Checked)
-            {
-                BlinkAlert_PBT1_Count = 0;
-                BlinkAlert_PBT2_Count = 0;
-                BlinkAlert_CT1_Count = 0;
-                BlinkAlert_CT2_Count = 0;
-                BlinkAlert_Xaxis_Count = 0;
-                BlinkAlert_Yaxis_Count = 0;
-                BlinkAlert_Zaxis_Count = 0;
-
-                HighTempWarning_checkBox.BackColor = Color.DarkRed;
-                HighTempWarning_checkBox.ForeColor = Color.White;
-            }
-        }
-
 
         private void AdvancedSecurityFeature_watchTimer_Tick(object sender, EventArgs e)
         {
@@ -1606,7 +1570,7 @@ namespace Advanced_Cooling_Control_Software
         {
             if (!AdvSecurityFeature_checkBox.Checked)
             {
-                /*
+
                 BlinkAlert_PBT1_Count = 0;
                 BlinkAlert_PBT2_Count = 0;
                 BlinkAlert_CT1_Count = 0;
@@ -1615,7 +1579,7 @@ namespace Advanced_Cooling_Control_Software
                 BlinkAlert_Yaxis_Count = 0;
                 BlinkAlert_Zaxis_Count = 0;
                 BlinkAlert_Extruder_Count = 0;
-                */
+
 
                 AdvancedSecurityFeature_watchTimer.Stop();
                 ConsoleWrite("\nAdvancedSecurityFeature_watchTimer: STOPPED!");
@@ -1624,11 +1588,115 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (HighTempWarning_checkBox.Checked)
                 {
-                    AdvancedSecurityFeature_watchTimer.Interval = 1000;
+                    AdvancedSecurityFeature_watchTimer.Interval = 100;
                     AdvancedSecurityFeature_watchTimer.Start();
                     ConsoleWrite("\nAdvancedSecurityFeature_watchTimer: STARTED");
                 }
             }
+        }
+
+
+
+        private void AdvSecurityFeature_WatchDog()   // command executor
+        {
+            if (BlinkAlert_PBT1_Count > TemperatureSettings.ASF_TRIGGER_COUNT)
+            {
+                AN1_label.Enabled = true;
+                AN1_label.Visible = true;
+                AN1_label.Text = TemperatureSettings.AN1_label;
+                AN1_label.BackColor = Color.DarkRed;
+                AN1_label.ForeColor = Color.Yellow;
+
+                ExecuteAutoFeatureCommand("PBT1", TemperatureSettings.ASFCommand_PBT1);
+                BlinkAlert_PBT1_Count = 0;
+
+                SSD_PBT1_label.Visible = true;
+            }
+            if (BlinkAlert_PBT2_Count > TemperatureSettings.ASF_TRIGGER_COUNT)
+            {
+                AN2_label.Enabled = true;
+                AN2_label.Visible = true;
+                AN2_label.Text = TemperatureSettings.AN2_label;
+                AN2_label.BackColor = Color.DarkRed;
+                AN2_label.ForeColor = Color.Yellow;
+
+                ExecuteAutoFeatureCommand("PBT2", TemperatureSettings.ASFCommand_PBT2);
+                BlinkAlert_PBT2_Count = 0;
+
+            }
+            if (BlinkAlert_CT1_Count > TemperatureSettings.ASF_TRIGGER_COUNT)
+            {
+                AN3_label.Enabled = true;
+                AN3_label.Visible = true;
+                AN3_label.Text = TemperatureSettings.AN3_label;
+                AN3_label.BackColor = Color.DarkRed;
+                AN3_label.ForeColor = Color.Yellow;
+
+                ExecuteAutoFeatureCommand("CT1", TemperatureSettings.ASFCommand_CT1);
+                BlinkAlert_CT1_Count = 0;
+
+            }
+            if (BlinkAlert_CT2_Count > TemperatureSettings.ASF_TRIGGER_COUNT)
+            {
+                AN4_label.Enabled = true;
+                AN4_label.Visible = true;
+                AN4_label.Text = TemperatureSettings.AN4_label;
+                AN4_label.BackColor = Color.DarkRed;
+                AN4_label.ForeColor = Color.Yellow;
+
+                ExecuteAutoFeatureCommand("CT2", TemperatureSettings.ASFCommand_CT2);
+                BlinkAlert_CT2_Count = 0;
+            }
+        }
+
+
+        private async void ResetAllSystems_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ResetAllSystems_checkBox.Checked)
+            {
+                ResetAllSystems_checkBox.Checked = false;
+                
+                {
+                    // @RESET-START (on-resetting...)
+                    ResetAllSystems_checkBox.Text = "Resetting systems...";
+                    ResetAllSystems_checkBox.BackColor = Color.OrangeRed;
+                    ResetAllSystems_checkBox.ForeColor = Color.White;
+                    await Task.Delay(2500);
+                    ResetAllSystems_checkBox.BackColor = Color.Gold;
+                    ResetAllSystems_checkBox.ForeColor = Color.DarkRed;
+                    ResetAllSystems_checkBox.Text = "Restarting all systems...";
+                    await Task.Delay(2700);
+
+                    // perform restart-command
+                    PerformRestartSystems();
+                }
+
+
+                {
+                    // @ON-SUCCESS
+                    ResetAllSystems_checkBox.Text = "Reset successful";
+                    ResetAllSystems_checkBox.BackColor = Color.DarkGreen;
+                    ResetAllSystems_checkBox.ForeColor = Color.White;
+                    await Task.Delay(1750);
+                    ResetAllSystems_checkBox.Text = "Reset all systems";
+                    ResetAllSystems_checkBox.BackColor = SystemColors.Highlight;
+                    ResetAllSystems_checkBox.ForeColor = Color.White;
+                }
+            }
+
+        }
+
+        private void PerformRestartSystems()
+        {
+
+        }
+        //
+        // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            BeginInvoke(new EventHandler(CheckArduinoComPort_button_Click));
         }
 
 
@@ -1658,16 +1726,7 @@ namespace Advanced_Cooling_Control_Software
         }
 
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            SerialPort_DataLog("sent command success", 'w');
-            SerialPort_DataLog("recieve command success", 'r');
-            AN1_label.ForeColor = Color.Yellow;
-            AN1_label.BackColor = Color.DarkRed;
-        }
-
-
-        private void button1_Click(object sender, EventArgs e)
+        private void OpenTempSettings_button_Click(object sender, EventArgs e)
         {
 
             BeginInvoke(new EventHandler(TemperatureSettings_MenuItem_Click));

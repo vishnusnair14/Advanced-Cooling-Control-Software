@@ -44,6 +44,9 @@ namespace Advanced_Cooling_Control_Software
         public static string AN3_label;
         public static string AN4_label;
         public static string AN5_label;
+        public static string AN6_label;
+        public static string AN7_label;
+        public static string AN8_label;
 
 
         public TemperatureSettings(Control[] _indicatorControlName)
@@ -54,9 +57,8 @@ namespace Advanced_Cooling_Control_Software
             AlertLabelForeColor_textbox.BackColor = Color.LightGray;
             AlertC1_textBox.BackColor = Color.LightGray;
             AlertC2_textBox.BackColor = Color.LightGray;
-            ASFCommandUpdate_button_Click();
+            AdvSecurityCommandUpdate();
             AdvancedNotificationLabelUpdate();
-
         }
 
         private void TemperatureSettings_Load(object sender, EventArgs e)
@@ -85,10 +87,15 @@ namespace Advanced_Cooling_Control_Software
             AdvancedSettings_groupbox.Visible = false;
             Size = new Size(712, 412);
 
-            AlertCount_checkBox.Checked = true;
+            DefaultAlertCount_checkBox.Checked = true;
+
+            AN1_NFT_textBox.Text = AN1_label;
+            AN2_NFT_textBox.Text = AN2_label;
+            AN3_NFT_textBox.Text = AN3_label;
+            AN4_NFT_textBox.Text = AN3_label;
         }
 
-        private void ASFCommandUpdate_button_Click()
+        private void AdvSecurityCommandUpdate()
         {
             ASFCommand_PBT1 = ASFCommandPBT1_textBox.Text;
             ASFCommand_PBT2 = ASFCommandPBT2_textBox.Text;
@@ -106,7 +113,7 @@ namespace Advanced_Cooling_Control_Software
             AN1_label = AN1_NFT_textBox.Text;
             AN2_label = AN2_NFT_textBox.Text;
             AN3_label = AN3_NFT_textBox.Text;
-            AN4_label = AN4_NFT_textBox.Text;    
+            AN4_label = AN4_NFT_textBox.Text;
         }
 
 
@@ -198,46 +205,6 @@ namespace Advanced_Cooling_Control_Software
         }
 
 
-        private void CoolSideMaxTemp_numericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            BeginInvoke(new EventHandler(MaxTempUpdate_button_Click));
-        }
-
-        private void HotSideMaxTemp_numericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            BeginInvoke(new EventHandler(MaxTempUpdate_button_Click));
-        }
-
-        private void Tank1MaxTemp_numericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            BeginInvoke(new EventHandler(MaxTempUpdate_button_Click));
-        }
-
-        private void Tank2MaxTemp_numericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            BeginInvoke(new EventHandler(MaxTempUpdate_button_Click));
-        }
-
-        private void XaxisMaxTemp_numericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            BeginInvoke(new EventHandler(MaxTempUpdate_button_Click));
-        }
-
-        private void YaxisMaxTemp_numericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            BeginInvoke(new EventHandler(MaxTempUpdate_button_Click));
-        }
-
-        private void ZaxisMaxTemp_numericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            BeginInvoke(new EventHandler(MaxTempUpdate_button_Click));
-        }
-
-        private void ExtruderMaxTemp_numericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            BeginInvoke(new EventHandler(MaxTempUpdate_button_Click));
-        }
-
         private void Reset_button_Click(object sender, EventArgs e)
         {
             CoolSideMaxTemp_numericUpDown.Value = 62;
@@ -298,19 +265,9 @@ namespace Advanced_Cooling_Control_Software
         }
 
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void DefaultAlertCount_checkBox_CheckedChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void label27_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AlertCount_checkBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (AlertCount_checkBox.Checked)
+            if (DefaultAlertCount_checkBox.Checked)
             {
                 AlertCustomCount_textBox.Enabled = false;
                 oia_label.Enabled = false;
@@ -337,50 +294,112 @@ namespace Advanced_Cooling_Control_Software
         }
 
 
+        // if MAX-TRIGGER-TEMPERATURE changed:
+        private void CoolSideMaxTemp_numericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            BeginInvoke(new EventHandler(MaxTempUpdate_button_Click));
+        }
+
+        private void HotSideMaxTemp_numericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            BeginInvoke(new EventHandler(MaxTempUpdate_button_Click));
+        }
+
+        private void Tank1MaxTemp_numericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            BeginInvoke(new EventHandler(MaxTempUpdate_button_Click));
+        }
+
+        private void Tank2MaxTemp_numericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            BeginInvoke(new EventHandler(MaxTempUpdate_button_Click));
+        }
+
+        private void XaxisMaxTemp_numericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            BeginInvoke(new EventHandler(MaxTempUpdate_button_Click));
+        }
+
+        private void YaxisMaxTemp_numericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            BeginInvoke(new EventHandler(MaxTempUpdate_button_Click));
+        }
+
+        private void ZaxisMaxTemp_numericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            BeginInvoke(new EventHandler(MaxTempUpdate_button_Click));
+        }
+
+        private void ExtruderMaxTemp_numericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            BeginInvoke(new EventHandler(MaxTempUpdate_button_Click));
+        }
+
+
+        // if ADVANCE-SECURITY-TRIGGER-COMMAND changed:
         private void ASFCommandPBT1_textBox_TextChanged(object sender, EventArgs e)
         {
-            ASFCommandUpdate_button_Click();
+            AdvSecurityCommandUpdate();
         }
 
         private void ASFCommandPBT2_textBox_TextChanged(object sender, EventArgs e)
         {
-            ASFCommandUpdate_button_Click();
+            AdvSecurityCommandUpdate();
         }
 
         private void ASFCommandCT1_textBox_TextChanged(object sender, EventArgs e)
         {
-            ASFCommandUpdate_button_Click();
+            AdvSecurityCommandUpdate();
         }
 
         private void ASFCommandCT2_textBox_TextChanged(object sender, EventArgs e)
         {
-            ASFCommandUpdate_button_Click();
+            AdvSecurityCommandUpdate();
         }
 
         private void ASFCommandXaxis_textBox_TextChanged(object sender, EventArgs e)
         {
-            ASFCommandUpdate_button_Click();
+            AdvSecurityCommandUpdate();
         }
 
         private void ASFCommandYaxis_textBox_TextChanged(object sender, EventArgs e)
         {
-            ASFCommandUpdate_button_Click();
+            AdvSecurityCommandUpdate();
         }
 
         private void ASFCommandZaxis_textBox_TextChanged(object sender, EventArgs e)
         {
-            ASFCommandUpdate_button_Click();
+            AdvSecurityCommandUpdate();
         }
 
         private void ASFCommandExtruder_textBox_TextChanged(object sender, EventArgs e)
         {
-            ASFCommandUpdate_button_Click();
+            AdvSecurityCommandUpdate();
         }
 
+
+        // if ADVANCED-NOTIFICATION-LABEL changed:
         private void AN1_NFT_textBox_TextChanged(object sender, EventArgs e)
         {
             AdvancedNotificationLabelUpdate();
         }
+
+        private void AN2_NFT_textBox_TextChanged(object sender, EventArgs e)
+        {
+            AdvancedNotificationLabelUpdate();
+        }
+
+        private void AN3_NFT_textBox_TextChanged(object sender, EventArgs e)
+        {
+            AdvancedNotificationLabelUpdate();
+        }
+
+        private void AN4_NFT_textBox_TextChanged(object sender, EventArgs e)
+        {
+            AdvancedNotificationLabelUpdate();
+        }
+
+
     }
 }
 

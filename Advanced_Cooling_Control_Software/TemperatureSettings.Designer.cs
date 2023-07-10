@@ -86,7 +86,7 @@
             this.LogFilePath_textBox = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.oia_label = new System.Windows.Forms.Label();
-            this.AlertCount_checkBox = new System.Windows.Forms.CheckBox();
+            this.DefaultAlertCount_checkBox = new System.Windows.Forms.CheckBox();
             this.AlertCustomCount_textBox = new System.Windows.Forms.TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label27 = new System.Windows.Forms.Label();
@@ -709,7 +709,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(1440, 24);
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // HighTempAlertOptions_MenuItem
             // 
@@ -752,7 +751,7 @@
             this.groupBox8.Controls.Add(this.LogFilePath_textBox);
             this.groupBox8.Controls.Add(this.label29);
             this.groupBox8.Controls.Add(this.oia_label);
-            this.groupBox8.Controls.Add(this.AlertCount_checkBox);
+            this.groupBox8.Controls.Add(this.DefaultAlertCount_checkBox);
             this.groupBox8.Controls.Add(this.AlertCustomCount_textBox);
             this.groupBox8.ForeColor = System.Drawing.Color.DarkBlue;
             this.groupBox8.Location = new System.Drawing.Point(6, 244);
@@ -803,18 +802,18 @@
             this.oia_label.TabIndex = 61;
             this.oia_label.Text = "(only integer value allowed!)";
             // 
-            // AlertCount_checkBox
+            // DefaultAlertCount_checkBox
             // 
-            this.AlertCount_checkBox.AutoSize = true;
-            this.AlertCount_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.AlertCount_checkBox.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.AlertCount_checkBox.Location = new System.Drawing.Point(6, 22);
-            this.AlertCount_checkBox.Name = "AlertCount_checkBox";
-            this.AlertCount_checkBox.Size = new System.Drawing.Size(243, 17);
-            this.AlertCount_checkBox.TabIndex = 58;
-            this.AlertCount_checkBox.Text = "Use default command execution trigger count:";
-            this.AlertCount_checkBox.UseVisualStyleBackColor = true;
-            this.AlertCount_checkBox.CheckedChanged += new System.EventHandler(this.AlertCount_checkBox_CheckedChanged);
+            this.DefaultAlertCount_checkBox.AutoSize = true;
+            this.DefaultAlertCount_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.DefaultAlertCount_checkBox.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.DefaultAlertCount_checkBox.Location = new System.Drawing.Point(6, 22);
+            this.DefaultAlertCount_checkBox.Name = "DefaultAlertCount_checkBox";
+            this.DefaultAlertCount_checkBox.Size = new System.Drawing.Size(243, 17);
+            this.DefaultAlertCount_checkBox.TabIndex = 58;
+            this.DefaultAlertCount_checkBox.Text = "Use default command execution trigger count:";
+            this.DefaultAlertCount_checkBox.UseVisualStyleBackColor = true;
+            this.DefaultAlertCount_checkBox.CheckedChanged += new System.EventHandler(this.DefaultAlertCount_checkBox_CheckedChanged);
             // 
             // AlertCustomCount_textBox
             // 
@@ -865,7 +864,6 @@
             this.label27.Size = new System.Drawing.Size(115, 13);
             this.label27.TabIndex = 35;
             this.label27.Text = "EXTRUDER Motor:";
-            this.label27.Click += new System.EventHandler(this.label27_Click);
             // 
             // ASFCommandZaxis_textBox
             // 
@@ -1096,66 +1094,76 @@
             this.groupBox9.ForeColor = System.Drawing.Color.DarkBlue;
             this.groupBox9.Location = new System.Drawing.Point(6, 9);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(357, 197);
+            this.groupBox9.Size = new System.Drawing.Size(398, 224);
             this.groupBox9.TabIndex = 25;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Set Notification Label  (for ASF)";
             // 
             // AN4_NFT_textBox
             // 
-            this.AN4_NFT_textBox.BackColor = System.Drawing.SystemColors.Control;
+            this.AN4_NFT_textBox.BackColor = System.Drawing.SystemColors.Window;
             this.AN4_NFT_textBox.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold);
             this.AN4_NFT_textBox.ForeColor = System.Drawing.Color.DarkRed;
-            this.AN4_NFT_textBox.Location = new System.Drawing.Point(166, 152);
+            this.AN4_NFT_textBox.Location = new System.Drawing.Point(176, 172);
             this.AN4_NFT_textBox.Multiline = true;
             this.AN4_NFT_textBox.Name = "AN4_NFT_textBox";
             this.AN4_NFT_textBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.AN4_NFT_textBox.Size = new System.Drawing.Size(183, 33);
-            this.AN4_NFT_textBox.TabIndex = 43;
+            this.AN4_NFT_textBox.Size = new System.Drawing.Size(203, 40);
+            this.AN4_NFT_textBox.TabIndex = 23;
+            this.AN4_NFT_textBox.Text = "Performed coolant change\r\ncycle - TANK 2\r\n";
+            this.AN4_NFT_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AN4_NFT_textBox.TextChanged += new System.EventHandler(this.AN4_NFT_textBox_TextChanged);
             // 
             // AN3_NFT_textBox
             // 
-            this.AN3_NFT_textBox.BackColor = System.Drawing.SystemColors.Control;
+            this.AN3_NFT_textBox.BackColor = System.Drawing.SystemColors.Window;
             this.AN3_NFT_textBox.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold);
             this.AN3_NFT_textBox.ForeColor = System.Drawing.Color.DarkRed;
-            this.AN3_NFT_textBox.Location = new System.Drawing.Point(166, 113);
+            this.AN3_NFT_textBox.Location = new System.Drawing.Point(176, 126);
             this.AN3_NFT_textBox.Multiline = true;
             this.AN3_NFT_textBox.Name = "AN3_NFT_textBox";
             this.AN3_NFT_textBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.AN3_NFT_textBox.Size = new System.Drawing.Size(183, 33);
-            this.AN3_NFT_textBox.TabIndex = 42;
+            this.AN3_NFT_textBox.Size = new System.Drawing.Size(203, 40);
+            this.AN3_NFT_textBox.TabIndex = 23;
+            this.AN3_NFT_textBox.Text = "Performed coolant change\r\ncycle - TANK 1\r\n";
+            this.AN3_NFT_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AN3_NFT_textBox.TextChanged += new System.EventHandler(this.AN3_NFT_textBox_TextChanged);
             // 
             // AN2_NFT_textBox
             // 
-            this.AN2_NFT_textBox.BackColor = System.Drawing.SystemColors.Control;
+            this.AN2_NFT_textBox.BackColor = System.Drawing.SystemColors.Window;
             this.AN2_NFT_textBox.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold);
             this.AN2_NFT_textBox.ForeColor = System.Drawing.Color.DarkRed;
-            this.AN2_NFT_textBox.Location = new System.Drawing.Point(166, 73);
+            this.AN2_NFT_textBox.Location = new System.Drawing.Point(176, 80);
             this.AN2_NFT_textBox.Multiline = true;
             this.AN2_NFT_textBox.Name = "AN2_NFT_textBox";
             this.AN2_NFT_textBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.AN2_NFT_textBox.Size = new System.Drawing.Size(183, 33);
-            this.AN2_NFT_textBox.TabIndex = 41;
+            this.AN2_NFT_textBox.Size = new System.Drawing.Size(203, 40);
+            this.AN2_NFT_textBox.TabIndex = 23;
+            this.AN2_NFT_textBox.Text = "Initiated auto-shutdown\r\n[ Peltier 2 ]\r\n";
+            this.AN2_NFT_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AN2_NFT_textBox.TextChanged += new System.EventHandler(this.AN2_NFT_textBox_TextChanged);
             // 
             // AN1_NFT_textBox
             // 
             this.AN1_NFT_textBox.BackColor = System.Drawing.SystemColors.Window;
             this.AN1_NFT_textBox.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold);
             this.AN1_NFT_textBox.ForeColor = System.Drawing.Color.DarkRed;
-            this.AN1_NFT_textBox.Location = new System.Drawing.Point(166, 34);
+            this.AN1_NFT_textBox.Location = new System.Drawing.Point(176, 34);
             this.AN1_NFT_textBox.Multiline = true;
             this.AN1_NFT_textBox.Name = "AN1_NFT_textBox";
             this.AN1_NFT_textBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.AN1_NFT_textBox.Size = new System.Drawing.Size(183, 33);
+            this.AN1_NFT_textBox.Size = new System.Drawing.Size(203, 40);
             this.AN1_NFT_textBox.TabIndex = 23;
-            this.AN1_NFT_textBox.Text = "success command exec.";
+            this.AN1_NFT_textBox.Text = "Initiated auto-shutdown\r\n[ Peltier 1 ]";
+            this.AN1_NFT_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.AN1_NFT_textBox.TextChanged += new System.EventHandler(this.AN1_NFT_textBox_TextChanged);
             // 
             // label28
             // 
             this.label28.AutoSize = true;
             this.label28.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label28.Location = new System.Drawing.Point(45, 170);
+            this.label28.Location = new System.Drawing.Point(55, 197);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(111, 15);
             this.label28.TabIndex = 40;
@@ -1166,7 +1174,7 @@
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.label30.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label30.Location = new System.Drawing.Point(15, 54);
+            this.label30.Location = new System.Drawing.Point(25, 61);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(141, 13);
             this.label30.TabIndex = 22;
@@ -1176,7 +1184,7 @@
             // 
             this.label32.AutoSize = true;
             this.label32.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label32.Location = new System.Drawing.Point(5, 91);
+            this.label32.Location = new System.Drawing.Point(15, 105);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(151, 15);
             this.label32.TabIndex = 36;
@@ -1186,7 +1194,7 @@
             // 
             this.label31.AutoSize = true;
             this.label31.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label31.Location = new System.Drawing.Point(45, 131);
+            this.label31.Location = new System.Drawing.Point(55, 151);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(111, 15);
             this.label31.TabIndex = 38;
@@ -1307,7 +1315,7 @@
         private System.Windows.Forms.ToolStripMenuItem advancedSettings_MenuItem;
         private System.Windows.Forms.GroupBox AdvancedSettings_groupbox;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.CheckBox AlertCount_checkBox;
+        private System.Windows.Forms.CheckBox DefaultAlertCount_checkBox;
         private System.Windows.Forms.TextBox AlertCustomCount_textBox;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Label oia_label;
