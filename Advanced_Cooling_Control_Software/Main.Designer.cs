@@ -131,6 +131,7 @@
             this.SMT_Y_circularProgressBar = new CircularProgressBar.CircularProgressBar();
             this.SMT_X_circularProgressBar = new CircularProgressBar.CircularProgressBar();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.SSD_PBT1_label = new System.Windows.Forms.Label();
             this.CoolSideTM_label = new System.Windows.Forms.Label();
             this.HotSideTM_label = new System.Windows.Forms.Label();
             this.PBT2_circularProgressBar = new CircularProgressBar.CircularProgressBar();
@@ -164,7 +165,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.AdvancedSecurityFeature_watchTimer = new System.Windows.Forms.Timer(this.components);
             this.HighTempAlert_watchTimer = new System.Windows.Forms.Timer(this.components);
-            this.SSD_PBT1_label = new System.Windows.Forms.Label();
+            this.SSD_PBT2_label = new System.Windows.Forms.Label();
+            this.SSD_PBT3_label = new System.Windows.Forms.Label();
+            this.SSD_PBT4_label = new System.Windows.Forms.Label();
             this.SerialMonitor_groupBox.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -1598,6 +1601,7 @@
             // groupBox8
             // 
             this.groupBox8.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.groupBox8.Controls.Add(this.SSD_PBT2_label);
             this.groupBox8.Controls.Add(this.SSD_PBT1_label);
             this.groupBox8.Controls.Add(this.CoolSideTM_label);
             this.groupBox8.Controls.Add(this.HotSideTM_label);
@@ -1611,6 +1615,19 @@
             this.groupBox8.TabIndex = 0;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Peltier Block Temperature";
+            // 
+            // SSD_PBT1_label
+            // 
+            this.SSD_PBT1_label.BackColor = System.Drawing.Color.DarkRed;
+            this.SSD_PBT1_label.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold);
+            this.SSD_PBT1_label.ForeColor = System.Drawing.Color.White;
+            this.SSD_PBT1_label.Location = new System.Drawing.Point(14, 178);
+            this.SSD_PBT1_label.Name = "SSD_PBT1_label";
+            this.SSD_PBT1_label.Size = new System.Drawing.Size(152, 17);
+            this.SSD_PBT1_label.TabIndex = 41;
+            this.SSD_PBT1_label.Text = "SYSTEM SHUTDOWN";
+            this.SSD_PBT1_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SSD_PBT1_label.Visible = false;
             // 
             // CoolSideTM_label
             // 
@@ -1703,6 +1720,8 @@
             // groupBox9
             // 
             this.groupBox9.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.groupBox9.Controls.Add(this.SSD_PBT4_label);
+            this.groupBox9.Controls.Add(this.SSD_PBT3_label);
             this.groupBox9.Controls.Add(this.Tank1TM_label);
             this.groupBox9.Controls.Add(this.CT2_circularProgressBar);
             this.groupBox9.Controls.Add(this.Tank2TM_label);
@@ -2046,18 +2065,44 @@
             // 
             this.HighTempAlert_watchTimer.Tick += new System.EventHandler(this.HighTempAlert_watchTimer_Tick);
             // 
-            // SSD_PBT1_label
+            // SSD_PBT2_label
             // 
-            this.SSD_PBT1_label.BackColor = System.Drawing.Color.DarkRed;
-            this.SSD_PBT1_label.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold);
-            this.SSD_PBT1_label.ForeColor = System.Drawing.Color.White;
-            this.SSD_PBT1_label.Location = new System.Drawing.Point(14, 178);
-            this.SSD_PBT1_label.Name = "SSD_PBT1_label";
-            this.SSD_PBT1_label.Size = new System.Drawing.Size(152, 17);
-            this.SSD_PBT1_label.TabIndex = 41;
-            this.SSD_PBT1_label.Text = "SYSTEM SHUTDOWN";
-            this.SSD_PBT1_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.SSD_PBT1_label.Visible = false;
+            this.SSD_PBT2_label.BackColor = System.Drawing.Color.DarkRed;
+            this.SSD_PBT2_label.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold);
+            this.SSD_PBT2_label.ForeColor = System.Drawing.Color.White;
+            this.SSD_PBT2_label.Location = new System.Drawing.Point(170, 178);
+            this.SSD_PBT2_label.Name = "SSD_PBT2_label";
+            this.SSD_PBT2_label.Size = new System.Drawing.Size(152, 17);
+            this.SSD_PBT2_label.TabIndex = 42;
+            this.SSD_PBT2_label.Text = "SYSTEM SHUTDOWN";
+            this.SSD_PBT2_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SSD_PBT2_label.Visible = false;
+            // 
+            // SSD_PBT3_label
+            // 
+            this.SSD_PBT3_label.BackColor = System.Drawing.Color.DarkRed;
+            this.SSD_PBT3_label.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold);
+            this.SSD_PBT3_label.ForeColor = System.Drawing.Color.White;
+            this.SSD_PBT3_label.Location = new System.Drawing.Point(6, 178);
+            this.SSD_PBT3_label.Name = "SSD_PBT3_label";
+            this.SSD_PBT3_label.Size = new System.Drawing.Size(152, 17);
+            this.SSD_PBT3_label.TabIndex = 43;
+            this.SSD_PBT3_label.Text = "SYSTEM SHUTDOWN";
+            this.SSD_PBT3_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SSD_PBT3_label.Visible = false;
+            // 
+            // SSD_PBT4_label
+            // 
+            this.SSD_PBT4_label.BackColor = System.Drawing.Color.DarkRed;
+            this.SSD_PBT4_label.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold);
+            this.SSD_PBT4_label.ForeColor = System.Drawing.Color.White;
+            this.SSD_PBT4_label.Location = new System.Drawing.Point(175, 178);
+            this.SSD_PBT4_label.Name = "SSD_PBT4_label";
+            this.SSD_PBT4_label.Size = new System.Drawing.Size(152, 17);
+            this.SSD_PBT4_label.TabIndex = 44;
+            this.SSD_PBT4_label.Text = "SYSTEM SHUTDOWN";
+            this.SSD_PBT4_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SSD_PBT4_label.Visible = false;
             // 
             // Main
             // 
@@ -2264,6 +2309,9 @@
         private System.Windows.Forms.CheckBox ResetAllSystems_checkBox;
         private System.Windows.Forms.Timer HighTempAlert_watchTimer;
         private System.Windows.Forms.Label SSD_PBT1_label;
+        private System.Windows.Forms.Label SSD_PBT2_label;
+        private System.Windows.Forms.Label SSD_PBT4_label;
+        private System.Windows.Forms.Label SSD_PBT3_label;
     }
 }
 

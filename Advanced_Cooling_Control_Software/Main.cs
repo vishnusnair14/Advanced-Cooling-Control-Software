@@ -296,8 +296,8 @@ namespace Advanced_Cooling_Control_Software
                                 Main_SerialPort1.Open();
                                 Conn_progressBar.Value = 75;
 
-                                ConsoleWrite("\nConnected: " + _COMPORT + " @" + _BAUDRATE);
-                                ConsoleWrite("\n> [MSG: Connected to port @" + _COMPORT + "]");
+                                consoleWrite("\nConnected: " + _COMPORT + " @" + _BAUDRATE);
+                                consoleWrite("\n> [MSG: Connected to port @" + _COMPORT + "]");
 
                                 // initial soft-reset:
                                 connection_groupBox.ForeColor = Color.DarkGreen;
@@ -371,7 +371,7 @@ namespace Advanced_Cooling_Control_Software
                                 }
                                 catch (Exception w)
                                 {
-                                    ConsoleWrite(w.ToString());
+                                    consoleWrite(w.ToString());
                                 }
                             }
                             catch
@@ -520,11 +520,14 @@ namespace Advanced_Cooling_Control_Software
                 _serialData = Main_SerialPort1.ReadLine().Trim();
                 // BeginInvoke(new EventHandler(SerialDataDecoder));
                 SerialDataDecoder(_serialData);
+                
+                
+                /*
                 if (HighTempWarning_checkBox.Checked)
                 {
                     HighTempAlert_WatchDog();
                 }
-                /*
+
                 if (AdvSecurityFeature_checkBox.Checked)
                 {
                     AdvSecurityFeature_WatchDog();
@@ -1087,12 +1090,12 @@ namespace Advanced_Cooling_Control_Software
                 if (result == DialogResult.Yes)
                 {
                     Main_SerialPort1.Close();
-                    ConsoleWrite("\nSerial port closed success");
+                    consoleWrite("\nSerial port closed success");
                     Close();
                 }
                 else
                 {
-                    ConsoleWrite("\n\ndialog button clicked: " + DialogResult);
+                    consoleWrite("\n\ndialog button clicked: " + DialogResult);
                 }
             }
             else
@@ -1423,6 +1426,10 @@ namespace Advanced_Cooling_Control_Software
             {
                 HighTempWarning_checkBox.BackColor = SystemColors.Highlight;
                 HighTempWarning_checkBox.ForeColor = Color.White;
+
+                HighTempAlert_watchTimer.Interval = 100;
+                HighTempAlert_watchTimer.Start();
+                consoleWrite("\n[HighTemperatureAlert_watchTimer: STARTED]");
             }
             else if (!HighTempWarning_checkBox.Checked)
             {
@@ -1436,8 +1443,12 @@ namespace Advanced_Cooling_Control_Software
 
                 HighTempWarning_checkBox.BackColor = Color.DarkRed;
                 HighTempWarning_checkBox.ForeColor = Color.White;
+
+                HighTempAlert_watchTimer.Stop();
+                consoleWrite("\n[HighTemperatureAlert_watchTimer: STOPPED!]", ConsoleColor.DarkRed);
             }
         }
+
 
         private void HighTempAlert_watchTimer_Tick(object sender, EventArgs e)
         {
@@ -1449,9 +1460,9 @@ namespace Advanced_Cooling_Control_Software
         {
             if (PBT1_circularProgressBar.Value >= TemperatureSettings.CoolSideMaxTemp)
             {
-                if (PBT1_flag == -1 /*@start*/ || PBT1_flag == 0)
+                if (PBT1_flag == -1 /*@on-start*/ || PBT1_flag == 0)
                 {
-                    ConsoleWrite("[PBT1-(high-temp-warning-count): " + (BlinkAlert_PBT1_Count + 1) + "]", ConsoleColor.DarkYellow);
+                    consoleWrite("[PBT1-(high-temp-warning-count): " + (BlinkAlert_PBT1_Count + 1) + "]", ConsoleColor.DarkYellow);
                     // BlinkAlert_PBT1_Count+= BlinkAlert_PBT1_Count;
                     HighTempBlinkAlert("PBT1", CoolSideTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
@@ -1461,7 +1472,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (PBT2_flag == -1 || PBT2_flag == 0)
                 {
-                    ConsoleWrite("[PBT2-(high-temp-warning-count): " + (BlinkAlert_PBT2_Count + 1) + "]", ConsoleColor.DarkBlue);
+                    consoleWrite("[PBT2-(high-temp-warning-count): " + (BlinkAlert_PBT2_Count + 1) + "]", ConsoleColor.DarkBlue);
                     // BlinkAlert_PBT2_Count+= BlinkAlert_PBT2_Count;
                     HighTempBlinkAlert("PBT2", HotSideTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
@@ -1471,7 +1482,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (CT1_flag == -1 || CT1_flag == 0)
                 {
-                    ConsoleWrite("[CT1-(high-temp-warning-count): " + (BlinkAlert_CT1_Count + 1) + "]", ConsoleColor.DarkRed);
+                    consoleWrite("[CT1-(high-temp-warning-count): " + (BlinkAlert_CT1_Count + 1) + "]", ConsoleColor.DarkRed);
                     // BlinkAlert_CT1_Count+= BlinkAlert_CT1_Count;
                     HighTempBlinkAlert("CT1", Tank1TM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
@@ -1481,7 +1492,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (CT2_flag == -1 || CT2_flag == 0)
                 {
-                    ConsoleWrite("[CT2-(high-temp-warning-count): " + (BlinkAlert_CT2_Count + 1) + "]", ConsoleColor.DarkGreen);
+                    consoleWrite("[CT2-(high-temp-warning-count): " + (BlinkAlert_CT2_Count + 1) + "]", ConsoleColor.DarkGreen);
                     // BlinkAlert_CT2_Count+= BlinkAlert_CT2_Count;
                     HighTempBlinkAlert("CT2", Tank2TM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
@@ -1491,7 +1502,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (Xaxis_flag == -1 || Xaxis_flag == 0)
                 {
-                    ConsoleWrite("[X_Axis_SM-(high-temp-warning-count): " + (BlinkAlert_Xaxis_Count + 1) + "]");
+                    consoleWrite("[X_Axis_SM-(high-temp-warning-count): " + (BlinkAlert_Xaxis_Count + 1) + "]");
                     // BlinkAlert_Xaxis_Count+= BlinkAlert_Xaxis_Count;
                     HighTempBlinkAlert("XAxis_SM", XAxisTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
@@ -1501,7 +1512,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (Yaxis_flag == -1 || Yaxis_flag == 0)
                 {
-                    ConsoleWrite("[Y_Axis_SM-(high-temp-warning-count): " + (BlinkAlert_Yaxis_Count + 1) + "]");
+                    consoleWrite("[Y_Axis_SM-(high-temp-warning-count): " + (BlinkAlert_Yaxis_Count + 1) + "]");
                     // BlinkAlert_Yaxis_Count+= BlinkAlert_Yaxis_Count;
                     HighTempBlinkAlert("YAxis_SM", YAxisTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
@@ -1511,7 +1522,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (Zaxis_flag == -1 || Zaxis_flag == 0)
                 {
-                    ConsoleWrite("[Z_Axis_SM-(high-temp-warning-count): " + (BlinkAlert_Zaxis_Count + 1) + "]");
+                    consoleWrite("[Z_Axis_SM-(high-temp-warning-count): " + (BlinkAlert_Zaxis_Count + 1) + "]");
                     // BlinkAlert_Zaxis_Count+= BlinkAlert_Zaxis_Count;
                     HighTempBlinkAlert("ZAxis_SM", ZAxisTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
@@ -1521,7 +1532,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 if (Extruder_flag == -1 || Extruder_flag == 0)
                 {
-                    ConsoleWrite("[Extruder_SM-(high-temp-warning-count): " + (BlinkAlert_Extruder_Count + 1) + "]");
+                    consoleWrite("[Extruder_SM-(high-temp-warning-count): " + (BlinkAlert_Extruder_Count + 1) + "]");
                     // BlinkAlert_Extruder_Count+= BlinkAlert_Extruder_Count;
                     HighTempBlinkAlert("Extruder_SM", ExtruderTM_label, TemperatureSettings.AlertC1, TemperatureSettings.AlertC2, TemperatureSettings.HighTempAlertDelayMs, true);
                 }
@@ -1536,17 +1547,17 @@ namespace Advanced_Cooling_Control_Software
                 try
                 {
                     Main_SerialPort1.Write(_cmd);
-                    ConsoleWrite("\n[(auto-security-feature triggered) cmd execute success (id: " + _id + ", cmd: " + _cmd + ")]\n", ConsoleColor.DarkGreen);
-                    // ConsoleWrite("\n[(auto-security-feature triggered) cmd execute success (id: " + _id + ", cmd: " + _cmd + ")]\n");
+                    consoleWrite("\n[(auto-security-feature triggered) cmd execute success (id: " + _id + ", cmd: " + _cmd + ")]\n", ConsoleColor.DarkGreen);
+                    // consoleWrite("\n[(auto-security-feature triggered) cmd execute success (id: " + _id + ", cmd: " + _cmd + ")]\n");
                 }
                 catch
                 {
-                    ConsoleWrite("\n[(auto-security-feature triggered) cmd EXECUTE FAILED! (id: " + _id + ", cmd: " + _cmd + ")]\n", ConsoleColor.DarkRed);
+                    consoleWrite("\n[(auto-security-feature triggered) cmd EXECUTE FAILED! (id: " + _id + ", cmd: " + _cmd + ")]\n", ConsoleColor.DarkRed);
                 }
             }
             else
             {
-                ConsoleWrite("\n[(auto-security-feature triggered but PORT CLOSED! (for id: " + _id + " cmd: " + _cmd + ")]\n", ConsoleColor.DarkRed);
+                consoleWrite("\n[(auto-security-feature triggered but PORT CLOSED! (for id: " + _id + " cmd: " + _cmd + ")]\n", ConsoleColor.DarkRed);
             }
         }
 
@@ -1554,7 +1565,8 @@ namespace Advanced_Cooling_Control_Software
         private bool EAFC_PBT1_flag = false;
         private bool EAFC_PBT2_flag = false;
         private bool EAFC_CT1_flag = false;
-        private bool EAFC_CT2_flag = false; */
+        private bool EAFC_CT2_flag = false;
+        */
 
 
         private void AdvancedSecurityFeature_watchTimer_Tick(object sender, EventArgs e)
@@ -1582,7 +1594,7 @@ namespace Advanced_Cooling_Control_Software
 
 
                 AdvancedSecurityFeature_watchTimer.Stop();
-                ConsoleWrite("\nAdvancedSecurityFeature_watchTimer: STOPPED!");
+                consoleWrite("\n[AdvancedSecurityFeature_watchTimer: STOPPED!]", ConsoleColor.DarkRed);
             }
             else
             {
@@ -1590,7 +1602,7 @@ namespace Advanced_Cooling_Control_Software
                 {
                     AdvancedSecurityFeature_watchTimer.Interval = 100;
                     AdvancedSecurityFeature_watchTimer.Start();
-                    ConsoleWrite("\nAdvancedSecurityFeature_watchTimer: STARTED");
+                    consoleWrite("\n[AdvancedSecurityFeature_watchTimer: STARTED]");
                 }
             }
         }
@@ -1603,7 +1615,7 @@ namespace Advanced_Cooling_Control_Software
             {
                 AN1_label.Enabled = true;
                 AN1_label.Visible = true;
-                AN1_label.Text = TemperatureSettings.AN1_label;
+                AN1_label.Text = TemperatureSettings.AN1_label;  // AN_label -> Advance Notification Label
                 AN1_label.BackColor = Color.DarkRed;
                 AN1_label.ForeColor = Color.Yellow;
 
@@ -1623,6 +1635,7 @@ namespace Advanced_Cooling_Control_Software
                 ExecuteAutoFeatureCommand("PBT2", TemperatureSettings.ASFCommand_PBT2);
                 BlinkAlert_PBT2_Count = 0;
 
+                SSD_PBT2_label.Visible = true;
             }
             if (BlinkAlert_CT1_Count > TemperatureSettings.ASF_TRIGGER_COUNT)
             {
@@ -1635,6 +1648,7 @@ namespace Advanced_Cooling_Control_Software
                 ExecuteAutoFeatureCommand("CT1", TemperatureSettings.ASFCommand_CT1);
                 BlinkAlert_CT1_Count = 0;
 
+                SSD_PBT3_label.Visible = true;
             }
             if (BlinkAlert_CT2_Count > TemperatureSettings.ASF_TRIGGER_COUNT)
             {
@@ -1646,6 +1660,8 @@ namespace Advanced_Cooling_Control_Software
 
                 ExecuteAutoFeatureCommand("CT2", TemperatureSettings.ASFCommand_CT2);
                 BlinkAlert_CT2_Count = 0;
+
+                SSD_PBT4_label.Visible = true;
             }
         }
 
@@ -1654,10 +1670,9 @@ namespace Advanced_Cooling_Control_Software
         {
             if (ResetAllSystems_checkBox.Checked)
             {
-
+                // @RESET-START (on-resetting...)
                 {
-                    // @RESET-START (on-resetting...)
-                    ResetAllSystems_checkBox.Text = "Resetting systems...";
+                    ResetAllSystems_checkBox.Text = "Please wait...";
                     ResetAllSystems_checkBox.BackColor = Color.OrangeRed;
                     ResetAllSystems_checkBox.ForeColor = Color.White;
                     await Task.Delay(2500);
@@ -1667,32 +1682,50 @@ namespace Advanced_Cooling_Control_Software
                     await Task.Delay(2700);
 
                     // perform restart-command
-                    PerformRestartSystem();
+                    consoleWrite("OnPerformRestartSystem: CALLED");
+                    OnPerformRestartSystem();
+                    consoleWrite("OnPerformRestartSystem: ENDED!");
                 }
 
 
+                // @ON-SUCCESS
                 {
-                    // @ON-SUCCESS
                     ResetAllSystems_checkBox.Text = "Reset successful";
                     ResetAllSystems_checkBox.BackColor = Color.DarkGreen;
                     ResetAllSystems_checkBox.ForeColor = Color.White;
                     await Task.Delay(1750);
+                    // back to normal state
                     ResetAllSystems_checkBox.Text = "Reset all systems";
                     ResetAllSystems_checkBox.BackColor = SystemColors.Highlight;
                     ResetAllSystems_checkBox.ForeColor = Color.White;
                 }
                 ResetAllSystems_checkBox.Checked = false;
             }
+            else
+            {
+                consoleWrite("[ [ResetAllSystems_checkBox.checked: false\n[back to normal state] ]");
+            }
         }
 
 
-        private void PerformRestartSystem()
+        private void OnPerformRestartSystem()
         {
+            SSD_PBT1_label.Visible = false;
+            SSD_PBT2_label.Visible = false;
+                SSD_PBT3_label.Visible = false;
+            SSD_PBT4_label.Visible = false;
 
+            // perform/call reverse-command-function (commands to restart shutdown systems)
+            BlinkAlert_PBT1_Count = 0;
+            BlinkAlert_PBT2_Count = 0;
+            BlinkAlert_CT1_Count = 0;
+            BlinkAlert_CT2_Count = 0;
+            BlinkAlert_Xaxis_Count = 0;
+            BlinkAlert_Yaxis_Count = 0;
+            BlinkAlert_Zaxis_Count = 0;
+            BlinkAlert_Extruder_Count = 0;
         }
-        //
-        // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        //
+
 
         private void Main_Load(object sender, EventArgs e)
         {
@@ -2070,8 +2103,7 @@ namespace Advanced_Cooling_Control_Software
         }
 
 
-        // usage: ConsoleWrite("This is my [message] with inline [color] changes.", ConsoleColor.Yellow);
-        private void ConsoleWrite(string message, ConsoleColor color = ConsoleColor.White)
+        private void consoleWrite(string message, ConsoleColor color = ConsoleColor.White)
         {
             message = "$" + message + "$";
             var pieces = Regex.Split(message, @"(\$$^\$$*\$)");
