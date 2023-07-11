@@ -37,7 +37,7 @@ namespace Advanced_Cooling_Control_Software
         public static string ASFCommand_YAXIS;
         public static string ASFCommand_ZAXIS;
         public static string ASFCommand_EXTRUDER;
-        public static int ASF_TRIGGER_COUNT = 5;
+        public static int ASF_TRIGGER_COUNT = 3;
 
         public static string AN1_label;
         public static string AN2_label;
