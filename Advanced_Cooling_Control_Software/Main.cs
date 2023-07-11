@@ -1654,8 +1654,7 @@ namespace Advanced_Cooling_Control_Software
         {
             if (ResetAllSystems_checkBox.Checked)
             {
-                ResetAllSystems_checkBox.Checked = false;
-                
+
                 {
                     // @RESET-START (on-resetting...)
                     ResetAllSystems_checkBox.Text = "Resetting systems...";
@@ -1668,7 +1667,7 @@ namespace Advanced_Cooling_Control_Software
                     await Task.Delay(2700);
 
                     // perform restart-command
-                    PerformRestartSystems();
+                    PerformRestartSystem();
                 }
 
 
@@ -1682,11 +1681,12 @@ namespace Advanced_Cooling_Control_Software
                     ResetAllSystems_checkBox.BackColor = SystemColors.Highlight;
                     ResetAllSystems_checkBox.ForeColor = Color.White;
                 }
+                ResetAllSystems_checkBox.Checked = false;
             }
-
         }
 
-        private void PerformRestartSystems()
+
+        private void PerformRestartSystem()
         {
 
         }
