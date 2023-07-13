@@ -131,12 +131,15 @@
             this.SMT_Y_circularProgressBar = new CircularProgressBar.CircularProgressBar();
             this.SMT_X_circularProgressBar = new CircularProgressBar.CircularProgressBar();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.SSD_PBT2_label = new System.Windows.Forms.Label();
             this.SSD_PBT1_label = new System.Windows.Forms.Label();
             this.CoolSideTM_label = new System.Windows.Forms.Label();
             this.HotSideTM_label = new System.Windows.Forms.Label();
             this.PBT2_circularProgressBar = new CircularProgressBar.CircularProgressBar();
             this.PBT1_circularProgressBar = new CircularProgressBar.CircularProgressBar();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.SSD_PBT4_label = new System.Windows.Forms.Label();
+            this.SSD_PBT3_label = new System.Windows.Forms.Label();
             this.Tank1TM_label = new System.Windows.Forms.Label();
             this.CT2_circularProgressBar = new CircularProgressBar.CircularProgressBar();
             this.Tank2TM_label = new System.Windows.Forms.Label();
@@ -165,9 +168,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.AdvancedSecurityFeature_watchTimer = new System.Windows.Forms.Timer(this.components);
             this.HighTempAlert_watchTimer = new System.Windows.Forms.Timer(this.components);
-            this.SSD_PBT2_label = new System.Windows.Forms.Label();
-            this.SSD_PBT3_label = new System.Windows.Forms.Label();
-            this.SSD_PBT4_label = new System.Windows.Forms.Label();
             this.SerialMonitor_groupBox.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -1616,12 +1616,25 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Peltier Block Temperature";
             // 
+            // SSD_PBT2_label
+            // 
+            this.SSD_PBT2_label.BackColor = System.Drawing.Color.DarkRed;
+            this.SSD_PBT2_label.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold);
+            this.SSD_PBT2_label.ForeColor = System.Drawing.Color.White;
+            this.SSD_PBT2_label.Location = new System.Drawing.Point(172, 178);
+            this.SSD_PBT2_label.Name = "SSD_PBT2_label";
+            this.SSD_PBT2_label.Size = new System.Drawing.Size(152, 17);
+            this.SSD_PBT2_label.TabIndex = 42;
+            this.SSD_PBT2_label.Text = "SYSTEM SHUTDOWN";
+            this.SSD_PBT2_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SSD_PBT2_label.Visible = false;
+            // 
             // SSD_PBT1_label
             // 
             this.SSD_PBT1_label.BackColor = System.Drawing.Color.DarkRed;
             this.SSD_PBT1_label.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold);
             this.SSD_PBT1_label.ForeColor = System.Drawing.Color.White;
-            this.SSD_PBT1_label.Location = new System.Drawing.Point(14, 178);
+            this.SSD_PBT1_label.Location = new System.Drawing.Point(10, 178);
             this.SSD_PBT1_label.Name = "SSD_PBT1_label";
             this.SSD_PBT1_label.Size = new System.Drawing.Size(152, 17);
             this.SSD_PBT1_label.TabIndex = 41;
@@ -1734,6 +1747,32 @@
             this.groupBox9.TabIndex = 37;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Coolant Temperature";
+            // 
+            // SSD_PBT4_label
+            // 
+            this.SSD_PBT4_label.BackColor = System.Drawing.Color.DarkRed;
+            this.SSD_PBT4_label.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold);
+            this.SSD_PBT4_label.ForeColor = System.Drawing.Color.White;
+            this.SSD_PBT4_label.Location = new System.Drawing.Point(173, 178);
+            this.SSD_PBT4_label.Name = "SSD_PBT4_label";
+            this.SSD_PBT4_label.Size = new System.Drawing.Size(152, 17);
+            this.SSD_PBT4_label.TabIndex = 44;
+            this.SSD_PBT4_label.Text = "SYSTEM SHUTDOWN";
+            this.SSD_PBT4_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SSD_PBT4_label.Visible = false;
+            // 
+            // SSD_PBT3_label
+            // 
+            this.SSD_PBT3_label.BackColor = System.Drawing.Color.DarkRed;
+            this.SSD_PBT3_label.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold);
+            this.SSD_PBT3_label.ForeColor = System.Drawing.Color.White;
+            this.SSD_PBT3_label.Location = new System.Drawing.Point(12, 178);
+            this.SSD_PBT3_label.Name = "SSD_PBT3_label";
+            this.SSD_PBT3_label.Size = new System.Drawing.Size(152, 17);
+            this.SSD_PBT3_label.TabIndex = 43;
+            this.SSD_PBT3_label.Text = "SYSTEM SHUTDOWN";
+            this.SSD_PBT3_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SSD_PBT3_label.Visible = false;
             // 
             // Tank1TM_label
             // 
@@ -2065,45 +2104,6 @@
             // 
             this.HighTempAlert_watchTimer.Tick += new System.EventHandler(this.HighTempAlert_watchTimer_Tick);
             // 
-            // SSD_PBT2_label
-            // 
-            this.SSD_PBT2_label.BackColor = System.Drawing.Color.DarkRed;
-            this.SSD_PBT2_label.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold);
-            this.SSD_PBT2_label.ForeColor = System.Drawing.Color.White;
-            this.SSD_PBT2_label.Location = new System.Drawing.Point(170, 178);
-            this.SSD_PBT2_label.Name = "SSD_PBT2_label";
-            this.SSD_PBT2_label.Size = new System.Drawing.Size(152, 17);
-            this.SSD_PBT2_label.TabIndex = 42;
-            this.SSD_PBT2_label.Text = "SYSTEM SHUTDOWN";
-            this.SSD_PBT2_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.SSD_PBT2_label.Visible = false;
-            // 
-            // SSD_PBT3_label
-            // 
-            this.SSD_PBT3_label.BackColor = System.Drawing.Color.DarkRed;
-            this.SSD_PBT3_label.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold);
-            this.SSD_PBT3_label.ForeColor = System.Drawing.Color.White;
-            this.SSD_PBT3_label.Location = new System.Drawing.Point(6, 178);
-            this.SSD_PBT3_label.Name = "SSD_PBT3_label";
-            this.SSD_PBT3_label.Size = new System.Drawing.Size(152, 17);
-            this.SSD_PBT3_label.TabIndex = 43;
-            this.SSD_PBT3_label.Text = "SYSTEM SHUTDOWN";
-            this.SSD_PBT3_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.SSD_PBT3_label.Visible = false;
-            // 
-            // SSD_PBT4_label
-            // 
-            this.SSD_PBT4_label.BackColor = System.Drawing.Color.DarkRed;
-            this.SSD_PBT4_label.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold);
-            this.SSD_PBT4_label.ForeColor = System.Drawing.Color.White;
-            this.SSD_PBT4_label.Location = new System.Drawing.Point(175, 178);
-            this.SSD_PBT4_label.Name = "SSD_PBT4_label";
-            this.SSD_PBT4_label.Size = new System.Drawing.Size(152, 17);
-            this.SSD_PBT4_label.TabIndex = 44;
-            this.SSD_PBT4_label.Text = "SYSTEM SHUTDOWN";
-            this.SSD_PBT4_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.SSD_PBT4_label.Visible = false;
-            // 
             // Main
             // 
             this.AcceptButton = this.Connect_button;
@@ -2112,7 +2112,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1346, 826);
+            this.ClientSize = new System.Drawing.Size(1346, 749);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.MainMenu);
